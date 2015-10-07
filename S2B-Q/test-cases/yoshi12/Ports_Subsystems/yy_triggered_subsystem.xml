@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="triggered_subsystem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="triggered_subsystem_ert_rtw/triggered_subsystem.h" size="3644" timestamp="2015-09-29T13:42:23+0900" type="c-header"/>
+  <file name="xx_triggered_subsystem.xml" size="2917" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="triggered_subsystem_ert_rtw/triggered_subsystem.c" size="2781" timestamp="2015-09-29T13:42:23+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="triggered_subsystem_In1" priority="0" rate="0.1">
+    <output line="triggered_subsystem_In1_1" port="triggered_subsystem_In1_1" usename="true">
+      <connect block="triggered_subsystem_TriggeredSubsystem" port="triggered_subsystem_TriggeredSubsystem_In1"/>
+    </output>
+    <var line="triggered_subsystem_In1_1" mode="extin" name="triggered_subsystem_In1_1" port="triggered_subsystem_In1_1" type="real_T"/>
+    <code file="triggered_subsystem_ert_rtw/triggered_subsystem.c" line="70" type="init">  triggered_subsystem_In1_1 = 0.0;
+
+</code>
+    <forward block="triggered_subsystem_Out1" type="port">
+      <var line="triggered_subsystem_TriggeredSubsystem_1" mode="input" name="triggered_subsystem_In1_1" port="triggered_subsystem_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="triggered_subsystem_In2" priority="0" rate="0.1">
+    <output line="triggered_subsystem_In2_1" port="triggered_subsystem_In2_1" usename="true">
+      <connect block="triggered_subsystem_TriggeredSubsystem" port="triggered_subsystem_TriggeredSubsystem_Trigger"/>
+    </output>
+    <var line="triggered_subsystem_In2_1" mode="extin" name="triggered_subsystem_In2_1" port="triggered_subsystem_In2_1" storage="triggered_subsystem_U" type="real_T"/>
+    <code file="triggered_subsystem_ert_rtw/triggered_subsystem.c" line="44" type="task">  /* Inport: '&lt;Root&gt;/In2' */
+  zcEvent = rt_ZCFcn(RISING_ZERO_CROSSING,
+                     &amp;triggered_subsystem_PrevZCX.TriggeredSubsystem_Trig_ZCE,
+                     (triggered_subsystem_U.triggered_subsystem_In2_1));
+/*&lt;&lt;&lt; S 1 triggered_subsystem_In2 '&lt;Root&gt;/In2' &lt;&lt;&lt;*/
+  if (zcEvent != NO_ZCEVENT) {
+/*&gt;&gt;&gt; S 1 triggered_subsystem_In2 '&lt;Root&gt;/In2' &gt;&gt;&gt;*/
+/*&lt;&lt;&lt; E 1 triggered_subsystem_In2 '&lt;Root&gt;/In2' &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 triggered_subsystem_In2 '&lt;Root&gt;/In2' &gt;&gt;&gt;*/
+</code>
+    <forward block="triggered_subsystem_TriggeredSubsystem" type="data">
+      <var line="triggered_subsystem_In2_1" mode="input" name="triggered_subsystem_In2_1" port="triggered_subsystem_TriggeredSubsystem_Trigger" storage="triggered_subsystem_U" type="real_T"/>
+    </forward>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="3" name="triggered_subsystem_TriggeredSubsystem" priority="2" rate="0.1" type="triggered">
+    <input line="triggered_subsystem_In1_1" port="triggered_subsystem_TriggeredSubsystem_In1">
+      <connect block="triggered_subsystem_In1" port="triggered_subsystem_In1_1"/>
+    </input>
+    <input line="triggered_subsystem_In2_1" port="triggered_subsystem_TriggeredSubsystem_Trigger">
+      <connect block="triggered_subsystem_In2" port="triggered_subsystem_In2_1"/>
+    </input>
+    <output line="triggered_subsystem_TriggeredSubsystem_1" port="triggered_subsystem_TriggeredSubsystem_Out1" usename="false">
+      <connect block="triggered_subsystem_Out1" port="triggered_subsystem_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="4" name="triggered_subsystem_TriggeredSubsystem_In1" priority="1" rate="-1">
+        <output line="triggered_subsystem_TriggeredSubsystem_In1_1" port="triggered_subsystem_TriggeredSubsystem_In1_1" usename="false">
+          <connect block="triggered_subsystem_TriggeredSubsystem_Out1" port="triggered_subsystem_TriggeredSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="TriggerPort" id="5" name="triggered_subsystem_TriggeredSubsystem_Trigger" priority="0" rate="-1"/>
+      <block blocktype="Outport" id="6" name="triggered_subsystem_TriggeredSubsystem_Out1" priority="0" rate="-1">
+        <input line="triggered_subsystem_TriggeredSubsystem_In1_1" port="triggered_subsystem_TriggeredSubsystem_Out1_1">
+          <connect block="triggered_subsystem_TriggeredSubsystem_In1" port="triggered_subsystem_TriggeredSubsystem_In1_1"/>
+        </input>
+        <param name="Out1_Y0" storage="triggered_subsystem_P" type="real_T"/>
+      </block>
+    </sm:blocks>
+    <var line="triggered_subsystem_In2_1" mode="input" name="triggered_subsystem_In2_1" port="triggered_subsystem_TriggeredSubsystem_Trigger" storage="triggered_subsystem_U" type="real_T"/>
+    <trigger_state name="TriggeredSubsystem_Trig_ZCE" storage="triggered_subsystem_PrevZCX" type="ZCSigState"/>
+    <code file="triggered_subsystem_ert_rtw/triggered_subsystem.c" line="41" type="task">  /* Outputs for Triggered SubSystem: '&lt;Root&gt;/TriggeredSubsystem' incorporates:
+   *  TriggerPort: '&lt;S1&gt;/Trigger'
+   */
+  /* End of Outputs for SubSystem: '&lt;Root&gt;/TriggeredSubsystem' */
+</code>
+    <code file="triggered_subsystem_ert_rtw/triggered_subsystem.c" line="75" type="init">  /* Start for Triggered SubSystem: '&lt;Root&gt;/TriggeredSubsystem' */
+  triggered_subsystem_Y.Out1 = triggered_subsystem_P.Out1_Y0;
+
+  /* End of Start for SubSystem: '&lt;Root&gt;/TriggeredSubsystem' */
+  triggered_subsystem_PrevZCX.TriggeredSubsystem_Trig_ZCE = UNINITIALIZED_ZCSIG;
+</code>
+    <backword block="triggered_subsystem_In2" type="data">
+      <var line="triggered_subsystem_In2_1" mode="extin" name="triggered_subsystem_In2_1" port="triggered_subsystem_In2_1" storage="triggered_subsystem_U" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="7" name="triggered_subsystem_Out1" priority="3" rate="0.1">
+    <input line="triggered_subsystem_TriggeredSubsystem_1" port="triggered_subsystem_Out1_1">
+      <connect block="triggered_subsystem_TriggeredSubsystem" port="triggered_subsystem_TriggeredSubsystem_Out1"/>
+    </input>
+    <var line="triggered_subsystem_TriggeredSubsystem_1" mode="input" name="triggered_subsystem_In1_1" port="triggered_subsystem_Out1_1" type="real_T"/>
+    <var line="" mode="extout" name="Out1" port="" storage="triggered_subsystem_Y" type="real_T"/>
+    <code file="triggered_subsystem_ert_rtw/triggered_subsystem.c" line="49" type="task">/*&lt;&lt;&lt; S 1 triggered_subsystem_In2 '&lt;Root&gt;/In2' &lt;&lt;&lt;*/
+  if (zcEvent != NO_ZCEVENT) {
+/*&gt;&gt;&gt; S 1 triggered_subsystem_In2 '&lt;Root&gt;/In2' &gt;&gt;&gt;*/
+    /* Outport: '&lt;Root&gt;/Out1' incorporates:
+     *  Inport: '&lt;Root&gt;/In1'
+     *  Inport: '&lt;S1&gt;/In1'
+     */
+    triggered_subsystem_Y.Out1 = triggered_subsystem_In1_1;
+/*&lt;&lt;&lt; E 1 triggered_subsystem_In2 '&lt;Root&gt;/In2' &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 triggered_subsystem_In2 '&lt;Root&gt;/In2' &gt;&gt;&gt;*/
+</code>
+    <code file="triggered_subsystem_ert_rtw/triggered_subsystem.c" line="73" type="init">  triggered_subsystem_Y.Out1 = 0.0;
+
+</code>
+    <backword block="triggered_subsystem_In1" type="port">
+      <var line="triggered_subsystem_In1_1" mode="extin" name="triggered_subsystem_In1_1" port="triggered_subsystem_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_triggered_subsystem_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  ZCEventType zcEvent;
+
+</code>
+  <object kind="rtm-extern" name="triggered_subsystem_M" type="extern RT_MODEL_triggered_subsystem_T * const"/>
+  <object kind="rtm-object" name="triggered_subsystem_M_" type="RT_MODEL_triggered_subsystem_T"/>
+  <object kind="rtm-pointer" name="triggered_subsystem_M" type="RT_MODEL_triggered_subsystem_T * const" value="&amp;triggered_subsystem_M_"/>
+  <includes file="&lt;stddef.h>" from="triggered_subsystem_ert_rtw/triggered_subsystem.h" index="0"/>
+  <includes file="&lt;string.h>" from="triggered_subsystem_ert_rtw/triggered_subsystem.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="triggered_subsystem_ert_rtw/triggered_subsystem.h" index="2"/>
+  <includes file="&quot;triggered_subsystem_types.h&quot;" from="triggered_subsystem_ert_rtw/triggered_subsystem.h" index="3"/>
+  <includes file="&quot;rt_zcfcn.h&quot;" from="triggered_subsystem_ert_rtw/triggered_subsystem.h" index="4"/>
+  <includes file="&quot;triggered_subsystem_private.h&quot;" from="triggered_subsystem_ert_rtw/triggered_subsystem.c" index="5"/>
+</sm:blocks>

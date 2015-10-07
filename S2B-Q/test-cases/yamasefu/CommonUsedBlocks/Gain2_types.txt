@@ -1,0 +1,17 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=SingleTasking fixedStep=0.1
+Block "Gain2" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Gain2/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Gain2/Gain" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+InDataPort portNumber=1 dataType="double[2]"
+OutDataPort portNumber=1 dataType="double"
+Block "Gain2/VectorConcatenate" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double[2]"
+Block "Gain2/Out1" samplePeriod=0.1 assignedPriority=4 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

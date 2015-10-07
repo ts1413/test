@@ -1,0 +1,9 @@
+digraph csp {
+	graph [rankdir=LR];
+	while_iterator_subsystem_WhileIteratorSubsystem	 [fillcolor=red,
+		label="t3\nwhile_iterator_subsystem_WhileIteratorSubsystem",
+		style=filled];
+	t0 -> while_iterator_subsystem_WhileIteratorSubsystem	 [color=red,
+		label="ch_0_3([EVENT])"];
+	extout	 [label=extout];
+}

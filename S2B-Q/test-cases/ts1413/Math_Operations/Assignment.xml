@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Assignment" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Assignment_In1" rate="-1">
+      <output line="Assignment_In1_1" port="Assignment_In1_1" usename="true">
+         <connect block="Assignment_Assignment" port="Assignment_Assignment_2"/>
+      </output>
+   </block>
+   <block blocktype="Assignment" name="Assignment_Assignment" rate="-1">
+      <input line="Assignment_Constant_1" port="Assignment_Assignment_1">
+         <connect block="Assignment_Constant" port="Assignment_Constant_1"/>
+      </input>
+      <input line="Assignment_In1_1" port="Assignment_Assignment_2">
+         <connect block="Assignment_In1" port="Assignment_In1_1"/>
+      </input>
+      <output line="Assignment_Assignment_1" port="Assignment_Assignment_1" usename="true">
+         <connect block="Assignment_Out1" port="Assignment_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Constant" name="Assignment_Constant" rate="inf">
+      <output line="Assignment_Constant_1" port="Assignment_Constant_1" usename="true">
+         <connect block="Assignment_Assignment" port="Assignment_Assignment_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Assignment_Out1" rate="-1">
+      <input line="Assignment_Assignment_1" port="Assignment_Out1_1">
+         <connect block="Assignment_Assignment" port="Assignment_Assignment_1"/>
+      </input>
+   </block>
+</sm:blocks>

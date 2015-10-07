@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Constant" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Constant" name="Constant_Constant" rate="inf">
+      <output line="Constant_Constant_1" port="Constant_Constant_1" usename="true">
+         <connect block="Constant_Out1" port="Constant_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Constant_Out1" rate="-1">
+      <input line="Constant_Constant_1" port="Constant_Out1_1">
+         <connect block="Constant_Constant" port="Constant_Constant_1"/>
+      </input>
+   </block>
+</sm:blocks>

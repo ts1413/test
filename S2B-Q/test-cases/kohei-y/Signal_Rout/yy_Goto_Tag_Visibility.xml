@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Goto_Tag_Visibility" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Goto_Tag_Visibility_ert_rtw/Goto_Tag_Visibility.h" size="2537" timestamp="2015-09-29T13:35:53+0900" type="c-header"/>
+  <file name="xx_Goto_Tag_Visibility.xml" size="3583" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Goto_Tag_Visibility_ert_rtw/Goto_Tag_Visibility.c" size="1277" timestamp="2015-09-29T13:35:53+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Goto_Tag_Visibility_In1" priority="0" rate="0.1">
+    <output line="Goto_Tag_Visibility_In1_1" port="Goto_Tag_Visibility_In1_1" usename="true">
+      <connect block="Goto_Tag_Visibility_Subsystem" port="Goto_Tag_Visibility_Subsystem_In1"/>
+    </output>
+    <var line="Goto_Tag_Visibility_In1_1" mode="output" name="Goto_Tag_Visibility_In1_1" port="Goto_Tag_Visibility_In1_1" type="real_T"/>
+    <code file="Goto_Tag_Visibility_ert_rtw/Goto_Tag_Visibility.c" line="42" type="init">  Goto_Tag_Visibility_In1_1 = 0.0;
+</code>
+    <forward block="Goto_Tag_Visibility_Out2" type="port">
+      <var line="Goto_Tag_Visibility_Subsystem1_1" mode="input" name="Goto_Tag_Visibility_In1_1" port="Goto_Tag_Visibility_Out2_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="GotoTagVisibility" id="2" name="Goto_Tag_Visibility_GotoTagVisibility" priority="0" rate="0.1"/>
+  <block TreatAsAtomicUnit="off" blocktype="SubSystem" id="3" name="Goto_Tag_Visibility_Subsystem" priority="0" rate="0.1">
+    <input line="Goto_Tag_Visibility_In1_1" port="Goto_Tag_Visibility_Subsystem_In1">
+      <connect block="Goto_Tag_Visibility_In1" port="Goto_Tag_Visibility_In1_1"/>
+    </input>
+    <sm:blocks>
+      <block blocktype="Inport" id="4" name="Goto_Tag_Visibility_Subsystem_In1" priority="0" rate="0.1">
+        <output line="Goto_Tag_Visibility_Subsystem_In1_1" port="Goto_Tag_Visibility_Subsystem_In1_1" usename="false">
+          <connect block="Goto_Tag_Visibility_Subsystem_Goto" port="Goto_Tag_Visibility_Subsystem_Goto_1"/>
+        </output>
+      </block>
+      <block blocktype="Goto" id="5" name="Goto_Tag_Visibility_Subsystem_Goto" priority="0" rate="0.1">
+        <input line="Goto_Tag_Visibility_Subsystem_In1_1" port="Goto_Tag_Visibility_Subsystem_Goto_1">
+          <connect block="Goto_Tag_Visibility_Subsystem_In1" port="Goto_Tag_Visibility_Subsystem_In1_1"/>
+        </input>
+        <output line="Goto_Tag_Visibility_Subsystem_Goto_1" port="Goto_Tag_Visibility_Subsystem_Goto_1" usename="false">
+          <connect block="Goto_Tag_Visibility_Subsystem1_From" port="Goto_Tag_Visibility_Subsystem1_From_1"/>
+        </output>
+      </block>
+    </sm:blocks>
+  </block>
+  <block TreatAsAtomicUnit="off" blocktype="SubSystem" id="6" name="Goto_Tag_Visibility_Subsystem1" priority="0" rate="0.1">
+    <output line="Goto_Tag_Visibility_Subsystem1_1" port="Goto_Tag_Visibility_Subsystem1_Out1" usename="false">
+      <connect block="Goto_Tag_Visibility_Out2" port="Goto_Tag_Visibility_Out2_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="From" id="7" name="Goto_Tag_Visibility_Subsystem1_From" priority="0" rate="0.1">
+        <input line="Goto_Tag_Visibility_Subsystem_Goto_1" port="Goto_Tag_Visibility_Subsystem1_From_1">
+          <connect block="Goto_Tag_Visibility_Subsystem_Goto" port="Goto_Tag_Visibility_Subsystem_Goto_1"/>
+        </input>
+        <output line="Goto_Tag_Visibility_Subsystem1_From_1" port="Goto_Tag_Visibility_Subsystem1_From_1" usename="true">
+          <connect block="Goto_Tag_Visibility_Subsystem1_Out1" port="Goto_Tag_Visibility_Subsystem1_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="Outport" id="8" name="Goto_Tag_Visibility_Subsystem1_Out1" priority="0" rate="0.1">
+        <input line="Goto_Tag_Visibility_Subsystem1_From_1" port="Goto_Tag_Visibility_Subsystem1_Out1_1">
+          <connect block="Goto_Tag_Visibility_Subsystem1_From" port="Goto_Tag_Visibility_Subsystem1_From_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Outport" id="9" name="Goto_Tag_Visibility_Out2" priority="1" rate="0.1">
+    <input line="Goto_Tag_Visibility_Subsystem1_1" port="Goto_Tag_Visibility_Out2_1">
+      <connect block="Goto_Tag_Visibility_Subsystem1" port="Goto_Tag_Visibility_Subsystem1_Out1"/>
+    </input>
+    <var line="Goto_Tag_Visibility_Subsystem1_1" mode="input" name="Goto_Tag_Visibility_In1_1" port="Goto_Tag_Visibility_Out2_1" type="real_T"/>
+    <backword block="Goto_Tag_Visibility_In1" type="port">
+      <var line="Goto_Tag_Visibility_In1_1" mode="output" name="Goto_Tag_Visibility_In1_1" port="Goto_Tag_Visibility_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Goto_Tag_Visibility_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Goto_Tag_Visibility_M" type="extern RT_MODEL_Goto_Tag_Visibility_T * const"/>
+  <object kind="rtm-object" name="Goto_Tag_Visibility_M_" type="RT_MODEL_Goto_Tag_Visibility_T"/>
+  <object kind="rtm-pointer" name="Goto_Tag_Visibility_M" type="RT_MODEL_Goto_Tag_Visibility_T * const" value="&amp;Goto_Tag_Visibility_M_"/>
+  <includes file="&lt;stddef.h>" from="Goto_Tag_Visibility_ert_rtw/Goto_Tag_Visibility.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Goto_Tag_Visibility_ert_rtw/Goto_Tag_Visibility.h" index="1"/>
+  <includes file="&quot;Goto_Tag_Visibility_types.h&quot;" from="Goto_Tag_Visibility_ert_rtw/Goto_Tag_Visibility.h" index="2"/>
+  <includes file="&quot;Goto_Tag_Visibility_private.h&quot;" from="Goto_Tag_Visibility_ert_rtw/Goto_Tag_Visibility.c" index="3"/>
+</sm:blocks>

@@ -1,0 +1,32 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Prelookup_In1_1",,
+"task100",,,,
+,"Prelookup_InterpolationUsingPrelookup_1",,,
+"task2",,,,
+,"Prelookup_Prelookup_1","Prelookup_InterpolationUsingPrelookup_1",,
+,"Prelookup_Prelookup_2",,,
+,,,,"{
+"
+,,,,"  /* Interpolation_n-D: '<Root>/InterpolationUsingPrelookup' */
+  frac = Prelookup_Prelookup_2;
+  bpIndex = Prelookup_Prelookup_1;
+  Prelookup_InterpolationUsingPrelookup_1 = intrp1d_l_pw(bpIndex, frac,
+    Prelookup_P.InterpolationUsingPrelookup_Tab);
+"
+,,,,"}
+"
+"task3",,,,
+,"Prelookup_In1_1","Prelookup_Prelookup_1",,
+,,"Prelookup_Prelookup_2",,
+,,,,"{
+"
+,,,,"  /* PreLookup: '<Root>/Prelookup' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Prelookup_Prelookup_1 = plook_binx(Prelookup_In1_1,
+    Prelookup_P.Prelookup_BreakpointsData, 10U, &Prelookup_Prelookup_2);
+
+"
+,,,,"}
+"

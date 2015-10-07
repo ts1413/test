@@ -1,0 +1,10 @@
+digraph csp {
+	graph [rankdir=LR];
+	extout	 [label=extout];
+	t0 -> extout	 [color=green,
+		label="ch_0_100(Tapped_Delay_In1_1)"];
+	Tapped_Delay_In1	 [label="t1\nTapped_Delay_In1",
+		shape=box];
+	Tapped_Delay_In1 -> t0	 [color=green,
+		label="in port Tapped_Delay_In1(Tapped_Delay_In1_1)"];
+}

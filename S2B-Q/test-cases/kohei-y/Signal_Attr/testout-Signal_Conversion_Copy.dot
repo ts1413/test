@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Signal_Conversion_Copy_SignalConversion	 [label="t2\nSignal_Conversion_Copy_SignalConversion"];
+	t0 -> Signal_Conversion_Copy_SignalConversion	 [color=green,
+		label="ch_0_2(Signal_Conversion_Copy_In1_1)"];
+	extout	 [label=extout];
+	Signal_Conversion_Copy_In1	 [label="t1\nSignal_Conversion_Copy_In1",
+		shape=box];
+	Signal_Conversion_Copy_In1 -> t0	 [color=green,
+		label="in port Signal_Conversion_Copy_In1(Signal_Conversion_Copy_In1_1)"];
+	Signal_Conversion_Copy_SignalConversion -> extout	 [color=green,
+		label="ch_2_100(Signal_Conversion_Copy_SignalConversion_1)"];
+}

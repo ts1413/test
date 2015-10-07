@@ -1,0 +1,26 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"LookupTablenD_In1_1",,
+,,"LookupTablenD_In2_1",,
+,,"LookupTablenD_In3_1",,
+"task100",,,,
+,"LookupTablenD_n_DLookupTable_1",,,
+"task4",,,,
+,"LookupTablenD_In1_1","LookupTablenD_n_DLookupTable_1",,
+,"LookupTablenD_In2_1",,,
+,"LookupTablenD_In3_1",,,
+,,,,"{
+"
+,,,,"  /* Lookup_n-D: '<Root>/n_DLookupTable' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   *  Inport: '<Root>/In3'
+   */
+  LookupTablenD_n_DLookupTable_1 = look3_sbinlxpw(LookupTablenD_In1_1,
+    LookupTablenD_In2_1, LookupTablenD_In3_1, LookupTablenD_DW.m_bpDataSet,
+    LookupTablenD_P.n_DLookupTable_tableData,
+    LookupTablenD_P.n_DLookupTable_maxIndex,
+    LookupTablenD_P.n_DLookupTable_dimSizes);
+"
+,,,,"}
+"

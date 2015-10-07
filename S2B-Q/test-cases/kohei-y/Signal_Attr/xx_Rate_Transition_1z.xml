@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Rate_Transition_1z" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Rate_Transition_1z_In1" priority="0" rate="0.5">
+    <output line="Rate_Transition_Copy_In1_1" port="Rate_Transition_1z_In1_1" usename="true">
+      <connect block="Rate_Transition_1z_RateTransition" port="Rate_Transition_1z_RateTransition_1"/>
+    </output>
+  </block>
+  <block blocktype="RateTransition" name="Rate_Transition_1z_RateTransition" priority="1" rate="0.1">
+    <input line="Rate_Transition_Copy_In1_1" port="Rate_Transition_1z_RateTransition_1">
+      <connect block="Rate_Transition_1z_In1" port="Rate_Transition_1z_In1_1"/>
+    </input>
+    <output line="Rate_Transition_Copy_RateTransition_1" port="Rate_Transition_1z_RateTransition_1" usename="true">
+      <connect block="Rate_Transition_1z_Out1" port="Rate_Transition_1z_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Rate_Transition_1z_Out1" priority="2" rate="0.1">
+    <input line="Rate_Transition_Copy_RateTransition_1" port="Rate_Transition_1z_Out1_1">
+      <connect block="Rate_Transition_1z_RateTransition" port="Rate_Transition_1z_RateTransition_1"/>
+    </input>
+  </block>
+</sm:blocks>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Compare_to_Zero" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Compare_to_Zero_In1" priority="0" rate="0.1">
+    <output line="Compare_to_Zero_In1_1" port="Compare_to_Zero_In1_1" usename="true">
+      <connect block="Compare_to_Zero_CompareToZero" port="Compare_to_Zero_CompareToZero_1"/>
+    </output>
+  </block>
+  <block blocktype="Simulink_CompareToZero" name="Compare_to_Zero_CompareToZero" priority="0" rate="0.1">
+    <input line="Compare_to_Zero_In1_1" port="Compare_to_Zero_CompareToZero_1">
+      <connect block="Compare_to_Zero_In1" port="Compare_to_Zero_In1_1"/>
+    </input>
+    <output line="Compare_to_Zero_CompareToZero_1" port="Compare_to_Zero_CompareToZero_1" usename="true">
+      <connect block="Compare_to_Zero_Out1" port="Compare_to_Zero_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Compare_to_Zero_Out1" priority="3" rate="0.1">
+    <input line="Compare_to_Zero_CompareToZero_1" port="Compare_to_Zero_Out1_1">
+      <connect block="Compare_to_Zero_CompareToZero" port="Compare_to_Zero_CompareToZero_1"/>
+    </input>
+  </block>
+</sm:blocks>

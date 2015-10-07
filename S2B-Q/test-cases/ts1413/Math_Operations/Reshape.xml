@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Reshape" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Reshape_In1" rate="-1">
+      <output line="Reshape_In1_1" port="Reshape_In1_1" usename="true">
+         <connect block="Reshape_Reshape" port="Reshape_Reshape_1"/>
+      </output>
+   </block>
+   <block blocktype="Reshape" name="Reshape_Reshape">
+      <input line="Reshape_In1_1" port="Reshape_Reshape_1">
+         <connect block="Reshape_In1" port="Reshape_In1_1"/>
+      </input>
+      <output line="Reshape_Reshape_1" port="Reshape_Reshape_1" usename="true">
+         <connect block="Reshape_Out1" port="Reshape_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Reshape_Out1" rate="-1">
+      <input line="Reshape_Reshape_1" port="Reshape_Out1_1">
+         <connect block="Reshape_Reshape" port="Reshape_Reshape_1"/>
+      </input>
+   </block>
+</sm:blocks>

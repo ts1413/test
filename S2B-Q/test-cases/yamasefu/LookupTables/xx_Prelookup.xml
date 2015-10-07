@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Prelookup" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Prelookup_In1" priority="0" rate="0.1">
+    <output line="Prelookup_In1_1" port="Prelookup_In1_1" usename="true">
+      <connect block="Prelookup_Prelookup" port="Prelookup_Prelookup_1"/>
+    </output>
+  </block>
+  <block blocktype="Interpolation_n-D" name="Prelookup_InterpolationUsingPrelookup" priority="2" rate="0.1">
+    <input line="Prelookup_Prelookup_1" port="Prelookup_InterpolationUsingPrelookup_1">
+      <connect block="Prelookup_Prelookup" port="Prelookup_Prelookup_1"/>
+    </input>
+    <input line="Prelookup_Prelookup_2" port="Prelookup_InterpolationUsingPrelookup_2">
+      <connect block="Prelookup_Prelookup" port="Prelookup_Prelookup_2"/>
+    </input>
+    <output line="Prelookup_InterpolationUsingPrelookup_1" port="Prelookup_InterpolationUsingPrelookup_1" usename="true">
+      <connect block="Prelookup_Out1" port="Prelookup_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="PreLookup" name="Prelookup_Prelookup" priority="1" rate="0.1">
+    <input line="Prelookup_In1_1" port="Prelookup_Prelookup_1">
+      <connect block="Prelookup_In1" port="Prelookup_In1_1"/>
+    </input>
+    <output line="Prelookup_Prelookup_1" port="Prelookup_Prelookup_1" usename="true">
+      <connect block="Prelookup_InterpolationUsingPrelookup" port="Prelookup_InterpolationUsingPrelookup_1"/>
+    </output>
+    <output line="Prelookup_Prelookup_2" port="Prelookup_Prelookup_2" usename="true">
+      <connect block="Prelookup_InterpolationUsingPrelookup" port="Prelookup_InterpolationUsingPrelookup_2"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Prelookup_Out1" priority="3" rate="0.1">
+    <input line="Prelookup_InterpolationUsingPrelookup_1" port="Prelookup_Out1_1">
+      <connect block="Prelookup_InterpolationUsingPrelookup" port="Prelookup_InterpolationUsingPrelookup_1"/>
+    </input>
+  </block>
+</sm:blocks>

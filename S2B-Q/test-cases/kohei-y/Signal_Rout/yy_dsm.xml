@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="dsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="dsm_ert_rtw/dsm.h" size="2783" timestamp="2015-10-04T02:23:30+0900" type="c-header"/>
+  <file name="xx_dsm.xml" size="1405" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="dsm_ert_rtw/dsm.c" size="1621" timestamp="2015-10-04T02:23:30+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="dsm_In1" priority="0" rate="0.1">
+    <output line="dsm_In1_1" port="dsm_In1_1" usename="true">
+      <connect block="dsm_DataStoreWrite" port="dsm_DataStoreWrite_1"/>
+    </output>
+    <var line="dsm_In1_1" mode="extin" name="dsm_In1_1" port="dsm_In1_1" type="real_T"/>
+    <code file="dsm_ert_rtw/dsm.c" line="60" type="init">  dsm_In1_1 = 0.0;
+
+</code>
+    <forward block="dsm_DataStoreWrite" type="port">
+      <var line="dsm_In1_1" mode="input" name="dsm_In1_1" port="dsm_DataStoreWrite_1" type="real_T"/>
+    </forward>
+  </block>
+  <block DataStoreName="Data" blocktype="DataStoreMemory" id="2" name="dsm_DataStoreMemory" priority="4" rate="0.1">
+    <state name="Data" storage="dsm_DW" type="real_T"/>
+    <param name="InitialValue" storage="" type="double" value="0.0"/>
+    <param name="DataStoreMemory_InitialValue" storage="dsm_P" type="real_T"/>
+    <code file="dsm_ert_rtw/dsm.c" line="62" type="init">  /* Start for DataStoreMemory: '&lt;Root&gt;/DataStoreMemory' */
+  dsm_DW.Data = dsm_P.DataStoreMemory_InitialValue;
+</code>
+  </block>
+  <block DataStoreName="Data" blocktype="DataStoreRead" id="3" name="dsm_DataStoreRead" priority="2" rate="0.1">
+    <output line="dsm_DataStoreRead_1" port="dsm_DataStoreRead_1" usename="true">
+      <connect block="dsm_Out1" port="dsm_Out1_1"/>
+    </output>
+    <var line="dsm_DataStoreRead_1" mode="extout" name="dsm_DataStoreRead_1" port="dsm_DataStoreRead_1" type="real_T"/>
+    <code file="dsm_ert_rtw/dsm.c" line="38" type="task">  /* DataStoreRead: '&lt;Root&gt;/DataStoreRead' */
+  dsm_DataStoreRead_1 = dsm_DW.Data;
+</code>
+    <code file="dsm_ert_rtw/dsm.c" line="53" type="init">  dsm_DataStoreRead_1 = 0.0;
+
+</code>
+    <forward block="dsm_Out1" type="port">
+      <var line="dsm_DataStoreRead_1" mode="input" name="dsm_DataStoreRead_1" port="dsm_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block DataStoreName="Data" blocktype="DataStoreWrite" id="4" name="dsm_DataStoreWrite" priority="1" rate="0.1">
+    <input line="dsm_In1_1" port="dsm_DataStoreWrite_1">
+      <connect block="dsm_In1" port="dsm_In1_1"/>
+    </input>
+    <var line="dsm_In1_1" mode="input" name="dsm_In1_1" port="dsm_DataStoreWrite_1" type="real_T"/>
+    <code file="dsm_ert_rtw/dsm.c" line="33" type="task">  /* DataStoreWrite: '&lt;Root&gt;/DataStoreWrite' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  dsm_DW.Data = dsm_In1_1;
+
+</code>
+    <backword block="dsm_In1" type="port">
+      <var line="dsm_In1_1" mode="extin" name="dsm_In1_1" port="dsm_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="5" name="dsm_Out1" priority="3" rate="0.1">
+    <input line="dsm_DataStoreRead_1" port="dsm_Out1_1">
+      <connect block="dsm_DataStoreRead" port="dsm_DataStoreRead_1"/>
+    </input>
+    <var line="dsm_DataStoreRead_1" mode="input" name="dsm_DataStoreRead_1" port="dsm_Out1_1" type="real_T"/>
+    <backword block="dsm_DataStoreRead" type="port">
+      <var line="dsm_DataStoreRead_1" mode="extout" name="dsm_DataStoreRead_1" port="dsm_DataStoreRead_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_dsm_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="dsm_M" type="extern RT_MODEL_dsm_T * const"/>
+  <object kind="rtm-object" name="dsm_M_" type="RT_MODEL_dsm_T"/>
+  <object kind="rtm-pointer" name="dsm_M" type="RT_MODEL_dsm_T * const" value="&amp;dsm_M_"/>
+  <includes file="&lt;stddef.h>" from="dsm_ert_rtw/dsm.h" index="0"/>
+  <includes file="&lt;string.h>" from="dsm_ert_rtw/dsm.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="dsm_ert_rtw/dsm.h" index="2"/>
+  <includes file="&quot;dsm_types.h&quot;" from="dsm_ert_rtw/dsm.h" index="3"/>
+  <includes file="&quot;dsm_private.h&quot;" from="dsm_ert_rtw/dsm.c" index="4"/>
+</sm:blocks>

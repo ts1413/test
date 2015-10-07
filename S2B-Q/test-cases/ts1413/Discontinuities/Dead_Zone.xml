@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Dead_Zone" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Dead_Zone_In1" rate="-1">
+      <output line="Dead_Zone_In1_1" port="Dead_Zone_In1_1" usename="true">
+         <connect block="Dead_Zone_DeadZone" port="Dead_Zone_DeadZone_1"/>
+      </output>
+   </block>
+   <block blocktype="DeadZone" name="Dead_Zone_DeadZone" rate="-1">
+      <input line="Dead_Zone_In1_1" port="Dead_Zone_DeadZone_1">
+         <connect block="Dead_Zone_In1" port="Dead_Zone_In1_1"/>
+      </input>
+      <output line="Dead_Zone_DeadZone_1" port="Dead_Zone_DeadZone_1" usename="true">
+         <connect block="Dead_Zone_Out1" port="Dead_Zone_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Dead_Zone_Out1" rate="-1">
+      <input line="Dead_Zone_DeadZone_1" port="Dead_Zone_Out1_1">
+         <connect block="Dead_Zone_DeadZone" port="Dead_Zone_DeadZone_1"/>
+      </input>
+   </block>
+</sm:blocks>

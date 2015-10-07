@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	    targetNamespace="http://schema.omg.org/spec/XMI/2.1"
+        xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+
+	<xsd:simpleType name="type">
+		<xsd:restriction base="xsd:string"></xsd:restriction>
+	</xsd:simpleType>
+
+    <xsd:simpleType name="id">
+    	<xsd:restriction base="xsd:int"></xsd:restriction>
+    </xsd:simpleType>
+
+	<xsd:attribute name="type" type="xmi:type"></xsd:attribute>
+	<xsd:attribute name="id" type="xmi:id"></xsd:attribute>
+
+</xsd:schema>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="DiscreteTimeIntegrator4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="DiscreteTimeIntegrator4_In1" priority="0" rate="1">
+    <output line="DiscreteTimeIntegrator4_In1_1" port="DiscreteTimeIntegrator4_In1_1" usename="true">
+      <connect block="DiscreteTimeIntegrator4_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="DiscreteTimeIntegrator4_In2" priority="0" rate="1">
+    <output line="DiscreteTimeIntegrator4_In2_1" port="DiscreteTimeIntegrator4_In2_1" usename="true">
+      <connect block="DiscreteTimeIntegrator4_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_2"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="DiscreteTimeIntegrator4_In3" priority="0" rate="1">
+    <output line="DiscreteTimeIntegrator4_In3_1" port="DiscreteTimeIntegrator4_In3_1" usename="true">
+      <connect block="DiscreteTimeIntegrator4_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_3"/>
+    </output>
+  </block>
+  <block blocktype="DiscreteIntegrator" name="DiscreteTimeIntegrator4_Discrete_TimeIntegrator" priority="1" rate="1">
+    <input line="DiscreteTimeIntegrator4_In1_1" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_1">
+      <connect block="DiscreteTimeIntegrator4_In1" port="DiscreteTimeIntegrator4_In1_1"/>
+    </input>
+    <input line="DiscreteTimeIntegrator4_In2_1" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_2">
+      <connect block="DiscreteTimeIntegrator4_In2" port="DiscreteTimeIntegrator4_In2_1"/>
+    </input>
+    <input line="DiscreteTimeIntegrator4_In3_1" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_3">
+      <connect block="DiscreteTimeIntegrator4_In3" port="DiscreteTimeIntegrator4_In3_1"/>
+    </input>
+    <output line="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_1" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_1" usename="true">
+      <connect block="DiscreteTimeIntegrator4_Out1" port="DiscreteTimeIntegrator4_Out1_1"/>
+    </output>
+    <output line="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_2" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_2" usename="true">
+      <connect block="DiscreteTimeIntegrator4_Out2" port="DiscreteTimeIntegrator4_Out2_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="DiscreteTimeIntegrator4_Out1" priority="2" rate="1">
+    <input line="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_1" port="DiscreteTimeIntegrator4_Out1_1">
+      <connect block="DiscreteTimeIntegrator4_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_1"/>
+    </input>
+  </block>
+  <block blocktype="Outport" name="DiscreteTimeIntegrator4_Out2" priority="3" rate="1">
+    <input line="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_2" port="DiscreteTimeIntegrator4_Out2_1">
+      <connect block="DiscreteTimeIntegrator4_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator4_Discrete_TimeIntegrator_2"/>
+    </input>
+  </block>
+</sm:blocks>

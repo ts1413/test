@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Difference" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Difference_ert_rtw/Difference.h" size="3069" timestamp="2015-09-29T13:38:49+0900" type="c-header"/>
+  <file name="xx_Difference.xml" size="1260" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Difference_ert_rtw/Difference.c" size="1900" timestamp="2015-09-29T13:38:49+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Difference_In1" priority="0" rate="0.1">
+    <output line="Difference_In1_1" port="Difference_In1_1" usename="true">
+      <connect block="Difference_Difference" port="Difference_Difference_1"/>
+    </output>
+    <var line="Difference_In1_1" mode="extin" name="Difference_In1_1" port="Difference_In1_1" type="real_T"/>
+    <code file="Difference_ert_rtw/Difference.c" line="70" type="init">  Difference_In1_1 = 0.0;
+
+</code>
+    <forward block="Difference_Difference" type="port">
+      <var line="Difference_In1_1" mode="input" name="Difference_In1_1" port="Difference_Difference_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_Difference" id="2" name="Difference_Difference" priority="0" rate="0.1">
+    <input line="Difference_In1_1" port="Difference_Difference_1">
+      <connect block="Difference_In1" port="Difference_In1_1"/>
+    </input>
+    <output line="Difference_Difference_1" port="Difference_Difference_1" usename="true">
+      <connect block="Difference_Out1" port="Difference_Out1_1"/>
+    </output>
+    <var line="Difference_In1_1" mode="input" name="Difference_In1_1" port="Difference_Difference_1" type="real_T"/>
+    <param name="InitialValue" storage="" type="double" value="0.0"/>
+    <forward block="Difference_Out1" type="port"/>
+    <backword block="Difference_In1" type="port">
+      <var line="Difference_In1_1" mode="extin" name="Difference_In1_1" port="Difference_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Difference_Out1" priority="3" rate="0.1">
+    <input line="Difference_Difference_1" port="Difference_Out1_1">
+      <connect block="Difference_Difference" port="Difference_Difference_1"/>
+    </input>
+    <var line="" mode="extout" name="Out1" port="" storage="Difference_Y" type="real_T"/>
+    <code file="Difference_ert_rtw/Difference.c" line="41" type="task">  /* Outport: '&lt;Root&gt;/Out1' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Sum: '&lt;S1&gt;/Diff'
+   */
+  Difference_Y.Out1 = Difference_In1_1 - Difference_B.Uk1;
+
+</code>
+    <code file="Difference_ert_rtw/Difference.c" line="73" type="init">  Difference_Y.Out1 = 0.0;
+</code>
+    <backword block="Difference_Difference" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Difference {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Difference_M" type="extern RT_MODEL_Difference * const"/>
+  <object kind="rtm-object" name="Difference_M_" type="RT_MODEL_Difference"/>
+  <object kind="rtm-pointer" name="Difference_M" type="RT_MODEL_Difference * const" value="&amp;Difference_M_"/>
+  <includes file="&lt;stddef.h>" from="Difference_ert_rtw/Difference.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Difference_ert_rtw/Difference.h" index="1"/>
+  <includes file="&quot;Difference_types.h&quot;" from="Difference_ert_rtw/Difference.h" index="2"/>
+  <includes file="&quot;Difference_private.h&quot;" from="Difference_ert_rtw/Difference.c" index="3"/>
+</sm:blocks>

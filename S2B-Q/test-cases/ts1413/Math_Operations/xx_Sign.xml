@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Sign" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Sign_In1" priority="0" rate="0.1">
+    <output line="Sign_In1_1" port="Sign_In1_1" usename="true">
+      <connect block="Sign_Sign" port="Sign_Sign_1"/>
+    </output>
+  </block>
+  <block blocktype="Signum" name="Sign_Sign" priority="1" rate="0.1">
+    <input line="Sign_In1_1" port="Sign_Sign_1">
+      <connect block="Sign_In1" port="Sign_In1_1"/>
+    </input>
+    <output line="Sign_Sign_1" port="Sign_Sign_1" usename="true">
+      <connect block="Sign_Out1" port="Sign_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Sign_Out1" priority="2" rate="0.1">
+    <input line="Sign_Sign_1" port="Sign_Out1_1">
+      <connect block="Sign_Sign" port="Sign_Sign_1"/>
+    </input>
+  </block>
+</sm:blocks>

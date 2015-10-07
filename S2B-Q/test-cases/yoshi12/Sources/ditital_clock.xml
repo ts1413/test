@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="ditital_clock" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="DigitalClock" name="ditital_clock_DigitalClock" rate="1">
+      <output line="ditital_clock_DigitalClock_1" port="ditital_clock_DigitalClock_1" usename="true">
+         <connect block="ditital_clock_Display" port="ditital_clock_Display_1"/>
+      </output>
+   </block>
+   <block blocktype="Display" name="ditital_clock_Display" rate="-1">
+      <input line="ditital_clock_DigitalClock_1" port="ditital_clock_Display_1">
+         <connect block="ditital_clock_DigitalClock" port="ditital_clock_DigitalClock_1"/>
+      </input>
+   </block>
+</sm:blocks>

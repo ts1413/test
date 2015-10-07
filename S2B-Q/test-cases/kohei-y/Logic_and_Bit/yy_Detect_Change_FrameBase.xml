@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Detect_Change_FrameBase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.h" size="3788" timestamp="2015-10-03T23:49:57+0900" type="c-header"/>
+  <file name="xx_Detect_Change_FrameBase.xml" size="1533" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.c" size="2635" timestamp="2015-10-03T23:49:57+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Detect_Change_FrameBase_In1" priority="0" rate="0.1">
+    <output line="Detect_Change_FrameBase_In1_1" port="Detect_Change_FrameBase_In1_1" usename="true">
+      <connect block="Detect_Change_FrameBase_DetectChange" port="Detect_Change_FrameBase_DetectChange_1"/>
+    </output>
+    <var line="Detect_Change_FrameBase_In1_1" mode="extin" name="Detect_Change_FrameBase_In1_1" port="Detect_Change_FrameBase_In1_1" type="real_T"/>
+    <code file="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.c" line="72" type="init">  Detect_Change_FrameBase_In1_1 = 0.0;
+
+</code>
+    <forward block="Detect_Change_FrameBase_DetectChange" type="port">
+      <var line="Detect_Change_FrameBase_In1_1" mode="input" name="Detect_Change_FrameBase_In1_1" port="Detect_Change_FrameBase_DetectChange_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_DetectChange" id="2" name="Detect_Change_FrameBase_DetectChange" priority="0" rate="0.1">
+    <input line="Detect_Change_FrameBase_In1_1" port="Detect_Change_FrameBase_DetectChange_1">
+      <connect block="Detect_Change_FrameBase_In1" port="Detect_Change_FrameBase_In1_1"/>
+    </input>
+    <output line="Detect_Change_FrameBase_DetectChange_1" port="Detect_Change_FrameBase_DetectChange_1" usename="true">
+      <connect block="Detect_Change_FrameBase_Out1" port="Detect_Change_FrameBase_Out1_1"/>
+    </output>
+    <var line="Detect_Change_FrameBase_In1_1" mode="input" name="Detect_Change_FrameBase_In1_1" port="Detect_Change_FrameBase_DetectChange_1" type="real_T"/>
+    <param name="vinit" storage="" type="double" value="0.0"/>
+    <forward block="Detect_Change_FrameBase_Out1" type="port"/>
+    <backword block="Detect_Change_FrameBase_In1" type="port">
+      <var line="Detect_Change_FrameBase_In1_1" mode="extin" name="Detect_Change_FrameBase_In1_1" port="Detect_Change_FrameBase_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Detect_Change_FrameBase_Out1" priority="3" rate="0.1">
+    <input line="Detect_Change_FrameBase_DetectChange_1" port="Detect_Change_FrameBase_Out1_1">
+      <connect block="Detect_Change_FrameBase_DetectChange" port="Detect_Change_FrameBase_DetectChange_1"/>
+    </input>
+    <var line="" mode="extout" name="Out1" port="" storage="Detect_Change_FrameBase_Y" type="boolean_T"/>
+    <code file="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.c" line="42" type="task">  /* Outport: '&lt;Root&gt;/Out1' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  RelationalOperator: '&lt;S1&gt;/FixPt Relational Operator'
+   */
+  Detect_Change_FrameBase_Y.Out1 = (Detect_Change_FrameBase_In1_1 !=
+    Detect_Change_FrameBase_B.Uk1);
+
+</code>
+    <code file="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.c" line="75" type="init">  Detect_Change_FrameBase_Y.Out1 = false;
+
+</code>
+    <backword block="Detect_Change_FrameBase_DetectChange" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Detect_Change_FrameBa_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Detect_Change_FrameBase_M" type="extern RT_MODEL_Detect_Change_FrameB_T * const"/>
+  <object kind="rtm-object" name="Detect_Change_FrameBase_M_" type="RT_MODEL_Detect_Change_FrameB_T"/>
+  <object kind="rtm-pointer" name="Detect_Change_FrameBase_M" type="RT_MODEL_Detect_Change_FrameB_T * const" value="&amp;Detect_Change_FrameBase_M_"/>
+  <includes file="&lt;stddef.h>" from="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.h" index="0"/>
+  <includes file="&lt;string.h>" from="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.h" index="2"/>
+  <includes file="&quot;Detect_Change_FrameBase_types.h&quot;" from="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.h" index="3"/>
+  <includes file="&quot;Detect_Change_FrameBase_private.h&quot;" from="Detect_Change_FrameBase_ert_rtw/Detect_Change_FrameBase.c" index="4"/>
+</sm:blocks>

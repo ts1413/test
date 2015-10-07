@@ -1,0 +1,41 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Transfer_Fcn_Lead_or_Lag" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/u" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/DataTypeProp" samplePeriod=0.1 assignedPriority=7 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/Delay Input" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/Delay Output" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/Downcast" samplePeriod=0.1 assignedPriority=5 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/GainPole" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/GainZero" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/Sum" samplePeriod=0.1 assignedPriority=4 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/TransferFcnLeadorLag/y" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_Lead_or_Lag/Out1" samplePeriod=0.1 assignedPriority=6 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

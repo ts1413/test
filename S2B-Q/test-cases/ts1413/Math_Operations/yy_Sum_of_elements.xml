@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Sum_of_elements" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Sum_of_elements_ert_rtw/Sum_of_elements.h" size="2454" timestamp="2015-10-05T16:08:34+0900" type="c-header"/>
+  <file name="xx_Sum_of_elements.xml" size="1301" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="Sum_of_elements_ert_rtw/Sum_of_elements.c" size="1506" timestamp="2015-10-05T16:08:34+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Sum_of_elements_In1" priority="0" rate="0.1">
+    <output line="Sum_of_elements_In1_1" port="Sum_of_elements_In1_1" usename="true">
+      <connect block="Sum_of_elements_SumofElements" port="Sum_of_elements_SumofElements_1"/>
+    </output>
+    <var line="Sum_of_elements_In1_1" mode="extin" name="Sum_of_elements_In1_1" port="Sum_of_elements_In1_1" type="real_T"/>
+    <code file="Sum_of_elements_ert_rtw/Sum_of_elements.c" line="53" type="init">  Sum_of_elements_In1_1 = 0.0;
+</code>
+    <forward block="Sum_of_elements_SumofElements" type="data">
+      <var line="Sum_of_elements_In1_1" mode="input" name="Sum_of_elements_In1_1" port="Sum_of_elements_SumofElements_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Sum" id="2" name="Sum_of_elements_SumofElements" priority="1" rate="0.1">
+    <input line="Sum_of_elements_In1_1" port="Sum_of_elements_SumofElements_1">
+      <connect block="Sum_of_elements_In1" port="Sum_of_elements_In1_1"/>
+    </input>
+    <output line="Sum_of_elements_SumofElements_1" port="Sum_of_elements_SumofElements_1" usename="true">
+      <connect block="Sum_of_elements_Out1" port="Sum_of_elements_Out1_1"/>
+    </output>
+    <var line="Sum_of_elements_In1_1" mode="input" name="Sum_of_elements_In1_1" port="Sum_of_elements_SumofElements_1" type="real_T"/>
+    <var line="Sum_of_elements_SumofElements_1" mode="extout" name="Sum_of_elements_SumofElements_1" port="Sum_of_elements_SumofElements_1" type="real_T"/>
+    <code file="Sum_of_elements_ert_rtw/Sum_of_elements.c" line="32" type="task">  /* Sum: '&lt;Root&gt;/SumofElements' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  tmp = Sum_of_elements_In1_1;
+  Sum_of_elements_SumofElements_1 = tmp;
+</code>
+    <code file="Sum_of_elements_ert_rtw/Sum_of_elements.c" line="50" type="init">  Sum_of_elements_SumofElements_1 = 0.0;
+
+</code>
+    <forward block="Sum_of_elements_Out1" type="data">
+      <var line="Sum_of_elements_SumofElements_1" mode="input" name="Sum_of_elements_SumofElements_1" port="Sum_of_elements_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Sum_of_elements_In1" type="data">
+      <var line="Sum_of_elements_In1_1" mode="extin" name="Sum_of_elements_In1_1" port="Sum_of_elements_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Sum_of_elements_Out1" priority="2" rate="0.1">
+    <input line="Sum_of_elements_SumofElements_1" port="Sum_of_elements_Out1_1">
+      <connect block="Sum_of_elements_SumofElements" port="Sum_of_elements_SumofElements_1"/>
+    </input>
+    <var line="Sum_of_elements_SumofElements_1" mode="input" name="Sum_of_elements_SumofElements_1" port="Sum_of_elements_Out1_1" type="real_T"/>
+    <backword block="Sum_of_elements_SumofElements" type="data">
+      <var line="Sum_of_elements_SumofElements_1" mode="extout" name="Sum_of_elements_SumofElements_1" port="Sum_of_elements_SumofElements_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Sum_of_elements {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T tmp;
+
+</code>
+  <object kind="rtm-extern" name="Sum_of_elements_M" type="extern RT_MODEL_Sum_of_elements * const"/>
+  <object kind="rtm-object" name="Sum_of_elements_M_" type="RT_MODEL_Sum_of_elements"/>
+  <object kind="rtm-pointer" name="Sum_of_elements_M" type="RT_MODEL_Sum_of_elements * const" value="&amp;Sum_of_elements_M_"/>
+  <includes file="&lt;stddef.h>" from="Sum_of_elements_ert_rtw/Sum_of_elements.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Sum_of_elements_ert_rtw/Sum_of_elements.h" index="1"/>
+  <includes file="&quot;Sum_of_elements_types.h&quot;" from="Sum_of_elements_ert_rtw/Sum_of_elements.h" index="2"/>
+  <includes file="&quot;Sum_of_elements_private.h&quot;" from="Sum_of_elements_ert_rtw/Sum_of_elements.c" index="3"/>
+</sm:blocks>

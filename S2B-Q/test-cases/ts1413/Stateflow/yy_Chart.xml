@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Chart" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Chart_ert_rtw/Chart.h" size="2604" timestamp="2015-10-03T23:52:34+0900" type="c-header"/>
+  <file name="xx_Chart.xml" size="3018" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="Chart_ert_rtw/Chart.c" size="2806" timestamp="2015-10-03T23:52:34+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Chart_In1" priority="0" rate="0.1">
+    <output line="Chart_In1_1" port="Chart_In1_1" usename="true">
+      <connect block="Chart_Chart" port="Chart_Chart_in"/>
+    </output>
+    <var line="Chart_In1_1" mode="extin" name="Chart_In1_1" port="Chart_In1_1" type="real_T"/>
+    <code file="Chart_ert_rtw/Chart.c" line="97" type="init">  Chart_In1_1 = 0.0;
+
+</code>
+    <forward block="Chart_Chart_SFunction" type="port">
+      <var line="Chart_Chart_in_1" mode="input" name="Chart_In1_1" port="Chart_Chart_SFunction_1" type="real_T"/>
+    </forward>
+  </block>
+  <block TreatAsAtomicUnit="off" blocktype="SubSystem" id="2" name="Chart_Chart" priority="1" rate="0.1" stateflow="Chart" type="stateflow">
+    <input line="Chart_In1_1" port="Chart_Chart_in">
+      <connect block="Chart_In1" port="Chart_In1_1"/>
+    </input>
+    <output line="Chart_Chart_1" port="Chart_Chart_out" usename="true">
+      <connect block="Chart_Out1" port="Chart_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="3" name="Chart_Chart_in" priority="0" rate="-1">
+        <output line="Chart_Chart_in_1" port="Chart_Chart_in_1" usename="false">
+          <connect block="Chart_Chart_SFunction" port="Chart_Chart_SFunction_1"/>
+        </output>
+        <merged_to block="Chart_Chart"/>
+      </block>
+      <block blocktype="Outport" id="4" name="Chart_Chart_out" priority="0" rate="-1">
+        <input line="Chart_Chart_SFunction_out" port="Chart_Chart_out_1">
+          <connect block="Chart_Chart_SFunction" port="Chart_Chart_SFunction_1"/>
+        </input>
+        <merged_to block="Chart_Chart"/>
+      </block>
+      <block blocktype="S-Function" id="5" name="Chart_Chart_SFunction" priority="0" rate="-1">
+        <input line="Chart_Chart_in_1" port="Chart_Chart_SFunction_1">
+          <connect block="Chart_Chart_in" port="Chart_Chart_in_1"/>
+        </input>
+        <output line="Chart_Chart_SFunction_out" port="Chart_Chart_SFunction_1" usename="false">
+          <connect block="Chart_Chart_out" port="Chart_Chart_out_1"/>
+        </output>
+        <output line="Chart_Chart_SFunction_2" port="Chart_Chart_SFunction_2" usename="false">
+          <connect block="Chart_Chart_Demux" port="Chart_Chart_Demux_1"/>
+        </output>
+        <var line="Chart_Chart_in_1" mode="input" name="Chart_In1_1" port="Chart_Chart_SFunction_1" type="real_T"/>
+        <forward block="Chart_Out1" type="port"/>
+        <backword block="Chart_In1" type="port">
+          <var line="Chart_In1_1" mode="extin" name="Chart_In1_1" port="Chart_In1_1" type="real_T"/>
+        </backword>
+        <merged_to block="Chart_Chart"/>
+      </block>
+      <block blocktype="Demux" id="6" name="Chart_Chart_Demux" priority="0" rate="-1">
+        <input line="Chart_Chart_SFunction_2" port="Chart_Chart_Demux_1">
+          <connect block="Chart_Chart_SFunction" port="Chart_Chart_SFunction_2"/>
+        </input>
+        <output line="Chart_Chart_Demux_2" port="Chart_Chart_Demux_2" usename="false">
+          <connect block="Chart_Chart_Terminator" port="Chart_Chart_Terminator_1"/>
+        </output>
+        <merged_to block="Chart_Chart"/>
+      </block>
+      <block blocktype="Terminator" id="7" name="Chart_Chart_Terminator" priority="0" rate="-1">
+        <input line="Chart_Chart_Demux_2" port="Chart_Chart_Terminator_1">
+          <connect block="Chart_Chart_Demux" port="Chart_Chart_Demux_2"/>
+        </input>
+        <merged_to block="Chart_Chart"/>
+      </block>
+    </sm:blocks>
+    <state name="is_active_c3_Chart" storage="Chart_DWork" type="uint8_T"/>
+    <state name="is_c3_Chart" storage="Chart_DWork" type="uint8_T"/>
+    <code file="Chart_ert_rtw/Chart.c" line="38" type="task">  /* Chart: '&lt;Root&gt;/Chart' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  /* Gateway: Chart */
+  /* During: Chart */
+  if (Chart_DWork.is_active_c3_Chart == 0U) {
+    /* Entry: Chart */
+    Chart_DWork.is_active_c3_Chart = 1U;
+
+    /* Entry Internal: Chart */
+    /* Transition: '&lt;S1&gt;:3' */
+    if (Chart_In1_1 &gt; 0.0) {
+      /* Transition: '&lt;S1&gt;:7' */
+      Chart_DWork.is_c3_Chart = Chart_IN_True;
+    } else {
+      if (Chart_In1_1 &lt;= 0.0) {
+        /* Transition: '&lt;S1&gt;:9' */
+        Chart_DWork.is_c3_Chart = Chart_IN_False;
+      }
+    }
+  } else if (Chart_DWork.is_c3_Chart == Chart_IN_False) {
+    /* During 'False': '&lt;S1&gt;:2' */
+    if (Chart_In1_1 &gt; 0.0) {
+      /* Transition: '&lt;S1&gt;:13' */
+      Chart_DWork.is_c3_Chart = Chart_IN_True;
+    } else {
+      Chart_Chart_SFunction_out = 0.0;
+    }
+  } else {
+    /* During 'True': '&lt;S1&gt;:1' */
+    if (Chart_In1_1 &lt;= 0.0) {
+      /* Transition: '&lt;S1&gt;:11' */
+      Chart_DWork.is_c3_Chart = Chart_IN_False;
+    } else {
+      Chart_Chart_SFunction_out = 1.0;
+    }
+  }
+
+  /* End of Chart: '&lt;Root&gt;/Chart' */
+</code>
+    <code file="Chart_ert_rtw/Chart.c" line="90" type="init">  Chart_Chart_SFunction_out = 0.0;
+
+  /* InitializeConditions for Chart: '&lt;Root&gt;/Chart' */
+  Chart_DWork.is_active_c3_Chart = 0U;
+  Chart_DWork.is_c3_Chart = Chart_IN_NO_ACTIVE_CHILD;
+  Chart_Chart_SFunction_out = 0.0;
+</code>
+    <merge_block block="Chart_Chart_in"/>
+    <merge_block block="Chart_Chart_out"/>
+    <merge_block block="Chart_Chart_SFunction"/>
+    <merge_block block="Chart_Chart_Demux"/>
+    <merge_block block="Chart_Chart_Terminator"/>
+  </block>
+  <block blocktype="Outport" id="8" name="Chart_Out1" priority="2" rate="0.1">
+    <input line="Chart_Chart_1" port="Chart_Out1_1">
+      <connect block="Chart_Chart" port="Chart_Chart_out"/>
+    </input>
+    <backword block="Chart_Chart_SFunction" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Chart {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Chart_M" type="extern RT_MODEL_Chart * const"/>
+  <object kind="rtm-object" name="Chart_M_" type="RT_MODEL_Chart"/>
+  <object kind="rtm-pointer" name="Chart_M" type="RT_MODEL_Chart * const" value="&amp;Chart_M_"/>
+  <includes file="&lt;stddef.h>" from="Chart_ert_rtw/Chart.h" index="0"/>
+  <includes file="&lt;string.h>" from="Chart_ert_rtw/Chart.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Chart_ert_rtw/Chart.h" index="2"/>
+  <includes file="&quot;Chart_types.h&quot;" from="Chart_ert_rtw/Chart.h" index="3"/>
+  <includes file="&quot;Chart_private.h&quot;" from="Chart_ert_rtw/Chart.c" index="4"/>
+</sm:blocks>

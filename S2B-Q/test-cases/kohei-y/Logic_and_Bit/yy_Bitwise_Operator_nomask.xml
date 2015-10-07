@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Bitwise_Operator_nomask" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.h" size="2593" timestamp="2015-10-05T16:05:35+0900" type="c-header"/>
+  <file name="xx_Bitwise_Operator_nomask.xml" size="1500" timestamp="2015-10-07T15:40:37+0900" type="xml"/>
+  <file name="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.c" size="1657" timestamp="2015-10-05T16:05:35+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Bitwise_Operator_nomask_In1" priority="0" rate="0.1">
+    <output line="Bitwise_Operator_nomask_In1_1" port="Bitwise_Operator_nomask_In1_1" usename="true">
+      <connect block="Bitwise_Operator_nomask_BitwiseOperator" port="Bitwise_Operator_nomask_BitwiseOperator_1"/>
+    </output>
+    <var line="Bitwise_Operator_nomask_In1_1" mode="extin" name="Bitwise_Operator_nomask_In1_1" port="Bitwise_Operator_nomask_In1_1" type="int8_T"/>
+    <code file="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.c" line="52" type="init">  Bitwise_Operator_nomask_In1_1 = 0;
+</code>
+    <forward block="Bitwise_Operator_nomask_BitwiseOperator" type="port">
+      <var line="Bitwise_Operator_nomask_In1_1" mode="input" name="Bitwise_Operator_nomask_In1_1" port="Bitwise_Operator_nomask_BitwiseOperator_1" type="int8_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_BitwiseOperator" id="2" name="Bitwise_Operator_nomask_BitwiseOperator" priority="1" rate="0.1">
+    <input line="Bitwise_Operator_nomask_In1_1" port="Bitwise_Operator_nomask_BitwiseOperator_1">
+      <connect block="Bitwise_Operator_nomask_In1" port="Bitwise_Operator_nomask_In1_1"/>
+    </input>
+    <output line="Bitwise_Operator_nomask_BitwiseOperator_1" port="Bitwise_Operator_nomask_BitwiseOperator_1" usename="true">
+      <connect block="Bitwise_Operator_nomask_Out1" port="Bitwise_Operator_nomask_Out1_1"/>
+    </output>
+    <var line="Bitwise_Operator_nomask_In1_1" mode="input" name="Bitwise_Operator_nomask_In1_1" port="Bitwise_Operator_nomask_BitwiseOperator_1" type="int8_T"/>
+    <var line="Bitwise_Operator_nomask_BitwiseOperator_1" mode="extout" name="Bitwise_Operator_nomask_BitwiseOperator_1" port="Bitwise_Operator_nomask_BitwiseOperator_1" type="int8_T"/>
+    <code file="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.c" line="31" type="task">  /* S-Function (sfix_bitop): '&lt;Root&gt;/BitwiseOperator' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Bitwise_Operator_nomask_BitwiseOperator_1 = (int8_T)
+    ~Bitwise_Operator_nomask_In1_1;
+</code>
+    <code file="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.c" line="49" type="init">  Bitwise_Operator_nomask_BitwiseOperator_1 = 0;
+
+</code>
+    <forward block="Bitwise_Operator_nomask_Out1" type="port">
+      <var line="Bitwise_Operator_nomask_BitwiseOperator_1" mode="input" name="Bitwise_Operator_nomask_BitwiseOperator_1" port="Bitwise_Operator_nomask_Out1_1" type="int8_T"/>
+    </forward>
+    <backword block="Bitwise_Operator_nomask_In1" type="port">
+      <var line="Bitwise_Operator_nomask_In1_1" mode="extin" name="Bitwise_Operator_nomask_In1_1" port="Bitwise_Operator_nomask_In1_1" type="int8_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Bitwise_Operator_nomask_Out1" priority="2" rate="0.1">
+    <input line="Bitwise_Operator_nomask_BitwiseOperator_1" port="Bitwise_Operator_nomask_Out1_1">
+      <connect block="Bitwise_Operator_nomask_BitwiseOperator" port="Bitwise_Operator_nomask_BitwiseOperator_1"/>
+    </input>
+    <var line="Bitwise_Operator_nomask_BitwiseOperator_1" mode="input" name="Bitwise_Operator_nomask_BitwiseOperator_1" port="Bitwise_Operator_nomask_Out1_1" type="int8_T"/>
+    <backword block="Bitwise_Operator_nomask_BitwiseOperator" type="port">
+      <var line="Bitwise_Operator_nomask_BitwiseOperator_1" mode="extout" name="Bitwise_Operator_nomask_BitwiseOperator_1" port="Bitwise_Operator_nomask_BitwiseOperator_1" type="int8_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Bitwise_Operator_noma_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Bitwise_Operator_nomask_M" type="extern RT_MODEL_Bitwise_Operator_nom_T * const"/>
+  <object kind="rtm-object" name="Bitwise_Operator_nomask_M_" type="RT_MODEL_Bitwise_Operator_nom_T"/>
+  <object kind="rtm-pointer" name="Bitwise_Operator_nomask_M" type="RT_MODEL_Bitwise_Operator_nom_T * const" value="&amp;Bitwise_Operator_nomask_M_"/>
+  <includes file="&lt;stddef.h>" from="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.h" index="1"/>
+  <includes file="&quot;Bitwise_Operator_nomask_types.h&quot;" from="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.h" index="2"/>
+  <includes file="&quot;Bitwise_Operator_nomask_private.h&quot;" from="Bitwise_Operator_nomask_ert_rtw/Bitwise_Operator_nomask.c" index="3"/>
+</sm:blocks>

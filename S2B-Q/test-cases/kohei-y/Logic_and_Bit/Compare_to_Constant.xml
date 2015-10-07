@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Compare_to_Constant" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Compare_to_Constant_In1" rate="-1">
+      <output line="Compare_to_Constant_In1_1" port="Compare_to_Constant_In1_1" usename="true">
+         <connect block="Compare_to_Constant_CompareToConstant" port="Compare_to_Constant_CompareToConstant_u"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Compare_to_Constant_CompareToConstant">
+      <input line="Compare_to_Constant_In1_1" port="Compare_to_Constant_CompareToConstant_u">
+         <connect block="Compare_to_Constant_In1" port="Compare_to_Constant_In1_1"/>
+      </input>
+      <output line="Compare_to_Constant_CompareToConstant_1" port="Compare_to_Constant_CompareToConstant_y" usename="false">
+         <connect block="Compare_to_Constant_Out1" port="Compare_to_Constant_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Compare_to_Constant_CompareToConstant_u" rate="-1">
+            <output line="Compare_to_Constant_CompareToConstant_u_1" port="Compare_to_Constant_CompareToConstant_u_1" usename="false">
+               <connect block="Compare_to_Constant_CompareToConstant_Compare" port="Compare_to_Constant_CompareToConstant_Compare_1"/>
+            </output>
+         </block>
+         <block blocktype="RelationalOperator" name="Compare_to_Constant_CompareToConstant_Compare" rate="-1">
+            <input line="Compare_to_Constant_CompareToConstant_u_1" port="Compare_to_Constant_CompareToConstant_Compare_1">
+               <connect block="Compare_to_Constant_CompareToConstant_u" port="Compare_to_Constant_CompareToConstant_u_1"/>
+            </input>
+            <input line="Compare_to_Constant_CompareToConstant_Constant_1" port="Compare_to_Constant_CompareToConstant_Compare_2">
+               <connect block="Compare_to_Constant_CompareToConstant_Constant" port="Compare_to_Constant_CompareToConstant_Constant_1"/>
+            </input>
+            <output line="Compare_to_Constant_CompareToConstant_Compare_1" port="Compare_to_Constant_CompareToConstant_Compare_1" usename="true">
+               <connect block="Compare_to_Constant_CompareToConstant_y" port="Compare_to_Constant_CompareToConstant_y_1"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="Compare_to_Constant_CompareToConstant_Constant" rate="inf">
+            <output line="Compare_to_Constant_CompareToConstant_Constant_1" port="Compare_to_Constant_CompareToConstant_Constant_1" usename="true">
+               <connect block="Compare_to_Constant_CompareToConstant_Compare" port="Compare_to_Constant_CompareToConstant_Compare_2"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="Compare_to_Constant_CompareToConstant_y" rate="-1">
+            <input line="Compare_to_Constant_CompareToConstant_Compare_1" port="Compare_to_Constant_CompareToConstant_y_1">
+               <connect block="Compare_to_Constant_CompareToConstant_Compare" port="Compare_to_Constant_CompareToConstant_Compare_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Compare_to_Constant_Out1" rate="-1">
+      <input line="Compare_to_Constant_CompareToConstant_1" port="Compare_to_Constant_Out1_1">
+         <connect block="Compare_to_Constant_CompareToConstant" port="Compare_to_Constant_CompareToConstant_y"/>
+      </input>
+   </block>
+</sm:blocks>

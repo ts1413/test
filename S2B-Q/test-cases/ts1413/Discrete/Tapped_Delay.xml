@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Tapped_Delay" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Tapped_Delay_In1" rate="-1">
+      <output line="Tapped_Delay_In1_1" port="Tapped_Delay_In1_1" usename="true">
+         <connect block="Tapped_Delay_TappedDelay" port="Tapped_Delay_TappedDelay_1"/>
+      </output>
+   </block>
+   <block blocktype="S-Function" name="Tapped_Delay_TappedDelay">
+      <input line="Tapped_Delay_In1_1" port="Tapped_Delay_TappedDelay_1">
+         <connect block="Tapped_Delay_In1" port="Tapped_Delay_In1_1"/>
+      </input>
+      <output line="Tapped_Delay_TappedDelay_1" port="Tapped_Delay_TappedDelay_1" usename="true">
+         <connect block="Tapped_Delay_Out1" port="Tapped_Delay_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Tapped_Delay_Out1" rate="-1">
+      <input line="Tapped_Delay_TappedDelay_1" port="Tapped_Delay_Out1_1">
+         <connect block="Tapped_Delay_TappedDelay" port="Tapped_Delay_TappedDelay_1"/>
+      </input>
+   </block>
+</sm:blocks>

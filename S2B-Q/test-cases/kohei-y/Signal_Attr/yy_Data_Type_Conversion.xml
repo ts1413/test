@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Data_Type_Conversion" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.h" size="2618" timestamp="2015-09-29T10:40:57+0900" type="c-header"/>
+  <file name="xx_Data_Type_Conversion.xml" size="1461" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.c" size="1945" timestamp="2015-09-29T10:40:57+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Data_Type_Conversion_In1" priority="0" rate="0.1">
+    <output line="Data_Type_Conversion_In1_1" port="Data_Type_Conversion_In1_1" usename="true">
+      <connect block="Data_Type_Conversion_DataTypeConversion" port="Data_Type_Conversion_DataTypeConversion_1"/>
+    </output>
+    <var line="Data_Type_Conversion_In1_1" mode="extin" name="Data_Type_Conversion_In1_1" port="Data_Type_Conversion_In1_1" type="real_T"/>
+    <code file="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.c" line="66" type="init">  Data_Type_Conversion_In1_1 = 0.0;
+</code>
+    <forward block="Data_Type_Conversion_DataTypeConversion" type="port">
+      <var line="Data_Type_Conversion_In1_1" mode="input" name="Data_Type_Conversion_In1_1" port="Data_Type_Conversion_DataTypeConversion_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="DataTypeConversion" id="2" name="Data_Type_Conversion_DataTypeConversion" priority="1" rate="0.1">
+    <input line="Data_Type_Conversion_In1_1" port="Data_Type_Conversion_DataTypeConversion_1">
+      <connect block="Data_Type_Conversion_In1" port="Data_Type_Conversion_In1_1"/>
+    </input>
+    <output line="Data_Type_Conversion_DataTypeConversion_1" port="Data_Type_Conversion_DataTypeConversion_1" usename="true">
+      <connect block="Data_Type_Conversion_Out1" port="Data_Type_Conversion_Out1_1"/>
+    </output>
+    <var line="Data_Type_Conversion_In1_1" mode="input" name="Data_Type_Conversion_In1_1" port="Data_Type_Conversion_DataTypeConversion_1" type="real_T"/>
+    <var line="Data_Type_Conversion_DataTypeConversion_1" mode="extout" name="Data_Type_Conversion_DataTypeConversion_1" port="Data_Type_Conversion_DataTypeConversion_1" type="int32_T"/>
+    <code file="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.c" line="33" type="task">  /* DataTypeConversion: '&lt;Root&gt;/DataTypeConversion' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  tmp = floor(Data_Type_Conversion_In1_1);
+  if (rtIsNaN(tmp) || rtIsInf(tmp)) {
+    tmp = 0.0;
+  } else {
+    tmp = fmod(tmp, 4.294967296E+9);
+  }
+
+  Data_Type_Conversion_DataTypeConversion_1 = tmp &lt; 0.0 ? -(int32_T)(uint32_T)
+    -tmp : (int32_T)(uint32_T)tmp;
+
+  /* End of DataTypeConversion: '&lt;Root&gt;/DataTypeConversion' */
+</code>
+    <code file="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.c" line="63" type="init">  Data_Type_Conversion_DataTypeConversion_1 = 0;
+
+</code>
+    <forward block="Data_Type_Conversion_Out1" type="port">
+      <var line="Data_Type_Conversion_DataTypeConversion_1" mode="input" name="Data_Type_Conversion_DataTypeConversion_1" port="Data_Type_Conversion_Out1_1" type="int32_T"/>
+    </forward>
+    <backword block="Data_Type_Conversion_In1" type="port">
+      <var line="Data_Type_Conversion_In1_1" mode="extin" name="Data_Type_Conversion_In1_1" port="Data_Type_Conversion_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Data_Type_Conversion_Out1" priority="2" rate="0.1">
+    <input line="Data_Type_Conversion_DataTypeConversion_1" port="Data_Type_Conversion_Out1_1">
+      <connect block="Data_Type_Conversion_DataTypeConversion" port="Data_Type_Conversion_DataTypeConversion_1"/>
+    </input>
+    <var line="Data_Type_Conversion_DataTypeConversion_1" mode="input" name="Data_Type_Conversion_DataTypeConversion_1" port="Data_Type_Conversion_Out1_1" type="int32_T"/>
+    <backword block="Data_Type_Conversion_DataTypeConversion" type="port">
+      <var line="Data_Type_Conversion_DataTypeConversion_1" mode="extout" name="Data_Type_Conversion_DataTypeConversion_1" port="Data_Type_Conversion_DataTypeConversion_1" type="int32_T"/>
+    </backword>
+  </block>
+  <code type="common-init">  rt_InitInfAndNaN(sizeof(real_T));
+  rtmSetErrorStatus(Data_Type_Conversion_M, (NULL));
+</code>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Data_Type_Conversion_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T tmp;
+
+</code>
+  <object kind="rtm-extern" name="Data_Type_Conversion_M" type="extern RT_MODEL_Data_Type_Conversion_T * const"/>
+  <object kind="rtm-object" name="Data_Type_Conversion_M_" type="RT_MODEL_Data_Type_Conversion_T"/>
+  <object kind="rtm-pointer" name="Data_Type_Conversion_M" type="RT_MODEL_Data_Type_Conversion_T * const" value="&amp;Data_Type_Conversion_M_"/>
+  <includes file="&lt;math.h>" from="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.h" index="0"/>
+  <includes file="&lt;stddef.h>" from="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.h" index="2"/>
+  <includes file="&quot;Data_Type_Conversion_types.h&quot;" from="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.h" index="3"/>
+  <includes file="&quot;rt_nonfinite.h&quot;" from="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.h" index="4"/>
+  <includes file="&quot;rtGetInf.h&quot;" from="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.h" index="5"/>
+  <includes file="&quot;Data_Type_Conversion_private.h&quot;" from="Data_Type_Conversion_ert_rtw/Data_Type_Conversion.c" index="6"/>
+</sm:blocks>

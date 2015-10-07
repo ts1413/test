@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Relay_Relay	 [label="t2\nRelay_Relay"];
+	t0 -> Relay_Relay	 [color=green,
+		label="ch_0_2(Relay_In1_1)"];
+	extout	 [label=extout];
+	Relay_In1	 [label="t1\nRelay_In1",
+		shape=box];
+	Relay_In1 -> t0	 [color=green,
+		label="in port Relay_In1(Relay_In1_1)"];
+	Relay_Relay -> extout	 [color=green,
+		label="ch_2_100(Relay_Relay_1)"];
+}

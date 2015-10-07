@@ -1,0 +1,18 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Transfer_Fcn_Real_Zero_In1_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out1' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Sum: '<S1>/Sum'
+   */
+  Transfer_Fcn_Real_Zero_Y.Out1 = Transfer_Fcn_Real_Zero_In1_1 -
+    Transfer_Fcn_Real_Zero_B.ZeroUk1;
+
+"
+,,,,"}
+"
+"task2",,,,
+,"Transfer_Fcn_Real_Zero_In1_1",,,

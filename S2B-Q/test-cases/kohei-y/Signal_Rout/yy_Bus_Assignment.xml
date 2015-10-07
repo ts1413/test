@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Bus_Assignment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Bus_Assignment_ert_rtw/Bus_Assignment.h" size="2807" timestamp="2015-09-29T13:31:17+0900" type="c-header"/>
+  <file name="xx_Bus_Assignment.xml" size="3084" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="Bus_Assignment_ert_rtw/Bus_Assignment.c" size="1501" timestamp="2015-09-29T13:31:17+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Bus_Assignment_In1" priority="0" rate="0.1">
+    <output line="Bus_Assignment_In1_x" port="Bus_Assignment_In1_1" usename="true">
+      <connect block="Bus_Assignment_BusCreator" port="Bus_Assignment_BusCreator_1"/>
+    </output>
+    <var line="Bus_Assignment_In1_x" mode="extin" name="Bus_Assignment_In1_x" port="Bus_Assignment_In1_1" type="real_T"/>
+    <code file="Bus_Assignment_ert_rtw/Bus_Assignment.c" line="49" type="init">  Bus_Assignment_In1_x = 0.0;
+</code>
+    <forward block="Bus_Assignment_BusCreator" type="port">
+      <var line="Bus_Assignment_In1_x" mode="input" name="Bus_Assignment_In1_x" port="Bus_Assignment_BusCreator_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Bus_Assignment_In2" priority="0" rate="0.1">
+    <output line="Bus_Assignment_In2_y" port="Bus_Assignment_In2_1" usename="true">
+      <connect block="Bus_Assignment_BusCreator" port="Bus_Assignment_BusCreator_2"/>
+    </output>
+    <var line="Bus_Assignment_In2_y" mode="extin" name="Bus_Assignment_In2_y" port="Bus_Assignment_In2_1" type="real_T"/>
+    <code file="Bus_Assignment_ert_rtw/Bus_Assignment.c" line="50" type="init">  Bus_Assignment_In2_y = 0.0;
+</code>
+    <forward block="Bus_Assignment_BusCreator" type="port">
+      <var line="Bus_Assignment_In2_y" mode="input" name="Bus_Assignment_In2_y" port="Bus_Assignment_BusCreator_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="BusAssignment" id="3" name="Bus_Assignment_BusAssignment" priority="0" rate="0.1">
+    <input line="Bus_Assignment_BusCreator_1" port="Bus_Assignment_BusAssignment_1">
+      <connect block="Bus_Assignment_BusCreator" port="Bus_Assignment_BusCreator_1"/>
+    </input>
+    <input line="Bus_Assignment_Constant_1" port="Bus_Assignment_BusAssignment_2">
+      <connect block="Bus_Assignment_Constant" port="Bus_Assignment_Constant_1"/>
+    </input>
+    <output line="Bus_Assignment_BusAssignment_1" port="Bus_Assignment_BusAssignment_1" usename="true">
+      <connect block="Bus_Assignment_Out2" port="Bus_Assignment_Out2_1"/>
+    </output>
+    <var line="Bus_Assignment_Constant_1" mode="input" name="Bus_Assignment_Constant_1" port="Bus_Assignment_BusAssignment_2" type="real_T"/>
+    <forward block="Bus_Assignment_Out2" type="port"/>
+    <backword block="Bus_Assignment_BusCreator" type="data"/>
+    <backword block="Bus_Assignment_Constant" type="data">
+      <var line="Bus_Assignment_Constant_1" mode="output" name="Bus_Assignment_Constant_1" port="Bus_Assignment_Constant_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="BusCreator" id="4" name="Bus_Assignment_BusCreator" priority="0" rate="0.1">
+    <input line="Bus_Assignment_In1_x" port="Bus_Assignment_BusCreator_1">
+      <connect block="Bus_Assignment_In1" port="Bus_Assignment_In1_1"/>
+    </input>
+    <input line="Bus_Assignment_In2_y" port="Bus_Assignment_BusCreator_2">
+      <connect block="Bus_Assignment_In2" port="Bus_Assignment_In2_1"/>
+    </input>
+    <output line="Bus_Assignment_BusCreator_1" port="Bus_Assignment_BusCreator_1" usename="true">
+      <connect block="Bus_Assignment_BusAssignment" port="Bus_Assignment_BusAssignment_1"/>
+      <connect block="Bus_Assignment_Out1" port="Bus_Assignment_Out1_1"/>
+    </output>
+    <var line="Bus_Assignment_In1_x" mode="input" name="Bus_Assignment_In1_x" port="Bus_Assignment_BusCreator_1" type="real_T"/>
+    <var line="Bus_Assignment_In2_y" mode="input" name="Bus_Assignment_In2_y" port="Bus_Assignment_BusCreator_2" type="real_T"/>
+    <forward block="Bus_Assignment_BusAssignment" type="data"/>
+    <forward block="Bus_Assignment_Out1" type="port"/>
+    <backword block="Bus_Assignment_In1" type="port">
+      <var line="Bus_Assignment_In1_x" mode="extin" name="Bus_Assignment_In1_x" port="Bus_Assignment_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Bus_Assignment_In2" type="port">
+      <var line="Bus_Assignment_In2_y" mode="extin" name="Bus_Assignment_In2_y" port="Bus_Assignment_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Constant" id="5" name="Bus_Assignment_Constant" priority="2" rate="0.1">
+    <output line="Bus_Assignment_Constant_1" port="Bus_Assignment_Constant_1" usename="true">
+      <connect block="Bus_Assignment_BusAssignment" port="Bus_Assignment_BusAssignment_2"/>
+    </output>
+    <var line="Bus_Assignment_Constant_1" mode="output" name="Bus_Assignment_Constant_1" port="Bus_Assignment_Constant_1" type="real_T"/>
+    <param name="Value" storage="" type="double" value="5.0"/>
+    <param name="Constant_Value" storage="Bus_Assignment_P" type="real_T"/>
+    <code file="Bus_Assignment_ert_rtw/Bus_Assignment.c" line="31" type="task">  /* Constant: '&lt;Root&gt;/Constant' */
+  Bus_Assignment_Constant_1 = Bus_Assignment_P.Constant_Value;
+</code>
+    <code file="Bus_Assignment_ert_rtw/Bus_Assignment.c" line="46" type="init">  Bus_Assignment_Constant_1 = 0.0;
+
+</code>
+    <forward block="Bus_Assignment_BusAssignment" type="data">
+      <var line="Bus_Assignment_Constant_1" mode="input" name="Bus_Assignment_Constant_1" port="Bus_Assignment_BusAssignment_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Outport" id="6" name="Bus_Assignment_Out1" priority="1" rate="0.1">
+    <input line="Bus_Assignment_BusCreator_1" port="Bus_Assignment_Out1_1">
+      <connect block="Bus_Assignment_BusCreator" port="Bus_Assignment_BusCreator_1"/>
+    </input>
+    <backword block="Bus_Assignment_BusCreator" type="port"/>
+  </block>
+  <block blocktype="Outport" id="7" name="Bus_Assignment_Out2" priority="3" rate="0.1">
+    <input line="Bus_Assignment_BusAssignment_1" port="Bus_Assignment_Out2_1">
+      <connect block="Bus_Assignment_BusAssignment" port="Bus_Assignment_BusAssignment_1"/>
+    </input>
+    <backword block="Bus_Assignment_BusAssignment" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Bus_Assignment_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Bus_Assignment_M" type="extern RT_MODEL_Bus_Assignment_T * const"/>
+  <object kind="rtm-object" name="Bus_Assignment_M_" type="RT_MODEL_Bus_Assignment_T"/>
+  <object kind="rtm-pointer" name="Bus_Assignment_M" type="RT_MODEL_Bus_Assignment_T * const" value="&amp;Bus_Assignment_M_"/>
+  <includes file="&lt;stddef.h>" from="Bus_Assignment_ert_rtw/Bus_Assignment.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Bus_Assignment_ert_rtw/Bus_Assignment.h" index="1"/>
+  <includes file="&quot;Bus_Assignment_types.h&quot;" from="Bus_Assignment_ert_rtw/Bus_Assignment.h" index="2"/>
+  <includes file="&quot;Bus_Assignment_private.h&quot;" from="Bus_Assignment_ert_rtw/Bus_Assignment.c" index="3"/>
+</sm:blocks>

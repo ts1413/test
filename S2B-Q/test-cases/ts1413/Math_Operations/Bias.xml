@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Bias" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Bias_In1" rate="-1">
+      <output line="Bias_In1_1" port="Bias_In1_1" usename="true">
+         <connect block="Bias_Bias" port="Bias_Bias_1"/>
+      </output>
+   </block>
+   <block blocktype="Bias" name="Bias_Bias">
+      <input line="Bias_In1_1" port="Bias_Bias_1">
+         <connect block="Bias_In1" port="Bias_In1_1"/>
+      </input>
+      <output line="Bias_Bias_1" port="Bias_Bias_1" usename="true">
+         <connect block="Bias_Out1" port="Bias_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Bias_Out1" rate="-1">
+      <input line="Bias_Bias_1" port="Bias_Out1_1">
+         <connect block="Bias_Bias" port="Bias_Bias_1"/>
+      </input>
+   </block>
+</sm:blocks>

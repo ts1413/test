@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Product1" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Product1_In1" rate="-1">
+      <output line="Product1_In1_1" port="Product1_In1_1" usename="true">
+         <connect block="Product1_Product" port="Product1_Product_1"/>
+         <connect block="Product1_Product" port="Product1_Product_2"/>
+      </output>
+   </block>
+   <block blocktype="Product" name="Product1_Product" rate="-1">
+      <input line="Product1_In1_1" port="Product1_Product_1">
+         <connect block="Product1_In1" port="Product1_In1_1"/>
+      </input>
+      <input line="Product1_In1_1" port="Product1_Product_2">
+         <connect block="Product1_In1" port="Product1_In1_1"/>
+      </input>
+      <output line="Product1_Product_1" port="Product1_Product_1" usename="true">
+         <connect block="Product1_Out1" port="Product1_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Product1_Out1" rate="-1">
+      <input line="Product1_Product_1" port="Product1_Out1_1">
+         <connect block="Product1_Product" port="Product1_Product_1"/>
+      </input>
+   </block>
+</sm:blocks>

@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	IC_IC	 [label="t2\nIC_IC"];
+	t0 -> IC_IC	 [color=green,
+		label="ch_0_2(IC_In1_1)"];
+	extout	 [label=extout];
+	IC_In1	 [label="t1\nIC_In1",
+		shape=box];
+	IC_In1 -> t0	 [color=green,
+		label="in port IC_In1(IC_In1_1)"];
+	IC_IC -> extout	 [color=green,
+		label="ch_2_100(IC_IC_1)"];
+}

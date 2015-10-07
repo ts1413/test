@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Bitwise_Operator_nomask_BitwiseOperator	 [label="t2\nBitwise_Operator_nomask_BitwiseOperator"];
+	t0 -> Bitwise_Operator_nomask_BitwiseOperator	 [color=green,
+		label="ch_0_2(Bitwise_Operator_nomask_In1_1)"];
+	extout	 [label=extout];
+	Bitwise_Operator_nomask_In1	 [label="t1\nBitwise_Operator_nomask_In1",
+		shape=box];
+	Bitwise_Operator_nomask_In1 -> t0	 [color=green,
+		label="in port Bitwise_Operator_nomask_In1(Bitwise_Operator_nomask_In1_1)"];
+	Bitwise_Operator_nomask_BitwiseOperator -> extout	 [color=green,
+		label="ch_2_100(Bitwise_Operator_nomask_BitwiseOperator_1)"];
+}

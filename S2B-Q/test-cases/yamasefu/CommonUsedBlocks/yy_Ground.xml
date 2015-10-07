@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Ground" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Ground_ert_rtw/Ground.h" size="2026" timestamp="2015-10-05T16:55:10+0900" type="c-header"/>
+  <file name="xx_Ground.xml" size="711" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="Ground_ert_rtw/Ground.c" size="1041" timestamp="2015-10-05T16:55:10+0900" type="c-source"/>
+  <block blocktype="Ground" id="1" name="Ground_Ground" priority="0" rate="0.1">
+    <output line="Ground_Ground_1" port="Ground_Ground_1" usename="true">
+      <connect block="Ground_Out1" port="Ground_Out1_1"/>
+    </output>
+    <forward block="Ground_Out1" type="port"/>
+  </block>
+  <block blocktype="Outport" id="2" name="Ground_Out1" priority="1" rate="0.1">
+    <input line="Ground_Ground_1" port="Ground_Out1_1">
+      <connect block="Ground_Ground" port="Ground_Ground_1"/>
+    </input>
+    <backword block="Ground_Ground" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Ground_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Ground_M" type="extern RT_MODEL_Ground_T * const"/>
+  <object kind="rtm-object" name="Ground_M_" type="RT_MODEL_Ground_T"/>
+  <object kind="rtm-pointer" name="Ground_M" type="RT_MODEL_Ground_T * const" value="&amp;Ground_M_"/>
+  <includes file="&lt;stddef.h>" from="Ground_ert_rtw/Ground.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Ground_ert_rtw/Ground.h" index="1"/>
+  <includes file="&quot;Ground_types.h&quot;" from="Ground_ert_rtw/Ground.h" index="2"/>
+  <includes file="&quot;Ground_private.h&quot;" from="Ground_ert_rtw/Ground.c" index="3"/>
+</sm:blocks>

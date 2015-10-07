@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Bias_In1_1",,
+"task100",,,,
+,"Bias_Bias_1",,,
+"task2",,,,
+,"Bias_In1_1","Bias_Bias_1",,
+,,,,"{
+"
+,,,,"  /* Bias: '<Root>/Bias' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Bias_Bias_1 = Bias_In1_1 + 10.0;
+"
+,,,,"}
+"

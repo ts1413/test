@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Sum1_In1_1",,
+"task100",,,,
+,"Sum1_Sum_1",,,
+"task2",,,,
+,"Sum1_In1_1","Sum1_Sum_1",,
+,,,,"{
+"
+,,,,"  /* Sum: '<Root>/Sum' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Sum1_Sum_1 = Sum1_In1_1 + Sum1_In1_1;
+"
+,,,,"}
+"

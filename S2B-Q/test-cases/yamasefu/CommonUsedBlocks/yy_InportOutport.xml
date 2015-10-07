@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="InportOutport" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="InportOutport_ert_rtw/InportOutport.h" size="2430" timestamp="2015-10-05T16:55:15+0900" type="c-header"/>
+  <file name="xx_InportOutport.xml" size="770" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="InportOutport_ert_rtw/InportOutport.c" size="1274" timestamp="2015-10-05T16:55:15+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="InportOutport_In1" priority="0" rate="0.1">
+    <output line="InportOutport_In1_1" port="InportOutport_In1_1" usename="true">
+      <connect block="InportOutport_Out1" port="InportOutport_Out1_1"/>
+    </output>
+    <var line="InportOutport_In1_1" mode="extin" name="InportOutport_In1_1" port="InportOutport_In1_1" type="real_T"/>
+    <code file="InportOutport_ert_rtw/InportOutport.c" line="43" type="init">  InportOutport_In1_1 = 0.0;
+</code>
+    <forward block="InportOutport_Out1" type="port">
+      <var line="InportOutport_In1_1" mode="input" name="InportOutport_In1_1" port="InportOutport_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Outport" id="2" name="InportOutport_Out1" priority="1" rate="0.1">
+    <input line="InportOutport_In1_1" port="InportOutport_Out1_1">
+      <connect block="InportOutport_In1" port="InportOutport_In1_1"/>
+    </input>
+    <var line="InportOutport_In1_1" mode="input" name="InportOutport_In1_1" port="InportOutport_Out1_1" type="real_T"/>
+    <backword block="InportOutport_In1" type="port">
+      <var line="InportOutport_In1_1" mode="extin" name="InportOutport_In1_1" port="InportOutport_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_InportOutport_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="InportOutport_M" type="extern RT_MODEL_InportOutport_T * const"/>
+  <object kind="rtm-object" name="InportOutport_M_" type="RT_MODEL_InportOutport_T"/>
+  <object kind="rtm-pointer" name="InportOutport_M" type="RT_MODEL_InportOutport_T * const" value="&amp;InportOutport_M_"/>
+  <includes file="&lt;stddef.h>" from="InportOutport_ert_rtw/InportOutport.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="InportOutport_ert_rtw/InportOutport.h" index="1"/>
+  <includes file="&quot;InportOutport_types.h&quot;" from="InportOutport_ert_rtw/InportOutport.h" index="2"/>
+  <includes file="&quot;InportOutport_private.h&quot;" from="InportOutport_ert_rtw/InportOutport.c" index="3"/>
+</sm:blocks>

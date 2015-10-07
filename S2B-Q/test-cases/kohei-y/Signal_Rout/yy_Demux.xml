@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Demux" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Demux_ert_rtw/Demux.h" size="2239" timestamp="2015-09-29T13:35:41+0900" type="c-header"/>
+  <file name="xx_Demux.xml" size="1443" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Demux_ert_rtw/Demux.c" size="1126" timestamp="2015-09-29T13:35:41+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Demux_In1" priority="0" rate="0.1">
+    <output line="Demux_In1_1" port="Demux_In1_1" usename="true">
+      <connect block="Demux_Demux" port="Demux_Demux_1"/>
+    </output>
+    <var line="Demux_In1_1" mode="extin" name="Demux_In1_1" port="Demux_In1_1" size="2" start="0" type="real_T"/>
+    <var line="Demux_In1_1" mode="extin" name="Demux_In1_1" port="Demux_In1_1" size="2" start="1" type="real_T"/>
+    <forward block="Demux_Out1" type="port">
+      <var line="Demux_Demux_1" mode="input" name="Demux_In1_1" port="Demux_Out1_1" size="2" start="0" type="real_T"/>
+    </forward>
+    <forward block="Demux_Out2" type="port">
+      <var line="Demux_Demux_2" mode="input" name="Demux_In1_1" port="Demux_Out2_1" size="2" start="1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Demux" id="2" name="Demux_Demux" priority="0" rate="0.1">
+    <input line="Demux_In1_1" port="Demux_Demux_1">
+      <connect block="Demux_In1" port="Demux_In1_1"/>
+    </input>
+    <output line="Demux_Demux_1" port="Demux_Demux_1" usename="true">
+      <connect block="Demux_Out1" port="Demux_Out1_1"/>
+    </output>
+    <output line="Demux_Demux_2" port="Demux_Demux_2" usename="true">
+      <connect block="Demux_Out2" port="Demux_Out2_1"/>
+    </output>
+    <param name="Outputs" storage="" type="double" value="2.0"/>
+  </block>
+  <block blocktype="Outport" id="3" name="Demux_Out1" priority="1" rate="0.1">
+    <input line="Demux_Demux_1" port="Demux_Out1_1">
+      <connect block="Demux_Demux" port="Demux_Demux_1"/>
+    </input>
+    <var line="Demux_Demux_1" mode="input" name="Demux_In1_1" port="Demux_Out1_1" size="2" start="0" type="real_T"/>
+    <backword block="Demux_In1" type="port">
+      <var line="Demux_In1_1" mode="extin" name="Demux_In1_1" port="Demux_In1_1" size="2" start="0" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Demux_Out2" priority="2" rate="0.1">
+    <input line="Demux_Demux_2" port="Demux_Out2_1">
+      <connect block="Demux_Demux" port="Demux_Demux_2"/>
+    </input>
+    <var line="Demux_Demux_2" mode="input" name="Demux_In1_1" port="Demux_Out2_1" size="2" start="1" type="real_T"/>
+    <backword block="Demux_In1" type="port">
+      <var line="Demux_In1_1" mode="extin" name="Demux_In1_1" port="Demux_In1_1" size="2" start="1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Demux_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Demux_M" type="extern RT_MODEL_Demux_T * const"/>
+  <object kind="rtm-object" name="Demux_M_" type="RT_MODEL_Demux_T"/>
+  <object kind="rtm-pointer" name="Demux_M" type="RT_MODEL_Demux_T * const" value="&amp;Demux_M_"/>
+  <includes file="&lt;stddef.h>" from="Demux_ert_rtw/Demux.h" index="0"/>
+  <includes file="&lt;string.h>" from="Demux_ert_rtw/Demux.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Demux_ert_rtw/Demux.h" index="2"/>
+  <includes file="&quot;Demux_types.h&quot;" from="Demux_ert_rtw/Demux.h" index="3"/>
+  <includes file="&quot;Demux_private.h&quot;" from="Demux_ert_rtw/Demux.c" index="4"/>
+</sm:blocks>

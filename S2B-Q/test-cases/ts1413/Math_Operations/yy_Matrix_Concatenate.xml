@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Matrix_Concatenate" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.h" size="2580" timestamp="2015-09-29T13:40:13+0900" type="c-header"/>
+  <file name="xx_Matrix_Concatenate.xml" size="2040" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.c" size="2259" timestamp="2015-09-29T13:40:13+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Matrix_Concatenate_In1" priority="0" rate="0.1">
+    <output line="Matrix_Concatenate_In1_1" port="Matrix_Concatenate_In1_1" usename="true">
+      <connect block="Matrix_Concatenate_MatrixConcatenate" port="Matrix_Concatenate_MatrixConcatenate_1"/>
+    </output>
+    <var line="Matrix_Concatenate_In1_1" mode="extin" name="Matrix_Concatenate_In1_1" port="Matrix_Concatenate_In1_1" size="2" type="real_T"/>
+    <param name="PortDimensions" storage="" type="double" value="2.0"/>
+    <code file="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.c" line="61" type="init">  Matrix_Concatenate_In1_1[0] = 0.0;
+  Matrix_Concatenate_In1_1[1] = 0.0;
+</code>
+    <forward block="Matrix_Concatenate_MatrixConcatenate" type="data">
+      <var line="Matrix_Concatenate_In1_1" mode="input" name="Matrix_Concatenate_In1_1" port="Matrix_Concatenate_MatrixConcatenate_1" size="2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Matrix_Concatenate_In2" priority="0" rate="0.1">
+    <output line="Matrix_Concatenate_In2_1" port="Matrix_Concatenate_In2_1" usename="true">
+      <connect block="Matrix_Concatenate_MatrixConcatenate" port="Matrix_Concatenate_MatrixConcatenate_2"/>
+    </output>
+    <var line="Matrix_Concatenate_In2_1" mode="extin" name="Matrix_Concatenate_In2_1" port="Matrix_Concatenate_In2_1" size="2" type="real_T"/>
+    <param name="PortDimensions" storage="" type="double" value="2.0"/>
+    <code file="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.c" line="63" type="init">  Matrix_Concatenate_In2_1[0] = 0.0;
+  Matrix_Concatenate_In2_1[1] = 0.0;
+</code>
+    <forward block="Matrix_Concatenate_MatrixConcatenate" type="data">
+      <var line="Matrix_Concatenate_In2_1" mode="input" name="Matrix_Concatenate_In2_1" port="Matrix_Concatenate_MatrixConcatenate_2" size="2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Concatenate" id="3" name="Matrix_Concatenate_MatrixConcatenate" priority="3" rate="0.1">
+    <input line="Matrix_Concatenate_In1_1" port="Matrix_Concatenate_MatrixConcatenate_1">
+      <connect block="Matrix_Concatenate_In1" port="Matrix_Concatenate_In1_1"/>
+    </input>
+    <input line="Matrix_Concatenate_In2_1" port="Matrix_Concatenate_MatrixConcatenate_2">
+      <connect block="Matrix_Concatenate_In2" port="Matrix_Concatenate_In2_1"/>
+    </input>
+    <output line="Matrix_Concatenate_MatrixConcatenate_1" port="Matrix_Concatenate_MatrixConcatenate_1" usename="true">
+      <connect block="Matrix_Concatenate_Out1" port="Matrix_Concatenate_Out1_1"/>
+    </output>
+    <var line="Matrix_Concatenate_In1_1" mode="input" name="Matrix_Concatenate_In1_1" port="Matrix_Concatenate_MatrixConcatenate_1" size="2" type="real_T"/>
+    <var line="Matrix_Concatenate_In2_1" mode="input" name="Matrix_Concatenate_In2_1" port="Matrix_Concatenate_MatrixConcatenate_2" size="2" type="real_T"/>
+    <var line="Matrix_Concatenate_MatrixConcatenate_1" mode="extout" name="Matrix_Concatenate_MatrixConcatenate_1" port="Matrix_Concatenate_MatrixConcatenate_1" size="4" type="real_T"/>
+    <code file="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.c" index="1" line="31" type="task">  /* SignalConversion: '&lt;Root&gt;/ConcatBufferAtMatrixConcatenateIn1' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Matrix_Concatenate_MatrixConcatenate_1[0] = Matrix_Concatenate_In1_1[0];
+  Matrix_Concatenate_MatrixConcatenate_1[1] = Matrix_Concatenate_In1_1[1];
+
+</code>
+    <code file="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.c" index="2" line="37" type="task">  /* SignalConversion: '&lt;Root&gt;/ConcatBufferAtMatrixConcatenateIn2' incorporates:
+   *  Inport: '&lt;Root&gt;/In2'
+   */
+  Matrix_Concatenate_MatrixConcatenate_1[2] = Matrix_Concatenate_In2_1[0];
+  Matrix_Concatenate_MatrixConcatenate_1[3] = Matrix_Concatenate_In2_1[1];
+</code>
+    <code file="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.c" line="55" type="init">  Matrix_Concatenate_MatrixConcatenate_1[0] = 0.0;
+  Matrix_Concatenate_MatrixConcatenate_1[1] = 0.0;
+  Matrix_Concatenate_MatrixConcatenate_1[2] = 0.0;
+  Matrix_Concatenate_MatrixConcatenate_1[3] = 0.0;
+
+</code>
+    <forward block="Matrix_Concatenate_Out1" type="port">
+      <var line="Matrix_Concatenate_MatrixConcatenate_1" mode="input" name="Matrix_Concatenate_MatrixConcatenate_1" port="Matrix_Concatenate_Out1_1" size="4" type="real_T"/>
+    </forward>
+    <backword block="Matrix_Concatenate_In1" type="data">
+      <var line="Matrix_Concatenate_In1_1" mode="extin" name="Matrix_Concatenate_In1_1" port="Matrix_Concatenate_In1_1" size="2" type="real_T"/>
+    </backword>
+    <backword block="Matrix_Concatenate_In2" type="data">
+      <var line="Matrix_Concatenate_In2_1" mode="extin" name="Matrix_Concatenate_In2_1" port="Matrix_Concatenate_In2_1" size="2" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Matrix_Concatenate_Out1" priority="4" rate="0.1">
+    <input line="Matrix_Concatenate_MatrixConcatenate_1" port="Matrix_Concatenate_Out1_1">
+      <connect block="Matrix_Concatenate_MatrixConcatenate" port="Matrix_Concatenate_MatrixConcatenate_1"/>
+    </input>
+    <var line="Matrix_Concatenate_MatrixConcatenate_1" mode="input" name="Matrix_Concatenate_MatrixConcatenate_1" port="Matrix_Concatenate_Out1_1" size="4" type="real_T"/>
+    <backword block="Matrix_Concatenate_MatrixConcatenate" type="port">
+      <var line="Matrix_Concatenate_MatrixConcatenate_1" mode="extout" name="Matrix_Concatenate_MatrixConcatenate_1" port="Matrix_Concatenate_MatrixConcatenate_1" size="4" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Matrix_Concatenate {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Matrix_Concatenate_M" type="extern RT_MODEL_Matrix_Concatenate * const"/>
+  <object kind="rtm-object" name="Matrix_Concatenate_M_" type="RT_MODEL_Matrix_Concatenate"/>
+  <object kind="rtm-pointer" name="Matrix_Concatenate_M" type="RT_MODEL_Matrix_Concatenate * const" value="&amp;Matrix_Concatenate_M_"/>
+  <includes file="&lt;stddef.h>" from="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.h" index="1"/>
+  <includes file="&quot;Matrix_Concatenate_types.h&quot;" from="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.h" index="2"/>
+  <includes file="&quot;Matrix_Concatenate_private.h&quot;" from="Matrix_Concatenate_ert_rtw/Matrix_Concatenate.c" index="3"/>
+</sm:blocks>

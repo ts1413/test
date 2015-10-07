@@ -1,0 +1,23 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Goto_Tag_Visibility" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Goto_Tag_Visibility/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Goto_Tag_Visibility/GotoTagVisibility" samplePeriod=Inf min=[] max=[]
+Block "Goto_Tag_Visibility/Subsystem" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "Goto_Tag_Visibility/Subsystem/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Goto_Tag_Visibility/Subsystem/Goto" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "Goto_Tag_Visibility/Subsystem1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Goto_Tag_Visibility/Subsystem1/From" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Goto_Tag_Visibility/Subsystem1/Out1" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "Goto_Tag_Visibility/Out2" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

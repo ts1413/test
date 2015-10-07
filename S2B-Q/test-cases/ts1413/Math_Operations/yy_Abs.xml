@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Abs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Abs_ert_rtw/Abs.h" size="2263" timestamp="2015-09-29T13:39:38+0900" type="c-header"/>
+  <file name="xx_Abs.xml" size="971" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Abs_ert_rtw/Abs.c" size="1240" timestamp="2015-09-29T13:39:38+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Abs_In1" priority="0" rate="0.1">
+    <output line="Abs_In1_1" port="Abs_In1_1" usename="true">
+      <connect block="Abs_Abs" port="Abs_Abs_1"/>
+    </output>
+    <var line="Abs_In1_1" mode="extin" name="Abs_In1_1" port="Abs_In1_1" type="real_T"/>
+    <code file="Abs_ert_rtw/Abs.c" line="50" type="init">  Abs_In1_1 = 0.0;
+</code>
+    <forward block="Abs_Abs" type="port">
+      <var line="Abs_In1_1" mode="input" name="Abs_In1_1" port="Abs_Abs_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Abs" id="2" name="Abs_Abs" priority="1" rate="0.1">
+    <input line="Abs_In1_1" port="Abs_Abs_1">
+      <connect block="Abs_In1" port="Abs_In1_1"/>
+    </input>
+    <output line="Abs_Abs_1" port="Abs_Abs_1" usename="true">
+      <connect block="Abs_Out1" port="Abs_Out1_1"/>
+    </output>
+    <var line="Abs_In1_1" mode="input" name="Abs_In1_1" port="Abs_Abs_1" type="real_T"/>
+    <var line="Abs_Abs_1" mode="extout" name="Abs_Abs_1" port="Abs_Abs_1" type="real_T"/>
+    <code file="Abs_ert_rtw/Abs.c" line="30" type="task">  /* Abs: '&lt;Root&gt;/Abs' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Abs_Abs_1 = fabs(Abs_In1_1);
+</code>
+    <code file="Abs_ert_rtw/Abs.c" line="47" type="init">  Abs_Abs_1 = 0.0;
+
+</code>
+    <forward block="Abs_Out1" type="port">
+      <var line="Abs_Abs_1" mode="input" name="Abs_Abs_1" port="Abs_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Abs_In1" type="port">
+      <var line="Abs_In1_1" mode="extin" name="Abs_In1_1" port="Abs_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Abs_Out1" priority="2" rate="0.1">
+    <input line="Abs_Abs_1" port="Abs_Out1_1">
+      <connect block="Abs_Abs" port="Abs_Abs_1"/>
+    </input>
+    <var line="Abs_Abs_1" mode="input" name="Abs_Abs_1" port="Abs_Out1_1" type="real_T"/>
+    <backword block="Abs_Abs" type="port">
+      <var line="Abs_Abs_1" mode="extout" name="Abs_Abs_1" port="Abs_Abs_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Abs {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Abs_M" type="extern RT_MODEL_Abs * const"/>
+  <object kind="rtm-object" name="Abs_M_" type="RT_MODEL_Abs"/>
+  <object kind="rtm-pointer" name="Abs_M" type="RT_MODEL_Abs * const" value="&amp;Abs_M_"/>
+  <includes file="&lt;math.h>" from="Abs_ert_rtw/Abs.h" index="0"/>
+  <includes file="&lt;stddef.h>" from="Abs_ert_rtw/Abs.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Abs_ert_rtw/Abs.h" index="2"/>
+  <includes file="&quot;Abs_types.h&quot;" from="Abs_ert_rtw/Abs.h" index="3"/>
+  <includes file="&quot;Abs_private.h&quot;" from="Abs_ert_rtw/Abs.c" index="4"/>
+</sm:blocks>

@@ -1,0 +1,23 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"IC_In1_1",,
+"task100",,,,
+,"IC_IC_1",,,
+"task2",,,,
+,"IC_In1_1","IC_IC_1",,
+,,,,"{
+"
+,,,,"  /* InitialCondition: '<Root>/IC' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  if (IC_DW.IC_FirstOutputTime) {
+    IC_DW.IC_FirstOutputTime = false;
+    IC_IC_1 = IC_P.IC_Value;
+  } else {
+    IC_IC_1 = IC_In1_1;
+  }
+
+  /* End of InitialCondition: '<Root>/IC' */
+"
+,,,,"}
+"

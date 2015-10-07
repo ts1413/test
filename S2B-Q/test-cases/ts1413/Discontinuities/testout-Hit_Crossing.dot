@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Hit_Crossing_HitCrossing	 [label="t2\nHit_Crossing_HitCrossing"];
+	t0 -> Hit_Crossing_HitCrossing	 [color=green,
+		label="ch_0_2(Hit_Crossing_In1_1)"];
+	extout	 [label=extout];
+	Hit_Crossing_In1	 [label="t1\nHit_Crossing_In1",
+		shape=box];
+	Hit_Crossing_In1 -> t0	 [color=green,
+		label="in port Hit_Crossing_In1(Hit_Crossing_In1_1)"];
+	Hit_Crossing_HitCrossing -> extout	 [color=green,
+		label="ch_2_100(Hit_Crossing_HitCrossing_1)"];
+}

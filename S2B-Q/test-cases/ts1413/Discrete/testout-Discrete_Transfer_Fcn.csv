@@ -1,0 +1,14 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Discrete_Transfer_Fcn_In1_1",,
+"task100",,,,
+,"Discrete_Transfer_Fcn_In1_1",,,
+,,,,"{
+"
+,,,,"  /* DiscreteTransferFcn: '<Root>/DiscreteTransferFcn' */
+  denAccum = 1.0 * Discrete_Transfer_Fcn_DWork.DiscreteTransferFcn_states;
+  Discrete_Transfer_Fcn_DiscreteTransferFcn_1 = denAccum;
+
+"
+,,,,"}
+"

@@ -1,0 +1,17 @@
+digraph csp {
+	graph [rankdir=LR];
+	Subtract_Subtract	 [label="t3\nSubtract_Subtract"];
+	t0 -> Subtract_Subtract	 [color=green,
+		label="ch_0_3(Subtract_In1_1,Subtract_In2_1)"];
+	extout	 [label=extout];
+	Subtract_In1	 [label="t1\nSubtract_In1",
+		shape=box];
+	Subtract_In1 -> t0	 [color=green,
+		label="in port Subtract_In1(Subtract_In1_1)"];
+	Subtract_In2	 [label="t2\nSubtract_In2",
+		shape=box];
+	Subtract_In2 -> t0	 [color=green,
+		label="in port Subtract_In2(Subtract_In2_1)"];
+	Subtract_Subtract -> extout	 [color=green,
+		label="ch_3_100(Subtract_Subtract_1)"];
+}

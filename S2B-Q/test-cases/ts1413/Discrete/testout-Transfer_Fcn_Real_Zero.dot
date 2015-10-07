@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Transfer_Fcn_Real_Zero_TransferFcnRealZero	 [label="t2\nTransfer_Fcn_Real_Zero_TransferFcnRealZero"];
+	t0 -> Transfer_Fcn_Real_Zero_TransferFcnRealZero	 [color=green,
+		label="ch_0_2(Transfer_Fcn_Real_Zero_In1_1)"];
+	extout	 [label=extout];
+	Transfer_Fcn_Real_Zero_In1	 [label="t1\nTransfer_Fcn_Real_Zero_In1",
+		shape=box];
+	Transfer_Fcn_Real_Zero_In1 -> t0	 [color=green,
+		label="in port Transfer_Fcn_Real_Zero_In1(Transfer_Fcn_Real_Zero_In1_1)"];
+	Transfer_Fcn_Real_Zero_TransferFcnRealZero -> extout	 [color=green,
+		label="ch_2_100()"];
+}

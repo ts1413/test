@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Rate_Limiter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Rate_Limiter_ert_rtw/Rate_Limiter.h" size="2821" timestamp="2015-09-29T13:38:25+0900" type="c-header"/>
+  <file name="xx_Rate_Limiter.xml" size="1378" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Rate_Limiter_ert_rtw/Rate_Limiter.c" size="2505" timestamp="2015-09-29T13:38:25+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Rate_Limiter_In1" priority="0" rate="0.1">
+    <output line="Rate_Limiter_In1_1" port="Rate_Limiter_In1_1" usename="true">
+      <connect block="Rate_Limiter_RateLimiter" port="Rate_Limiter_RateLimiter_1"/>
+    </output>
+    <var line="Rate_Limiter_In1_1" mode="extin" name="Rate_Limiter_In1_1" port="Rate_Limiter_In1_1" type="real_T"/>
+    <code file="Rate_Limiter_ert_rtw/Rate_Limiter.c" line="78" type="init">  Rate_Limiter_In1_1 = 0.0;
+
+</code>
+    <forward block="Rate_Limiter_RateLimiter" type="data">
+      <var line="Rate_Limiter_In1_1" mode="input" name="Rate_Limiter_In1_1" port="Rate_Limiter_RateLimiter_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="RateLimiter" id="2" name="Rate_Limiter_RateLimiter" priority="1" rate="0.1">
+    <input line="Rate_Limiter_In1_1" port="Rate_Limiter_RateLimiter_1">
+      <connect block="Rate_Limiter_In1" port="Rate_Limiter_In1_1"/>
+    </input>
+    <output line="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_RateLimiter_1" usename="true">
+      <connect block="Rate_Limiter_Out1" port="Rate_Limiter_Out1_1"/>
+    </output>
+    <var line="Rate_Limiter_In1_1" mode="input" name="Rate_Limiter_In1_1" port="Rate_Limiter_RateLimiter_1" type="real_T"/>
+    <var line="Rate_Limiter_RateLimiter_1" mode="extout" name="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_RateLimiter_1" type="real_T"/>
+    <state name="PrevY" storage="Rate_Limiter_DWork" type="real_T"/>
+    <param name="InitialCondition" storage="" type="double" value="0.0"/>
+    <param name="RisingSlewLimit" storage="" type="double" value="1.0"/>
+    <code file="Rate_Limiter_ert_rtw/Rate_Limiter.c" line="35" type="task">  /* RateLimiter: '&lt;Root&gt;/RateLimiter' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  rateLimiterRate = Rate_Limiter_In1_1 - Rate_Limiter_DWork.PrevY;
+  if (rateLimiterRate &gt; 0.1) {
+    Rate_Limiter_RateLimiter_1 = Rate_Limiter_DWork.PrevY + 0.1;
+  } else if (rateLimiterRate &lt; (-0.1)) {
+    Rate_Limiter_RateLimiter_1 = Rate_Limiter_DWork.PrevY + (-0.1);
+  } else {
+    Rate_Limiter_RateLimiter_1 = Rate_Limiter_In1_1;
+  }
+
+  Rate_Limiter_DWork.PrevY = Rate_Limiter_RateLimiter_1;
+
+  /* End of RateLimiter: '&lt;Root&gt;/RateLimiter' */
+</code>
+    <code file="Rate_Limiter_ert_rtw/Rate_Limiter.c" line="72" type="init">  Rate_Limiter_RateLimiter_1 = 0.0;
+
+  /* InitializeConditions for RateLimiter: '&lt;Root&gt;/RateLimiter' */
+  Rate_Limiter_DWork.PrevY = 0.0;
+</code>
+    <code file="Rate_Limiter_ert_rtw/Rate_Limiter.c" line="75" type="state">  Rate_Limiter_DWork.PrevY = 0.0;
+
+</code>
+    <forward block="Rate_Limiter_Out1" type="data">
+      <var line="Rate_Limiter_RateLimiter_1" mode="input" name="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Rate_Limiter_In1" type="data">
+      <var line="Rate_Limiter_In1_1" mode="extin" name="Rate_Limiter_In1_1" port="Rate_Limiter_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Rate_Limiter_Out1" priority="2" rate="0.1">
+    <input line="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_Out1_1">
+      <connect block="Rate_Limiter_RateLimiter" port="Rate_Limiter_RateLimiter_1"/>
+    </input>
+    <var line="Rate_Limiter_RateLimiter_1" mode="input" name="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_Out1_1" type="real_T"/>
+    <backword block="Rate_Limiter_RateLimiter" type="data">
+      <var line="Rate_Limiter_RateLimiter_1" mode="extout" name="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_RateLimiter_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Rate_Limiter {
+  const char_T * volatile errorStatus;
+
+  /*
+   * Timing:
+   * The following substructure contains information regarding
+   * the timing information for the model.
+   */
+  struct {
+    uint32_T clockTick0;
+  } Timing;
+};
+</code>
+  <code type="rt-code">  /* Update absolute time for base rate */
+  /* The "clockTick0" counts the number of times the code of this task has
+   * been executed. The resolution of this integer timer is 0.1, which is the step size
+   * of the task. Size of "clockTick0" ensures timer will not overflow during the
+   * application lifespan selected.
+   */
+  Rate_Limiter_M-&gt;Timing.clockTick0++;
+</code>
+  <code type="rt-init">  /* initialize real-time model */
+  (void) memset((void *)Rate_Limiter_M, 0,
+                sizeof(RT_MODEL_Rate_Limiter));
+</code>
+  <code type="autovars">  real_T rateLimiterRate;
+
+</code>
+  <object kind="rtm-extern" name="Rate_Limiter_M" type="extern RT_MODEL_Rate_Limiter * const"/>
+  <object kind="rtm-object" name="Rate_Limiter_M_" type="RT_MODEL_Rate_Limiter"/>
+  <object kind="rtm-pointer" name="Rate_Limiter_M" type="RT_MODEL_Rate_Limiter * const" value="&amp;Rate_Limiter_M_"/>
+  <includes file="&lt;string.h>" from="Rate_Limiter_ert_rtw/Rate_Limiter.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Rate_Limiter_ert_rtw/Rate_Limiter.h" index="1"/>
+  <includes file="&quot;Rate_Limiter_types.h&quot;" from="Rate_Limiter_ert_rtw/Rate_Limiter.h" index="2"/>
+  <includes file="&quot;Rate_Limiter_private.h&quot;" from="Rate_Limiter_ert_rtw/Rate_Limiter.c" index="3"/>
+</sm:blocks>

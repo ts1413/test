@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Rounding_Function_In1_1",,
+"task100",,,,
+,"Rounding_Function_RoundingFunction_1",,,
+"task2",,,,
+,"Rounding_Function_In1_1","Rounding_Function_RoundingFunction_1",,
+,,,,"{
+"
+,,,,"  /* Rounding: '<Root>/RoundingFunction' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Rounding_Function_RoundingFunction_1 = floor(Rounding_Function_In1_1);
+"
+,,,,"}
+"

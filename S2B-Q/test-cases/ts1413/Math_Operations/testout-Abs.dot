@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Abs_Abs	 [label="t2\nAbs_Abs"];
+	t0 -> Abs_Abs	 [color=green,
+		label="ch_0_2(Abs_In1_1)"];
+	extout	 [label=extout];
+	Abs_In1	 [label="t1\nAbs_In1",
+		shape=box];
+	Abs_In1 -> t0	 [color=green,
+		label="in port Abs_In1(Abs_In1_1)"];
+	Abs_Abs -> extout	 [color=green,
+		label="ch_2_100(Abs_Abs_1)"];
+}

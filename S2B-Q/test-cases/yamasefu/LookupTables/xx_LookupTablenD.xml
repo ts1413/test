@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="LookupTablenD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="LookupTablenD_In1" priority="0" rate="0.1">
+    <output line="LookupTablenD_In1_1" port="LookupTablenD_In1_1" usename="true">
+      <connect block="LookupTablenD_n_DLookupTable" port="LookupTablenD_n_DLookupTable_1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="LookupTablenD_In2" priority="0" rate="0.1">
+    <output line="LookupTablenD_In2_1" port="LookupTablenD_In2_1" usename="true">
+      <connect block="LookupTablenD_n_DLookupTable" port="LookupTablenD_n_DLookupTable_2"/>
+    </output>
+  </block>
+  <block blocktype="Lookup_n-D" name="LookupTablenD_n_DLookupTable" priority="1" rate="0.1">
+    <input line="LookupTablenD_In1_1" port="LookupTablenD_n_DLookupTable_1">
+      <connect block="LookupTablenD_In1" port="LookupTablenD_In1_1"/>
+    </input>
+    <input line="LookupTablenD_In2_1" port="LookupTablenD_n_DLookupTable_2">
+      <connect block="LookupTablenD_In2" port="LookupTablenD_In2_1"/>
+    </input>
+    <output line="LookupTablenD_n_DLookupTable_1" port="LookupTablenD_n_DLookupTable_1" usename="true">
+      <connect block="LookupTablenD_Out1" port="LookupTablenD_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="LookupTablenD_Out1" priority="2" rate="0.1">
+    <input line="LookupTablenD_n_DLookupTable_1" port="LookupTablenD_Out1_1">
+      <connect block="LookupTablenD_n_DLookupTable" port="LookupTablenD_n_DLookupTable_1"/>
+    </input>
+  </block>
+</sm:blocks>

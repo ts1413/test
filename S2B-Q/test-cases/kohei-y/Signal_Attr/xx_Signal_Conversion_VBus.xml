@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Signal_Conversion_VBus" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Signal_Conversion_VBus_In1" priority="0" rate="0.1">
+    <output line="Signal_Conversion_VBus_In1_1" port="Signal_Conversion_VBus_In1_1" usename="true">
+      <connect block="Signal_Conversion_VBus_BusCreator" port="Signal_Conversion_VBus_BusCreator_1"/>
+    </output>
+  </block>
+  <block blocktype="BusCreator" name="Signal_Conversion_VBus_BusCreator" priority="1" rate="0.1">
+    <input line="Signal_Conversion_VBus_In1_1" port="Signal_Conversion_VBus_BusCreator_1">
+      <connect block="Signal_Conversion_VBus_In1" port="Signal_Conversion_VBus_In1_1"/>
+    </input>
+    <output line="Signal_Conversion_VBus_BusCreator_1" port="Signal_Conversion_VBus_BusCreator_1" usename="true">
+      <connect block="Signal_Conversion_VBus_SignalConversion" port="Signal_Conversion_VBus_SignalConversion_1"/>
+    </output>
+  </block>
+  <block blocktype="SignalConversion" name="Signal_Conversion_VBus_SignalConversion" priority="0" rate="0.1">
+    <input line="Signal_Conversion_VBus_BusCreator_1" port="Signal_Conversion_VBus_SignalConversion_1">
+      <connect block="Signal_Conversion_VBus_BusCreator" port="Signal_Conversion_VBus_BusCreator_1"/>
+    </input>
+    <output line="Signal_Conversion_VBus_SignalConversion_1" port="Signal_Conversion_VBus_SignalConversion_1" usename="true">
+      <connect block="Signal_Conversion_VBus_Out1" port="Signal_Conversion_VBus_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Signal_Conversion_VBus_Out1" priority="2" rate="0.1">
+    <input line="Signal_Conversion_VBus_SignalConversion_1" port="Signal_Conversion_VBus_Out1_1">
+      <connect block="Signal_Conversion_VBus_SignalConversion" port="Signal_Conversion_VBus_SignalConversion_1"/>
+    </input>
+  </block>
+</sm:blocks>

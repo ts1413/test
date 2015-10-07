@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Compare_to_Constant" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Compare_to_Constant_ert_rtw/Compare_to_Constant.h" size="3167" timestamp="2015-09-29T10:40:21+0900" type="c-header"/>
+  <file name="xx_Compare_to_Constant.xml" size="1503" timestamp="2015-10-07T15:40:37+0900" type="xml"/>
+  <file name="Compare_to_Constant_ert_rtw/Compare_to_Constant.c" size="1683" timestamp="2015-09-29T10:40:21+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Compare_to_Constant_In1" priority="0" rate="0.1">
+    <output line="Compare_to_Constant_In1_1" port="Compare_to_Constant_In1_1" usename="true">
+      <connect block="Compare_to_Constant_CompareToConstant" port="Compare_to_Constant_CompareToConstant_1"/>
+    </output>
+    <var line="Compare_to_Constant_In1_1" mode="extin" name="Compare_to_Constant_In1_1" port="Compare_to_Constant_In1_1" type="real_T"/>
+    <code file="Compare_to_Constant_ert_rtw/Compare_to_Constant.c" line="51" type="init">  Compare_to_Constant_In1_1 = 0.0;
+
+</code>
+    <forward block="Compare_to_Constant_CompareToConstant" type="port">
+      <var line="Compare_to_Constant_In1_1" mode="input" name="Compare_to_Constant_In1_1" port="Compare_to_Constant_CompareToConstant_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_CompareToConstant" id="2" name="Compare_to_Constant_CompareToConstant" priority="0" rate="0.1">
+    <input line="Compare_to_Constant_In1_1" port="Compare_to_Constant_CompareToConstant_1">
+      <connect block="Compare_to_Constant_In1" port="Compare_to_Constant_In1_1"/>
+    </input>
+    <output line="Compare_to_Constant_CompareToConstant_1" port="Compare_to_Constant_CompareToConstant_1" usename="true">
+      <connect block="Compare_to_Constant_Out1" port="Compare_to_Constant_Out1_1"/>
+    </output>
+    <var line="Compare_to_Constant_In1_1" mode="input" name="Compare_to_Constant_In1_1" port="Compare_to_Constant_CompareToConstant_1" type="real_T"/>
+    <param name="const" storage="" type="double" value="3.0"/>
+    <forward block="Compare_to_Constant_Out1" type="port"/>
+    <backword block="Compare_to_Constant_In1" type="port">
+      <var line="Compare_to_Constant_In1_1" mode="extin" name="Compare_to_Constant_In1_1" port="Compare_to_Constant_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Compare_to_Constant_Out1" priority="3" rate="0.1">
+    <input line="Compare_to_Constant_CompareToConstant_1" port="Compare_to_Constant_Out1_1">
+      <connect block="Compare_to_Constant_CompareToConstant" port="Compare_to_Constant_CompareToConstant_1"/>
+    </input>
+    <var line="" mode="extout" name="Out1" port="" storage="Compare_to_Constant_Y" type="boolean_T"/>
+    <code file="Compare_to_Constant_ert_rtw/Compare_to_Constant.c" line="33" type="task">  /* Outport: '&lt;Root&gt;/Out1' incorporates:
+   *  Constant: '&lt;S1&gt;/Constant'
+   *  Inport: '&lt;Root&gt;/In1'
+   *  RelationalOperator: '&lt;S1&gt;/Compare'
+   */
+  Compare_to_Constant_Y.Out1 = (Compare_to_Constant_In1_1 &lt;=
+    Compare_to_Constant_P.CompareToConstant_const);
+</code>
+    <code file="Compare_to_Constant_ert_rtw/Compare_to_Constant.c" line="54" type="init">  Compare_to_Constant_Y.Out1 = false;
+</code>
+    <backword block="Compare_to_Constant_CompareToConstant" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Compare_to_Constant_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Compare_to_Constant_M" type="extern RT_MODEL_Compare_to_Constant_T * const"/>
+  <object kind="rtm-object" name="Compare_to_Constant_M_" type="RT_MODEL_Compare_to_Constant_T"/>
+  <object kind="rtm-pointer" name="Compare_to_Constant_M" type="RT_MODEL_Compare_to_Constant_T * const" value="&amp;Compare_to_Constant_M_"/>
+  <includes file="&lt;stddef.h>" from="Compare_to_Constant_ert_rtw/Compare_to_Constant.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Compare_to_Constant_ert_rtw/Compare_to_Constant.h" index="1"/>
+  <includes file="&quot;Compare_to_Constant_types.h&quot;" from="Compare_to_Constant_ert_rtw/Compare_to_Constant.h" index="2"/>
+  <includes file="&quot;Compare_to_Constant_private.h&quot;" from="Compare_to_Constant_ert_rtw/Compare_to_Constant.c" index="3"/>
+</sm:blocks>

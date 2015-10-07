@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Signal_Conversion_Bus" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.h" size="3062" timestamp="2015-10-04T01:50:58+0900" type="c-header"/>
+  <file name="xx_Signal_Conversion_Bus.xml" size="2551" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.c" size="1976" timestamp="2015-10-04T01:50:58+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Signal_Conversion_Bus_In1" priority="0" rate="0.1">
+    <output line="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_In1_1" usename="true">
+      <connect block="Signal_Conversion_Bus_BusCreator" port="Signal_Conversion_Bus_BusCreator_1"/>
+    </output>
+    <var line="Signal_Conversion_Bus_In1_1" mode="extin" name="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_In1_1" type="real_T"/>
+    <code file="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.c" line="60" type="init">  Signal_Conversion_Bus_In1_1 = 0.0;
+
+</code>
+    <forward block="Signal_Conversion_Bus_BusCreator" type="port">
+      <var line="Signal_Conversion_Bus_In1_1" mode="input" name="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_BusCreator_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="BusCreator" id="2" name="Signal_Conversion_Bus_BusCreator" priority="0" rate="0.1">
+    <input line="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_BusCreator_1">
+      <connect block="Signal_Conversion_Bus_In1" port="Signal_Conversion_Bus_In1_1"/>
+    </input>
+    <output line="Signal_Conversion_Bus_BusCreator_1" port="Signal_Conversion_Bus_BusCreator_1" usename="true">
+      <connect block="Signal_Conversion_Bus_SignalConversion" port="Signal_Conversion_Bus_SignalConversion_1"/>
+    </output>
+    <var line="Signal_Conversion_Bus_In1_1" mode="input" name="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_BusCreator_1" type="real_T"/>
+    <forward block="Signal_Conversion_Bus_SignalConversion" type="data"/>
+    <backword block="Signal_Conversion_Bus_In1" type="port">
+      <var line="Signal_Conversion_Bus_In1_1" mode="extin" name="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="BusSelector" id="3" name="Signal_Conversion_Bus_BusSelector" priority="0" rate="0.1">
+    <input line="Signal_Conversion_Bus_SignalConversion_1" port="Signal_Conversion_Bus_BusSelector_1">
+      <connect block="Signal_Conversion_Bus_SignalConversion" port="Signal_Conversion_Bus_SignalConversion_1"/>
+    </input>
+    <output line="&lt;Signal_Conversion_Bus_In1_1>" port="Signal_Conversion_Bus_BusSelector_1" usename="true">
+      <connect block="Signal_Conversion_Bus_Out1" port="Signal_Conversion_Bus_Out1_1"/>
+    </output>
+    <var line="&lt;Signal_Conversion_Bus_In1_1>" mode="output" name="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_BusSelector_1" type="real_T"/>
+    <forward block="Signal_Conversion_Bus_Out1" type="port">
+      <var line="&lt;Signal_Conversion_Bus_In1_1>" mode="input" name="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Signal_Conversion_Bus_SignalConversion" type="data"/>
+  </block>
+  <block blocktype="SignalConversion" id="4" name="Signal_Conversion_Bus_SignalConversion" priority="0" rate="0.1">
+    <input line="Signal_Conversion_Bus_BusCreator_1" port="Signal_Conversion_Bus_SignalConversion_1">
+      <connect block="Signal_Conversion_Bus_BusCreator" port="Signal_Conversion_Bus_BusCreator_1"/>
+    </input>
+    <output line="Signal_Conversion_Bus_SignalConversion_1" port="Signal_Conversion_Bus_SignalConversion_1" usename="true">
+      <connect block="Signal_Conversion_Bus_BusSelector" port="Signal_Conversion_Bus_BusSelector_1"/>
+    </output>
+    <signal name="SignalConversion_BusCreator_1" storage="Signal_Conversion_Bus_B" type="BusObject"/>
+    <code file="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.c" line="36" type="task">  /* BusCreator: '&lt;Root&gt;/SignalConversion' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Signal_Conversion_Bus_B.SignalConversion_BusCreator_1.a =
+    Signal_Conversion_Bus_In1_1;
+
+</code>
+    <forward block="Signal_Conversion_Bus_BusSelector" type="data"/>
+    <backword block="Signal_Conversion_Bus_BusCreator" type="data"/>
+  </block>
+  <block blocktype="Outport" id="5" name="Signal_Conversion_Bus_Out1" priority="2" rate="0.1">
+    <input line="&lt;Signal_Conversion_Bus_In1_1>" port="Signal_Conversion_Bus_Out1_1">
+      <connect block="Signal_Conversion_Bus_BusSelector" port="Signal_Conversion_Bus_BusSelector_1"/>
+    </input>
+    <var line="&lt;Signal_Conversion_Bus_In1_1>" mode="input" name="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_Out1_1" type="real_T"/>
+    <var line="" mode="extout" name="Out1" port="" storage="Signal_Conversion_Bus_Y" type="real_T"/>
+    <code file="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.c" line="42" type="task">  /* Outport: '&lt;Root&gt;/Out1' */
+  Signal_Conversion_Bus_Y.Out1 =
+    Signal_Conversion_Bus_B.SignalConversion_BusCreator_1.a;
+</code>
+    <code file="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.c" line="63" type="init">  Signal_Conversion_Bus_Y.Out1 = 0.0;
+</code>
+    <backword block="Signal_Conversion_Bus_BusSelector" type="port">
+      <var line="&lt;Signal_Conversion_Bus_In1_1>" mode="output" name="Signal_Conversion_Bus_In1_1" port="Signal_Conversion_Bus_BusSelector_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Signal_Conversion_Bus_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Signal_Conversion_Bus_M" type="extern RT_MODEL_Signal_Conversion_Bu_T * const"/>
+  <object kind="rtm-object" name="Signal_Conversion_Bus_M_" type="RT_MODEL_Signal_Conversion_Bu_T"/>
+  <object kind="rtm-pointer" name="Signal_Conversion_Bus_M" type="RT_MODEL_Signal_Conversion_Bu_T * const" value="&amp;Signal_Conversion_Bus_M_"/>
+  <includes file="&lt;stddef.h>" from="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.h" index="0"/>
+  <includes file="&lt;string.h>" from="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.h" index="2"/>
+  <includes file="&quot;Signal_Conversion_Bus_types.h&quot;" from="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.h" index="3"/>
+  <includes file="&quot;Signal_Conversion_Bus_private.h&quot;" from="Signal_Conversion_Bus_ert_rtw/Signal_Conversion_Bus.c" index="4"/>
+</sm:blocks>

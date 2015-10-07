@@ -1,0 +1,23 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"LookupTable2D_In1_1",,
+,,"LookupTable2D_In2_1",,
+"task100",,,,
+,"LookupTable2D_2_DLookupTable_1",,,
+"task3",,,,
+,"LookupTable2D_In1_1","LookupTable2D_2_DLookupTable_1",,
+,"LookupTable2D_In2_1",,,
+,,,,"{
+"
+,,,,"  /* Lookup_n-D: '<Root>/2_DLookupTable' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   */
+  LookupTable2D_2_DLookupTable_1 = look2_binlxpw(LookupTable2D_In1_1,
+    LookupTable2D_In2_1, LookupTable2D_P._DLookupTable_bp01Data,
+    LookupTable2D_P._DLookupTable_bp02Data,
+    LookupTable2D_P._DLookupTable_tableData,
+    LookupTable2D_P._DLookupTable_maxIndex, 3U);
+"
+,,,,"}
+"

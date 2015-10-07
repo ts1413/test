@@ -1,0 +1,17 @@
+digraph csp {
+	graph [rankdir=LR];
+	LookupTable2D_2_DLookupTable	 [label="t3\nLookupTable2D_2_DLookupTable"];
+	t0 -> LookupTable2D_2_DLookupTable	 [color=green,
+		label="ch_0_3(LookupTable2D_In1_1,LookupTable2D_In2_1)"];
+	extout	 [label=extout];
+	LookupTable2D_In1	 [label="t1\nLookupTable2D_In1",
+		shape=box];
+	LookupTable2D_In1 -> t0	 [color=green,
+		label="in port LookupTable2D_In1(LookupTable2D_In1_1)"];
+	LookupTable2D_In2	 [label="t2\nLookupTable2D_In2",
+		shape=box];
+	LookupTable2D_In2 -> t0	 [color=green,
+		label="in port LookupTable2D_In2(LookupTable2D_In2_1)"];
+	LookupTable2D_2_DLookupTable -> extout	 [color=green,
+		label="ch_3_100(LookupTable2D_2_DLookupTable_1)"];
+}

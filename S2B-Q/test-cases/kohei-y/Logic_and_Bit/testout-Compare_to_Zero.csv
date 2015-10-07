@@ -1,0 +1,18 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Compare_to_Zero_In1_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out1' incorporates:
+   *  Constant: '<S1>/Constant'
+   *  Inport: '<Root>/In1'
+   *  RelationalOperator: '<S1>/Compare'
+   */
+  Compare_to_Zero_Y.Out1 = (Compare_to_Zero_In1_1 <=
+    Compare_to_Zero_P.Constant_Value);
+"
+,,,,"}
+"
+"task2",,,,
+,"Compare_to_Zero_In1_1",,,

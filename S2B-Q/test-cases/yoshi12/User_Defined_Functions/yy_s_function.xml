@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="s_function" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="s_function_ert_rtw/s_function.h" size="2363" timestamp="2015-09-29T13:41:27+0900" type="c-header"/>
+  <file name="xx_s_function.xml" size="1181" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="s_function_ert_rtw/s_function.c" size="1380" timestamp="2015-09-29T13:41:27+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="s_function_In1" priority="0" rate="0.1">
+    <output line="s_function_In1_1" port="s_function_In1_1" usename="true">
+      <connect block="s_function_S_Function" port="s_function_S_Function_1"/>
+    </output>
+    <var line="s_function_In1_1" mode="extin" name="s_function_In1_1" port="s_function_In1_1" type="real_T"/>
+    <code file="s_function_ert_rtw/s_function.c" line="48" type="init">  s_function_In1_1 = 0.0;
+</code>
+    <forward block="s_function_S_Function" type="data">
+      <var line="s_function_In1_1" mode="input" name="s_function_In1_1" port="s_function_S_Function_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="S-Function" id="2" name="s_function_S_Function" priority="1" rate="0.1">
+    <input line="s_function_In1_1" port="s_function_S_Function_1">
+      <connect block="s_function_In1" port="s_function_In1_1"/>
+    </input>
+    <output line="s_function_S_Function_1" port="s_function_S_Function_1" usename="true">
+      <connect block="s_function_Out1" port="s_function_Out1_1"/>
+    </output>
+    <var line="s_function_In1_1" mode="input" name="s_function_In1_1" port="s_function_S_Function_1" type="real_T"/>
+    <var line="s_function_S_Function_1" mode="extout" name="s_function_S_Function_1" port="s_function_S_Function_1" type="real_T"/>
+    <code file="s_function_ert_rtw/s_function.c" line="30" type="task">  /* S-Function (testest): '&lt;Root&gt;/S_Function' */
+  testest_Outputs_wrapper(&amp;s_function_In1_1, &amp;s_function_S_Function_1 );
+</code>
+    <code file="s_function_ert_rtw/s_function.c" line="45" type="init">  s_function_S_Function_1 = 0.0;
+
+</code>
+    <forward block="s_function_Out1" type="data">
+      <var line="s_function_S_Function_1" mode="input" name="s_function_S_Function_1" port="s_function_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="s_function_In1" type="data">
+      <var line="s_function_In1_1" mode="extin" name="s_function_In1_1" port="s_function_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="s_function_Out1" priority="2" rate="0.1">
+    <input line="s_function_S_Function_1" port="s_function_Out1_1">
+      <connect block="s_function_S_Function" port="s_function_S_Function_1"/>
+    </input>
+    <var line="s_function_S_Function_1" mode="input" name="s_function_S_Function_1" port="s_function_Out1_1" type="real_T"/>
+    <backword block="s_function_S_Function" type="data">
+      <var line="s_function_S_Function_1" mode="extout" name="s_function_S_Function_1" port="s_function_S_Function_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_s_function_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="s_function_M" type="extern RT_MODEL_s_function_T * const"/>
+  <object kind="rtm-object" name="s_function_M_" type="RT_MODEL_s_function_T"/>
+  <object kind="rtm-pointer" name="s_function_M" type="RT_MODEL_s_function_T * const" value="&amp;s_function_M_"/>
+  <includes file="&lt;stddef.h>" from="s_function_ert_rtw/s_function.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="s_function_ert_rtw/s_function.h" index="1"/>
+  <includes file="&quot;s_function_types.h&quot;" from="s_function_ert_rtw/s_function.h" index="2"/>
+  <includes file="&quot;s_function_private.h&quot;" from="s_function_ert_rtw/s_function.c" index="3"/>
+</sm:blocks>

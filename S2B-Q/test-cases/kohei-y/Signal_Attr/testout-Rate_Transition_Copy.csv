@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Rate_Transition_Copy_In1_1",,
+"task100",,,,
+,"Rate_Transition_Copy_RateTransition_1",,,
+"task2",,,,
+,"Rate_Transition_Copy_In1_1","Rate_Transition_Copy_RateTransition_1",,
+,,,,"{
+"
+,,,,"  /* RateTransition: '<Root>/RateTransition' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Rate_Transition_Copy_RateTransition_1 = Rate_Transition_Copy_In1_1;
+"
+,,,,"}
+"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Matrix_Concatenate" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Matrix_Concatenate_In1" priority="0" rate="0.1">
+    <output line="Matrix_Concatenate_In1_1" port="Matrix_Concatenate_In1_1" usename="true">
+      <connect block="Matrix_Concatenate_MatrixConcatenate" port="Matrix_Concatenate_MatrixConcatenate_1"/>
+    </output>
+    <param name="PortDimensions" storage="" type="double" value="2.0"/>
+  </block>
+  <block blocktype="Inport" name="Matrix_Concatenate_In2" priority="0" rate="0.1">
+    <output line="Matrix_Concatenate_In2_1" port="Matrix_Concatenate_In2_1" usename="true">
+      <connect block="Matrix_Concatenate_MatrixConcatenate" port="Matrix_Concatenate_MatrixConcatenate_2"/>
+    </output>
+    <param name="PortDimensions" storage="" type="double" value="2.0"/>
+  </block>
+  <block blocktype="Concatenate" name="Matrix_Concatenate_MatrixConcatenate" priority="3" rate="0.1">
+    <input line="Matrix_Concatenate_In1_1" port="Matrix_Concatenate_MatrixConcatenate_1">
+      <connect block="Matrix_Concatenate_In1" port="Matrix_Concatenate_In1_1"/>
+    </input>
+    <input line="Matrix_Concatenate_In2_1" port="Matrix_Concatenate_MatrixConcatenate_2">
+      <connect block="Matrix_Concatenate_In2" port="Matrix_Concatenate_In2_1"/>
+    </input>
+    <output line="Matrix_Concatenate_MatrixConcatenate_1" port="Matrix_Concatenate_MatrixConcatenate_1" usename="true">
+      <connect block="Matrix_Concatenate_Out1" port="Matrix_Concatenate_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Matrix_Concatenate_Out1" priority="4" rate="0.1">
+    <input line="Matrix_Concatenate_MatrixConcatenate_1" port="Matrix_Concatenate_Out1_1">
+      <connect block="Matrix_Concatenate_MatrixConcatenate" port="Matrix_Concatenate_MatrixConcatenate_1"/>
+    </input>
+  </block>
+</sm:blocks>

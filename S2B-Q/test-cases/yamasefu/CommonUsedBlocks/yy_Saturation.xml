@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Saturation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Saturation_ert_rtw/Saturation.h" size="2940" timestamp="2015-10-05T16:55:49+0900" type="c-header"/>
+  <file name="xx_Saturation.xml" size="1247" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="Saturation_ert_rtw/Saturation.c" size="1774" timestamp="2015-10-05T16:55:49+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Saturation_In1" priority="0" rate="0.1">
+    <output line="Saturation_In1_1" port="Saturation_In1_1" usename="true">
+      <connect block="Saturation_Saturation" port="Saturation_Saturation_1"/>
+    </output>
+    <var line="Saturation_In1_1" mode="extin" name="Saturation_In1_1" port="Saturation_In1_1" type="real_T"/>
+    <code file="Saturation_ert_rtw/Saturation.c" line="67" type="init">  Saturation_In1_1 = 0.0;
+</code>
+    <forward block="Saturation_Saturation" type="data">
+      <var line="Saturation_In1_1" mode="input" name="Saturation_In1_1" port="Saturation_Saturation_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Saturate" id="2" name="Saturation_Saturation" priority="1" rate="0.1">
+    <input line="Saturation_In1_1" port="Saturation_Saturation_1">
+      <connect block="Saturation_In1" port="Saturation_In1_1"/>
+    </input>
+    <output line="Saturation_Saturation_1" port="Saturation_Saturation_1" usename="true">
+      <connect block="Saturation_Out1" port="Saturation_Out1_1"/>
+    </output>
+    <var line="Saturation_In1_1" mode="input" name="Saturation_In1_1" port="Saturation_Saturation_1" type="real_T"/>
+    <var line="Saturation_Saturation_1" mode="extout" name="Saturation_Saturation_1" port="Saturation_Saturation_1" type="real_T"/>
+    <param name="UpperLimit" storage="" type="double" value="0.5"/>
+    <param name="Saturation_UpperSat" storage="Saturation_P" type="real_T"/>
+    <param name="Saturation_LowerSat" storage="Saturation_P" type="real_T"/>
+    <code file="Saturation_ert_rtw/Saturation.c" line="36" type="task">  /* Saturate: '&lt;Root&gt;/Saturation' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  u0 = Saturation_In1_1;
+  u1 = Saturation_P.Saturation_LowerSat;
+  u2 = Saturation_P.Saturation_UpperSat;
+  if (u0 &gt; u2) {
+    Saturation_Saturation_1 = u2;
+  } else if (u0 &lt; u1) {
+    Saturation_Saturation_1 = u1;
+  } else {
+    Saturation_Saturation_1 = u0;
+  }
+
+  /* End of Saturate: '&lt;Root&gt;/Saturation' */
+</code>
+    <code file="Saturation_ert_rtw/Saturation.c" line="64" type="init">  Saturation_Saturation_1 = 0.0;
+
+</code>
+    <forward block="Saturation_Out1" type="data">
+      <var line="Saturation_Saturation_1" mode="input" name="Saturation_Saturation_1" port="Saturation_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Saturation_In1" type="data">
+      <var line="Saturation_In1_1" mode="extin" name="Saturation_In1_1" port="Saturation_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Saturation_Out1" priority="2" rate="0.1">
+    <input line="Saturation_Saturation_1" port="Saturation_Out1_1">
+      <connect block="Saturation_Saturation" port="Saturation_Saturation_1"/>
+    </input>
+    <var line="Saturation_Saturation_1" mode="input" name="Saturation_Saturation_1" port="Saturation_Out1_1" type="real_T"/>
+    <backword block="Saturation_Saturation" type="data">
+      <var line="Saturation_Saturation_1" mode="extout" name="Saturation_Saturation_1" port="Saturation_Saturation_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Saturation_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T u0;
+  real_T u1;
+  real_T u2;
+
+</code>
+  <object kind="rtm-extern" name="Saturation_M" type="extern RT_MODEL_Saturation_T * const"/>
+  <object kind="rtm-object" name="Saturation_M_" type="RT_MODEL_Saturation_T"/>
+  <object kind="rtm-pointer" name="Saturation_M" type="RT_MODEL_Saturation_T * const" value="&amp;Saturation_M_"/>
+  <includes file="&lt;stddef.h>" from="Saturation_ert_rtw/Saturation.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Saturation_ert_rtw/Saturation.h" index="1"/>
+  <includes file="&quot;Saturation_types.h&quot;" from="Saturation_ert_rtw/Saturation.h" index="2"/>
+  <includes file="&quot;Saturation_private.h&quot;" from="Saturation_ert_rtw/Saturation.c" index="3"/>
+</sm:blocks>

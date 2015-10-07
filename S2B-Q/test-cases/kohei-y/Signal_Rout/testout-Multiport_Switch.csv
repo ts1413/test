@@ -1,0 +1,39 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Multiport_Switch_In1_1",,
+,,"Multiport_Switch_In2_1",,
+,,"Multiport_Switch_In3_1",,
+,,"Multiport_Switch_In4_1",,
+"task100",,,,
+,"Multiport_Switch_MultiportSwitch_1",,,
+"task5",,,,
+,"Multiport_Switch_In1_1","Multiport_Switch_MultiportSwitch_1",,
+,"Multiport_Switch_In2_1",,,
+,"Multiport_Switch_In3_1",,,
+,"Multiport_Switch_In4_1",,,
+,,,,"{
+"
+,,,,"  /* MultiPortSwitch: '<Root>/MultiportSwitch' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   *  Inport: '<Root>/In3'
+   *  Inport: '<Root>/In4'
+   */
+  switch ((int32_T)Multiport_Switch_In1_1) {
+   case 1:
+    Multiport_Switch_MultiportSwitch_1 = Multiport_Switch_In2_1;
+    break;
+
+   case 2:
+    Multiport_Switch_MultiportSwitch_1 = Multiport_Switch_In3_1;
+    break;
+
+   default:
+    Multiport_Switch_MultiportSwitch_1 = Multiport_Switch_In4_1;
+    break;
+  }
+
+  /* End of MultiPortSwitch: '<Root>/MultiportSwitch' */
+"
+,,,,"}
+"

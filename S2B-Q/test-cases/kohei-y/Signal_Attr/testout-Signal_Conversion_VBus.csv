@@ -1,0 +1,26 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Signal_Conversion_VBus_In1_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out1' */
+  Signal_Conversion_VBus_Y.Out1 =
+    Signal_Conversion_VBus_B.Signal_Conversion_VBus_BusCreat.a;
+"
+,,,,"}
+"
+"task2",,,,
+,"Signal_Conversion_VBus_In1_1",,,
+,,,,"{
+"
+,,,,"  /* BusCreator: '<Root>/BusCreator' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Signal_Conversion_VBus_B.Signal_Conversion_VBus_BusCreat.a =
+    Signal_Conversion_VBus_In1_1;
+
+"
+,,,,"}
+"
+"task3",,,,

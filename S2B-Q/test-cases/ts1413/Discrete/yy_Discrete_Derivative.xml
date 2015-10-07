@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Discrete_Derivative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Discrete_Derivative_ert_rtw/Discrete_Derivative.h" size="3362" timestamp="2015-09-29T13:38:55+0900" type="c-header"/>
+  <file name="xx_Discrete_Derivative.xml" size="1590" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Discrete_Derivative_ert_rtw/Discrete_Derivative.c" size="2363" timestamp="2015-09-29T13:38:55+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Discrete_Derivative_In1" priority="0" rate="0.1">
+    <output line="Discrete_Derivative_In1_1" port="Discrete_Derivative_In1_1" usename="true">
+      <connect block="Discrete_Derivative_DiscreteDerivative" port="Discrete_Derivative_DiscreteDerivative_1"/>
+    </output>
+    <var line="Discrete_Derivative_In1_1" mode="extin" name="Discrete_Derivative_In1_1" port="Discrete_Derivative_In1_1" type="real_T"/>
+    <code file="Discrete_Derivative_ert_rtw/Discrete_Derivative.c" line="78" type="init">  Discrete_Derivative_In1_1 = 0.0;
+
+</code>
+    <forward block="Discrete_Derivative_DiscreteDerivative" type="port">
+      <var line="Discrete_Derivative_In1_1" mode="input" name="Discrete_Derivative_In1_1" port="Discrete_Derivative_DiscreteDerivative_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_DiscreteDerivative" id="2" name="Discrete_Derivative_DiscreteDerivative" priority="0" rate="0.1">
+    <input line="Discrete_Derivative_In1_1" port="Discrete_Derivative_DiscreteDerivative_1">
+      <connect block="Discrete_Derivative_In1" port="Discrete_Derivative_In1_1"/>
+    </input>
+    <output line="Discrete_Derivative_DiscreteDerivative_1" port="Discrete_Derivative_DiscreteDerivative_1" usename="true">
+      <connect block="Discrete_Derivative_Out1" port="Discrete_Derivative_Out1_1"/>
+    </output>
+    <var line="Discrete_Derivative_In1_1" mode="input" name="Discrete_Derivative_In1_1" port="Discrete_Derivative_DiscreteDerivative_1" type="real_T"/>
+    <param name="ICPrevScaledInput" storage="" type="double" value="0.0"/>
+    <param name="gainval" storage="" type="double" value="1.0"/>
+    <forward block="Discrete_Derivative_Out1" type="port"/>
+    <backword block="Discrete_Derivative_In1" type="port">
+      <var line="Discrete_Derivative_In1_1" mode="extin" name="Discrete_Derivative_In1_1" port="Discrete_Derivative_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Discrete_Derivative_Out1" priority="4" rate="0.1">
+    <input line="Discrete_Derivative_DiscreteDerivative_1" port="Discrete_Derivative_Out1_1">
+      <connect block="Discrete_Derivative_DiscreteDerivative" port="Discrete_Derivative_DiscreteDerivative_1"/>
+    </input>
+    <var line="" mode="extout" name="Out1" port="" storage="Discrete_Derivative_Y" type="real_T"/>
+    <code file="Discrete_Derivative_ert_rtw/Discrete_Derivative.c" line="50" type="task">  /* Outport: '&lt;Root&gt;/Out1' incorporates:
+   *  Sum: '&lt;S1&gt;/Diff'
+   */
+  Discrete_Derivative_Y.Out1 = Discrete_Derivative_B.TSamp -
+    Discrete_Derivative_B.Uk1;
+
+</code>
+    <code file="Discrete_Derivative_ert_rtw/Discrete_Derivative.c" line="81" type="init">  Discrete_Derivative_Y.Out1 = 0.0;
+</code>
+    <backword block="Discrete_Derivative_DiscreteDerivative" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Discrete_Derivative {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Discrete_Derivative_M" type="extern RT_MODEL_Discrete_Derivative * const"/>
+  <object kind="rtm-object" name="Discrete_Derivative_M_" type="RT_MODEL_Discrete_Derivative"/>
+  <object kind="rtm-pointer" name="Discrete_Derivative_M" type="RT_MODEL_Discrete_Derivative * const" value="&amp;Discrete_Derivative_M_"/>
+  <includes file="&lt;stddef.h>" from="Discrete_Derivative_ert_rtw/Discrete_Derivative.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Discrete_Derivative_ert_rtw/Discrete_Derivative.h" index="1"/>
+  <includes file="&quot;Discrete_Derivative_types.h&quot;" from="Discrete_Derivative_ert_rtw/Discrete_Derivative.h" index="2"/>
+  <includes file="&quot;Discrete_Derivative_private.h&quot;" from="Discrete_Derivative_ert_rtw/Discrete_Derivative.c" index="3"/>
+</sm:blocks>

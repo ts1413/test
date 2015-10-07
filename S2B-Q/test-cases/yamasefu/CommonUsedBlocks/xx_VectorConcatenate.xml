@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="VectorConcatenate" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="VectorConcatenate_In1" priority="0" rate="0.1">
+    <output line="VectorConcatenate_In1_1" port="VectorConcatenate_In1_1" usename="true">
+      <connect block="VectorConcatenate_VectorConcatenate" port="VectorConcatenate_VectorConcatenate_1"/>
+      <connect block="VectorConcatenate_VectorConcatenate" port="VectorConcatenate_VectorConcatenate_2"/>
+    </output>
+  </block>
+  <block blocktype="Concatenate" name="VectorConcatenate_VectorConcatenate" priority="3" rate="0.1">
+    <input line="VectorConcatenate_In1_1" port="VectorConcatenate_VectorConcatenate_1">
+      <connect block="VectorConcatenate_In1" port="VectorConcatenate_In1_1"/>
+    </input>
+    <input line="VectorConcatenate_In1_1" port="VectorConcatenate_VectorConcatenate_2">
+      <connect block="VectorConcatenate_In1" port="VectorConcatenate_In1_1"/>
+    </input>
+    <output line="VectorConcatenate_VectorConcatenate_1" port="VectorConcatenate_VectorConcatenate_1" usename="true">
+      <connect block="VectorConcatenate_Out1" port="VectorConcatenate_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="VectorConcatenate_Out1" priority="4" rate="0.1">
+    <input line="VectorConcatenate_VectorConcatenate_1" port="VectorConcatenate_Out1_1">
+      <connect block="VectorConcatenate_VectorConcatenate" port="VectorConcatenate_VectorConcatenate_1"/>
+    </input>
+  </block>
+</sm:blocks>

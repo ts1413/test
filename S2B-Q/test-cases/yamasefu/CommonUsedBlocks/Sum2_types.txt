@@ -1,0 +1,25 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=SingleTasking fixedStep=0.1
+Block "Sum2" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+InDataPort portNumber=4 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Sum2/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Sum2/In2" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Sum2/In3" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Sum2/In4" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Sum2/Sum" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+InDataPort portNumber=4 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Sum2/Out1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

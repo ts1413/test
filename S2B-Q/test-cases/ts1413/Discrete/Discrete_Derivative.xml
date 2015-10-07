@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Discrete_Derivative" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Discrete_Derivative_In1" rate="-1">
+      <output line="Discrete_Derivative_In1_1" port="Discrete_Derivative_In1_1" usename="true">
+         <connect block="Discrete_Derivative_DiscreteDerivative" port="Discrete_Derivative_DiscreteDerivative_U"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Discrete_Derivative_DiscreteDerivative">
+      <input line="Discrete_Derivative_In1_1" port="Discrete_Derivative_DiscreteDerivative_U">
+         <connect block="Discrete_Derivative_In1" port="Discrete_Derivative_In1_1"/>
+      </input>
+      <output line="Discrete_Derivative_DiscreteDerivative_1" port="Discrete_Derivative_DiscreteDerivative_Y" usename="false">
+         <connect block="Discrete_Derivative_Out1" port="Discrete_Derivative_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Discrete_Derivative_DiscreteDerivative_U" rate="-1">
+            <output line="Discrete_Derivative_DiscreteDerivative_U_1" port="Discrete_Derivative_DiscreteDerivative_U_1" usename="false">
+               <connect block="Discrete_Derivative_DiscreteDerivative_TSamp" port="Discrete_Derivative_DiscreteDerivative_TSamp_1"/>
+            </output>
+         </block>
+         <block blocktype="DataTypeDuplicate" name="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate">
+            <input line="Discrete_Derivative_DiscreteDerivative_Diff_1" port="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate_1">
+               <connect block="Discrete_Derivative_DiscreteDerivative_Diff" port="Discrete_Derivative_DiscreteDerivative_Diff_1"/>
+            </input>
+            <input line="Discrete_Derivative_DiscreteDerivative_TSamp_1" port="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate_2">
+               <connect block="Discrete_Derivative_DiscreteDerivative_TSamp" port="Discrete_Derivative_DiscreteDerivative_TSamp_1"/>
+            </input>
+            <input line="Discrete_Derivative_DiscreteDerivative_UD_Uk_1" port="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate_3">
+               <connect block="Discrete_Derivative_DiscreteDerivative_UD" port="Discrete_Derivative_DiscreteDerivative_UD_1"/>
+            </input>
+         </block>
+         <block blocktype="Sum" name="Discrete_Derivative_DiscreteDerivative_Diff" rate="-1">
+            <input line="Discrete_Derivative_DiscreteDerivative_TSamp_1" port="Discrete_Derivative_DiscreteDerivative_Diff_1">
+               <connect block="Discrete_Derivative_DiscreteDerivative_TSamp" port="Discrete_Derivative_DiscreteDerivative_TSamp_1"/>
+            </input>
+            <input line="Discrete_Derivative_DiscreteDerivative_UD_Uk_1" port="Discrete_Derivative_DiscreteDerivative_Diff_2">
+               <connect block="Discrete_Derivative_DiscreteDerivative_UD" port="Discrete_Derivative_DiscreteDerivative_UD_1"/>
+            </input>
+            <output line="Discrete_Derivative_DiscreteDerivative_Diff_1" port="Discrete_Derivative_DiscreteDerivative_Diff_1" usename="true">
+               <connect block="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate" port="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate_1"/>
+               <connect block="Discrete_Derivative_DiscreteDerivative_Y" port="Discrete_Derivative_DiscreteDerivative_Y_1"/>
+            </output>
+         </block>
+         <block blocktype="SampleTimeMath" name="Discrete_Derivative_DiscreteDerivative_TSamp">
+            <input line="Discrete_Derivative_DiscreteDerivative_U_1" port="Discrete_Derivative_DiscreteDerivative_TSamp_1">
+               <connect block="Discrete_Derivative_DiscreteDerivative_U" port="Discrete_Derivative_DiscreteDerivative_U_1"/>
+            </input>
+            <output line="Discrete_Derivative_DiscreteDerivative_TSamp_1" port="Discrete_Derivative_DiscreteDerivative_TSamp_1" usename="true">
+               <connect block="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate" port="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate_2"/>
+               <connect block="Discrete_Derivative_DiscreteDerivative_Diff" port="Discrete_Derivative_DiscreteDerivative_Diff_1"/>
+               <connect block="Discrete_Derivative_DiscreteDerivative_UD" port="Discrete_Derivative_DiscreteDerivative_UD_1"/>
+            </output>
+         </block>
+         <block blocktype="UnitDelay" name="Discrete_Derivative_DiscreteDerivative_UD" rate="-1">
+            <input line="Discrete_Derivative_DiscreteDerivative_TSamp_1" port="Discrete_Derivative_DiscreteDerivative_UD_1">
+               <connect block="Discrete_Derivative_DiscreteDerivative_TSamp" port="Discrete_Derivative_DiscreteDerivative_TSamp_1"/>
+            </input>
+            <output line="Discrete_Derivative_DiscreteDerivative_UD_Uk_1" port="Discrete_Derivative_DiscreteDerivative_UD_1" usename="true">
+               <connect block="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate" port="Discrete_Derivative_DiscreteDerivative_DataTypeDuplicate_3"/>
+               <connect block="Discrete_Derivative_DiscreteDerivative_Diff" port="Discrete_Derivative_DiscreteDerivative_Diff_2"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="Discrete_Derivative_DiscreteDerivative_Y" rate="-1">
+            <input line="Discrete_Derivative_DiscreteDerivative_Diff_1" port="Discrete_Derivative_DiscreteDerivative_Y_1">
+               <connect block="Discrete_Derivative_DiscreteDerivative_Diff" port="Discrete_Derivative_DiscreteDerivative_Diff_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Discrete_Derivative_Out1" rate="-1">
+      <input line="Discrete_Derivative_DiscreteDerivative_1" port="Discrete_Derivative_Out1_1">
+         <connect block="Discrete_Derivative_DiscreteDerivative" port="Discrete_Derivative_DiscreteDerivative_Y"/>
+      </input>
+   </block>
+</sm:blocks>

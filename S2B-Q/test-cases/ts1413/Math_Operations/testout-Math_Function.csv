@@ -1,0 +1,19 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Math_Function_In1_1",,
+"task100",,,,
+,"Math_Function_MathFunction_1",,,
+"task2",,,,
+,"Math_Function_In1_1","Math_Function_MathFunction_1",,
+,,,,"{
+"
+,,,,"  /* Math: '<Root>/MathFunction' incorporates:
+   *  Inport: '<Root>/In1'
+   *
+   * About '<Root>/MathFunction':
+   *  Operator: exp
+   */
+  Math_Function_MathFunction_1 = exp(Math_Function_In1_1);
+"
+,,,,"}
+"

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Selector" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Selector_ert_rtw/Selector.h" size="2287" timestamp="2015-09-29T13:36:57+0900" type="c-header"/>
+  <file name="xx_Selector.xml" size="1121" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Selector_ert_rtw/Selector.c" size="1168" timestamp="2015-09-29T13:36:57+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Selector_In1" priority="0" rate="0.1">
+    <output line="Selector_In1_1" port="Selector_In1_1" usename="true">
+      <connect block="Selector_Selector" port="Selector_Selector_1"/>
+    </output>
+    <var line="Selector_In1_1" mode="extin" name="Selector_In1_1" port="Selector_In1_1" size="3" type="real_T"/>
+    <forward block="Selector_Selector" type="data">
+      <var line="Selector_In1_1" mode="input" name="Selector_In1_1" port="Selector_Selector_1" size="3" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Selector" id="2" name="Selector_Selector" priority="0" rate="0.1">
+    <input line="Selector_In1_1" port="Selector_Selector_1">
+      <connect block="Selector_In1" port="Selector_In1_1"/>
+    </input>
+    <output line="Selector_Selector_1" port="Selector_Selector_1" usename="true">
+      <connect block="Selector_Out2" port="Selector_Out2_1"/>
+    </output>
+    <var line="Selector_In1_1" mode="input" name="Selector_In1_1" port="Selector_Selector_1" size="3" type="real_T"/>
+    <forward block="Selector_Out2" type="data"/>
+    <backword block="Selector_In1" type="data">
+      <var line="Selector_In1_1" mode="extin" name="Selector_In1_1" port="Selector_In1_1" size="3" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Selector_Out2" priority="1" rate="0.1">
+    <input line="Selector_Selector_1" port="Selector_Out2_1">
+      <connect block="Selector_Selector" port="Selector_Selector_1"/>
+    </input>
+    <backword block="Selector_Selector" type="data"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Selector_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Selector_M" type="extern RT_MODEL_Selector_T * const"/>
+  <object kind="rtm-object" name="Selector_M_" type="RT_MODEL_Selector_T"/>
+  <object kind="rtm-pointer" name="Selector_M" type="RT_MODEL_Selector_T * const" value="&amp;Selector_M_"/>
+  <includes file="&lt;stddef.h>" from="Selector_ert_rtw/Selector.h" index="0"/>
+  <includes file="&lt;string.h>" from="Selector_ert_rtw/Selector.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Selector_ert_rtw/Selector.h" index="2"/>
+  <includes file="&quot;Selector_types.h&quot;" from="Selector_ert_rtw/Selector.h" index="3"/>
+  <includes file="&quot;Selector_private.h&quot;" from="Selector_ert_rtw/Selector.c" index="4"/>
+</sm:blocks>

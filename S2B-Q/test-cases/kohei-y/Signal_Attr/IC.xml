@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="IC" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="IC_In1" rate="-1">
+      <output line="IC_In1_1" port="IC_In1_1" usename="true">
+         <connect block="IC_IC" port="IC_IC_1"/>
+      </output>
+   </block>
+   <block blocktype="InitialCondition" name="IC_IC" rate="-1">
+      <input line="IC_In1_1" port="IC_IC_1">
+         <connect block="IC_In1" port="IC_In1_1"/>
+      </input>
+      <output line="IC_IC_1" port="IC_IC_1" usename="true">
+         <connect block="IC_Out1" port="IC_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="IC_Out1" rate="-1">
+      <input line="IC_IC_1" port="IC_Out1_1">
+         <connect block="IC_IC" port="IC_IC_1"/>
+      </input>
+   </block>
+</sm:blocks>

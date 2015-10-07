@@ -1,0 +1,22 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Combinatorial_Logic_In1_1",,
+"task100",,,,
+,"Combinatorial_Logic_CombinatorialLogic_1",,,
+"task2",,,,
+,"Combinatorial_Logic_In1_1","Combinatorial_Logic_CombinatorialLogic_1",,
+,,,,"{
+"
+,,,,"  /* CombinatorialLogic: '<Root>/CombinatorialLogic' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  rowIdx = Combinatorial_Logic_In1_1[0U];
+  rowIdx = (int32_T)(((uint32_T)rowIdx << 1) + Combinatorial_Logic_In1_1[1U]);
+  rowIdx = (int32_T)(((uint32_T)rowIdx << 1) + Combinatorial_Logic_In1_1[2U]);
+  Combinatorial_Logic_CombinatorialLogic_1[0U] =
+    Combinatorial_Logic_P.CombinatorialLogic_table[(uint32_T)rowIdx];
+  Combinatorial_Logic_CombinatorialLogic_1[1U] =
+    Combinatorial_Logic_P.CombinatorialLogic_table[rowIdx + 8U];
+"
+,,,,"}
+"

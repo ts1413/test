@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Rate_Transition_Copy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.h" size="2543" timestamp="2015-10-05T16:06:06+0900" type="c-header"/>
+  <file name="xx_Rate_Transition_Copy.xml" size="1421" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.c" size="1586" timestamp="2015-10-05T16:06:06+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Rate_Transition_Copy_In1" priority="0" rate="0.1">
+    <output line="Rate_Transition_Copy_In1_1" port="Rate_Transition_Copy_In1_1" usename="true">
+      <connect block="Rate_Transition_Copy_RateTransition" port="Rate_Transition_Copy_RateTransition_1"/>
+    </output>
+    <var line="Rate_Transition_Copy_In1_1" mode="extin" name="Rate_Transition_Copy_In1_1" port="Rate_Transition_Copy_In1_1" type="real_T"/>
+    <code file="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.c" line="51" type="init">  Rate_Transition_Copy_In1_1 = 0.0;
+</code>
+    <forward block="Rate_Transition_Copy_RateTransition" type="data">
+      <var line="Rate_Transition_Copy_In1_1" mode="input" name="Rate_Transition_Copy_In1_1" port="Rate_Transition_Copy_RateTransition_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="RateTransition" id="2" name="Rate_Transition_Copy_RateTransition" priority="1" rate="0.1">
+    <input line="Rate_Transition_Copy_In1_1" port="Rate_Transition_Copy_RateTransition_1">
+      <connect block="Rate_Transition_Copy_In1" port="Rate_Transition_Copy_In1_1"/>
+    </input>
+    <output line="Rate_Transition_Copy_RateTransition_1" port="Rate_Transition_Copy_RateTransition_1" usename="true">
+      <connect block="Rate_Transition_Copy_Out1" port="Rate_Transition_Copy_Out1_1"/>
+    </output>
+    <var line="Rate_Transition_Copy_In1_1" mode="input" name="Rate_Transition_Copy_In1_1" port="Rate_Transition_Copy_RateTransition_1" type="real_T"/>
+    <var line="Rate_Transition_Copy_RateTransition_1" mode="extout" name="Rate_Transition_Copy_RateTransition_1" port="Rate_Transition_Copy_RateTransition_1" type="real_T"/>
+    <code file="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.c" line="31" type="task">  /* RateTransition: '&lt;Root&gt;/RateTransition' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Rate_Transition_Copy_RateTransition_1 = Rate_Transition_Copy_In1_1;
+</code>
+    <code file="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.c" line="48" type="init">  Rate_Transition_Copy_RateTransition_1 = 0.0;
+
+</code>
+    <forward block="Rate_Transition_Copy_Out1" type="data">
+      <var line="Rate_Transition_Copy_RateTransition_1" mode="input" name="Rate_Transition_Copy_RateTransition_1" port="Rate_Transition_Copy_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Rate_Transition_Copy_In1" type="data">
+      <var line="Rate_Transition_Copy_In1_1" mode="extin" name="Rate_Transition_Copy_In1_1" port="Rate_Transition_Copy_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Rate_Transition_Copy_Out1" priority="2" rate="0.1">
+    <input line="Rate_Transition_Copy_RateTransition_1" port="Rate_Transition_Copy_Out1_1">
+      <connect block="Rate_Transition_Copy_RateTransition" port="Rate_Transition_Copy_RateTransition_1"/>
+    </input>
+    <var line="Rate_Transition_Copy_RateTransition_1" mode="input" name="Rate_Transition_Copy_RateTransition_1" port="Rate_Transition_Copy_Out1_1" type="real_T"/>
+    <backword block="Rate_Transition_Copy_RateTransition" type="data">
+      <var line="Rate_Transition_Copy_RateTransition_1" mode="extout" name="Rate_Transition_Copy_RateTransition_1" port="Rate_Transition_Copy_RateTransition_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Rate_Transition_Copy_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Rate_Transition_Copy_M" type="extern RT_MODEL_Rate_Transition_Copy_T * const"/>
+  <object kind="rtm-object" name="Rate_Transition_Copy_M_" type="RT_MODEL_Rate_Transition_Copy_T"/>
+  <object kind="rtm-pointer" name="Rate_Transition_Copy_M" type="RT_MODEL_Rate_Transition_Copy_T * const" value="&amp;Rate_Transition_Copy_M_"/>
+  <includes file="&lt;stddef.h>" from="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.h" index="1"/>
+  <includes file="&quot;Rate_Transition_Copy_types.h&quot;" from="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.h" index="2"/>
+  <includes file="&quot;Rate_Transition_Copy_private.h&quot;" from="Rate_Transition_Copy_ert_rtw/Rate_Transition_Copy.c" index="3"/>
+</sm:blocks>

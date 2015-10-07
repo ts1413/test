@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Goto_From" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Goto_From_ert_rtw/Goto_From.h" size="2283" timestamp="2015-09-29T13:35:47+0900" type="c-header"/>
+  <file name="xx_Goto_From.xml" size="1477" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Goto_From_ert_rtw/Goto_From.c" size="1135" timestamp="2015-09-29T13:35:47+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Goto_From_In1" priority="0" rate="0.1">
+    <output line="Goto_From_In1_1" port="Goto_From_In1_1" usename="true">
+      <connect block="Goto_From_Goto" port="Goto_From_Goto_1"/>
+    </output>
+    <var line="Goto_From_In1_1" mode="output" name="Goto_From_In1_1" port="Goto_From_In1_1" type="real_T"/>
+    <code file="Goto_From_ert_rtw/Goto_From.c" line="41" type="init">  Goto_From_In1_1 = 0.0;
+</code>
+    <forward block="Goto_From_Out2" type="port">
+      <var line="Goto_From_From_1" mode="input" name="Goto_From_In1_1" port="Goto_From_Out2_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="From" id="2" name="Goto_From_From" priority="0" rate="0.1">
+    <input line="Goto_From_Goto_1" port="Goto_From_From_1">
+      <connect block="Goto_From_Goto" port="Goto_From_Goto_1"/>
+    </input>
+    <output line="Goto_From_From_1" port="Goto_From_From_1" usename="true">
+      <connect block="Goto_From_Out2" port="Goto_From_Out2_1"/>
+    </output>
+  </block>
+  <block blocktype="Goto" id="3" name="Goto_From_Goto" priority="0" rate="0.1">
+    <input line="Goto_From_In1_1" port="Goto_From_Goto_1">
+      <connect block="Goto_From_In1" port="Goto_From_In1_1"/>
+    </input>
+    <output line="Goto_From_Goto_1" port="Goto_From_Goto_1" usename="false">
+      <connect block="Goto_From_From" port="Goto_From_From_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" id="4" name="Goto_From_Out2" priority="1" rate="0.1">
+    <input line="Goto_From_From_1" port="Goto_From_Out2_1">
+      <connect block="Goto_From_From" port="Goto_From_From_1"/>
+    </input>
+    <var line="Goto_From_From_1" mode="input" name="Goto_From_In1_1" port="Goto_From_Out2_1" type="real_T"/>
+    <backword block="Goto_From_In1" type="port">
+      <var line="Goto_From_In1_1" mode="output" name="Goto_From_In1_1" port="Goto_From_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Goto_From_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Goto_From_M" type="extern RT_MODEL_Goto_From_T * const"/>
+  <object kind="rtm-object" name="Goto_From_M_" type="RT_MODEL_Goto_From_T"/>
+  <object kind="rtm-pointer" name="Goto_From_M" type="RT_MODEL_Goto_From_T * const" value="&amp;Goto_From_M_"/>
+  <includes file="&lt;stddef.h>" from="Goto_From_ert_rtw/Goto_From.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Goto_From_ert_rtw/Goto_From.h" index="1"/>
+  <includes file="&quot;Goto_From_types.h&quot;" from="Goto_From_ert_rtw/Goto_From.h" index="2"/>
+  <includes file="&quot;Goto_From_private.h&quot;" from="Goto_From_ert_rtw/Goto_From.c" index="3"/>
+</sm:blocks>

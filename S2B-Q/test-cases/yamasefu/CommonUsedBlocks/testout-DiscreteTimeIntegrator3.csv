@@ -1,0 +1,78 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"DiscreteTimeIntegrator3_In1_1",,
+,,"DiscreteTimeIntegrator3_In2_1",,
+,,"DiscreteTimeIntegrator3_In3_1",,
+"task100",,,,
+,"DiscreteTimeIntegrator3_Discrete_TimeIntegrator_1",,,
+,"DiscreteTimeIntegrator3_Discrete_TimeIntegrator_2",,,
+"task4",,,,
+,"DiscreteTimeIntegrator3_In1_1","DiscreteTimeIntegrator3_Discrete_TimeIntegrator_1",,
+,"DiscreteTimeIntegrator3_In2_1","DiscreteTimeIntegrator3_Discrete_TimeIntegrator_2",,
+,"DiscreteTimeIntegrator3_In3_1",,,
+,,,,"{
+"
+,,,,"  if (DiscreteTimeIntegrator3_M->Timing.TaskCounters.TID[1] == 0) {
+"
+,,,,"    /* DiscreteIntegrator: '<Root>/Discrete_TimeIntegrator' incorporates:
+     *  Inport: '<Root>/In1'
+     *  Inport: '<Root>/In2'
+     *  Inport: '<Root>/In3'
+     */
+    if (DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_IC_LOAD != 0) {
+      DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE =
+        DiscreteTimeIntegrator3_In3_1;
+      if (DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE >=
+          DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_UpperSa) {
+        DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE =
+          DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_UpperSa;
+      } else {
+        if (DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE <=
+            DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_LowerSa) {
+          DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE =
+            DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_LowerSa;
+        }
+      }
+    }
+
+    if ((DiscreteTimeIntegrator3_In2_1 > 0.0) &&
+        (DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_PrevRes <= 0)) {
+      DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE =
+        DiscreteTimeIntegrator3_In3_1;
+      if (DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE >=
+          DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_UpperSa) {
+        DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE =
+          DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_UpperSa;
+      } else {
+        if (DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE <=
+            DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_LowerSa) {
+          DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE =
+            DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_LowerSa;
+        }
+      }
+    }
+
+    DiscreteTimeIntegrator3_Discrete_TimeIntegrator_1 =
+      DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_gainval *
+      DiscreteTimeIntegrator3_In1_1 +
+      DiscreteTimeIntegrator3_DW.Discrete_TimeIntegrator_DSTATE;
+    if (DiscreteTimeIntegrator3_Discrete_TimeIntegrator_1 >=
+        DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_UpperSa) {
+      DiscreteTimeIntegrator3_Discrete_TimeIntegrator_1 =
+        DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_UpperSa;
+      DiscreteTimeIntegrator3_Discrete_TimeIntegrator_2 = 1.0;
+    } else if (DiscreteTimeIntegrator3_Discrete_TimeIntegrator_1 <=
+               DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_LowerSa) {
+      DiscreteTimeIntegrator3_Discrete_TimeIntegrator_1 =
+        DiscreteTimeIntegrator3_P.Discrete_TimeIntegrator_LowerSa;
+      DiscreteTimeIntegrator3_Discrete_TimeIntegrator_2 = -1.0;
+    } else {
+      DiscreteTimeIntegrator3_Discrete_TimeIntegrator_2 = 0.0;
+    }
+
+    /* End of DiscreteIntegrator: '<Root>/Discrete_TimeIntegrator' */
+"
+,,,,"  }
+"
+,,,,"}
+"

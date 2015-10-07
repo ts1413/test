@@ -1,0 +1,9 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=SingleTasking fixedStep=0.1
+Block "Scope1" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+Block "Scope1/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Scope1/Scope" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

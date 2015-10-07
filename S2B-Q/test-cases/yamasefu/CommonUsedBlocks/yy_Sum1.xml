@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Sum1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Sum1_ert_rtw/Sum1.h" size="2344" timestamp="2015-10-05T16:56:18+0900" type="c-header"/>
+  <file name="xx_Sum1.xml" size="1156" timestamp="2015-10-07T15:40:44+0900" type="xml"/>
+  <file name="Sum1_ert_rtw/Sum1.c" size="1347" timestamp="2015-10-05T16:56:18+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Sum1_In1" priority="0" rate="0.1">
+    <output line="Sum1_In1_1" port="Sum1_In1_1" usename="true">
+      <connect block="Sum1_Sum" port="Sum1_Sum_1"/>
+      <connect block="Sum1_Sum" port="Sum1_Sum_2"/>
+    </output>
+    <var line="Sum1_In1_1" mode="extin" name="Sum1_In1_1" port="Sum1_In1_1" type="real_T"/>
+    <code file="Sum1_ert_rtw/Sum1.c" line="52" type="init">  Sum1_In1_1 = 0.0;
+</code>
+    <forward block="Sum1_Sum" type="data">
+      <var line="Sum1_In1_1" mode="input" name="Sum1_In1_1" port="Sum1_Sum_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Sum" id="2" name="Sum1_Sum" priority="1" rate="0.1">
+    <input line="Sum1_In1_1" port="Sum1_Sum_1">
+      <connect block="Sum1_In1" port="Sum1_In1_1"/>
+    </input>
+    <input line="Sum1_In1_1" port="Sum1_Sum_2">
+      <connect block="Sum1_In1" port="Sum1_In1_1"/>
+    </input>
+    <output line="Sum1_Sum_1" port="Sum1_Sum_1" usename="true">
+      <connect block="Sum1_Out1" port="Sum1_Out1_1"/>
+    </output>
+    <var line="Sum1_In1_1" mode="input" name="Sum1_In1_1" port="Sum1_Sum_1" type="real_T"/>
+    <var line="Sum1_Sum_1" mode="extout" name="Sum1_Sum_1" port="Sum1_Sum_1" type="real_T"/>
+    <code file="Sum1_ert_rtw/Sum1.c" line="32" type="task">  /* Sum: '&lt;Root&gt;/Sum' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Sum1_Sum_1 = Sum1_In1_1 + Sum1_In1_1;
+</code>
+    <code file="Sum1_ert_rtw/Sum1.c" line="49" type="init">  Sum1_Sum_1 = 0.0;
+
+</code>
+    <forward block="Sum1_Out1" type="data">
+      <var line="Sum1_Sum_1" mode="input" name="Sum1_Sum_1" port="Sum1_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Sum1_In1" type="data">
+      <var line="Sum1_In1_1" mode="extin" name="Sum1_In1_1" port="Sum1_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Sum1_Out1" priority="2" rate="0.1">
+    <input line="Sum1_Sum_1" port="Sum1_Out1_1">
+      <connect block="Sum1_Sum" port="Sum1_Sum_1"/>
+    </input>
+    <var line="Sum1_Sum_1" mode="input" name="Sum1_Sum_1" port="Sum1_Out1_1" type="real_T"/>
+    <backword block="Sum1_Sum" type="data">
+      <var line="Sum1_Sum_1" mode="extout" name="Sum1_Sum_1" port="Sum1_Sum_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Sum1_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Sum1_M" type="extern RT_MODEL_Sum1_T * const"/>
+  <object kind="rtm-object" name="Sum1_M_" type="RT_MODEL_Sum1_T"/>
+  <object kind="rtm-pointer" name="Sum1_M" type="RT_MODEL_Sum1_T * const" value="&amp;Sum1_M_"/>
+  <includes file="&lt;stddef.h>" from="Sum1_ert_rtw/Sum1.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Sum1_ert_rtw/Sum1.h" index="1"/>
+  <includes file="&quot;Sum1_types.h&quot;" from="Sum1_ert_rtw/Sum1.h" index="2"/>
+  <includes file="&quot;Sum1_private.h&quot;" from="Sum1_ert_rtw/Sum1.c" index="3"/>
+</sm:blocks>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="switch_case" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="switch_case_ert_rtw/switch_case.h" size="4490" timestamp="2015-09-29T13:42:17+0900" type="c-header"/>
+  <file name="xx_switch_case.xml" size="5899" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="switch_case_ert_rtw/switch_case.c" size="4489" timestamp="2015-09-29T13:42:17+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="switch_case_In1" priority="0" rate="0.1">
+    <output line="switch_case_In1_1" port="switch_case_In1_1" usename="true">
+      <connect block="switch_case_SwitchCase" port="switch_case_SwitchCase_1"/>
+    </output>
+    <var line="switch_case_In1_1" mode="extin" name="switch_case_In1_1" port="switch_case_In1_1" type="real_T"/>
+    <code file="switch_case_ert_rtw/switch_case.c" line="132" type="init">  switch_case_In1_1 = 0.0;
+
+</code>
+    <forward block="switch_case_SwitchCase" type="data">
+      <var line="switch_case_In1_1" mode="input" name="switch_case_In1_1" port="switch_case_SwitchCase_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Constant" id="2" name="switch_case_Constant" priority="2" rate="0.1">
+    <output line="switch_case_Constant_1" port="switch_case_Constant_1" usename="true">
+      <connect block="switch_case_SwitchCaseActionSubsystem" port="switch_case_SwitchCaseActionSubsystem_In1"/>
+    </output>
+    <var line="switch_case_Constant_1" mode="output" name="switch_case_Constant_1" port="switch_case_Constant_1" type="real_T"/>
+    <param name="Value" storage="" type="double" value="5.0"/>
+    <param name="Constant_Value" storage="switch_case_P" type="real_T"/>
+    <code file="switch_case_ert_rtw/switch_case.c" line="66" type="task">  /* Constant: '&lt;Root&gt;/Constant' */
+  switch_case_Constant_1 = switch_case_P.Constant_Value;
+
+</code>
+    <code file="switch_case_ert_rtw/switch_case.c" line="129" type="init">  switch_case_Constant_1 = 0.0;
+
+</code>
+    <forward block="switch_case_Out1" type="port">
+      <var line="switch_case_SwitchCaseActionSubsystem_1" mode="input" name="switch_case_Constant_1" port="switch_case_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Constant" id="3" name="switch_case_Constant1" priority="1" rate="0.1">
+    <output line="switch_case_Constant1_1" port="switch_case_Constant1_1" usename="true">
+      <connect block="switch_case_SwitchCaseActionSubsystem1" port="switch_case_SwitchCaseActionSubsystem1_In1"/>
+    </output>
+    <var line="switch_case_Constant1_1" mode="output" name="switch_case_Constant1_1" port="switch_case_Constant1_1" type="real_T"/>
+    <param name="Constant1_Value" storage="switch_case_P" type="real_T"/>
+    <code file="switch_case_ert_rtw/switch_case.c" line="63" type="task">  /* Constant: '&lt;Root&gt;/Constant1' */
+  switch_case_Constant1_1 = switch_case_P.Constant1_Value;
+
+</code>
+    <code file="switch_case_ert_rtw/switch_case.c" line="128" type="init">  switch_case_Constant1_1 = 0.0;
+</code>
+    <forward block="switch_case_Out2" type="port">
+      <var line="switch_case_SwitchCaseActionSubsystem1_1" mode="input" name="switch_case_Constant1_1" port="switch_case_Out2_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="SwitchCase" id="4" name="switch_case_SwitchCase" priority="3" rate="0.1">
+    <input line="switch_case_In1_1" port="switch_case_SwitchCase_1">
+      <connect block="switch_case_In1" port="switch_case_In1_1"/>
+    </input>
+    <output line="switch_case_SwitchCase_0" port="switch_case_SwitchCase_0" usename="false">
+      <connect block="switch_case_SwitchCaseActionSubsystem" port="switch_case_SwitchCaseActionSubsystem_ActionPort"/>
+    </output>
+    <output line="switch_case_SwitchCase_0" port="switch_case_SwitchCase_0" usename="false">
+      <connect block="switch_case_SwitchCaseActionSubsystem1" port="switch_case_SwitchCaseActionSubsystem1_ActionPort"/>
+    </output>
+    <var line="switch_case_In1_1" mode="input" name="switch_case_In1_1" port="switch_case_SwitchCase_1" type="real_T"/>
+    <param name="CaseConditions" storage="" type="double" value="1.0"/>
+    <code file="switch_case_ert_rtw/switch_case.c" line="69" type="task">  /* SwitchCase: '&lt;Root&gt;/SwitchCase' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  u = switch_case_In1_1;
+  if (u &lt; 0.0) {
+    u = ceil(u);
+  } else {
+    u = floor(u);
+  }
+
+  if (rtIsNaN(u) || rtIsInf(u)) {
+    u = 0.0;
+  } else {
+    u = fmod(u, 4.294967296E+9);
+  }
+
+  if ((u &lt; 0.0 ? -(int32_T)(uint32_T)-u : (int32_T)(uint32_T)u) == 1) {
+    /* Outputs for IfAction SubSystem: '&lt;Root&gt;/SwitchCaseActionSubsystem' incorporates:
+     *  ActionPort: '&lt;S1&gt;/ActionPort'
+     */
+    switc_SwitchCaseActionSubsystem(switch_case_Constant_1,
+      &amp;switch_case_B.SwitchCaseActionSubsystem);
+
+    /* End of Outputs for SubSystem: '&lt;Root&gt;/SwitchCaseActionSubsystem' */
+  } else {
+    /* Outputs for IfAction SubSystem: '&lt;Root&gt;/SwitchCaseActionSubsystem1' incorporates:
+     *  ActionPort: '&lt;S2&gt;/ActionPort'
+     */
+    switc_SwitchCaseActionSubsystem(switch_case_Constant1_1,
+      &amp;switch_case_B.SwitchCaseActionSubsystem1);
+
+    /* End of Outputs for SubSystem: '&lt;Root&gt;/SwitchCaseActionSubsystem1' */
+  }
+
+  /* End of SwitchCase: '&lt;Root&gt;/SwitchCase' */
+</code>
+    <forward block="switch_case_SwitchCaseActionSubsystem" type="data"/>
+    <forward block="switch_case_SwitchCaseActionSubsystem1" type="data"/>
+    <backword block="switch_case_In1" type="data">
+      <var line="switch_case_In1_1" mode="extin" name="switch_case_In1_1" port="switch_case_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="5" name="switch_case_SwitchCaseActionSubsystem" priority="4" rate="0.1" type="action">
+    <input line="switch_case_Constant_1" port="switch_case_SwitchCaseActionSubsystem_In1">
+      <connect block="switch_case_Constant" port="switch_case_Constant_1"/>
+    </input>
+    <input line="switch_case_SwitchCase_0" port="switch_case_SwitchCaseActionSubsystem_ActionPort">
+      <connect block="switch_case_SwitchCase" port="switch_case_SwitchCase_0"/>
+    </input>
+    <output line="switch_case_SwitchCaseActionSubsystem_1" port="switch_case_SwitchCaseActionSubsystem_Out1" usename="false">
+      <connect block="switch_case_Out1" port="switch_case_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="6" name="switch_case_SwitchCaseActionSubsystem_In1" priority="1" rate="0.1">
+        <output line="switch_case_SwitchCaseActionSubsystem_In1_1" port="switch_case_SwitchCaseActionSubsystem_In1_1" usename="false">
+          <connect block="switch_case_SwitchCaseActionSubsystem_Out1" port="switch_case_SwitchCaseActionSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="ActionPort" id="7" name="switch_case_SwitchCaseActionSubsystem_ActionPort" priority="0" rate="0.1"/>
+      <block blocktype="Outport" id="8" name="switch_case_SwitchCaseActionSubsystem_Out1" priority="0" rate="0.1">
+        <input line="switch_case_SwitchCaseActionSubsystem_In1_1" port="switch_case_SwitchCaseActionSubsystem_Out1_1">
+          <connect block="switch_case_SwitchCaseActionSubsystem_In1" port="switch_case_SwitchCaseActionSubsystem_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+    <signal name="SwitchCaseActionSubsystem" storage="switch_case_B" type="B_SwitchCaseActionSubsystem_s_T"/>
+    <param name="SwitchCaseActionSubsystem" storage="switch_case_P" type="P_SwitchCaseActionSubsystem_s_T"/>
+    <code file="switch_case_ert_rtw/switch_case.c" line="138" type="init">  /* Start for IfAction SubSystem: '&lt;Root&gt;/SwitchCaseActionSubsystem' */
+  SwitchCaseActionSubsystem_Start(&amp;switch_case_B.SwitchCaseActionSubsystem,
+    (P_SwitchCaseActionSubsystem_s_T *)&amp;switch_case_P.SwitchCaseActionSubsystem);
+
+  /* End of Start for SubSystem: '&lt;Root&gt;/SwitchCaseActionSubsystem' */
+</code>
+    <backword block="switch_case_SwitchCase" type="data"/>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="9" name="switch_case_SwitchCaseActionSubsystem1" priority="5" rate="0.1" type="action">
+    <input line="switch_case_Constant1_1" port="switch_case_SwitchCaseActionSubsystem1_In1">
+      <connect block="switch_case_Constant1" port="switch_case_Constant1_1"/>
+    </input>
+    <input line="switch_case_SwitchCase_0" port="switch_case_SwitchCaseActionSubsystem1_ActionPort">
+      <connect block="switch_case_SwitchCase" port="switch_case_SwitchCase_0"/>
+    </input>
+    <output line="switch_case_SwitchCaseActionSubsystem1_1" port="switch_case_SwitchCaseActionSubsystem1_Out1" usename="false">
+      <connect block="switch_case_Out2" port="switch_case_Out2_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="10" name="switch_case_SwitchCaseActionSubsystem1_In1" priority="1" rate="0.1">
+        <output line="switch_case_SwitchCaseActionSubsystem1_In1_1" port="switch_case_SwitchCaseActionSubsystem1_In1_1" usename="false">
+          <connect block="switch_case_SwitchCaseActionSubsystem1_Out1" port="switch_case_SwitchCaseActionSubsystem1_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="ActionPort" id="11" name="switch_case_SwitchCaseActionSubsystem1_ActionPort" priority="0" rate="0.1"/>
+      <block blocktype="Outport" id="12" name="switch_case_SwitchCaseActionSubsystem1_Out1" priority="0" rate="0.1">
+        <input line="switch_case_SwitchCaseActionSubsystem1_In1_1" port="switch_case_SwitchCaseActionSubsystem1_Out1_1">
+          <connect block="switch_case_SwitchCaseActionSubsystem1_In1" port="switch_case_SwitchCaseActionSubsystem1_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+    <signal name="SwitchCaseActionSubsystem1" storage="switch_case_B" type="B_SwitchCaseActionSubsystem_s_T"/>
+    <param name="SwitchCaseActionSubsystem1" storage="switch_case_P" type="P_SwitchCaseActionSubsystem_s_T"/>
+    <code file="switch_case_ert_rtw/switch_case.c" line="144" type="init">  /* Start for IfAction SubSystem: '&lt;Root&gt;/SwitchCaseActionSubsystem1' */
+  SwitchCaseActionSubsystem_Start(&amp;switch_case_B.SwitchCaseActionSubsystem1,
+    (P_SwitchCaseActionSubsystem_s_T *)&amp;switch_case_P.SwitchCaseActionSubsystem1);
+
+  /* End of Start for SubSystem: '&lt;Root&gt;/SwitchCaseActionSubsystem1' */
+</code>
+    <backword block="switch_case_SwitchCase" type="data"/>
+  </block>
+  <block blocktype="Outport" id="13" name="switch_case_Out1" priority="6" rate="0.1">
+    <input line="switch_case_SwitchCaseActionSubsystem_1" port="switch_case_Out1_1">
+      <connect block="switch_case_SwitchCaseActionSubsystem" port="switch_case_SwitchCaseActionSubsystem_Out1"/>
+    </input>
+    <var line="switch_case_SwitchCaseActionSubsystem_1" mode="input" name="switch_case_Constant_1" port="switch_case_Out1_1" type="real_T"/>
+    <var line="" mode="extout" name="Out1" port="" storage="switch_case_Y" type="real_T"/>
+    <code file="switch_case_ert_rtw/switch_case.c" line="105" type="task">  /* Outport: '&lt;Root&gt;/Out1' */
+  switch_case_Y.Out1 = switch_case_B.SwitchCaseActionSubsystem.In1;
+
+</code>
+    <backword block="switch_case_Constant" type="port">
+      <var line="switch_case_Constant_1" mode="output" name="switch_case_Constant_1" port="switch_case_Constant_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="14" name="switch_case_Out2" priority="7" rate="0.1">
+    <input line="switch_case_SwitchCaseActionSubsystem1_1" port="switch_case_Out2_1">
+      <connect block="switch_case_SwitchCaseActionSubsystem1" port="switch_case_SwitchCaseActionSubsystem1_Out1"/>
+    </input>
+    <var line="switch_case_SwitchCaseActionSubsystem1_1" mode="input" name="switch_case_Constant1_1" port="switch_case_Out2_1" type="real_T"/>
+    <var line="" mode="extout" name="Out2" port="" storage="switch_case_Y" type="real_T"/>
+    <code file="switch_case_ert_rtw/switch_case.c" line="108" type="task">  /* Outport: '&lt;Root&gt;/Out2' */
+  switch_case_Y.Out2 = switch_case_B.SwitchCaseActionSubsystem1.In1;
+</code>
+    <backword block="switch_case_Constant1" type="port">
+      <var line="switch_case_Constant1_1" mode="output" name="switch_case_Constant1_1" port="switch_case_Constant1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="common-init">  rt_InitInfAndNaN(sizeof(real_T));
+  rtmSetErrorStatus(switch_case_M, (NULL));
+</code>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_switch_case_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T u;
+
+</code>
+  <object kind="rtm-extern" name="switch_case_M" type="extern RT_MODEL_switch_case_T * const"/>
+  <object kind="rtm-object" name="switch_case_M_" type="RT_MODEL_switch_case_T"/>
+  <object kind="rtm-pointer" name="switch_case_M" type="RT_MODEL_switch_case_T * const" value="&amp;switch_case_M_"/>
+  <deftype has_struct="true" kind="param" name="switch_case_SwitchCaseActionSubsystem" type="P_SwitchCaseActionSubsystem_s_T_">/* Parameters for system: '&lt;Root&gt;/SwitchCaseActionSubsystem' */
+struct P_SwitchCaseActionSubsystem_s_T_ {
+  real_T Out1_Y0;                      /* Computed Parameter: Out1_Y0
+                                        * Referenced by: '&lt;S1&gt;/Out1'
+                                        */
+};
+</deftype>
+  <includes file="&lt;math.h>" from="switch_case_ert_rtw/switch_case.h" index="0"/>
+  <includes file="&lt;stddef.h>" from="switch_case_ert_rtw/switch_case.h" index="1"/>
+  <includes file="&lt;string.h>" from="switch_case_ert_rtw/switch_case.h" index="2"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="switch_case_ert_rtw/switch_case.h" index="3"/>
+  <includes file="&quot;switch_case_types.h&quot;" from="switch_case_ert_rtw/switch_case.h" index="4"/>
+  <includes file="&quot;rt_nonfinite.h&quot;" from="switch_case_ert_rtw/switch_case.h" index="5"/>
+  <includes file="&quot;rtGetInf.h&quot;" from="switch_case_ert_rtw/switch_case.h" index="6"/>
+  <includes file="&quot;switch_case_private.h&quot;" from="switch_case_ert_rtw/switch_case.c" index="7"/>
+  <function name="SwitchCaseActionSubsystem_Start" type="defn">
+    <code line="34" type="func">/*
+ * Start for action system:
+ *    '&lt;Root&gt;/SwitchCaseActionSubsystem'
+ *    '&lt;Root&gt;/SwitchCaseActionSubsystem1'
+ */
+void SwitchCaseActionSubsystem_Start(B_SwitchCaseActionSubsystem_s_T *localB,
+  P_SwitchCaseActionSubsystem_s_T *localP)
+{
+  /* VirtualOutportStart for Outport: '&lt;S1&gt;/Out1' */
+  localB-&gt;In1 = localP-&gt;Out1_Y0;
+}
+</code>
+  </function>
+  <function name="switc_SwitchCaseActionSubsystem" type="defn">
+    <code line="46" type="func">/*
+ * Output and update for action system:
+ *    '&lt;Root&gt;/SwitchCaseActionSubsystem'
+ *    '&lt;Root&gt;/SwitchCaseActionSubsystem1'
+ */
+void switc_SwitchCaseActionSubsystem(real_T rtu_In1,
+  B_SwitchCaseActionSubsystem_s_T *localB)
+{
+  /* Inport: '&lt;S1&gt;/In1' */
+  localB-&gt;In1 = rtu_In1;
+}
+</code>
+  </function>
+</sm:blocks>

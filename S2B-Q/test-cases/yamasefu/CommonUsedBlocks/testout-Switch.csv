@@ -1,0 +1,28 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Switch_In1_1",,
+,,"Switch_In2_1",,
+,,"Switch_In3_1",,
+"task100",,,,
+,"Switch_Switch_1",,,
+"task4",,,,
+,"Switch_In1_1","Switch_Switch_1",,
+,"Switch_In2_1",,,
+,"Switch_In3_1",,,
+,,,,"{
+"
+,,,,"  /* Switch: '<Root>/Switch' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   *  Inport: '<Root>/In3'
+   */
+  if (Switch_In2_1 > Switch_P.Switch_Threshold) {
+    Switch_Switch_1 = Switch_In1_1;
+  } else {
+    Switch_Switch_1 = Switch_In3_1;
+  }
+
+  /* End of Switch: '<Root>/Switch' */
+"
+,,,,"}
+"

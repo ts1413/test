@@ -1,0 +1,15 @@
+digraph csp {
+	graph [rankdir=LR];
+	LookupTableDynamic4_LookupTableDynamic	 [fillcolor=yellow,
+		label="t4\nLookupTableDynamic4_LookupTableDynamic",
+		style=filled];
+	t0 -> LookupTableDynamic4_LookupTableDynamic	 [color=green,
+		label="ch_0_4(LookupTableDynamic4_In1_1)"];
+	extout	 [label=extout];
+	LookupTableDynamic4_In1	 [label="t1\nLookupTableDynamic4_In1",
+		shape=box];
+	LookupTableDynamic4_In1 -> t0	 [color=green,
+		label="in port LookupTableDynamic4_In1(LookupTableDynamic4_In1_1)"];
+	LookupTableDynamic4_LookupTableDynamic -> extout	 [color=green,
+		label="ch_4_100(LookupTableDynamic4_LookupTableDynamic_1)"];
+}

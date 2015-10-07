@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Trigonometric_Function" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Trigonometric_Function_In1" priority="0" rate="0.1">
+    <output line="Trigonometric_Function_In1_1" port="Trigonometric_Function_In1_1" usename="true">
+      <connect block="Trigonometric_Function_TrigonometricFunction" port="Trigonometric_Function_TrigonometricFunction_1"/>
+    </output>
+  </block>
+  <block blocktype="Trigonometry" name="Trigonometric_Function_TrigonometricFunction" priority="1" rate="0.1">
+    <input line="Trigonometric_Function_In1_1" port="Trigonometric_Function_TrigonometricFunction_1">
+      <connect block="Trigonometric_Function_In1" port="Trigonometric_Function_In1_1"/>
+    </input>
+    <output line="Trigonometric_Function_TrigonometricFunction_1" port="Trigonometric_Function_TrigonometricFunction_1" usename="true">
+      <connect block="Trigonometric_Function_Out1" port="Trigonometric_Function_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Trigonometric_Function_Out1" priority="2" rate="0.1">
+    <input line="Trigonometric_Function_TrigonometricFunction_1" port="Trigonometric_Function_Out1_1">
+      <connect block="Trigonometric_Function_TrigonometricFunction" port="Trigonometric_Function_TrigonometricFunction_1"/>
+    </input>
+  </block>
+</sm:blocks>

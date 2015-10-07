@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Rate_Limiter_RateLimiter	 [label="t2\nRate_Limiter_RateLimiter"];
+	t0 -> Rate_Limiter_RateLimiter	 [color=green,
+		label="ch_0_2(Rate_Limiter_In1_1)"];
+	extout	 [label=extout];
+	Rate_Limiter_In1	 [label="t1\nRate_Limiter_In1",
+		shape=box];
+	Rate_Limiter_In1 -> t0	 [color=green,
+		label="in port Rate_Limiter_In1(Rate_Limiter_In1_1)"];
+	Rate_Limiter_RateLimiter -> extout	 [color=green,
+		label="ch_2_100(Rate_Limiter_RateLimiter_1)"];
+}

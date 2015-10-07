@@ -1,0 +1,17 @@
+digraph csp {
+	graph [rankdir=LR];
+	LogicalOperator_LogicalOperator	 [label="t3\nLogicalOperator_LogicalOperator"];
+	t0 -> LogicalOperator_LogicalOperator	 [color=green,
+		label="ch_0_3(LogicalOperator_In1_1,LogicalOperator_In2_1)"];
+	extout	 [label=extout];
+	LogicalOperator_In1	 [label="t1\nLogicalOperator_In1",
+		shape=box];
+	LogicalOperator_In1 -> t0	 [color=green,
+		label="in port LogicalOperator_In1(LogicalOperator_In1_1)"];
+	LogicalOperator_In2	 [label="t2\nLogicalOperator_In2",
+		shape=box];
+	LogicalOperator_In2 -> t0	 [color=green,
+		label="in port LogicalOperator_In2(LogicalOperator_In2_1)"];
+	LogicalOperator_LogicalOperator -> extout	 [color=green,
+		label="ch_3_100(LogicalOperator_LogicalOperator_1)"];
+}

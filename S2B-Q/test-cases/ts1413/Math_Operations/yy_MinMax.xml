@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="MinMax" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="MinMax_ert_rtw/MinMax.h" size="2402" timestamp="2015-09-29T13:40:19+0900" type="c-header"/>
+  <file name="xx_MinMax.xml" size="1411" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="MinMax_ert_rtw/MinMax.c" size="1627" timestamp="2015-09-29T13:40:19+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="MinMax_In1" priority="0" rate="0.1">
+    <output line="MinMax_In1_1" port="MinMax_In1_1" usename="true">
+      <connect block="MinMax_MinMax" port="MinMax_MinMax_1"/>
+    </output>
+    <var line="MinMax_In1_1" mode="extin" name="MinMax_In1_1" port="MinMax_In1_1" type="real_T"/>
+    <code file="MinMax_ert_rtw/MinMax.c" line="66" type="init">  MinMax_In1_1 = 0.0;
+</code>
+    <forward block="MinMax_MinMax" type="data">
+      <var line="MinMax_In1_1" mode="input" name="MinMax_In1_1" port="MinMax_MinMax_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="MinMax_In2" priority="0" rate="0.1">
+    <output line="MinMax_In2_1" port="MinMax_In2_1" usename="true">
+      <connect block="MinMax_MinMax" port="MinMax_MinMax_2"/>
+    </output>
+    <var line="MinMax_In2_1" mode="extin" name="MinMax_In2_1" port="MinMax_In2_1" type="real_T"/>
+    <code file="MinMax_ert_rtw/MinMax.c" line="67" type="init">  MinMax_In2_1 = 0.0;
+</code>
+    <forward block="MinMax_MinMax" type="data">
+      <var line="MinMax_In2_1" mode="input" name="MinMax_In2_1" port="MinMax_MinMax_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="MinMax" id="3" name="MinMax_MinMax" priority="1" rate="0.1">
+    <input line="MinMax_In1_1" port="MinMax_MinMax_1">
+      <connect block="MinMax_In1" port="MinMax_In1_1"/>
+    </input>
+    <input line="MinMax_In2_1" port="MinMax_MinMax_2">
+      <connect block="MinMax_In2" port="MinMax_In2_1"/>
+    </input>
+    <output line="MinMax_MinMax_1" port="MinMax_MinMax_1" usename="true">
+      <connect block="MinMax_Out1" port="MinMax_Out1_1"/>
+    </output>
+    <var line="MinMax_In1_1" mode="input" name="MinMax_In1_1" port="MinMax_MinMax_1" type="real_T"/>
+    <var line="MinMax_In2_1" mode="input" name="MinMax_In2_1" port="MinMax_MinMax_2" type="real_T"/>
+    <var line="MinMax_MinMax_1" mode="extout" name="MinMax_MinMax_1" port="MinMax_MinMax_1" type="real_T"/>
+    <code file="MinMax_ert_rtw/MinMax.c" line="34" type="task">  /* MinMax: '&lt;Root&gt;/MinMax' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   */
+  u0 = MinMax_In1_1;
+  u1 = MinMax_In2_1;
+  if ((u0 &lt;= u1) || rtIsNaN(u1)) {
+    u1 = u0;
+  }
+
+  MinMax_MinMax_1 = u1;
+
+  /* End of MinMax: '&lt;Root&gt;/MinMax' */
+</code>
+    <code file="MinMax_ert_rtw/MinMax.c" line="63" type="init">  MinMax_MinMax_1 = 0.0;
+
+</code>
+    <forward block="MinMax_Out1" type="port">
+      <var line="MinMax_MinMax_1" mode="input" name="MinMax_MinMax_1" port="MinMax_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="MinMax_In1" type="data">
+      <var line="MinMax_In1_1" mode="extin" name="MinMax_In1_1" port="MinMax_In1_1" type="real_T"/>
+    </backword>
+    <backword block="MinMax_In2" type="data">
+      <var line="MinMax_In2_1" mode="extin" name="MinMax_In2_1" port="MinMax_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="MinMax_Out1" priority="2" rate="0.1">
+    <input line="MinMax_MinMax_1" port="MinMax_Out1_1">
+      <connect block="MinMax_MinMax" port="MinMax_MinMax_1"/>
+    </input>
+    <var line="MinMax_MinMax_1" mode="input" name="MinMax_MinMax_1" port="MinMax_Out1_1" type="real_T"/>
+    <backword block="MinMax_MinMax" type="port">
+      <var line="MinMax_MinMax_1" mode="extout" name="MinMax_MinMax_1" port="MinMax_MinMax_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="common-init">  rt_InitInfAndNaN(sizeof(real_T));
+  rtmSetErrorStatus(MinMax_M, (NULL));
+</code>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_MinMax {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T u0;
+  real_T u1;
+
+</code>
+  <object kind="rtm-extern" name="MinMax_M" type="extern RT_MODEL_MinMax * const"/>
+  <object kind="rtm-object" name="MinMax_M_" type="RT_MODEL_MinMax"/>
+  <object kind="rtm-pointer" name="MinMax_M" type="RT_MODEL_MinMax * const" value="&amp;MinMax_M_"/>
+  <includes file="&lt;stddef.h>" from="MinMax_ert_rtw/MinMax.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="MinMax_ert_rtw/MinMax.h" index="1"/>
+  <includes file="&quot;MinMax_types.h&quot;" from="MinMax_ert_rtw/MinMax.h" index="2"/>
+  <includes file="&quot;rt_nonfinite.h&quot;" from="MinMax_ert_rtw/MinMax.h" index="3"/>
+  <includes file="&quot;rtGetInf.h&quot;" from="MinMax_ert_rtw/MinMax.h" index="4"/>
+  <includes file="&quot;MinMax_private.h&quot;" from="MinMax_ert_rtw/MinMax.c" index="5"/>
+</sm:blocks>

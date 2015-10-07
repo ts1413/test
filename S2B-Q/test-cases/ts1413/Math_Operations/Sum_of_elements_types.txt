@@ -1,0 +1,13 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Sum_of_elements" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Sum_of_elements/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Sum_of_elements/SumofElements" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Sum_of_elements/Out1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

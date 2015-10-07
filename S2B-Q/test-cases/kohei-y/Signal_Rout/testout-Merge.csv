@@ -1,0 +1,34 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Merge_In1_1",,
+"task100",,,,
+,"Merge_Merge_1",,,
+"task4",,,,
+,"Merge_In1_1",,,
+,,,,"{
+"
+,,,,"  /* If: '<Root>/If' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  if (Merge_In1_1 > 0.0) {
+    /* Outputs for IfAction SubSystem: '<Root>/IfActionSubsystem' incorporates:
+     *  ActionPort: '<S1>/ActionPort'
+     */
+    Merge_IfActionSubsystem(Merge_Constant_1, &Merge_Merge_1);
+
+    /* End of Outputs for SubSystem: '<Root>/IfActionSubsystem' */
+  } else {
+    /* Outputs for IfAction SubSystem: '<Root>/IfActionSubsystem1' incorporates:
+     *  ActionPort: '<S2>/ActionPort'
+     */
+    Merge_IfActionSubsystem(Merge_Constant1_1, &Merge_Merge_1);
+
+    /* End of Outputs for SubSystem: '<Root>/IfActionSubsystem1' */
+  }
+
+  /* End of If: '<Root>/If' */
+"
+,,,,"}
+"
+"task13",,,,
+,,"Merge_Merge_1",,

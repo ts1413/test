@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Chart" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Chart_In1" rate="-1">
+      <output line="Chart_In1_1" port="Chart_In1_1" usename="true">
+         <connect block="Chart_Chart" port="Chart_Chart_in"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Chart_Chart">
+      <input line="Chart_In1_1" port="Chart_Chart_in">
+         <connect block="Chart_In1" port="Chart_In1_1"/>
+      </input>
+      <output line="Chart_Chart_1" port="Chart_Chart_out" usename="false">
+         <connect block="Chart_Out1" port="Chart_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Chart_Chart_in" rate="-1">
+            <output line="Chart_Chart_in_1" port="Chart_Chart_in_1" usename="false">
+               <connect block="Chart_Chart_SFunction" port="Chart_Chart_SFunction_1"/>
+            </output>
+         </block>
+         <block blocktype="Demux" name="Chart_Chart_Demux">
+            <input line="Chart_Chart_SFunction_1" port="Chart_Chart_Demux_1">
+               <connect block="Chart_Chart_SFunction" port="Chart_Chart_SFunction_1"/>
+            </input>
+            <output line="Chart_Chart_Demux_1" port="Chart_Chart_Demux_1" usename="false">
+               <connect block="Chart_Chart_Terminator" port="Chart_Chart_Terminator_1"/>
+            </output>
+         </block>
+         <block blocktype="S-Function" name="Chart_Chart_SFunction">
+            <input line="Chart_Chart_in_1" port="Chart_Chart_SFunction_1">
+               <connect block="Chart_Chart_in" port="Chart_Chart_in_1"/>
+            </input>
+            <output line="Chart_Chart_SFunction_1" port="Chart_Chart_SFunction_1" usename="false">
+               <connect block="Chart_Chart_Demux" port="Chart_Chart_Demux_1"/>
+            </output>
+            <output line="Chart_Chart_SFunction_out" port="Chart_Chart_SFunction_2" usename="true">
+               <connect block="Chart_Chart_out" port="Chart_Chart_out_1"/>
+            </output>
+         </block>
+         <block blocktype="Terminator" name="Chart_Chart_Terminator">
+            <input line="Chart_Chart_Demux_1" port="Chart_Chart_Terminator_1">
+               <connect block="Chart_Chart_Demux" port="Chart_Chart_Demux_1"/>
+            </input>
+         </block>
+         <block blocktype="Outport" name="Chart_Chart_out" rate="-1">
+            <input line="Chart_Chart_SFunction_out" port="Chart_Chart_out_1">
+               <connect block="Chart_Chart_SFunction" port="Chart_Chart_SFunction_2"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Chart_Out1" rate="-1">
+      <input line="Chart_Chart_1" port="Chart_Out1_1">
+         <connect block="Chart_Chart" port="Chart_Chart_out"/>
+      </input>
+   </block>
+</sm:blocks>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="while_iterator_subsystem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.h" size="3339" timestamp="2015-09-29T13:42:29+0900" type="c-header"/>
+  <file name="xx_while_iterator_subsystem.xml" size="4526" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.c" size="2558" timestamp="2015-09-29T13:42:29+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="while_iterator_subsystem_In1" priority="0" rate="0.1">
+    <output line="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_In1_1" usename="true">
+      <connect block="while_iterator_subsystem_WhileIteratorSubsystem" port="while_iterator_subsystem_WhileIteratorSubsystem_In1"/>
+    </output>
+    <var line="while_iterator_subsystem_In1_1" mode="extin" name="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_In1_1" type="boolean_T"/>
+    <code file="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.c" line="66" type="init">  while_iterator_subsystem_In1_1 = false;
+</code>
+    <forward block="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator" type="data">
+      <var line="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" mode="input" name="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_1" type="boolean_T"/>
+    </forward>
+    <forward block="while_iterator_subsystem_Out1" type="port">
+      <var line="while_iterator_subsystem_WhileIteratorSubsystem_1" mode="input" name="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_Out1_1" type="boolean_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="while_iterator_subsystem_In2" priority="0" rate="0.1">
+    <output line="while_iterator_subsystem_In2_1" port="while_iterator_subsystem_In2_1" usename="true">
+      <connect block="while_iterator_subsystem_WhileIteratorSubsystem" port="while_iterator_subsystem_WhileIteratorSubsystem_IC"/>
+    </output>
+    <var line="while_iterator_subsystem_In2_1" mode="extin" name="while_iterator_subsystem_In2_1" port="while_iterator_subsystem_In2_1" type="boolean_T"/>
+    <code file="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.c" line="67" type="init">  while_iterator_subsystem_In2_1 = false;
+
+</code>
+    <forward block="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator" type="data">
+      <var line="while_iterator_subsystem_WhileIteratorSubsystem_IC_1" mode="input" name="while_iterator_subsystem_In2_1" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_2" type="boolean_T"/>
+    </forward>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="3" name="while_iterator_subsystem_WhileIteratorSubsystem" priority="1" rate="0.1" type="iterator">
+    <input line="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_In1">
+      <connect block="while_iterator_subsystem_In1" port="while_iterator_subsystem_In1_1"/>
+    </input>
+    <input line="while_iterator_subsystem_In2_1" port="while_iterator_subsystem_WhileIteratorSubsystem_IC">
+      <connect block="while_iterator_subsystem_In2" port="while_iterator_subsystem_In2_1"/>
+    </input>
+    <output line="while_iterator_subsystem_WhileIteratorSubsystem_1" port="while_iterator_subsystem_WhileIteratorSubsystem_Out1" usename="false">
+      <connect block="while_iterator_subsystem_Out1" port="while_iterator_subsystem_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="4" name="while_iterator_subsystem_WhileIteratorSubsystem_In1" priority="2" rate="-1">
+        <output line="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" usename="false">
+          <connect block="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_1"/>
+          <connect block="while_iterator_subsystem_WhileIteratorSubsystem_Out1" port="while_iterator_subsystem_WhileIteratorSubsystem_Out1_1"/>
+        </output>
+        <merged_to block="while_iterator_subsystem_WhileIteratorSubsystem"/>
+      </block>
+      <block blocktype="Inport" id="5" name="while_iterator_subsystem_WhileIteratorSubsystem_IC" priority="0" rate="-1">
+        <output line="while_iterator_subsystem_WhileIteratorSubsystem_IC_1" port="while_iterator_subsystem_WhileIteratorSubsystem_IC_1" usename="false">
+          <connect block="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_2"/>
+        </output>
+        <merged_to block="while_iterator_subsystem_WhileIteratorSubsystem"/>
+      </block>
+      <block blocktype="WhileIterator" id="6" name="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator" priority="1" rate="-1">
+        <input line="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_1">
+          <connect block="while_iterator_subsystem_WhileIteratorSubsystem_In1" port="while_iterator_subsystem_WhileIteratorSubsystem_In1_1"/>
+        </input>
+        <input line="while_iterator_subsystem_WhileIteratorSubsystem_IC_1" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_2">
+          <connect block="while_iterator_subsystem_WhileIteratorSubsystem_IC" port="while_iterator_subsystem_WhileIteratorSubsystem_IC_1"/>
+        </input>
+        <var line="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" mode="input" name="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_1" type="boolean_T"/>
+        <var line="while_iterator_subsystem_WhileIteratorSubsystem_IC_1" mode="input" name="while_iterator_subsystem_In2_1" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_2" type="boolean_T"/>
+        <param name="MaxIters" storage="" type="double" value="5.0"/>
+        <backword block="while_iterator_subsystem_In1" type="data">
+          <var line="while_iterator_subsystem_In1_1" mode="extin" name="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_In1_1" type="boolean_T"/>
+        </backword>
+        <backword block="while_iterator_subsystem_In2" type="data">
+          <var line="while_iterator_subsystem_In2_1" mode="extin" name="while_iterator_subsystem_In2_1" port="while_iterator_subsystem_In2_1" type="boolean_T"/>
+        </backword>
+        <merged_to block="while_iterator_subsystem_WhileIteratorSubsystem"/>
+      </block>
+      <block blocktype="Outport" id="7" name="while_iterator_subsystem_WhileIteratorSubsystem_Out1" priority="0" rate="-1">
+        <input line="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_Out1_1">
+          <connect block="while_iterator_subsystem_WhileIteratorSubsystem_In1" port="while_iterator_subsystem_WhileIteratorSubsystem_In1_1"/>
+        </input>
+        <param name="Out1_Y0" storage="while_iterator_subsystem_P" type="boolean_T"/>
+        <merged_to block="while_iterator_subsystem_WhileIteratorSubsystem"/>
+      </block>
+    </sm:blocks>
+    <code file="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.c" line="42" type="task">  /* Outputs for Iterator SubSystem: '&lt;Root&gt;/WhileIteratorSubsystem' incorporates:
+   *  WhileIterator: '&lt;S1&gt;/WhileIterator'
+   */
+  s1_iter = 1;
+
+  /* Inport: '&lt;Root&gt;/In2' */
+  loopCond = while_iterator_subsystem_In2_1;
+  while (loopCond &amp;&amp; (s1_iter &lt;= 5)) {
+    /* Outport: '&lt;Root&gt;/Out1' incorporates:
+     *  Inport: '&lt;Root&gt;/In1'
+     *  Inport: '&lt;S1&gt;/In1'
+     */
+    while_iterator_subsystem_Y.Out1 = while_iterator_subsystem_In1_1;
+    loopCond = while_iterator_subsystem_Y.Out1;
+    s1_iter++;
+  }
+
+  /* End of Outputs for SubSystem: '&lt;Root&gt;/WhileIteratorSubsystem' */
+</code>
+    <code file="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.c" line="72" type="init">  /* Start for Iterator SubSystem: '&lt;Root&gt;/WhileIteratorSubsystem' */
+  while_iterator_subsystem_Y.Out1 = while_iterator_subsystem_P.Out1_Y0;
+
+  /* End of Start for SubSystem: '&lt;Root&gt;/WhileIteratorSubsystem' */
+</code>
+    <merge_block block="while_iterator_subsystem_WhileIteratorSubsystem_In1"/>
+    <merge_block block="while_iterator_subsystem_WhileIteratorSubsystem_IC"/>
+    <merge_block block="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator"/>
+    <merge_block block="while_iterator_subsystem_WhileIteratorSubsystem_Out1"/>
+  </block>
+  <block blocktype="Outport" id="8" name="while_iterator_subsystem_Out1" priority="2" rate="0.1">
+    <input line="while_iterator_subsystem_WhileIteratorSubsystem_1" port="while_iterator_subsystem_Out1_1">
+      <connect block="while_iterator_subsystem_WhileIteratorSubsystem" port="while_iterator_subsystem_WhileIteratorSubsystem_Out1"/>
+    </input>
+    <var line="while_iterator_subsystem_WhileIteratorSubsystem_1" mode="input" name="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_Out1_1" type="boolean_T"/>
+    <var line="" mode="extout" name="Out1" port="" storage="while_iterator_subsystem_Y" type="boolean_T"/>
+    <code file="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.c" line="70" type="init">  while_iterator_subsystem_Y.Out1 = false;
+
+</code>
+    <backword block="while_iterator_subsystem_In1" type="port">
+      <var line="while_iterator_subsystem_In1_1" mode="extin" name="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_In1_1" type="boolean_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_while_iterator_subsys_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  int32_T s1_iter;
+  boolean_T loopCond;
+
+</code>
+  <object kind="rtm-extern" name="while_iterator_subsystem_M" type="extern RT_MODEL_while_iterator_subsy_T * const"/>
+  <object kind="rtm-object" name="while_iterator_subsystem_M_" type="RT_MODEL_while_iterator_subsy_T"/>
+  <object kind="rtm-pointer" name="while_iterator_subsystem_M" type="RT_MODEL_while_iterator_subsy_T * const" value="&amp;while_iterator_subsystem_M_"/>
+  <includes file="&lt;stddef.h>" from="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.h" index="1"/>
+  <includes file="&quot;while_iterator_subsystem_types.h&quot;" from="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.h" index="2"/>
+  <includes file="&quot;while_iterator_subsystem_private.h&quot;" from="while_iterator_subsystem_ert_rtw/while_iterator_subsystem.c" index="3"/>
+</sm:blocks>

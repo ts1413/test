@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	VectorConcatenate_VectorConcatenate	 [label="t2\nVectorConcatenate_VectorConcatenate"];
+	t0 -> VectorConcatenate_VectorConcatenate	 [color=green,
+		label="ch_0_2(VectorConcatenate_In1_1)"];
+	extout	 [label=extout];
+	VectorConcatenate_In1	 [label="t1\nVectorConcatenate_In1",
+		shape=box];
+	VectorConcatenate_In1 -> t0	 [color=green,
+		label="in port VectorConcatenate_In1(VectorConcatenate_In1_1)"];
+	VectorConcatenate_VectorConcatenate -> extout	 [color=green,
+		label="ch_2_100(VectorConcatenate_VectorConcatenate_1)"];
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="LogicalOperator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="LogicalOperator_In1" priority="0" rate="0.1">
+    <output line="LogicalOperator_In1_1" port="LogicalOperator_In1_1" usename="true">
+      <connect block="LogicalOperator_LogicalOperator" port="LogicalOperator_LogicalOperator_1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="LogicalOperator_In2" priority="0" rate="0.1">
+    <output line="LogicalOperator_In2_1" port="LogicalOperator_In2_1" usename="true">
+      <connect block="LogicalOperator_LogicalOperator" port="LogicalOperator_LogicalOperator_2"/>
+    </output>
+  </block>
+  <block blocktype="Logic" name="LogicalOperator_LogicalOperator" priority="1" rate="0.1">
+    <input line="LogicalOperator_In1_1" port="LogicalOperator_LogicalOperator_1">
+      <connect block="LogicalOperator_In1" port="LogicalOperator_In1_1"/>
+    </input>
+    <input line="LogicalOperator_In2_1" port="LogicalOperator_LogicalOperator_2">
+      <connect block="LogicalOperator_In2" port="LogicalOperator_In2_1"/>
+    </input>
+    <output line="LogicalOperator_LogicalOperator_1" port="LogicalOperator_LogicalOperator_1" usename="true">
+      <connect block="LogicalOperator_Out1" port="LogicalOperator_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="LogicalOperator_Out1" priority="2" rate="0.1">
+    <input line="LogicalOperator_LogicalOperator_1" port="LogicalOperator_Out1_1">
+      <connect block="LogicalOperator_LogicalOperator" port="LogicalOperator_LogicalOperator_1"/>
+    </input>
+  </block>
+</sm:blocks>

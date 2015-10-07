@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Delay" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Delay_In1" rate="-1">
+      <output line="Delay_In1_1" port="Delay_In1_1" usename="true">
+         <connect block="Delay_Delay" port="Delay_Delay_1"/>
+      </output>
+   </block>
+   <block blocktype="Delay" name="Delay_Delay" rate="-1">
+      <input line="Delay_In1_1" port="Delay_Delay_1">
+         <connect block="Delay_In1" port="Delay_In1_1"/>
+      </input>
+      <output line="Delay_Delay_1" port="Delay_Delay_1" usename="true">
+         <connect block="Delay_Out1" port="Delay_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Delay_Out1" rate="-1">
+      <input line="Delay_Delay_1" port="Delay_Out1_1">
+         <connect block="Delay_Delay" port="Delay_Delay_1"/>
+      </input>
+   </block>
+</sm:blocks>

@@ -1,0 +1,11 @@
+Solver "FixedStepDiscrete" solverMode=MultiTasking fixedStep=0.1
+Block "Rate_Transition_1z" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Rate_Transition_1z/In1" samplePeriod=0.5 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Rate_Transition_1z/RateTransition" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Rate_Transition_1z/Out1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

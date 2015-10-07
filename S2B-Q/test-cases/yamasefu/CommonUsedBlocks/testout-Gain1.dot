@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Gain1_Gain	 [label="t2\nGain1_Gain"];
+	t0 -> Gain1_Gain	 [color=green,
+		label="ch_0_2(Gain1_In1_1)"];
+	extout	 [label=extout];
+	Gain1_In1	 [label="t1\nGain1_In1",
+		shape=box];
+	Gain1_In1 -> t0	 [color=green,
+		label="in port Gain1_In1(Gain1_In1_1)"];
+	Gain1_Gain -> extout	 [color=green,
+		label="ch_2_100(Gain1_Gain_1)"];
+}

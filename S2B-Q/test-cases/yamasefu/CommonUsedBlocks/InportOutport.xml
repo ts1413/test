@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="InportOutport" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="InportOutport_In1" rate="-1">
+      <output line="InportOutport_In1_1" port="InportOutport_In1_1" usename="true">
+         <connect block="InportOutport_Out1" port="InportOutport_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="InportOutport_Out1" rate="-1">
+      <input line="InportOutport_In1_1" port="InportOutport_Out1_1">
+         <connect block="InportOutport_In1" port="InportOutport_In1_1"/>
+      </input>
+   </block>
+</sm:blocks>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Discrete_Transfer_Fcn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.h" size="2849" timestamp="2015-09-29T13:39:02+0900" type="c-header"/>
+  <file name="xx_Discrete_Transfer_Fcn.xml" size="1558" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.c" size="2178" timestamp="2015-09-29T13:39:02+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Discrete_Transfer_Fcn_In1" priority="0" rate="0.1">
+    <output line="Discrete_Transfer_Fcn_In1_1" port="Discrete_Transfer_Fcn_In1_1" usename="true">
+      <connect block="Discrete_Transfer_Fcn_DiscreteTransferFcn" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1"/>
+    </output>
+    <var line="Discrete_Transfer_Fcn_In1_1" mode="extin" name="Discrete_Transfer_Fcn_In1_1" port="Discrete_Transfer_Fcn_In1_1" type="real_T"/>
+    <code file="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.c" line="66" type="init">  Discrete_Transfer_Fcn_In1_1 = 0.0;
+</code>
+    <forward block="Discrete_Transfer_Fcn_DiscreteTransferFcn" type="port">
+      <var line="Discrete_Transfer_Fcn_In1_1" mode="input" name="Discrete_Transfer_Fcn_In1_1" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="DiscreteTransferFcn" id="2" name="Discrete_Transfer_Fcn_DiscreteTransferFcn" priority="1" rate="0.1">
+    <input line="Discrete_Transfer_Fcn_In1_1" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1">
+      <connect block="Discrete_Transfer_Fcn_In1" port="Discrete_Transfer_Fcn_In1_1"/>
+    </input>
+    <output line="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" usename="true">
+      <connect block="Discrete_Transfer_Fcn_Out1" port="Discrete_Transfer_Fcn_Out1_1"/>
+    </output>
+    <var line="Discrete_Transfer_Fcn_In1_1" mode="input" name="Discrete_Transfer_Fcn_In1_1" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" type="real_T"/>
+    <var line="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" mode="extout" name="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" type="real_T"/>
+    <state name="DiscreteTransferFcn_states" storage="Discrete_Transfer_Fcn_DWork" type="real_T"/>
+    <param name="Numerator" storage="" type="double" value="1.0"/>
+    <code file="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.c" line="36" type="task">  /* DiscreteTransferFcn: '&lt;Root&gt;/DiscreteTransferFcn' */
+  denAccum = 1.0 * Discrete_Transfer_Fcn_DWork.DiscreteTransferFcn_states;
+  Discrete_Transfer_Fcn_DiscreteTransferFcn_1 = denAccum;
+
+</code>
+    <code file="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.c" line="40" type="update">  /* Update for DiscreteTransferFcn: '&lt;Root&gt;/DiscreteTransferFcn' incorporates:
+   *  Update for Inport: '&lt;Root&gt;/In1'
+   */
+  denAccum = Discrete_Transfer_Fcn_In1_1;
+  denAccum -= 0.5 * Discrete_Transfer_Fcn_DWork.DiscreteTransferFcn_states;
+  denAccum /= 1.0;
+  Discrete_Transfer_Fcn_DWork.DiscreteTransferFcn_states = denAccum;
+</code>
+    <code file="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.c" line="60" type="init">  Discrete_Transfer_Fcn_DiscreteTransferFcn_1 = 0.0;
+
+</code>
+    <code file="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.c" line="63" type="state">  Discrete_Transfer_Fcn_DWork.DiscreteTransferFcn_states = 0.0;
+
+</code>
+    <forward block="Discrete_Transfer_Fcn_Out1" type="port">
+      <var line="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" mode="input" name="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" port="Discrete_Transfer_Fcn_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Discrete_Transfer_Fcn_In1" type="port">
+      <var line="Discrete_Transfer_Fcn_In1_1" mode="extin" name="Discrete_Transfer_Fcn_In1_1" port="Discrete_Transfer_Fcn_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Discrete_Transfer_Fcn_Out1" priority="2" rate="0.1">
+    <input line="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" port="Discrete_Transfer_Fcn_Out1_1">
+      <connect block="Discrete_Transfer_Fcn_DiscreteTransferFcn" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1"/>
+    </input>
+    <var line="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" mode="input" name="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" port="Discrete_Transfer_Fcn_Out1_1" type="real_T"/>
+    <backword block="Discrete_Transfer_Fcn_DiscreteTransferFcn" type="port">
+      <var line="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" mode="extout" name="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Discrete_Transfer_Fcn {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T denAccum;
+
+</code>
+  <object kind="rtm-extern" name="Discrete_Transfer_Fcn_M" type="extern RT_MODEL_Discrete_Transfer_Fcn * const"/>
+  <object kind="rtm-object" name="Discrete_Transfer_Fcn_M_" type="RT_MODEL_Discrete_Transfer_Fcn"/>
+  <object kind="rtm-pointer" name="Discrete_Transfer_Fcn_M" type="RT_MODEL_Discrete_Transfer_Fcn * const" value="&amp;Discrete_Transfer_Fcn_M_"/>
+  <includes file="&lt;stddef.h>" from="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.h" index="1"/>
+  <includes file="&quot;Discrete_Transfer_Fcn_types.h&quot;" from="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.h" index="2"/>
+  <includes file="&quot;Discrete_Transfer_Fcn_private.h&quot;" from="Discrete_Transfer_Fcn_ert_rtw/Discrete_Transfer_Fcn.c" index="3"/>
+</sm:blocks>

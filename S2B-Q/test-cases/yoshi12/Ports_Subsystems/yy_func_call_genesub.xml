@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="func_call_genesub" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="func_call_genesub_ert_rtw/func_call_genesub.h" size="3109" timestamp="2015-09-29T13:41:52+0900" type="c-header"/>
+  <file name="xx_func_call_genesub.xml" size="3216" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="func_call_genesub_ert_rtw/func_call_genesub.c" size="2002" timestamp="2015-09-29T13:41:52+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="func_call_genesub_In1" priority="0" rate="0.1">
+    <output line="func_call_genesub_In1_1" port="func_call_genesub_In1_1" usename="true">
+      <connect block="func_call_genesub_Function_CallSubsystem" port="func_call_genesub_Function_CallSubsystem_In1"/>
+    </output>
+    <var line="func_call_genesub_In1_1" mode="extin" name="func_call_genesub_In1_1" port="func_call_genesub_In1_1" type="real_T"/>
+    <code file="func_call_genesub_ert_rtw/func_call_genesub.c" line="51" type="init">  func_call_genesub_In1_1 = 0.0;
+
+</code>
+    <forward block="func_call_genesub_Out1" type="port">
+      <var line="func_call_genesub_Function_CallSubsystem_1" mode="input" name="func_call_genesub_In1_1" port="func_call_genesub_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_FunctionCallGenerator" id="2" name="func_call_genesub_Function_CallGenerator" priority="1" rate="0.1">
+    <output line="func_call_genesub_Function_CallGenerator_0" port="func_call_genesub_Function_CallGenerator_0" usename="false">
+      <connect block="func_call_genesub_Function_CallSubsystem" port="func_call_genesub_Function_CallSubsystem_function"/>
+    </output>
+    <param name="numberOfIterations" storage="" type="double" value="1.0"/>
+    <param name="sample_time" storage="" type="double" value="0.1"/>
+    <code file="func_call_genesub_ert_rtw/func_call_genesub.c" line="32" type="task">  /* S-Function (fcncallgen): '&lt;Root&gt;/Function_CallGenerator' incorporates:
+   *  SubSystem: '&lt;Root&gt;/Function_CallSubsystem'
+   */
+</code>
+    <forward block="func_call_genesub_Function_CallSubsystem" type="data"/>
+    <merge_block block="func_call_genesub_Function_CallSubsystem"/>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="3" name="func_call_genesub_Function_CallSubsystem" priority="2" rate="0.1" type="triggered">
+    <input line="func_call_genesub_In1_1" port="func_call_genesub_Function_CallSubsystem_In1">
+      <connect block="func_call_genesub_In1" port="func_call_genesub_In1_1"/>
+    </input>
+    <input line="func_call_genesub_Function_CallGenerator_0" port="func_call_genesub_Function_CallSubsystem_function">
+      <connect block="func_call_genesub_Function_CallGenerator" port="func_call_genesub_Function_CallGenerator_0"/>
+    </input>
+    <output line="func_call_genesub_Function_CallSubsystem_1" port="func_call_genesub_Function_CallSubsystem_Out1" usename="false">
+      <connect block="func_call_genesub_Out1" port="func_call_genesub_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="4" name="func_call_genesub_Function_CallSubsystem_In1" priority="1" rate="-1">
+        <output line="func_call_genesub_Function_CallSubsystem_In1_1" port="func_call_genesub_Function_CallSubsystem_In1_1" usename="false">
+          <connect block="func_call_genesub_Function_CallSubsystem_Out1" port="func_call_genesub_Function_CallSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="TriggerPort" id="5" name="func_call_genesub_Function_CallSubsystem_function" priority="0" rate="-1"/>
+      <block blocktype="Outport" id="6" name="func_call_genesub_Function_CallSubsystem_Out1" priority="0" rate="-1">
+        <input line="func_call_genesub_Function_CallSubsystem_In1_1" port="func_call_genesub_Function_CallSubsystem_Out1_1">
+          <connect block="func_call_genesub_Function_CallSubsystem_In1" port="func_call_genesub_Function_CallSubsystem_In1_1"/>
+        </input>
+        <param name="Out1_Y0" storage="func_call_genesub_P" type="real_T"/>
+      </block>
+    </sm:blocks>
+    <backword block="func_call_genesub_Function_CallGenerator" type="data"/>
+    <merged_to block="func_call_genesub_Function_CallGenerator"/>
+  </block>
+  <block blocktype="Outport" id="7" name="func_call_genesub_Out1" priority="3" rate="0.1">
+    <input line="func_call_genesub_Function_CallSubsystem_1" port="func_call_genesub_Out1_1">
+      <connect block="func_call_genesub_Function_CallSubsystem" port="func_call_genesub_Function_CallSubsystem_Out1"/>
+    </input>
+    <var line="func_call_genesub_Function_CallSubsystem_1" mode="input" name="func_call_genesub_In1_1" port="func_call_genesub_Out1_1" type="real_T"/>
+    <var line="" mode="extout" name="Out1" port="" storage="func_call_genesub_Y" type="real_T"/>
+    <code file="func_call_genesub_ert_rtw/func_call_genesub.c" line="35" type="task">  /* Outport: '&lt;Root&gt;/Out1' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;S1&gt;/In1'
+   */
+  func_call_genesub_Y.Out1 = func_call_genesub_In1_1;
+</code>
+    <code file="func_call_genesub_ert_rtw/func_call_genesub.c" line="54" type="init">  func_call_genesub_Y.Out1 = 0.0;
+
+  func_call_genesub_Y.Out1 = func_call_genesub_P.Out1_Y0;
+</code>
+    <backword block="func_call_genesub_In1" type="port">
+      <var line="func_call_genesub_In1_1" mode="extin" name="func_call_genesub_In1_1" port="func_call_genesub_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_func_call_genesub_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="func_call_genesub_M" type="extern RT_MODEL_func_call_genesub_T * const"/>
+  <object kind="rtm-object" name="func_call_genesub_M_" type="RT_MODEL_func_call_genesub_T"/>
+  <object kind="rtm-pointer" name="func_call_genesub_M" type="RT_MODEL_func_call_genesub_T * const" value="&amp;func_call_genesub_M_"/>
+  <includes file="&lt;stddef.h>" from="func_call_genesub_ert_rtw/func_call_genesub.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="func_call_genesub_ert_rtw/func_call_genesub.h" index="1"/>
+  <includes file="&quot;func_call_genesub_types.h&quot;" from="func_call_genesub_ert_rtw/func_call_genesub.h" index="2"/>
+  <includes file="&quot;func_call_genesub_private.h&quot;" from="func_call_genesub_ert_rtw/func_call_genesub.c" index="3"/>
+</sm:blocks>

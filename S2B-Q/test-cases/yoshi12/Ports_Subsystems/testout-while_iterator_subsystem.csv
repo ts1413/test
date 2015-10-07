@@ -1,0 +1,27 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+"task100",,,,
+"task3",,,,
+,,,,"{
+"
+,,,,"  /* Outputs for Iterator SubSystem: '<Root>/WhileIteratorSubsystem' incorporates:
+   *  WhileIterator: '<S1>/WhileIterator'
+   */
+  s1_iter = 1;
+
+  /* Inport: '<Root>/In2' */
+  loopCond = while_iterator_subsystem_In2_1;
+  while (loopCond && (s1_iter <= 5)) {
+    /* Outport: '<Root>/Out1' incorporates:
+     *  Inport: '<Root>/In1'
+     *  Inport: '<S1>/In1'
+     */
+    while_iterator_subsystem_Y.Out1 = while_iterator_subsystem_In1_1;
+    loopCond = while_iterator_subsystem_Y.Out1;
+    s1_iter++;
+  }
+
+  /* End of Outputs for SubSystem: '<Root>/WhileIteratorSubsystem' */
+"
+,,,,"}
+"

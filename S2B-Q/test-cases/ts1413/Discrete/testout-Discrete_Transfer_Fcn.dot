@@ -1,0 +1,10 @@
+digraph csp {
+	graph [rankdir=LR];
+	extout	 [label=extout];
+	t0 -> extout	 [color=green,
+		label="ch_0_100(Discrete_Transfer_Fcn_In1_1)"];
+	Discrete_Transfer_Fcn_In1	 [label="t1\nDiscrete_Transfer_Fcn_In1",
+		shape=box];
+	Discrete_Transfer_Fcn_In1 -> t0	 [color=green,
+		label="in port Discrete_Transfer_Fcn_In1(Discrete_Transfer_Fcn_In1_1)"];
+}

@@ -1,0 +1,18 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Detect_Change_FrameBase_In1_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out1' incorporates:
+   *  Inport: '<Root>/In1'
+   *  RelationalOperator: '<S1>/FixPt Relational Operator'
+   */
+  Detect_Change_FrameBase_Y.Out1 = (Detect_Change_FrameBase_In1_1 !=
+    Detect_Change_FrameBase_B.Uk1);
+
+"
+,,,,"}
+"
+"task2",,,,
+,"Detect_Change_FrameBase_In1_1",,,

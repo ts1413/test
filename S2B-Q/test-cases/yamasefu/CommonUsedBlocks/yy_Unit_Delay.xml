@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Unit_Delay" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Unit_Delay_ert_rtw/Unit_Delay.h" size="2922" timestamp="2015-10-05T16:09:51+0900" type="c-header"/>
+  <file name="xx_Unit_Delay.xml" size="1241" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="Unit_Delay_ert_rtw/Unit_Delay.c" size="1826" timestamp="2015-10-05T16:09:51+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Unit_Delay_In1" priority="0" rate="0.1">
+    <output line="Unit_Delay_In1_1" port="Unit_Delay_In1_1" usename="true">
+      <connect block="Unit_Delay_UnitDelay" port="Unit_Delay_UnitDelay_1"/>
+    </output>
+    <var line="Unit_Delay_In1_1" mode="extin" name="Unit_Delay_In1_1" port="Unit_Delay_In1_1" type="real_T"/>
+    <code file="Unit_Delay_ert_rtw/Unit_Delay.c" line="60" type="init">  Unit_Delay_In1_1 = 0.0;
+
+</code>
+    <forward block="Unit_Delay_UnitDelay" type="data">
+      <var line="Unit_Delay_In1_1" mode="input" name="Unit_Delay_In1_1" port="Unit_Delay_UnitDelay_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="UnitDelay" id="2" name="Unit_Delay_UnitDelay" priority="1" rate="0.1">
+    <input line="Unit_Delay_In1_1" port="Unit_Delay_UnitDelay_1">
+      <connect block="Unit_Delay_In1" port="Unit_Delay_In1_1"/>
+    </input>
+    <output line="Unit_Delay_UnitDelay_1" port="Unit_Delay_UnitDelay_1" usename="true">
+      <connect block="Unit_Delay_Out1" port="Unit_Delay_Out1_1"/>
+    </output>
+    <var line="Unit_Delay_In1_1" mode="input" name="Unit_Delay_In1_1" port="Unit_Delay_UnitDelay_1" type="real_T"/>
+    <var line="Unit_Delay_UnitDelay_1" mode="extout" name="Unit_Delay_UnitDelay_1" port="Unit_Delay_UnitDelay_1" type="real_T"/>
+    <state name="UnitDelay_DSTATE" storage="Unit_Delay_DW" type="real_T"/>
+    <param name="InitialValue" storage="" type="double" value="0.0"/>
+    <param name="UnitDelay_InitialCondition" storage="Unit_Delay_P" type="real_T"/>
+    <code file="Unit_Delay_ert_rtw/Unit_Delay.c" line="33" type="task">  /* UnitDelay: '&lt;Root&gt;/UnitDelay' */
+  Unit_Delay_UnitDelay_1 = Unit_Delay_DW.UnitDelay_DSTATE;
+
+</code>
+    <code file="Unit_Delay_ert_rtw/Unit_Delay.c" line="36" type="update">  /* Update for UnitDelay: '&lt;Root&gt;/UnitDelay' incorporates:
+   *  Update for Inport: '&lt;Root&gt;/In1'
+   */
+  Unit_Delay_DW.UnitDelay_DSTATE = Unit_Delay_In1_1;
+</code>
+    <code file="Unit_Delay_ert_rtw/Unit_Delay.c" line="53" type="init">  Unit_Delay_UnitDelay_1 = 0.0;
+
+</code>
+    <code file="Unit_Delay_ert_rtw/Unit_Delay.c" line="62" type="state">  /* InitializeConditions for UnitDelay: '&lt;Root&gt;/UnitDelay' */
+  Unit_Delay_DW.UnitDelay_DSTATE = Unit_Delay_P.UnitDelay_InitialCondition;
+</code>
+    <forward block="Unit_Delay_Out1" type="data">
+      <var line="Unit_Delay_UnitDelay_1" mode="input" name="Unit_Delay_UnitDelay_1" port="Unit_Delay_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Unit_Delay_In1" type="data">
+      <var line="Unit_Delay_In1_1" mode="extin" name="Unit_Delay_In1_1" port="Unit_Delay_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Unit_Delay_Out1" priority="2" rate="0.1">
+    <input line="Unit_Delay_UnitDelay_1" port="Unit_Delay_Out1_1">
+      <connect block="Unit_Delay_UnitDelay" port="Unit_Delay_UnitDelay_1"/>
+    </input>
+    <var line="Unit_Delay_UnitDelay_1" mode="input" name="Unit_Delay_UnitDelay_1" port="Unit_Delay_Out1_1" type="real_T"/>
+    <backword block="Unit_Delay_UnitDelay" type="data">
+      <var line="Unit_Delay_UnitDelay_1" mode="extout" name="Unit_Delay_UnitDelay_1" port="Unit_Delay_UnitDelay_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Unit_Delay_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Unit_Delay_M" type="extern RT_MODEL_Unit_Delay_T * const"/>
+  <object kind="rtm-object" name="Unit_Delay_M_" type="RT_MODEL_Unit_Delay_T"/>
+  <object kind="rtm-pointer" name="Unit_Delay_M" type="RT_MODEL_Unit_Delay_T * const" value="&amp;Unit_Delay_M_"/>
+  <includes file="&lt;stddef.h>" from="Unit_Delay_ert_rtw/Unit_Delay.h" index="0"/>
+  <includes file="&lt;string.h>" from="Unit_Delay_ert_rtw/Unit_Delay.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Unit_Delay_ert_rtw/Unit_Delay.h" index="2"/>
+  <includes file="&quot;Unit_Delay_types.h&quot;" from="Unit_Delay_ert_rtw/Unit_Delay.h" index="3"/>
+  <includes file="&quot;Unit_Delay_private.h&quot;" from="Unit_Delay_ert_rtw/Unit_Delay.c" index="4"/>
+</sm:blocks>

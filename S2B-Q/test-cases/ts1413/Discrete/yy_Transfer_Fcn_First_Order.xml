@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Transfer_Fcn_First_Order" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.h" size="3541" timestamp="2015-09-29T13:39:13+0900" type="c-header"/>
+  <file name="xx_Transfer_Fcn_First_Order.xml" size="1714" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.c" size="2651" timestamp="2015-09-29T13:39:13+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Transfer_Fcn_First_Order_In1" priority="0" rate="0.1">
+    <output line="Transfer_Fcn_First_Order_In1_1" port="Transfer_Fcn_First_Order_In1_1" usename="true">
+      <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1"/>
+    </output>
+    <var line="Transfer_Fcn_First_Order_In1_1" mode="extin" name="Transfer_Fcn_First_Order_In1_1" port="Transfer_Fcn_First_Order_In1_1" type="real_T"/>
+    <code file="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.c" line="81" type="init">  Transfer_Fcn_First_Order_In1_1 = 0.0;
+
+</code>
+    <forward block="Transfer_Fcn_First_Order_TransferFcnFirstOrder" type="data">
+      <var line="Transfer_Fcn_First_Order_In1_1" mode="input" name="Transfer_Fcn_First_Order_In1_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_FirstOrderTransferFcn" id="2" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder" priority="0" rate="0.1">
+    <input line="Transfer_Fcn_First_Order_In1_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1">
+      <connect block="Transfer_Fcn_First_Order_In1" port="Transfer_Fcn_First_Order_In1_1"/>
+    </input>
+    <output line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1" usename="true">
+      <connect block="Transfer_Fcn_First_Order_Out1" port="Transfer_Fcn_First_Order_Out1_1"/>
+    </output>
+    <var line="Transfer_Fcn_First_Order_In1_1" mode="input" name="Transfer_Fcn_First_Order_In1_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1" type="real_T"/>
+    <param name="ICPrevOutput" storage="" type="double" value="0.0"/>
+    <param name="PoleZ" storage="" type="double" value="0.95"/>
+    <forward block="Transfer_Fcn_First_Order_Out1" type="data"/>
+    <backword block="Transfer_Fcn_First_Order_In1" type="data">
+      <var line="Transfer_Fcn_First_Order_In1_1" mode="extin" name="Transfer_Fcn_First_Order_In1_1" port="Transfer_Fcn_First_Order_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Transfer_Fcn_First_Order_Out1" priority="5" rate="0.1">
+    <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1" port="Transfer_Fcn_First_Order_Out1_1">
+      <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1"/>
+    </input>
+    <var line="" mode="extout" name="Out1" port="" storage="Transfer_Fcn_First_Order_Y" type="real_T"/>
+    <code file="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.c" line="51" type="task">  /* Outport: '&lt;Root&gt;/Out1' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Sum: '&lt;S1&gt;/Sum'
+   */
+  Transfer_Fcn_First_Order_Y.Out1 = Transfer_Fcn_First_Order_B.PoleYk1Uk +
+    Transfer_Fcn_First_Order_In1_1;
+
+</code>
+    <code file="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.c" line="84" type="init">  Transfer_Fcn_First_Order_Y.Out1 = 0.0;
+</code>
+    <backword block="Transfer_Fcn_First_Order_TransferFcnFirstOrder" type="data"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Transfer_Fcn_First_Orde {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Transfer_Fcn_First_Order_M" type="extern RT_MODEL_Transfer_Fcn_First_Ord * const"/>
+  <object kind="rtm-object" name="Transfer_Fcn_First_Order_M_" type="RT_MODEL_Transfer_Fcn_First_Ord"/>
+  <object kind="rtm-pointer" name="Transfer_Fcn_First_Order_M" type="RT_MODEL_Transfer_Fcn_First_Ord * const" value="&amp;Transfer_Fcn_First_Order_M_"/>
+  <includes file="&lt;stddef.h>" from="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.h" index="1"/>
+  <includes file="&quot;Transfer_Fcn_First_Order_types.h&quot;" from="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.h" index="2"/>
+  <includes file="&quot;Transfer_Fcn_First_Order_private.h&quot;" from="Transfer_Fcn_First_Order_ert_rtw/Transfer_Fcn_First_Order.c" index="3"/>
+</sm:blocks>

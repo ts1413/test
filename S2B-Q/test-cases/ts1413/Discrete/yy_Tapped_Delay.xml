@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Tapped_Delay" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Tapped_Delay_ert_rtw/Tapped_Delay.h" size="2645" timestamp="2015-09-29T13:39:07+0900" type="c-header"/>
+  <file name="xx_Tapped_Delay.xml" size="1381" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Tapped_Delay_ert_rtw/Tapped_Delay.c" size="2702" timestamp="2015-09-29T13:39:07+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Tapped_Delay_In1" priority="0" rate="0.1">
+    <output line="Tapped_Delay_In1_1" port="Tapped_Delay_In1_1" usename="true">
+      <connect block="Tapped_Delay_TappedDelay" port="Tapped_Delay_TappedDelay_1"/>
+    </output>
+    <var line="Tapped_Delay_In1_1" mode="extin" name="Tapped_Delay_In1_1" port="Tapped_Delay_In1_1" type="real_T"/>
+    <code file="Tapped_Delay_ert_rtw/Tapped_Delay.c" line="71" type="init">  Tapped_Delay_In1_1 = 0.0;
+
+</code>
+    <forward block="Tapped_Delay_TappedDelay" type="data">
+      <var line="Tapped_Delay_In1_1" mode="input" name="Tapped_Delay_In1_1" port="Tapped_Delay_TappedDelay_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_TappedDelayLine" id="2" name="Tapped_Delay_TappedDelay" priority="1" rate="0.1">
+    <input line="Tapped_Delay_In1_1" port="Tapped_Delay_TappedDelay_1">
+      <connect block="Tapped_Delay_In1" port="Tapped_Delay_In1_1"/>
+    </input>
+    <output line="Tapped_Delay_TappedDelay_1" port="Tapped_Delay_TappedDelay_1" usename="true">
+      <connect block="Tapped_Delay_Out1" port="Tapped_Delay_Out1_1"/>
+    </output>
+    <var line="Tapped_Delay_In1_1" mode="input" name="Tapped_Delay_In1_1" port="Tapped_Delay_TappedDelay_1" type="real_T"/>
+    <var line="Tapped_Delay_TappedDelay_1" mode="extout" name="Tapped_Delay_TappedDelay_1" port="Tapped_Delay_TappedDelay_1" size="4" type="real_T"/>
+    <state name="TappedDelay_X" size="4" storage="Tapped_Delay_DWork" type="real_T"/>
+    <param name="NumDelays" storage="" type="double" value="4.0"/>
+    <param name="InitialValue" storage="" type="double" value="0.0"/>
+    <code file="Tapped_Delay_ert_rtw/Tapped_Delay.c" line="33" type="task">  /* S-Function (sfix_udelay): '&lt;Root&gt;/TappedDelay' */
+  Tapped_Delay_TappedDelay_1[0] = Tapped_Delay_DWork.TappedDelay_X[0];
+  Tapped_Delay_TappedDelay_1[1] = Tapped_Delay_DWork.TappedDelay_X[1];
+  Tapped_Delay_TappedDelay_1[2] = Tapped_Delay_DWork.TappedDelay_X[2];
+  Tapped_Delay_TappedDelay_1[3] = Tapped_Delay_DWork.TappedDelay_X[3];
+
+</code>
+    <code file="Tapped_Delay_ert_rtw/Tapped_Delay.c" line="39" type="update">  /* Update for S-Function (sfix_udelay): '&lt;Root&gt;/TappedDelay' incorporates:
+   *  Update for Inport: '&lt;Root&gt;/In1'
+   */
+  Tapped_Delay_DWork.TappedDelay_X[0] = Tapped_Delay_DWork.TappedDelay_X[1];
+  Tapped_Delay_DWork.TappedDelay_X[1] = Tapped_Delay_DWork.TappedDelay_X[2];
+  Tapped_Delay_DWork.TappedDelay_X[2] = Tapped_Delay_DWork.TappedDelay_X[3];
+  Tapped_Delay_DWork.TappedDelay_X[3] = Tapped_Delay_In1_1;
+</code>
+    <code file="Tapped_Delay_ert_rtw/Tapped_Delay.c" line="59" type="init">  Tapped_Delay_TappedDelay_1[0] = 0.0;
+  Tapped_Delay_TappedDelay_1[1] = 0.0;
+  Tapped_Delay_TappedDelay_1[2] = 0.0;
+  Tapped_Delay_TappedDelay_1[3] = 0.0;
+
+  /* InitializeConditions for S-Function (sfix_udelay): '&lt;Root&gt;/TappedDelay' */
+  Tapped_Delay_DWork.TappedDelay_X[0] = 0.0;
+  Tapped_Delay_DWork.TappedDelay_X[1] = 0.0;
+  Tapped_Delay_DWork.TappedDelay_X[2] = 0.0;
+  Tapped_Delay_DWork.TappedDelay_X[3] = 0.0;
+</code>
+    <code file="Tapped_Delay_ert_rtw/Tapped_Delay.c" line="65" type="state">  Tapped_Delay_DWork.TappedDelay_X[0] = 0.0;
+  Tapped_Delay_DWork.TappedDelay_X[1] = 0.0;
+  Tapped_Delay_DWork.TappedDelay_X[2] = 0.0;
+  Tapped_Delay_DWork.TappedDelay_X[3] = 0.0;
+
+</code>
+    <forward block="Tapped_Delay_Out1" type="data">
+      <var line="Tapped_Delay_TappedDelay_1" mode="input" name="Tapped_Delay_TappedDelay_1" port="Tapped_Delay_Out1_1" size="4" type="real_T"/>
+    </forward>
+    <backword block="Tapped_Delay_In1" type="data">
+      <var line="Tapped_Delay_In1_1" mode="extin" name="Tapped_Delay_In1_1" port="Tapped_Delay_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Tapped_Delay_Out1" priority="2" rate="0.1">
+    <input line="Tapped_Delay_TappedDelay_1" port="Tapped_Delay_Out1_1">
+      <connect block="Tapped_Delay_TappedDelay" port="Tapped_Delay_TappedDelay_1"/>
+    </input>
+    <var line="Tapped_Delay_TappedDelay_1" mode="input" name="Tapped_Delay_TappedDelay_1" port="Tapped_Delay_Out1_1" size="4" type="real_T"/>
+    <backword block="Tapped_Delay_TappedDelay" type="data">
+      <var line="Tapped_Delay_TappedDelay_1" mode="extout" name="Tapped_Delay_TappedDelay_1" port="Tapped_Delay_TappedDelay_1" size="4" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Tapped_Delay {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Tapped_Delay_M" type="extern RT_MODEL_Tapped_Delay * const"/>
+  <object kind="rtm-object" name="Tapped_Delay_M_" type="RT_MODEL_Tapped_Delay"/>
+  <object kind="rtm-pointer" name="Tapped_Delay_M" type="RT_MODEL_Tapped_Delay * const" value="&amp;Tapped_Delay_M_"/>
+  <includes file="&lt;stddef.h>" from="Tapped_Delay_ert_rtw/Tapped_Delay.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Tapped_Delay_ert_rtw/Tapped_Delay.h" index="1"/>
+  <includes file="&quot;Tapped_Delay_types.h&quot;" from="Tapped_Delay_ert_rtw/Tapped_Delay.h" index="2"/>
+  <includes file="&quot;Tapped_Delay_private.h&quot;" from="Tapped_Delay_ert_rtw/Tapped_Delay.c" index="3"/>
+</sm:blocks>

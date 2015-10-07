@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Demux" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Demux_In1" priority="0" rate="0.1">
+    <output line="Demux_In1_1" port="Demux_In1_1" usename="true">
+      <connect block="Demux_Demux" port="Demux_Demux_1"/>
+    </output>
+  </block>
+  <block blocktype="Demux" name="Demux_Demux" priority="0" rate="0.1">
+    <input line="Demux_In1_1" port="Demux_Demux_1">
+      <connect block="Demux_In1" port="Demux_In1_1"/>
+    </input>
+    <output line="Demux_Demux_1" port="Demux_Demux_1" usename="true">
+      <connect block="Demux_Out1" port="Demux_Out1_1"/>
+    </output>
+    <output line="Demux_Demux_2" port="Demux_Demux_2" usename="true">
+      <connect block="Demux_Out2" port="Demux_Out2_1"/>
+    </output>
+    <param name="Outputs" storage="" type="double" value="2.0"/>
+  </block>
+  <block blocktype="Outport" name="Demux_Out1" priority="1" rate="0.1">
+    <input line="Demux_Demux_1" port="Demux_Out1_1">
+      <connect block="Demux_Demux" port="Demux_Demux_1"/>
+    </input>
+  </block>
+  <block blocktype="Outport" name="Demux_Out2" priority="2" rate="0.1">
+    <input line="Demux_Demux_2" port="Demux_Out2_1">
+      <connect block="Demux_Demux" port="Demux_Demux_2"/>
+    </input>
+  </block>
+</sm:blocks>

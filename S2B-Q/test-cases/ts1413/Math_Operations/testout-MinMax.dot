@@ -1,0 +1,17 @@
+digraph csp {
+	graph [rankdir=LR];
+	MinMax_MinMax	 [label="t3\nMinMax_MinMax"];
+	t0 -> MinMax_MinMax	 [color=green,
+		label="ch_0_3(MinMax_In1_1,MinMax_In2_1)"];
+	extout	 [label=extout];
+	MinMax_In1	 [label="t1\nMinMax_In1",
+		shape=box];
+	MinMax_In1 -> t0	 [color=green,
+		label="in port MinMax_In1(MinMax_In1_1)"];
+	MinMax_In2	 [label="t2\nMinMax_In2",
+		shape=box];
+	MinMax_In2 -> t0	 [color=green,
+		label="in port MinMax_In2(MinMax_In2_1)"];
+	MinMax_MinMax -> extout	 [color=green,
+		label="ch_3_100(MinMax_MinMax_1)"];
+}

@@ -1,0 +1,29 @@
+oldname:Add newname:Add
+oldname:Counter newname:Counter
+oldname:Add newname:Add
+oldname:Constant newname:Constant
+oldname:Unit Delay newname:UnitDelay
+oldname:Out1 newname:Out1
+oldname:Data Store Memory newname:DataStoreMemory
+oldname:Data Store Memory1 newname:DataStoreMemory1
+oldname:Data Store Memory2 newname:DataStoreMemory2
+oldname:Display newname:Display
+oldname:Display1 newname:Display1
+oldname:Display2 newname:Display2
+oldname:Display3 newname:Display3
+oldname:Display4 newname:Display4
+oldname:From newname:From
+oldname:Goto newname:Goto
+oldname:Incremental newname:Incremental
+oldname:RaW_Read newname:RaW_Read
+oldname:RaW_Write newname:RaW_Write
+oldname:Unit Delay newname:UnitDelay
+oldname:WaR_Read newname:WaR_Read
+oldname:WaR_Write newname:WaR_Write
+oldname:WaR_con_Read newname:WaR_con_Read
+oldname:WaR_con_Write newname:WaR_con_Write
+oldname:RaW_Out newname:RaW_Out
+oldname:WaR_Out newname:WaR_Out
+oldname:WaR_con_Out newname:WaR_con_Out
+oldname:Equivalent to RaW newname:EquivalenttoRaW
+oldname:Equivalent to WaR newname:EquivalenttoWaR

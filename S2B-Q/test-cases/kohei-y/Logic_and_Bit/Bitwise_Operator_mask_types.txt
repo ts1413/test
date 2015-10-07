@@ -1,0 +1,11 @@
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Bitwise_Operator_mask" samplePeriod=0.1
+InDataPort portNumber=1 dataType="int8"
+OutDataPort portNumber=1 dataType="int8"
+Block "Bitwise_Operator_mask/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="int8"
+Block "Bitwise_Operator_mask/BitwiseOperator" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="int8"
+OutDataPort portNumber=1 dataType="int8"
+Block "Bitwise_Operator_mask/Out1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="int8"

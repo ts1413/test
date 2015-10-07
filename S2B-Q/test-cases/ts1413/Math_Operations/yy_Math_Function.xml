@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Math_Function" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Math_Function_ert_rtw/Math_Function.h" size="2436" timestamp="2015-10-05T16:08:08+0900" type="c-header"/>
+  <file name="xx_Math_Function.xml" size="1253" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Math_Function_ert_rtw/Math_Function.c" size="1505" timestamp="2015-10-05T16:08:08+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Math_Function_In1" priority="0" rate="0.1">
+    <output line="Math_Function_In1_1" port="Math_Function_In1_1" usename="true">
+      <connect block="Math_Function_MathFunction" port="Math_Function_MathFunction_1"/>
+    </output>
+    <var line="Math_Function_In1_1" mode="extin" name="Math_Function_In1_1" port="Math_Function_In1_1" type="real_T"/>
+    <code file="Math_Function_ert_rtw/Math_Function.c" line="53" type="init">  Math_Function_In1_1 = 0.0;
+</code>
+    <forward block="Math_Function_MathFunction" type="data">
+      <var line="Math_Function_In1_1" mode="input" name="Math_Function_In1_1" port="Math_Function_MathFunction_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Math" id="2" name="Math_Function_MathFunction" priority="1" rate="0.1">
+    <input line="Math_Function_In1_1" port="Math_Function_MathFunction_1">
+      <connect block="Math_Function_In1" port="Math_Function_In1_1"/>
+    </input>
+    <output line="Math_Function_MathFunction_1" port="Math_Function_MathFunction_1" usename="true">
+      <connect block="Math_Function_Out1" port="Math_Function_Out1_1"/>
+    </output>
+    <var line="Math_Function_In1_1" mode="input" name="Math_Function_In1_1" port="Math_Function_MathFunction_1" type="real_T"/>
+    <var line="Math_Function_MathFunction_1" mode="extout" name="Math_Function_MathFunction_1" port="Math_Function_MathFunction_1" type="real_T"/>
+    <code file="Math_Function_ert_rtw/Math_Function.c" line="30" type="task">  /* Math: '&lt;Root&gt;/MathFunction' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *
+   * About '&lt;Root&gt;/MathFunction':
+   *  Operator: exp
+   */
+  Math_Function_MathFunction_1 = exp(Math_Function_In1_1);
+</code>
+    <code file="Math_Function_ert_rtw/Math_Function.c" line="50" type="init">  Math_Function_MathFunction_1 = 0.0;
+
+</code>
+    <forward block="Math_Function_Out1" type="port">
+      <var line="Math_Function_MathFunction_1" mode="input" name="Math_Function_MathFunction_1" port="Math_Function_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Math_Function_In1" type="data">
+      <var line="Math_Function_In1_1" mode="extin" name="Math_Function_In1_1" port="Math_Function_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Math_Function_Out1" priority="2" rate="0.1">
+    <input line="Math_Function_MathFunction_1" port="Math_Function_Out1_1">
+      <connect block="Math_Function_MathFunction" port="Math_Function_MathFunction_1"/>
+    </input>
+    <var line="Math_Function_MathFunction_1" mode="input" name="Math_Function_MathFunction_1" port="Math_Function_Out1_1" type="real_T"/>
+    <backword block="Math_Function_MathFunction" type="port">
+      <var line="Math_Function_MathFunction_1" mode="extout" name="Math_Function_MathFunction_1" port="Math_Function_MathFunction_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Math_Function {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Math_Function_M" type="extern RT_MODEL_Math_Function * const"/>
+  <object kind="rtm-object" name="Math_Function_M_" type="RT_MODEL_Math_Function"/>
+  <object kind="rtm-pointer" name="Math_Function_M" type="RT_MODEL_Math_Function * const" value="&amp;Math_Function_M_"/>
+  <includes file="&lt;math.h>" from="Math_Function_ert_rtw/Math_Function.h" index="0"/>
+  <includes file="&lt;stddef.h>" from="Math_Function_ert_rtw/Math_Function.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Math_Function_ert_rtw/Math_Function.h" index="2"/>
+  <includes file="&quot;Math_Function_types.h&quot;" from="Math_Function_ert_rtw/Math_Function.h" index="3"/>
+  <includes file="&quot;Math_Function_private.h&quot;" from="Math_Function_ert_rtw/Math_Function.c" index="4"/>
+</sm:blocks>

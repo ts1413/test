@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="ZeroOrder_Hold" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="ZeroOrder_Hold_In1" priority="0" rate="0.1">
+    <output line="ZeroOrder_Hold_In1_1" port="ZeroOrder_Hold_In1_1" usename="true">
+      <connect block="ZeroOrder_Hold_Zero_OrderHold" port="ZeroOrder_Hold_Zero_OrderHold_1"/>
+    </output>
+  </block>
+  <block blocktype="ZeroOrderHold" name="ZeroOrder_Hold_Zero_OrderHold" priority="1" rate="0.1">
+    <input line="ZeroOrder_Hold_In1_1" port="ZeroOrder_Hold_Zero_OrderHold_1">
+      <connect block="ZeroOrder_Hold_In1" port="ZeroOrder_Hold_In1_1"/>
+    </input>
+    <output line="ZeroOrder_Hold_Zero_OrderHold_1" port="ZeroOrder_Hold_Zero_OrderHold_1" usename="true">
+      <connect block="ZeroOrder_Hold_Out1" port="ZeroOrder_Hold_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="ZeroOrder_Hold_Out1" priority="2" rate="0.1">
+    <input line="ZeroOrder_Hold_Zero_OrderHold_1" port="ZeroOrder_Hold_Out1_1">
+      <connect block="ZeroOrder_Hold_Zero_OrderHold" port="ZeroOrder_Hold_Zero_OrderHold_1"/>
+    </input>
+  </block>
+</sm:blocks>

@@ -1,0 +1,17 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Difference_In1_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out1' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Sum: '<S1>/Diff'
+   */
+  Difference_Y.Out1 = Difference_In1_1 - Difference_B.Uk1;
+
+"
+,,,,"}
+"
+"task2",,,,
+,"Difference_In1_1",,,

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Bus_Selector" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Bus_Selector_In1" rate="-1">
+      <output line="Bus_Selector_In1_x" port="Bus_Selector_In1_1" usename="true">
+         <connect block="Bus_Selector_BusCreator" port="Bus_Selector_BusCreator_1"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="Bus_Selector_In2" rate="-1">
+      <output line="Bus_Selector_In2_y" port="Bus_Selector_In2_1" usename="true">
+         <connect block="Bus_Selector_BusCreator" port="Bus_Selector_BusCreator_2"/>
+      </output>
+   </block>
+   <block blocktype="BusCreator" name="Bus_Selector_BusCreator">
+      <input line="Bus_Selector_In1_x" port="Bus_Selector_BusCreator_1">
+         <connect block="Bus_Selector_In1" port="Bus_Selector_In1_1"/>
+      </input>
+      <input line="Bus_Selector_In2_y" port="Bus_Selector_BusCreator_2">
+         <connect block="Bus_Selector_In2" port="Bus_Selector_In2_1"/>
+      </input>
+      <output line="Bus_Selector_BusCreator_1" port="Bus_Selector_BusCreator_1" usename="true">
+         <connect block="Bus_Selector_BusSelector" port="Bus_Selector_BusSelector_1"/>
+         <connect block="Bus_Selector_Out1" port="Bus_Selector_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="BusSelector" name="Bus_Selector_BusSelector">
+      <input line="Bus_Selector_BusCreator_1" port="Bus_Selector_BusSelector_1">
+         <connect block="Bus_Selector_BusCreator" port="Bus_Selector_BusCreator_1"/>
+      </input>
+      <output line="Bus_Selector_BusSelector_x" port="Bus_Selector_BusSelector_1" usename="false">
+         <connect block="Bus_Selector_Out2" port="Bus_Selector_Out2_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Bus_Selector_Out1" rate="-1">
+      <input line="Bus_Selector_BusCreator_1" port="Bus_Selector_Out1_1">
+         <connect block="Bus_Selector_BusCreator" port="Bus_Selector_BusCreator_1"/>
+      </input>
+   </block>
+   <block blocktype="Outport" name="Bus_Selector_Out2" rate="-1">
+      <input line="Bus_Selector_BusSelector_x" port="Bus_Selector_Out2_1">
+         <connect block="Bus_Selector_BusSelector" port="Bus_Selector_BusSelector_1"/>
+      </input>
+   </block>
+</sm:blocks>

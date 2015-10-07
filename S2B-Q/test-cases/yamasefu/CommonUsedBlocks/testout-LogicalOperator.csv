@@ -1,0 +1,20 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"LogicalOperator_In1_1",,
+,,"LogicalOperator_In2_1",,
+"task100",,,,
+,"LogicalOperator_LogicalOperator_1",,,
+"task3",,,,
+,"LogicalOperator_In1_1","LogicalOperator_LogicalOperator_1",,
+,"LogicalOperator_In2_1",,,
+,,,,"{
+"
+,,,,"  /* Logic: '<Root>/LogicalOperator' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   */
+  LogicalOperator_LogicalOperator_1 = (LogicalOperator_In1_1 &&
+    LogicalOperator_In2_1);
+"
+,,,,"}
+"

@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Trigonometric_Function_TrigonometricFunction	 [label="t2\nTrigonometric_Function_TrigonometricFunction"];
+	t0 -> Trigonometric_Function_TrigonometricFunction	 [color=green,
+		label="ch_0_2(Trigonometric_Function_In1_1)"];
+	extout	 [label=extout];
+	Trigonometric_Function_In1	 [label="t1\nTrigonometric_Function_In1",
+		shape=box];
+	Trigonometric_Function_In1 -> t0	 [color=green,
+		label="in port Trigonometric_Function_In1(Trigonometric_Function_In1_1)"];
+	Trigonometric_Function_TrigonometricFunction -> extout	 [color=green,
+		label="ch_2_100(Trigonometric_Function_TrigonometricFunction_1)"];
+}

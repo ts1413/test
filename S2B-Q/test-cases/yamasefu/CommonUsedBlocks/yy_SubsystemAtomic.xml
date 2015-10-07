@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="SubsystemAtomic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="SubsystemAtomic_ert_rtw/SubsystemAtomic.h" size="2801" timestamp="2015-10-05T16:56:12+0900" type="c-header"/>
+  <file name="xx_SubsystemAtomic.xml" size="1997" timestamp="2015-10-07T15:40:44+0900" type="xml"/>
+  <file name="SubsystemAtomic_ert_rtw/SubsystemAtomic.c" size="1699" timestamp="2015-10-05T16:56:12+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="SubsystemAtomic_In1" priority="0" rate="0.1">
+    <output line="SubsystemAtomic_In1_1" port="SubsystemAtomic_In1_1" usename="true">
+      <connect block="SubsystemAtomic_Subsystem" port="SubsystemAtomic_Subsystem_In1"/>
+    </output>
+    <var line="SubsystemAtomic_In1_1" mode="extin" name="SubsystemAtomic_In1_1" port="SubsystemAtomic_In1_1" type="real_T"/>
+    <code file="SubsystemAtomic_ert_rtw/SubsystemAtomic.c" line="53" type="init">  SubsystemAtomic_In1_1 = 0.0;
+
+</code>
+    <forward block="SubsystemAtomic_Out1" type="port">
+      <var line="SubsystemAtomic_Subsystem_1" mode="input" name="SubsystemAtomic_In1_1" port="SubsystemAtomic_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="2" name="SubsystemAtomic_Subsystem" priority="1" rate="0.1" type="atomic">
+    <input line="SubsystemAtomic_In1_1" port="SubsystemAtomic_Subsystem_In1">
+      <connect block="SubsystemAtomic_In1" port="SubsystemAtomic_In1_1"/>
+    </input>
+    <output line="SubsystemAtomic_Subsystem_1" port="SubsystemAtomic_Subsystem_Out1" usename="false">
+      <connect block="SubsystemAtomic_Out1" port="SubsystemAtomic_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="3" name="SubsystemAtomic_Subsystem_In1" priority="1" rate="0.1">
+        <output line="SubsystemAtomic_Subsystem_In1_1" port="SubsystemAtomic_Subsystem_In1_1" usename="false">
+          <connect block="SubsystemAtomic_Subsystem_Out1" port="SubsystemAtomic_Subsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="Outport" id="4" name="SubsystemAtomic_Subsystem_Out1" priority="0" rate="0.1">
+        <input line="SubsystemAtomic_Subsystem_In1_1" port="SubsystemAtomic_Subsystem_Out1_1">
+          <connect block="SubsystemAtomic_Subsystem_In1" port="SubsystemAtomic_Subsystem_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+    <code file="SubsystemAtomic_ert_rtw/SubsystemAtomic.c" line="34" type="task">  /* Outputs for Atomic SubSystem: '&lt;Root&gt;/Subsystem' */
+  /* End of Outputs for SubSystem: '&lt;Root&gt;/Subsystem' */
+</code>
+  </block>
+  <block blocktype="Outport" id="5" name="SubsystemAtomic_Out1" priority="2" rate="0.1">
+    <input line="SubsystemAtomic_Subsystem_1" port="SubsystemAtomic_Out1_1">
+      <connect block="SubsystemAtomic_Subsystem" port="SubsystemAtomic_Subsystem_Out1"/>
+    </input>
+    <var line="SubsystemAtomic_Subsystem_1" mode="input" name="SubsystemAtomic_In1_1" port="SubsystemAtomic_Out1_1" type="real_T"/>
+    <var line="" mode="extout" name="Out1" port="" storage="SubsystemAtomic_Y" type="real_T"/>
+    <code file="SubsystemAtomic_ert_rtw/SubsystemAtomic.c" line="35" type="task">  /* Outport: '&lt;Root&gt;/Out1' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;S1&gt;/In1'
+   */
+  SubsystemAtomic_Y.Out1 = SubsystemAtomic_In1_1;
+
+</code>
+    <code file="SubsystemAtomic_ert_rtw/SubsystemAtomic.c" line="56" type="init">  SubsystemAtomic_Y.Out1 = 0.0;
+</code>
+    <backword block="SubsystemAtomic_In1" type="port">
+      <var line="SubsystemAtomic_In1_1" mode="extin" name="SubsystemAtomic_In1_1" port="SubsystemAtomic_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_SubsystemAtomic_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="SubsystemAtomic_M" type="extern RT_MODEL_SubsystemAtomic_T * const"/>
+  <object kind="rtm-object" name="SubsystemAtomic_M_" type="RT_MODEL_SubsystemAtomic_T"/>
+  <object kind="rtm-pointer" name="SubsystemAtomic_M" type="RT_MODEL_SubsystemAtomic_T * const" value="&amp;SubsystemAtomic_M_"/>
+  <includes file="&lt;stddef.h>" from="SubsystemAtomic_ert_rtw/SubsystemAtomic.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="SubsystemAtomic_ert_rtw/SubsystemAtomic.h" index="1"/>
+  <includes file="&quot;SubsystemAtomic_types.h&quot;" from="SubsystemAtomic_ert_rtw/SubsystemAtomic.h" index="2"/>
+  <includes file="&quot;SubsystemAtomic_private.h&quot;" from="SubsystemAtomic_ert_rtw/SubsystemAtomic.c" index="3"/>
+</sm:blocks>

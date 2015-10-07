@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Bias_Bias	 [label="t2\nBias_Bias"];
+	t0 -> Bias_Bias	 [color=green,
+		label="ch_0_2(Bias_In1_1)"];
+	extout	 [label=extout];
+	Bias_In1	 [label="t1\nBias_In1",
+		shape=box];
+	Bias_In1 -> t0	 [color=green,
+		label="in port Bias_In1(Bias_In1_1)"];
+	Bias_Bias -> extout	 [color=green,
+		label="ch_2_100(Bias_Bias_1)"];
+}

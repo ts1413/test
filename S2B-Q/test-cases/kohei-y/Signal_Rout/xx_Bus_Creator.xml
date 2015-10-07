@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Bus_Creator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Bus_Creator_In1" priority="0" rate="0.1">
+    <output line="Bus_Creator_In1_x" port="Bus_Creator_In1_1" usename="true">
+      <connect block="Bus_Creator_BusCreator" port="Bus_Creator_BusCreator_1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="Bus_Creator_In2" priority="0" rate="0.1">
+    <output line="Bus_Creator_In2_y" port="Bus_Creator_In2_1" usename="true">
+      <connect block="Bus_Creator_BusCreator" port="Bus_Creator_BusCreator_2"/>
+    </output>
+  </block>
+  <block blocktype="BusCreator" name="Bus_Creator_BusCreator" priority="0" rate="0.1">
+    <input line="Bus_Creator_In1_x" port="Bus_Creator_BusCreator_1">
+      <connect block="Bus_Creator_In1" port="Bus_Creator_In1_1"/>
+    </input>
+    <input line="Bus_Creator_In2_y" port="Bus_Creator_BusCreator_2">
+      <connect block="Bus_Creator_In2" port="Bus_Creator_In2_1"/>
+    </input>
+    <output line="Bus_Creator_BusCreator_1" port="Bus_Creator_BusCreator_1" usename="true">
+      <connect block="Bus_Creator_Out1" port="Bus_Creator_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Bus_Creator_Out1" priority="1" rate="0.1">
+    <input line="Bus_Creator_BusCreator_1" port="Bus_Creator_Out1_1">
+      <connect block="Bus_Creator_BusCreator" port="Bus_Creator_BusCreator_1"/>
+    </input>
+  </block>
+</sm:blocks>

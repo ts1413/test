@@ -1,0 +1,20 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Shift_Arithmetic_Input_In1_1",,
+,,"Shift_Arithmetic_Input_In2_1",,
+"task100",,,,
+,"Shift_Arithmetic_Input_ShiftArithmetic_1",,,
+"task3",,,,
+,"Shift_Arithmetic_Input_In1_1","Shift_Arithmetic_Input_ShiftArithmetic_1",,
+,"Shift_Arithmetic_Input_In2_1",,,
+,,,,"{
+"
+,,,,"  /* ArithShift: '<Root>/ShiftArithmetic' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   */
+  Shift_Arithmetic_Input_ShiftArithmetic_1 = ldexp(Shift_Arithmetic_Input_In1_1,
+    (int32_T)floor(0.0 - Shift_Arithmetic_Input_In2_1));
+"
+,,,,"}
+"

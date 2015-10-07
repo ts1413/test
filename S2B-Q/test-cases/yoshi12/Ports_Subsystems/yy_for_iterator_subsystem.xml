@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="for_iterator_subsystem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.h" size="3300" timestamp="2015-10-03T23:52:51+0900" type="c-header"/>
+  <file name="xx_for_iterator_subsystem.xml" size="4002" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.c" size="2559" timestamp="2015-10-03T23:52:51+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="for_iterator_subsystem_In1" priority="0" rate="0.1">
+    <output line="for_iterator_subsystem_In1_1" port="for_iterator_subsystem_In1_1" usename="true">
+      <connect block="for_iterator_subsystem_ForIteratorSubsystem" port="for_iterator_subsystem_ForIteratorSubsystem_In1"/>
+    </output>
+    <var line="for_iterator_subsystem_In1_1" mode="extin" name="for_iterator_subsystem_In1_1" port="for_iterator_subsystem_In1_1" type="int8_T"/>
+    <code file="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.c" line="67" type="init">  for_iterator_subsystem_In1_1 = 0;
+
+</code>
+    <forward block="for_iterator_subsystem_ForIteratorSubsystem_Product" type="port">
+      <var line="for_iterator_subsystem_ForIteratorSubsystem_In1_1" mode="input" name="for_iterator_subsystem_In1_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_2" type="int8_T"/>
+    </forward>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="2" name="for_iterator_subsystem_ForIteratorSubsystem" priority="1" rate="0.1" type="iterator">
+    <input line="for_iterator_subsystem_In1_1" port="for_iterator_subsystem_ForIteratorSubsystem_In1">
+      <connect block="for_iterator_subsystem_In1" port="for_iterator_subsystem_In1_1"/>
+    </input>
+    <output line="for_iterator_subsystem_ForIteratorSubsystem_1" port="for_iterator_subsystem_ForIteratorSubsystem_Out1" usename="false">
+      <connect block="for_iterator_subsystem_Out1" port="for_iterator_subsystem_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="3" name="for_iterator_subsystem_ForIteratorSubsystem_In1" priority="0" rate="-1">
+        <output line="for_iterator_subsystem_ForIteratorSubsystem_In1_1" port="for_iterator_subsystem_ForIteratorSubsystem_In1_1" usename="false">
+          <connect block="for_iterator_subsystem_ForIteratorSubsystem_Product" port="for_iterator_subsystem_ForIteratorSubsystem_Product_2"/>
+        </output>
+        <merged_to block="for_iterator_subsystem_ForIteratorSubsystem"/>
+      </block>
+      <block blocktype="ForIterator" id="4" name="for_iterator_subsystem_ForIteratorSubsystem_ForIterator" priority="1" rate="-1">
+        <output line="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" port="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" usename="true">
+          <connect block="for_iterator_subsystem_ForIteratorSubsystem_Product" port="for_iterator_subsystem_ForIteratorSubsystem_Product_1"/>
+        </output>
+        <var line="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" mode="output" name="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" port="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" type="int8_T"/>
+        <param name="IterationLimit" storage="" type="double" value="5.0"/>
+        <param name="ForIterator_IterationLimit" storage="for_iterator_subsystem_P" type="int8_T"/>
+        <code file="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.c" line="64" type="init">  for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1 = 0;
+
+</code>
+        <forward block="for_iterator_subsystem_ForIteratorSubsystem_Product" type="data">
+          <var line="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" mode="input" name="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_1" type="int8_T"/>
+        </forward>
+        <merged_to block="for_iterator_subsystem_ForIteratorSubsystem"/>
+      </block>
+      <block blocktype="Product" id="5" name="for_iterator_subsystem_ForIteratorSubsystem_Product" priority="2" rate="-1">
+        <input line="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_1">
+          <connect block="for_iterator_subsystem_ForIteratorSubsystem_ForIterator" port="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1"/>
+        </input>
+        <input line="for_iterator_subsystem_ForIteratorSubsystem_In1_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_2">
+          <connect block="for_iterator_subsystem_ForIteratorSubsystem_In1" port="for_iterator_subsystem_ForIteratorSubsystem_In1_1"/>
+        </input>
+        <output line="for_iterator_subsystem_ForIteratorSubsystem_Product_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_1" usename="true">
+          <connect block="for_iterator_subsystem_ForIteratorSubsystem_Out1" port="for_iterator_subsystem_ForIteratorSubsystem_Out1_1"/>
+        </output>
+        <var line="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" mode="input" name="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_1" type="int8_T"/>
+        <var line="for_iterator_subsystem_ForIteratorSubsystem_In1_1" mode="input" name="for_iterator_subsystem_In1_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_2" type="int8_T"/>
+        <var line="for_iterator_subsystem_ForIteratorSubsystem_Product_1" mode="extout" name="for_iterator_subsystem_ForIteratorSubsystem_Product_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_1" type="int16_T"/>
+        <code file="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.c" line="63" type="init">  for_iterator_subsystem_ForIteratorSubsystem_Product_1 = 0;
+</code>
+        <forward block="for_iterator_subsystem_Out1" type="port">
+          <var line="for_iterator_subsystem_ForIteratorSubsystem_1" mode="input" name="for_iterator_subsystem_ForIteratorSubsystem_Product_1" port="for_iterator_subsystem_Out1_1" type="int16_T"/>
+        </forward>
+        <backword block="for_iterator_subsystem_ForIteratorSubsystem_ForIterator" type="data">
+          <var line="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" mode="output" name="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" port="for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1" type="int8_T"/>
+        </backword>
+        <backword block="for_iterator_subsystem_In1" type="port">
+          <var line="for_iterator_subsystem_In1_1" mode="extin" name="for_iterator_subsystem_In1_1" port="for_iterator_subsystem_In1_1" type="int8_T"/>
+        </backword>
+        <merged_to block="for_iterator_subsystem_ForIteratorSubsystem"/>
+      </block>
+      <block blocktype="Outport" id="6" name="for_iterator_subsystem_ForIteratorSubsystem_Out1" priority="0" rate="-1">
+        <input line="for_iterator_subsystem_ForIteratorSubsystem_Product_1" port="for_iterator_subsystem_ForIteratorSubsystem_Out1_1">
+          <connect block="for_iterator_subsystem_ForIteratorSubsystem_Product" port="for_iterator_subsystem_ForIteratorSubsystem_Product_1"/>
+        </input>
+        <param name="Out1_Y0" storage="for_iterator_subsystem_P" type="int16_T"/>
+        <merged_to block="for_iterator_subsystem_ForIteratorSubsystem"/>
+      </block>
+    </sm:blocks>
+    <code file="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.c" line="34" type="task">  /* Outputs for Iterator SubSystem: '&lt;Root&gt;/ForIteratorSubsystem' incorporates:
+   *  ForIterator: '&lt;S1&gt;/ForIterator'
+   */
+  for (s1_iter = 1; s1_iter &lt;=
+       for_iterator_subsystem_P.ForIterator_IterationLimit; s1_iter++) {
+    for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1 = s1_iter;
+
+    /* Product: '&lt;S1&gt;/Product' incorporates:
+     *  Inport: '&lt;Root&gt;/In1'
+     */
+    for_iterator_subsystem_ForIteratorSubsystem_Product_1 = (int16_T)
+      (for_iterator_subsystem_ForIteratorSubsystem_ForIterator_1 *
+       for_iterator_subsystem_In1_1);
+  }
+
+  /* End of Outputs for SubSystem: '&lt;Root&gt;/ForIteratorSubsystem' */
+</code>
+    <code file="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.c" line="69" type="init">  /* Start for Iterator SubSystem: '&lt;Root&gt;/ForIteratorSubsystem' */
+  for_iterator_subsystem_ForIteratorSubsystem_Product_1 =
+    for_iterator_subsystem_P.Out1_Y0;
+
+  /* End of Start for SubSystem: '&lt;Root&gt;/ForIteratorSubsystem' */
+</code>
+    <merge_block block="for_iterator_subsystem_ForIteratorSubsystem_In1"/>
+    <merge_block block="for_iterator_subsystem_ForIteratorSubsystem_ForIterator"/>
+    <merge_block block="for_iterator_subsystem_ForIteratorSubsystem_Product"/>
+    <merge_block block="for_iterator_subsystem_ForIteratorSubsystem_Out1"/>
+  </block>
+  <block blocktype="Outport" id="7" name="for_iterator_subsystem_Out1" priority="2" rate="0.1">
+    <input line="for_iterator_subsystem_ForIteratorSubsystem_1" port="for_iterator_subsystem_Out1_1">
+      <connect block="for_iterator_subsystem_ForIteratorSubsystem" port="for_iterator_subsystem_ForIteratorSubsystem_Out1"/>
+    </input>
+    <var line="for_iterator_subsystem_ForIteratorSubsystem_1" mode="input" name="for_iterator_subsystem_ForIteratorSubsystem_Product_1" port="for_iterator_subsystem_Out1_1" type="int16_T"/>
+    <backword block="for_iterator_subsystem_ForIteratorSubsystem_Product" type="port">
+      <var line="for_iterator_subsystem_ForIteratorSubsystem_Product_1" mode="extout" name="for_iterator_subsystem_ForIteratorSubsystem_Product_1" port="for_iterator_subsystem_ForIteratorSubsystem_Product_1" type="int16_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_for_iterator_subsyste_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  int8_T s1_iter;
+
+</code>
+  <object kind="rtm-extern" name="for_iterator_subsystem_M" type="extern RT_MODEL_for_iterator_subsyst_T * const"/>
+  <object kind="rtm-object" name="for_iterator_subsystem_M_" type="RT_MODEL_for_iterator_subsyst_T"/>
+  <object kind="rtm-pointer" name="for_iterator_subsystem_M" type="RT_MODEL_for_iterator_subsyst_T * const" value="&amp;for_iterator_subsystem_M_"/>
+  <includes file="&lt;stddef.h>" from="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.h" index="1"/>
+  <includes file="&quot;for_iterator_subsystem_types.h&quot;" from="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.h" index="2"/>
+  <includes file="&quot;for_iterator_subsystem_private.h&quot;" from="for_iterator_subsystem_ert_rtw/for_iterator_subsystem.c" index="3"/>
+</sm:blocks>

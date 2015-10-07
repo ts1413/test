@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	    targetNamespace="http:///geneauto/emf/models/gasystemmodel.ecore"
+	    xmlns:sns="http:///geneauto/emf/models/gasystemmodel.ecore"
+	    xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+
+<xsd:import namespace="http://schema.omg.org/spec/XMI/2.1" schemaLocation="xmi-id.xsd"></xsd:import>
+
+
+
+  <xsd:annotation>
+    <xsd:documentation>QGen xmi</xsd:documentation>
+  </xsd:annotation>
+
+    <xsd:simpleType name="id_list">
+    	<xsd:list itemType="xsd:int">
+    	</xsd:list>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="valuetype">
+    	<xsd:union memberTypes="xsd:string xsd:float">
+    	</xsd:union>
+    </xsd:simpleType>
+
+    <xsd:element name="GASystemModel" type="sns:model"></xsd:element>
+
+    <xsd:complexType name="model">
+    	<xsd:sequence>
+    		<xsd:element name="elements" type="sns:elements"
+    			minOccurs="1" maxOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="orphans" type="sns:orphans" minOccurs="0"
+    			maxOccurs="unbounded">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="fixedStep" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="lastId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="lastSavedBy" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="lastSavedOn" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="modelName" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="modelVersion" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="noNewId" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="taskingType" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="elements">
+    	<xsd:sequence>
+    		<xsd:element name="blocks" type="sns:blocks" minOccurs="0"
+    			maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="customTypes" type="sns:customTypes"
+      			minOccurs="0" maxOccurs="unbounded">
+      		</xsd:element>
+    		<xsd:element name="inDataPorts" type="sns:inDataPorts"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="outDataPorts" type="sns:outDataPorts"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="signals" type="sns:signals" minOccurs="0"
+    			maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="variables" type="sns:variables"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="assignedPriority" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="assignedPrioritySource" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="executionOrder" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="fcnName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFullyTyped" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isReferenceModel" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="maskType" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="offset" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="samplePeriod" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="sourceBlockName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="style" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="type" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="userDefinedPriority" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="blocks">
+    	<xsd:sequence>
+    		<xsd:element name="blocks" type="sns:blocks" minOccurs="0"
+    			maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="inDataPorts" type="sns:inDataPorts"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="inEdgeEnablePort" type="sns:inDataPorts"
+    			maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="inEnablePort" type="sns:inDataPorts" maxOccurs="1" minOccurs="0"></xsd:element>
+    		<xsd:element name="outDataPorts" type="sns:outDataPorts"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="parameters" type="sns:parameters"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="signals" type="sns:signals" minOccurs="0"
+    			maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="inControlPort" type="sns:inDataPorts"
+    			minOccurs="0" maxOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="outControlPorts"
+    			type="sns:outDataPorts" minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="composition" type="sns:composition"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="assignedPriority" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="assignedPrioritySource" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="executionOrder" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isFullyTyped" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="maskType" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="offset" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="samplePeriod" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="sourceBlockName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="type" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="userDefinedPriority" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="inDataPorts">
+    	<xsd:sequence>
+    		<xsd:element name="dataType" type="sns:dataType"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="incomingSignal" type="sns:id_list"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isRequiredBySuccessors" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isVirtual" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="periodicSampleTime" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="portNumber" type="xsd:int" use="required"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sampleTime" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="sourceBlock" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="statesWhenEnabling" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    	<xsd:attribute name="periodicSampleTime" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="sampleTime" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="statesWhenEnabling" type="xsd:string"></xsd:attribute>
+
+    <xsd:complexType name="outDataPorts">
+    	<xsd:sequence>
+    		<xsd:element name="dataType" type="sns:dataType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isVirtual" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="outgoingSignals" type="sns:id_list"></xsd:attribute>
+    	<xsd:attribute name="portNumber" type="xsd:int" use="required"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="resetWhenDisabled" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="sourceBlock" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="dataType">
+    	<xsd:sequence>
+    		<xsd:element name="initialValue" type="sns:initialValue"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="scope" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="initialValue">
+    	<xsd:sequence>
+    		<xsd:element name="valueDataType" type="sns:valueDataType" minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="litValue" type="xsd:float" use="required"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="valueDataType">
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="scope" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="parameters">
+    	<xsd:sequence>
+    		<xsd:element name="value" type="sns:value" minOccurs="0"
+    			maxOccurs="unbounded">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="index" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isMask" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="scope" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="storageClass" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="value">
+    	<xsd:sequence>
+    		<xsd:element name="argument" type="sns:argument"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="valueDataType" type="sns:valueDataType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="litValue" type="sns:valuetype"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="operator" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElement" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="argument">
+    	<xsd:sequence>
+    		<xsd:element name="valueDataType" type="sns:valueDataType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="litValue" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="operator" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="signals">
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="dstPort" type="sns:id_list"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sampleTime" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="srcPort" type="sns:id_list"></xsd:attribute>
+    	<xsd:attribute name="storageClass" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="variables">
+    	<xsd:sequence>
+    		<xsd:element name="dataType" type="sns:dataType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="autoInit" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isConst" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isIterator" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isOptimizable" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isSignalObject" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isStatic" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isUnreferenced" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isVolatile" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referenceBy" type="sns:id_list"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="scope" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="orphans">
+    	<xsd:choice>
+    		<xsd:element name="valueDataType" type="sns:valueDataType" minOccurs="0" maxOccurs="unbounded">
+    		</xsd:element>
+    		<xsd:element name="argument" type="sns:argument" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+    	</xsd:choice>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="litValue" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="operator" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="variable" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="sideArgument">
+    	<xsd:sequence>
+    		<xsd:element name="expresion" type="sns:expression" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="valueDataType" type="sns:valueDataType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="arguments" type="sns:argument" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="standardFunction" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="expression">
+    	<xsd:sequence>
+    		<xsd:element name="leftArgument" type="sns:sideArgument" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="rightArgument" type="sns:sideArgument" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="operator" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="composition">
+    	<xsd:sequence>
+    		<xsd:element name="defaultTransitions" type="sns:defaultTransitions" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="junctions" type="sns:junctions" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="states" type="sns:states" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="defaultTransitions">
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="destination" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="executionOrder" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="junctions">
+    	<xsd:sequence>
+    		<xsd:element name="transitions" type="sns:transitions" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="junctionType" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="transitions">
+    	<xsd:sequence>
+    		<xsd:element name="guard" type="sns:guard" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="destination" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="executionOrder" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="guard">
+    	<xsd:sequence>
+    		<xsd:element name="leftArgument" type="sns:sideArgument" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="rightArgument" type="sns:sideArgument" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="operator" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="states">
+    	<xsd:sequence>
+    		<xsd:element name="duringActions" type="sns:duringActions" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="outerTransitions" type="sns:outerTransitions" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="executionOrder" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="machineType" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="duringActions">
+    	<xsd:sequence>
+    		<xsd:element name="operation" type="sns:operation" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="operation">
+    	<xsd:sequence>
+    		<xsd:element name="leftExpression" type="sns:sideExpression" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="rightExpression" type="sns:sideExpression" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="operator" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="saturation" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sequenceNumber" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="sideExpression">
+    	<xsd:sequence>
+    		<xsd:element name="argument" type="sns:argument" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="outerTransitions">
+    	<xsd:sequence>
+    		<xsd:element name="guard" type="sns:guard" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="destination" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="executionOrder" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    	<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+
+
+
+    <xsd:complexType name="customTypes">
+    	<xsd:sequence>
+    		<xsd:element name="members" type="sns:members" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+     	<xsd:attribute name="alias" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="isUnion" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="scope" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceAction" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="members">
+    	<xsd:sequence>
+    		<xsd:element name="dataType" type="sns:dataType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute ref="xmi:type"></xsd:attribute>
+    	<xsd:attribute ref="xmi:id" use="required"></xsd:attribute>
+    	<xsd:attribute name="externalID" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="isFixedName" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
+    	<xsd:attribute name="originalFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="originalName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="referencedFullName" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="sourceElementId" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,35 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Transfer_Fcn_First_Order" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/TransferFcnFirstOrder" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/TransferFcnFirstOrder/U" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/TransferFcnFirstOrder/Data Type\nDuplicate" samplePeriod=0.1 assignedPriority=5 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+Block "Transfer_Fcn_First_Order/TransferFcnFirstOrder/Diff" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/TransferFcnFirstOrder/Gain" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/TransferFcnFirstOrder/Sum" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/TransferFcnFirstOrder/UD" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/TransferFcnFirstOrder/Y" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "Transfer_Fcn_First_Order/Out1" samplePeriod=0.1 assignedPriority=4 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

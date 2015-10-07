@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="triggered_subsystem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="triggered_subsystem_In1" priority="0" rate="0.1">
+    <output line="triggered_subsystem_In1_1" port="triggered_subsystem_In1_1" usename="true">
+      <connect block="triggered_subsystem_TriggeredSubsystem" port="triggered_subsystem_TriggeredSubsystem_In1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="triggered_subsystem_In2" priority="0" rate="0.1">
+    <output line="triggered_subsystem_In2_1" port="triggered_subsystem_In2_1" usename="true">
+      <connect block="triggered_subsystem_TriggeredSubsystem" port="triggered_subsystem_TriggeredSubsystem_Trigger"/>
+    </output>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" name="triggered_subsystem_TriggeredSubsystem" priority="2" rate="0.1">
+    <input line="triggered_subsystem_In1_1" port="triggered_subsystem_TriggeredSubsystem_In1">
+      <connect block="triggered_subsystem_In1" port="triggered_subsystem_In1_1"/>
+    </input>
+    <input line="triggered_subsystem_In2_1" port="triggered_subsystem_TriggeredSubsystem_Trigger">
+      <connect block="triggered_subsystem_In2" port="triggered_subsystem_In2_1"/>
+    </input>
+    <output line="triggered_subsystem_TriggeredSubsystem_1" port="triggered_subsystem_TriggeredSubsystem_Out1" usename="false">
+      <connect block="triggered_subsystem_Out1" port="triggered_subsystem_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" name="triggered_subsystem_TriggeredSubsystem_In1" priority="1" rate="-1">
+        <output line="triggered_subsystem_TriggeredSubsystem_In1_1" port="triggered_subsystem_TriggeredSubsystem_In1_1" usename="false">
+          <connect block="triggered_subsystem_TriggeredSubsystem_Out1" port="triggered_subsystem_TriggeredSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="TriggerPort" name="triggered_subsystem_TriggeredSubsystem_Trigger" priority="0" rate="-1"/>
+      <block blocktype="Outport" name="triggered_subsystem_TriggeredSubsystem_Out1" priority="0" rate="-1">
+        <input line="triggered_subsystem_TriggeredSubsystem_In1_1" port="triggered_subsystem_TriggeredSubsystem_Out1_1">
+          <connect block="triggered_subsystem_TriggeredSubsystem_In1" port="triggered_subsystem_TriggeredSubsystem_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Outport" name="triggered_subsystem_Out1" priority="3" rate="0.1">
+    <input line="triggered_subsystem_TriggeredSubsystem_1" port="triggered_subsystem_Out1_1">
+      <connect block="triggered_subsystem_TriggeredSubsystem" port="triggered_subsystem_TriggeredSubsystem_Out1"/>
+    </input>
+  </block>
+</sm:blocks>

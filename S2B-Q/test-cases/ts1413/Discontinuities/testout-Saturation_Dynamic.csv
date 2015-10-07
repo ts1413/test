@@ -1,0 +1,28 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Saturation_Dynamic_In1_1",,
+,,"Saturation_Dynamic_In2_1",,
+,,"Saturation_Dynamic_In3_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  if (Saturation_Dynamic_B.LowerRelop1) {
+"
+,,,,"    /* Outport: '<Root>/Out1' incorporates:
+     *  Inport: '<Root>/In2'
+     */
+    Saturation_Dynamic_Y.Out1 = Saturation_Dynamic_In2_1;
+"
+,,,,"  } else {
+"
+,,,,"    /* Outport: '<Root>/Out1' */
+    Saturation_Dynamic_Y.Out1 = Saturation_Dynamic_B.Switch;
+"
+,,,,"  }
+"
+,,,,"}
+"
+"task4",,,,
+,"Saturation_Dynamic_In1_1",,,
+,"Saturation_Dynamic_In2_1",,,
+,"Saturation_Dynamic_In3_1",,,

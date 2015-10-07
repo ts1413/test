@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Relay" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Relay_In1" priority="0" rate="0.1">
+    <output line="Relay_In1_1" port="Relay_In1_1" usename="true">
+      <connect block="Relay_Relay" port="Relay_Relay_1"/>
+    </output>
+  </block>
+  <block blocktype="Relay" name="Relay_Relay" priority="1" rate="0.1">
+    <input line="Relay_In1_1" port="Relay_Relay_1">
+      <connect block="Relay_In1" port="Relay_In1_1"/>
+    </input>
+    <output line="Relay_Relay_1" port="Relay_Relay_1" usename="true">
+      <connect block="Relay_Out1" port="Relay_Out1_1"/>
+    </output>
+    <param name="OffOutputValue" storage="" type="double" value="0.0"/>
+    <param name="OnOutputValue" storage="" type="double" value="1.0"/>
+  </block>
+  <block blocktype="Outport" name="Relay_Out1" priority="2" rate="0.1">
+    <input line="Relay_Relay_1" port="Relay_Out1_1">
+      <connect block="Relay_Relay" port="Relay_Relay_1"/>
+    </input>
+  </block>
+</sm:blocks>

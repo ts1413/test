@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Saturation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Saturation_In1" priority="0" rate="0.1">
+    <output line="Saturation_In1_1" port="Saturation_In1_1" usename="true">
+      <connect block="Saturation_Saturation" port="Saturation_Saturation_1"/>
+    </output>
+  </block>
+  <block blocktype="Saturate" name="Saturation_Saturation" priority="1" rate="0.1">
+    <input line="Saturation_In1_1" port="Saturation_Saturation_1">
+      <connect block="Saturation_In1" port="Saturation_In1_1"/>
+    </input>
+    <output line="Saturation_Saturation_1" port="Saturation_Saturation_1" usename="true">
+      <connect block="Saturation_Out1" port="Saturation_Out1_1"/>
+    </output>
+    <param name="UpperLimit" storage="" type="double" value="0.5"/>
+  </block>
+  <block blocktype="Outport" name="Saturation_Out1" priority="2" rate="0.1">
+    <input line="Saturation_Saturation_1" port="Saturation_Out1_1">
+      <connect block="Saturation_Saturation" port="Saturation_Saturation_1"/>
+    </input>
+  </block>
+</sm:blocks>

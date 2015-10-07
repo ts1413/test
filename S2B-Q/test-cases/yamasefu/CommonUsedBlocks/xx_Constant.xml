@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Constant" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Constant" name="Constant_Constant" priority="1" rate="0.1">
+    <output line="Constant_Constant_1" port="Constant_Constant_1" usename="true">
+      <connect block="Constant_Out1" port="Constant_Out1_1"/>
+    </output>
+    <param name="Value" storage="" type="double" value="1.0"/>
+  </block>
+  <block blocktype="Outport" name="Constant_Out1" priority="2" rate="0.1">
+    <input line="Constant_Constant_1" port="Constant_Out1_1">
+      <connect block="Constant_Constant" port="Constant_Constant_1"/>
+    </input>
+  </block>
+</sm:blocks>

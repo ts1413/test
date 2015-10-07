@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Merge" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Merge_ert_rtw/Merge.h" size="3128" timestamp="2015-10-05T16:06:55+0900" type="c-header"/>
+  <file name="xx_Merge.xml" size="5157" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Merge_ert_rtw/Merge.c" size="2498" timestamp="2015-10-05T16:06:55+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Merge_In1" priority="0" rate="0.1">
+    <output line="Merge_In1_1" port="Merge_In1_1" usename="true">
+      <connect block="Merge_If" port="Merge_If_1"/>
+    </output>
+    <var line="Merge_In1_1" mode="extin" name="Merge_In1_1" port="Merge_In1_1" type="real_T"/>
+    <code file="Merge_ert_rtw/Merge.c" line="87" type="init">  Merge_In1_1 = 0.0;
+
+</code>
+    <forward block="Merge_If" type="port">
+      <var line="Merge_In1_1" mode="input" name="Merge_In1_1" port="Merge_If_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Constant" id="2" name="Merge_Constant" priority="2" rate="0.1">
+    <output line="Merge_Constant_1" port="Merge_Constant_1" usename="true">
+      <connect block="Merge_IfActionSubsystem" port="Merge_IfActionSubsystem_In1"/>
+    </output>
+    <var line="Merge_Constant_1" mode="output" name="Merge_Constant_1" port="Merge_Constant_1" type="real_T"/>
+    <param name="Value" storage="" type="double" value="5.0"/>
+    <param name="Constant_Value" storage="Merge_P" type="real_T"/>
+    <code file="Merge_ert_rtw/Merge.c" line="46" type="task">  /* Constant: '&lt;Root&gt;/Constant' */
+  Merge_Constant_1 = Merge_P.Constant_Value;
+
+</code>
+    <code file="Merge_ert_rtw/Merge.c" line="83" type="init">  Merge_Constant_1 = 0.0;
+</code>
+    <forward block="Merge_Merge" type="data"/>
+  </block>
+  <block blocktype="Constant" id="3" name="Merge_Constant1" priority="1" rate="0.1">
+    <output line="Merge_Constant1_1" port="Merge_Constant1_1" usename="true">
+      <connect block="Merge_IfActionSubsystem1" port="Merge_IfActionSubsystem1_In1"/>
+    </output>
+    <var line="Merge_Constant1_1" mode="output" name="Merge_Constant1_1" port="Merge_Constant1_1" type="real_T"/>
+    <param name="Constant1_Value" storage="Merge_P" type="real_T"/>
+    <code file="Merge_ert_rtw/Merge.c" line="43" type="task">  /* Constant: '&lt;Root&gt;/Constant1' */
+  Merge_Constant1_1 = Merge_P.Constant1_Value;
+
+</code>
+    <code file="Merge_ert_rtw/Merge.c" line="82" type="init">  Merge_Constant1_1 = 0.0;
+</code>
+    <forward block="Merge_Merge" type="data"/>
+  </block>
+  <block blocktype="If" id="4" name="Merge_If" priority="3" rate="0.1">
+    <input line="Merge_In1_1" port="Merge_If_1">
+      <connect block="Merge_In1" port="Merge_In1_1"/>
+    </input>
+    <output line="Merge_If_0" port="Merge_If_0" usename="false">
+      <connect block="Merge_IfActionSubsystem" port="Merge_IfActionSubsystem_ActionPort"/>
+    </output>
+    <output line="Merge_If_0" port="Merge_If_0" usename="false">
+      <connect block="Merge_IfActionSubsystem1" port="Merge_IfActionSubsystem1_ActionPort"/>
+    </output>
+    <var line="Merge_In1_1" mode="input" name="Merge_In1_1" port="Merge_If_1" type="real_T"/>
+    <code file="Merge_ert_rtw/Merge.c" line="49" type="task">  /* If: '&lt;Root&gt;/If' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  if (Merge_In1_1 &gt; 0.0) {
+    /* Outputs for IfAction SubSystem: '&lt;Root&gt;/IfActionSubsystem' incorporates:
+     *  ActionPort: '&lt;S1&gt;/ActionPort'
+     */
+    Merge_IfActionSubsystem(Merge_Constant_1, &amp;Merge_Merge_1);
+
+    /* End of Outputs for SubSystem: '&lt;Root&gt;/IfActionSubsystem' */
+  } else {
+    /* Outputs for IfAction SubSystem: '&lt;Root&gt;/IfActionSubsystem1' incorporates:
+     *  ActionPort: '&lt;S2&gt;/ActionPort'
+     */
+    Merge_IfActionSubsystem(Merge_Constant1_1, &amp;Merge_Merge_1);
+
+    /* End of Outputs for SubSystem: '&lt;Root&gt;/IfActionSubsystem1' */
+  }
+
+  /* End of If: '&lt;Root&gt;/If' */
+</code>
+    <forward block="Merge_IfActionSubsystem" type="data"/>
+    <forward block="Merge_IfActionSubsystem1" type="data"/>
+    <backword block="Merge_In1" type="port">
+      <var line="Merge_In1_1" mode="extin" name="Merge_In1_1" port="Merge_In1_1" type="real_T"/>
+    </backword>
+    <merge_block block="Merge_Merge"/>
+    <merge_block block="Merge_IfActionSubsystem_In1"/>
+    <merge_block block="Merge_IfActionSubsystem_ActionPort"/>
+    <merge_block block="Merge_IfActionSubsystem_Out1"/>
+    <merge_block block="Merge_IfActionSubsystem"/>
+    <merge_block block="Merge_IfActionSubsystem1_In1"/>
+    <merge_block block="Merge_IfActionSubsystem1_ActionPort"/>
+    <merge_block block="Merge_IfActionSubsystem1_Out1"/>
+    <merge_block block="Merge_IfActionSubsystem1"/>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="5" name="Merge_IfActionSubsystem" priority="4" rate="0.1" type="action">
+    <input line="Merge_Constant_1" port="Merge_IfActionSubsystem_In1">
+      <connect block="Merge_Constant" port="Merge_Constant_1"/>
+    </input>
+    <input line="Merge_If_0" port="Merge_IfActionSubsystem_ActionPort">
+      <connect block="Merge_If" port="Merge_If_0"/>
+    </input>
+    <output line="Merge_IfActionSubsystem_1" port="Merge_IfActionSubsystem_Out1" usename="false">
+      <connect block="Merge_Merge" port="Merge_Merge_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="6" name="Merge_IfActionSubsystem_In1" priority="1" rate="0.1">
+        <output line="Merge_IfActionSubsystem_In1_1" port="Merge_IfActionSubsystem_In1_1" usename="false">
+          <connect block="Merge_IfActionSubsystem_Out1" port="Merge_IfActionSubsystem_Out1_1"/>
+        </output>
+        <merged_to block="Merge_If"/>
+      </block>
+      <block blocktype="ActionPort" id="7" name="Merge_IfActionSubsystem_ActionPort" priority="0" rate="0.1">
+        <merged_to block="Merge_If"/>
+      </block>
+      <block blocktype="Outport" id="8" name="Merge_IfActionSubsystem_Out1" priority="0" rate="0.1">
+        <input line="Merge_IfActionSubsystem_In1_1" port="Merge_IfActionSubsystem_Out1_1">
+          <connect block="Merge_IfActionSubsystem_In1" port="Merge_IfActionSubsystem_In1_1"/>
+        </input>
+        <merged_to block="Merge_If"/>
+      </block>
+    </sm:blocks>
+    <backword block="Merge_If" type="data"/>
+    <merged_to block="Merge_If"/>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="9" name="Merge_IfActionSubsystem1" priority="5" rate="0.1" type="action">
+    <input line="Merge_Constant1_1" port="Merge_IfActionSubsystem1_In1">
+      <connect block="Merge_Constant1" port="Merge_Constant1_1"/>
+    </input>
+    <input line="Merge_If_0" port="Merge_IfActionSubsystem1_ActionPort">
+      <connect block="Merge_If" port="Merge_If_0"/>
+    </input>
+    <output line="Merge_IfActionSubsystem1_1" port="Merge_IfActionSubsystem1_Out1" usename="false">
+      <connect block="Merge_Merge" port="Merge_Merge_2"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="10" name="Merge_IfActionSubsystem1_In1" priority="1" rate="0.1">
+        <output line="Merge_IfActionSubsystem1_In1_1" port="Merge_IfActionSubsystem1_In1_1" usename="false">
+          <connect block="Merge_IfActionSubsystem1_Out1" port="Merge_IfActionSubsystem1_Out1_1"/>
+        </output>
+        <merged_to block="Merge_If"/>
+      </block>
+      <block blocktype="ActionPort" id="11" name="Merge_IfActionSubsystem1_ActionPort" priority="0" rate="0.1">
+        <merged_to block="Merge_If"/>
+      </block>
+      <block blocktype="Outport" id="12" name="Merge_IfActionSubsystem1_Out1" priority="0" rate="0.1">
+        <input line="Merge_IfActionSubsystem1_In1_1" port="Merge_IfActionSubsystem1_Out1_1">
+          <connect block="Merge_IfActionSubsystem1_In1" port="Merge_IfActionSubsystem1_In1_1"/>
+        </input>
+        <merged_to block="Merge_If"/>
+      </block>
+    </sm:blocks>
+    <backword block="Merge_If" type="data"/>
+    <merged_to block="Merge_If"/>
+  </block>
+  <block blocktype="Merge" id="13" name="Merge_Merge" priority="6" rate="0.1">
+    <input line="Merge_IfActionSubsystem_1" port="Merge_Merge_1">
+      <connect block="Merge_IfActionSubsystem" port="Merge_IfActionSubsystem_Out1"/>
+    </input>
+    <input line="Merge_IfActionSubsystem1_1" port="Merge_Merge_2">
+      <connect block="Merge_IfActionSubsystem1" port="Merge_IfActionSubsystem1_Out1"/>
+    </input>
+    <output line="Merge_Merge_1" port="Merge_Merge_1" usename="true">
+      <connect block="Merge_Out1" port="Merge_Out1_1"/>
+    </output>
+    <var line="Merge_Merge_1" mode="extout" name="Merge_Merge_1" port="Merge_Merge_1" type="real_T"/>
+    <param name="InitialOutput" storage="" type="double" value="0.0"/>
+    <param name="Merge_InitialOutput" storage="Merge_P" type="real_T"/>
+    <code file="Merge_ert_rtw/Merge.c" line="84" type="init">  Merge_Merge_1 = 0.0;
+
+  /* Start for Merge: '&lt;Root&gt;/Merge' */
+  Merge_Merge_1 = Merge_P.Merge_InitialOutput;
+</code>
+    <forward block="Merge_Out1" type="port">
+      <var line="Merge_Merge_1" mode="input" name="Merge_Merge_1" port="Merge_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Merge_Constant" type="data"/>
+    <backword block="Merge_Constant1" type="data"/>
+    <merged_to block="Merge_If"/>
+  </block>
+  <block blocktype="Outport" id="14" name="Merge_Out1" priority="7" rate="0.1">
+    <input line="Merge_Merge_1" port="Merge_Out1_1">
+      <connect block="Merge_Merge" port="Merge_Merge_1"/>
+    </input>
+    <var line="Merge_Merge_1" mode="input" name="Merge_Merge_1" port="Merge_Out1_1" type="real_T"/>
+    <backword block="Merge_Merge" type="port">
+      <var line="Merge_Merge_1" mode="extout" name="Merge_Merge_1" port="Merge_Merge_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Merge_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Merge_M" type="extern RT_MODEL_Merge_T * const"/>
+  <object kind="rtm-object" name="Merge_M_" type="RT_MODEL_Merge_T"/>
+  <object kind="rtm-pointer" name="Merge_M" type="RT_MODEL_Merge_T * const" value="&amp;Merge_M_"/>
+  <includes file="&lt;stddef.h>" from="Merge_ert_rtw/Merge.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Merge_ert_rtw/Merge.h" index="1"/>
+  <includes file="&quot;Merge_types.h&quot;" from="Merge_ert_rtw/Merge.h" index="2"/>
+  <includes file="&quot;Merge_private.h&quot;" from="Merge_ert_rtw/Merge.c" index="3"/>
+  <function name="Merge_IfActionSubsystem" type="defn">
+    <code line="29" type="func">/*
+ * Output and update for action system:
+ *    '&lt;Root&gt;/IfActionSubsystem'
+ *    '&lt;Root&gt;/IfActionSubsystem1'
+ */
+void Merge_IfActionSubsystem(real_T rtu_In1, real_T *rty_Out1)
+{
+  /* Inport: '&lt;S1&gt;/In1' */
+  *rty_Out1 = rtu_In1;
+}
+</code>
+  </function>
+</sm:blocks>

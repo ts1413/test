@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="while_iterator_subsystem" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="while_iterator_subsystem_In1" rate="-1">
+      <output line="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_In1_1" usename="true">
+         <connect block="while_iterator_subsystem_WhileIteratorSubsystem" port="while_iterator_subsystem_WhileIteratorSubsystem_In1"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="while_iterator_subsystem_In2" rate="-1">
+      <output line="while_iterator_subsystem_In2_1" port="while_iterator_subsystem_In2_1" usename="true">
+         <connect block="while_iterator_subsystem_WhileIteratorSubsystem" port="while_iterator_subsystem_WhileIteratorSubsystem_IC"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="while_iterator_subsystem_WhileIteratorSubsystem">
+      <input line="while_iterator_subsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_In1">
+         <connect block="while_iterator_subsystem_In1" port="while_iterator_subsystem_In1_1"/>
+      </input>
+      <input line="while_iterator_subsystem_In2_1" port="while_iterator_subsystem_WhileIteratorSubsystem_IC">
+         <connect block="while_iterator_subsystem_In2" port="while_iterator_subsystem_In2_1"/>
+      </input>
+      <output line="while_iterator_subsystem_WhileIteratorSubsystem_1" port="while_iterator_subsystem_WhileIteratorSubsystem_Out1" usename="false">
+         <connect block="while_iterator_subsystem_Out1" port="while_iterator_subsystem_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="while_iterator_subsystem_WhileIteratorSubsystem_In1" rate="-1">
+            <output line="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" usename="false">
+               <connect block="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_1"/>
+               <connect block="while_iterator_subsystem_WhileIteratorSubsystem_Out1" port="while_iterator_subsystem_WhileIteratorSubsystem_Out1_1"/>
+            </output>
+         </block>
+         <block blocktype="Inport" name="while_iterator_subsystem_WhileIteratorSubsystem_IC" rate="-1">
+            <output line="while_iterator_subsystem_WhileIteratorSubsystem_IC_1" port="while_iterator_subsystem_WhileIteratorSubsystem_IC_1" usename="false">
+               <connect block="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_2"/>
+            </output>
+         </block>
+         <block blocktype="WhileIterator" name="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator">
+            <input line="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_1">
+               <connect block="while_iterator_subsystem_WhileIteratorSubsystem_In1" port="while_iterator_subsystem_WhileIteratorSubsystem_In1_1"/>
+            </input>
+            <input line="while_iterator_subsystem_WhileIteratorSubsystem_IC_1" port="while_iterator_subsystem_WhileIteratorSubsystem_WhileIterator_2">
+               <connect block="while_iterator_subsystem_WhileIteratorSubsystem_IC" port="while_iterator_subsystem_WhileIteratorSubsystem_IC_1"/>
+            </input>
+         </block>
+         <block blocktype="Outport" name="while_iterator_subsystem_WhileIteratorSubsystem_Out1" rate="-1">
+            <input line="while_iterator_subsystem_WhileIteratorSubsystem_In1_1" port="while_iterator_subsystem_WhileIteratorSubsystem_Out1_1">
+               <connect block="while_iterator_subsystem_WhileIteratorSubsystem_In1" port="while_iterator_subsystem_WhileIteratorSubsystem_In1_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="while_iterator_subsystem_Out1" rate="-1">
+      <input line="while_iterator_subsystem_WhileIteratorSubsystem_1" port="while_iterator_subsystem_Out1_1">
+         <connect block="while_iterator_subsystem_WhileIteratorSubsystem" port="while_iterator_subsystem_WhileIteratorSubsystem_Out1"/>
+      </input>
+   </block>
+</sm:blocks>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Gain2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Gain2_ert_rtw/Gain2.h" size="2732" timestamp="2015-10-05T16:54:53+0900" type="c-header"/>
+  <file name="xx_Gain2.xml" size="1697" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="Gain2_ert_rtw/Gain2.c" size="1912" timestamp="2015-10-05T16:54:53+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Gain2_In1" priority="0" rate="0.1">
+    <output line="Gain2_In1_1" port="Gain2_In1_1" usename="true">
+      <connect block="Gain2_VectorConcatenate" port="Gain2_VectorConcatenate_1"/>
+      <connect block="Gain2_VectorConcatenate" port="Gain2_VectorConcatenate_2"/>
+    </output>
+    <var line="Gain2_In1_1" mode="extin" name="Gain2_In1_1" port="Gain2_In1_1" type="real_T"/>
+    <code file="Gain2_ert_rtw/Gain2.c" line="67" type="init">  Gain2_In1_1 = 0.0;
+</code>
+    <forward block="Gain2_VectorConcatenate" type="data">
+      <var line="Gain2_In1_1" mode="input" name="Gain2_In1_1" port="Gain2_VectorConcatenate_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Gain" id="2" name="Gain2_Gain" priority="4" rate="0.1">
+    <input line="Gain2_VectorConcatenate_1" port="Gain2_Gain_1">
+      <connect block="Gain2_VectorConcatenate" port="Gain2_VectorConcatenate_1"/>
+    </input>
+    <output line="Gain2_Gain_1" port="Gain2_Gain_1" usename="true">
+      <connect block="Gain2_Out1" port="Gain2_Out1_1"/>
+    </output>
+    <var line="Gain2_VectorConcatenate_1" mode="input" name="Gain2_VectorConcatenate_1" port="Gain2_Gain_1" size="2" type="real_T"/>
+    <var line="Gain2_Gain_1" mode="extout" name="Gain2_Gain_1" port="Gain2_Gain_1" type="real_T"/>
+    <param name="Gain_Gain" size="2" storage="Gain2_P" type="real_T"/>
+    <code file="Gain2_ert_rtw/Gain2.c" line="45" type="task">  /* Gain: '&lt;Root&gt;/Gain' */
+  tmp = Gain2_P.Gain_Gain[0] * Gain2_VectorConcatenate_1[0];
+  tmp += Gain2_P.Gain_Gain[1] * Gain2_VectorConcatenate_1[1];
+  Gain2_Gain_1 = tmp;
+</code>
+    <code file="Gain2_ert_rtw/Gain2.c" line="64" type="init">  Gain2_Gain_1 = 0.0;
+
+</code>
+    <forward block="Gain2_Out1" type="port">
+      <var line="Gain2_Gain_1" mode="input" name="Gain2_Gain_1" port="Gain2_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Gain2_VectorConcatenate" type="data">
+      <var line="Gain2_VectorConcatenate_1" mode="output" name="Gain2_VectorConcatenate_1" port="Gain2_VectorConcatenate_1" size="2" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Concatenate" id="3" name="Gain2_VectorConcatenate" priority="3" rate="0.1">
+    <input line="Gain2_In1_1" port="Gain2_VectorConcatenate_1">
+      <connect block="Gain2_In1" port="Gain2_In1_1"/>
+    </input>
+    <input line="Gain2_In1_1" port="Gain2_VectorConcatenate_2">
+      <connect block="Gain2_In1" port="Gain2_In1_1"/>
+    </input>
+    <output line="Gain2_VectorConcatenate_1" port="Gain2_VectorConcatenate_1" usename="true">
+      <connect block="Gain2_Gain" port="Gain2_Gain_1"/>
+    </output>
+    <var line="Gain2_In1_1" mode="input" name="Gain2_In1_1" port="Gain2_VectorConcatenate_1" type="real_T"/>
+    <var line="Gain2_VectorConcatenate_1" mode="output" name="Gain2_VectorConcatenate_1" port="Gain2_VectorConcatenate_1" size="2" type="real_T"/>
+    <code file="Gain2_ert_rtw/Gain2.c" index="1" line="35" type="task">  /* SignalConversion: '&lt;Root&gt;/ConcatBufferAtVectorConcatenateIn1' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Gain2_VectorConcatenate_1[0] = Gain2_In1_1;
+
+</code>
+    <code file="Gain2_ert_rtw/Gain2.c" index="2" line="40" type="task">  /* SignalConversion: '&lt;Root&gt;/ConcatBufferAtVectorConcatenateIn2' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Gain2_VectorConcatenate_1[1] = Gain2_In1_1;
+
+</code>
+    <code file="Gain2_ert_rtw/Gain2.c" line="62" type="init">  Gain2_VectorConcatenate_1[0] = 0.0;
+  Gain2_VectorConcatenate_1[1] = 0.0;
+</code>
+    <forward block="Gain2_Gain" type="data">
+      <var line="Gain2_VectorConcatenate_1" mode="input" name="Gain2_VectorConcatenate_1" port="Gain2_Gain_1" size="2" type="real_T"/>
+    </forward>
+    <backword block="Gain2_In1" type="data">
+      <var line="Gain2_In1_1" mode="extin" name="Gain2_In1_1" port="Gain2_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Gain2_Out1" priority="5" rate="0.1">
+    <input line="Gain2_Gain_1" port="Gain2_Out1_1">
+      <connect block="Gain2_Gain" port="Gain2_Gain_1"/>
+    </input>
+    <var line="Gain2_Gain_1" mode="input" name="Gain2_Gain_1" port="Gain2_Out1_1" type="real_T"/>
+    <backword block="Gain2_Gain" type="port">
+      <var line="Gain2_Gain_1" mode="extout" name="Gain2_Gain_1" port="Gain2_Gain_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Gain2_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T tmp;
+
+</code>
+  <object kind="rtm-extern" name="Gain2_M" type="extern RT_MODEL_Gain2_T * const"/>
+  <object kind="rtm-object" name="Gain2_M_" type="RT_MODEL_Gain2_T"/>
+  <object kind="rtm-pointer" name="Gain2_M" type="RT_MODEL_Gain2_T * const" value="&amp;Gain2_M_"/>
+  <includes file="&lt;stddef.h>" from="Gain2_ert_rtw/Gain2.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Gain2_ert_rtw/Gain2.h" index="1"/>
+  <includes file="&quot;Gain2_types.h&quot;" from="Gain2_ert_rtw/Gain2.h" index="2"/>
+  <includes file="&quot;Gain2_private.h&quot;" from="Gain2_ert_rtw/Gain2.c" index="3"/>
+</sm:blocks>

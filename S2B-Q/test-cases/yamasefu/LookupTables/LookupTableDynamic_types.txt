@@ -1,0 +1,19 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=SingleTasking fixedStep=0.1
+Block "LookupTableDynamic" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "LookupTableDynamic/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "LookupTableDynamic/Constant" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double[3]"
+Block "LookupTableDynamic/Constant1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double[3]"
+Block "LookupTableDynamic/LookupTableDynamic" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double[3]"
+InDataPort portNumber=3 dataType="double[3]"
+OutDataPort portNumber=1 dataType="double"
+Block "LookupTableDynamic/Out1" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

@@ -1,0 +1,25 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Multiport_Switch" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+InDataPort portNumber=4 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Multiport_Switch/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Multiport_Switch/In2" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Multiport_Switch/In3" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Multiport_Switch/In4" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Multiport_Switch/MultiportSwitch" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+InDataPort portNumber=4 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Multiport_Switch/Out2" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

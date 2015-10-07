@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Discrete_Transfer_Fcn" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Discrete_Transfer_Fcn_In1" rate="-1">
+      <output line="Discrete_Transfer_Fcn_In1_1" port="Discrete_Transfer_Fcn_In1_1" usename="true">
+         <connect block="Discrete_Transfer_Fcn_DiscreteTransferFcn" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1"/>
+      </output>
+   </block>
+   <block blocktype="DiscreteTransferFcn" name="Discrete_Transfer_Fcn_DiscreteTransferFcn" rate="-1">
+      <input line="Discrete_Transfer_Fcn_In1_1" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1">
+         <connect block="Discrete_Transfer_Fcn_In1" port="Discrete_Transfer_Fcn_In1_1"/>
+      </input>
+      <output line="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" usename="true">
+         <connect block="Discrete_Transfer_Fcn_Out1" port="Discrete_Transfer_Fcn_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Discrete_Transfer_Fcn_Out1" rate="-1">
+      <input line="Discrete_Transfer_Fcn_DiscreteTransferFcn_1" port="Discrete_Transfer_Fcn_Out1_1">
+         <connect block="Discrete_Transfer_Fcn_DiscreteTransferFcn" port="Discrete_Transfer_Fcn_DiscreteTransferFcn_1"/>
+      </input>
+   </block>
+</sm:blocks>

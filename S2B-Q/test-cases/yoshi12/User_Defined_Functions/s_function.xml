@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="s_function" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="s_function_In1" rate="-1">
+      <output line="s_function_In1_1" port="s_function_In1_1" usename="true">
+         <connect block="s_function_S_Function" port="s_function_S_Function_1"/>
+      </output>
+   </block>
+   <block blocktype="S-Function" name="s_function_S_Function">
+      <input line="s_function_In1_1" port="s_function_S_Function_1">
+         <connect block="s_function_In1" port="s_function_In1_1"/>
+      </input>
+      <output line="s_function_S_Function_1" port="s_function_S_Function_1" usename="true">
+         <connect block="s_function_Out1" port="s_function_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="s_function_Out1" rate="-1">
+      <input line="s_function_S_Function_1" port="s_function_Out1_1">
+         <connect block="s_function_S_Function" port="s_function_S_Function_1"/>
+      </input>
+   </block>
+</sm:blocks>

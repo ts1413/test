@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Wrap_To_Zero" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Wrap_To_Zero_In1" rate="-1">
+      <output line="Wrap_To_Zero_In1_1" port="Wrap_To_Zero_In1_1" usename="true">
+         <connect block="Wrap_To_Zero_WrapToZero" port="Wrap_To_Zero_WrapToZero_U"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Wrap_To_Zero_WrapToZero">
+      <input line="Wrap_To_Zero_In1_1" port="Wrap_To_Zero_WrapToZero_U">
+         <connect block="Wrap_To_Zero_In1" port="Wrap_To_Zero_In1_1"/>
+      </input>
+      <output line="Wrap_To_Zero_WrapToZero_1" port="Wrap_To_Zero_WrapToZero_Y" usename="false">
+         <connect block="Wrap_To_Zero_Out1" port="Wrap_To_Zero_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Wrap_To_Zero_WrapToZero_U" rate="-1">
+            <output line="Wrap_To_Zero_WrapToZero_U_1" port="Wrap_To_Zero_WrapToZero_U_1" usename="false">
+               <connect block="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1" port="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1_2"/>
+               <connect block="Wrap_To_Zero_WrapToZero_FixPtSwitch" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_2"/>
+               <connect block="Wrap_To_Zero_WrapToZero_FixPtSwitch" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_3"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="Wrap_To_Zero_WrapToZero_Constant" rate="inf">
+            <output line="Wrap_To_Zero_WrapToZero_Constant_1" port="Wrap_To_Zero_WrapToZero_Constant_1" usename="true">
+               <connect block="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1" port="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1_3"/>
+               <connect block="Wrap_To_Zero_WrapToZero_FixPtSwitch" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_1"/>
+            </output>
+         </block>
+         <block blocktype="DataTypeDuplicate" name="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1">
+            <input line="Wrap_To_Zero_WrapToZero_FixPtSwitch_1" port="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1_1">
+               <connect block="Wrap_To_Zero_WrapToZero_FixPtSwitch" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_1"/>
+            </input>
+            <input line="Wrap_To_Zero_WrapToZero_U_1" port="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1_2">
+               <connect block="Wrap_To_Zero_WrapToZero_U" port="Wrap_To_Zero_WrapToZero_U_1"/>
+            </input>
+            <input line="Wrap_To_Zero_WrapToZero_Constant_1" port="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1_3">
+               <connect block="Wrap_To_Zero_WrapToZero_Constant" port="Wrap_To_Zero_WrapToZero_Constant_1"/>
+            </input>
+         </block>
+         <block blocktype="Switch" name="Wrap_To_Zero_WrapToZero_FixPtSwitch" rate="-1">
+            <input line="Wrap_To_Zero_WrapToZero_Constant_1" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_1">
+               <connect block="Wrap_To_Zero_WrapToZero_Constant" port="Wrap_To_Zero_WrapToZero_Constant_1"/>
+            </input>
+            <input line="Wrap_To_Zero_WrapToZero_U_1" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_2">
+               <connect block="Wrap_To_Zero_WrapToZero_U" port="Wrap_To_Zero_WrapToZero_U_1"/>
+            </input>
+            <input line="Wrap_To_Zero_WrapToZero_U_1" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_3">
+               <connect block="Wrap_To_Zero_WrapToZero_U" port="Wrap_To_Zero_WrapToZero_U_1"/>
+            </input>
+            <output line="Wrap_To_Zero_WrapToZero_FixPtSwitch_1" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_1" usename="true">
+               <connect block="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1" port="Wrap_To_Zero_WrapToZero_FixPtDataTypeDuplicate1_1"/>
+               <connect block="Wrap_To_Zero_WrapToZero_Y" port="Wrap_To_Zero_WrapToZero_Y_1"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="Wrap_To_Zero_WrapToZero_Y" rate="-1">
+            <input line="Wrap_To_Zero_WrapToZero_FixPtSwitch_1" port="Wrap_To_Zero_WrapToZero_Y_1">
+               <connect block="Wrap_To_Zero_WrapToZero_FixPtSwitch" port="Wrap_To_Zero_WrapToZero_FixPtSwitch_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Wrap_To_Zero_Out1" rate="-1">
+      <input line="Wrap_To_Zero_WrapToZero_1" port="Wrap_To_Zero_Out1_1">
+         <connect block="Wrap_To_Zero_WrapToZero" port="Wrap_To_Zero_WrapToZero_Y"/>
+      </input>
+   </block>
+</sm:blocks>

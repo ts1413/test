@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Shift_Arithmetic_Dlg_ShiftArithmetic	 [label="t2\nShift_Arithmetic_Dlg_ShiftArithmetic"];
+	t0 -> Shift_Arithmetic_Dlg_ShiftArithmetic	 [color=green,
+		label="ch_0_2(Shift_Arithmetic_Dlg_In1_1)"];
+	extout	 [label=extout];
+	Shift_Arithmetic_Dlg_In1	 [label="t1\nShift_Arithmetic_Dlg_In1",
+		shape=box];
+	Shift_Arithmetic_Dlg_In1 -> t0	 [color=green,
+		label="in port Shift_Arithmetic_Dlg_In1(Shift_Arithmetic_Dlg_In1_1)"];
+	Shift_Arithmetic_Dlg_ShiftArithmetic -> extout	 [color=green,
+		label="ch_2_100(Shift_Arithmetic_Dlg_ShiftArithmetic_1)"];
+}

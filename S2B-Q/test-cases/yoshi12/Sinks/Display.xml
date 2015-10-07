@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Display" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Display_In1" rate="-1">
+      <output line="Display_In1_1" port="Display_In1_1" usename="true">
+         <connect block="Display_Display" port="Display_Display_1"/>
+      </output>
+   </block>
+   <block blocktype="Display" name="Display_Display" rate="-1">
+      <input line="Display_In1_1" port="Display_Display_1">
+         <connect block="Display_In1" port="Display_In1_1"/>
+      </input>
+   </block>
+</sm:blocks>

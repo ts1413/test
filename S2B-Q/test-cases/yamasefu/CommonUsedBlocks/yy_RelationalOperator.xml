@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="RelationalOperator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="RelationalOperator_ert_rtw/RelationalOperator.h" size="2659" timestamp="2015-10-05T16:55:43+0900" type="c-header"/>
+  <file name="xx_RelationalOperator.xml" size="1915" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="RelationalOperator_ert_rtw/RelationalOperator.c" size="1815" timestamp="2015-10-05T16:55:43+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="RelationalOperator_In1" priority="0" rate="0.1">
+    <output line="RelationalOperator_In1_1" port="RelationalOperator_In1_1" usename="true">
+      <connect block="RelationalOperator_RelationalOperator" port="RelationalOperator_RelationalOperator_1"/>
+    </output>
+    <var line="RelationalOperator_In1_1" mode="extin" name="RelationalOperator_In1_1" port="RelationalOperator_In1_1" type="real_T"/>
+    <code file="RelationalOperator_ert_rtw/RelationalOperator.c" line="56" type="init">  RelationalOperator_In1_1 = 0.0;
+</code>
+    <forward block="RelationalOperator_RelationalOperator" type="data">
+      <var line="RelationalOperator_In1_1" mode="input" name="RelationalOperator_In1_1" port="RelationalOperator_RelationalOperator_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="RelationalOperator_In2" priority="0" rate="0.1">
+    <output line="RelationalOperator_In2_1" port="RelationalOperator_In2_1" usename="true">
+      <connect block="RelationalOperator_RelationalOperator" port="RelationalOperator_RelationalOperator_2"/>
+    </output>
+    <var line="RelationalOperator_In2_1" mode="extin" name="RelationalOperator_In2_1" port="RelationalOperator_In2_1" type="real_T"/>
+    <code file="RelationalOperator_ert_rtw/RelationalOperator.c" line="57" type="init">  RelationalOperator_In2_1 = 0.0;
+</code>
+    <forward block="RelationalOperator_RelationalOperator" type="data">
+      <var line="RelationalOperator_In2_1" mode="input" name="RelationalOperator_In2_1" port="RelationalOperator_RelationalOperator_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="RelationalOperator" id="3" name="RelationalOperator_RelationalOperator" priority="1" rate="0.1">
+    <input line="RelationalOperator_In1_1" port="RelationalOperator_RelationalOperator_1">
+      <connect block="RelationalOperator_In1" port="RelationalOperator_In1_1"/>
+    </input>
+    <input line="RelationalOperator_In2_1" port="RelationalOperator_RelationalOperator_2">
+      <connect block="RelationalOperator_In2" port="RelationalOperator_In2_1"/>
+    </input>
+    <output line="RelationalOperator_RelationalOperator_1" port="RelationalOperator_RelationalOperator_1" usename="true">
+      <connect block="RelationalOperator_Out1" port="RelationalOperator_Out1_1"/>
+    </output>
+    <var line="RelationalOperator_In1_1" mode="input" name="RelationalOperator_In1_1" port="RelationalOperator_RelationalOperator_1" type="real_T"/>
+    <var line="RelationalOperator_In2_1" mode="input" name="RelationalOperator_In2_1" port="RelationalOperator_RelationalOperator_2" type="real_T"/>
+    <var line="RelationalOperator_RelationalOperator_1" mode="extout" name="RelationalOperator_RelationalOperator_1" port="RelationalOperator_RelationalOperator_1" type="boolean_T"/>
+    <code file="RelationalOperator_ert_rtw/RelationalOperator.c" line="34" type="task">  /* RelationalOperator: '&lt;Root&gt;/RelationalOperator' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   */
+  RelationalOperator_RelationalOperator_1 = (RelationalOperator_In1_1 &lt;=
+    RelationalOperator_In2_1);
+</code>
+    <code file="RelationalOperator_ert_rtw/RelationalOperator.c" line="53" type="init">  RelationalOperator_RelationalOperator_1 = false;
+
+</code>
+    <forward block="RelationalOperator_Out1" type="data">
+      <var line="RelationalOperator_RelationalOperator_1" mode="input" name="RelationalOperator_RelationalOperator_1" port="RelationalOperator_Out1_1" type="boolean_T"/>
+    </forward>
+    <backword block="RelationalOperator_In1" type="data">
+      <var line="RelationalOperator_In1_1" mode="extin" name="RelationalOperator_In1_1" port="RelationalOperator_In1_1" type="real_T"/>
+    </backword>
+    <backword block="RelationalOperator_In2" type="data">
+      <var line="RelationalOperator_In2_1" mode="extin" name="RelationalOperator_In2_1" port="RelationalOperator_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="RelationalOperator_Out1" priority="2" rate="0.1">
+    <input line="RelationalOperator_RelationalOperator_1" port="RelationalOperator_Out1_1">
+      <connect block="RelationalOperator_RelationalOperator" port="RelationalOperator_RelationalOperator_1"/>
+    </input>
+    <var line="RelationalOperator_RelationalOperator_1" mode="input" name="RelationalOperator_RelationalOperator_1" port="RelationalOperator_Out1_1" type="boolean_T"/>
+    <backword block="RelationalOperator_RelationalOperator" type="data">
+      <var line="RelationalOperator_RelationalOperator_1" mode="extout" name="RelationalOperator_RelationalOperator_1" port="RelationalOperator_RelationalOperator_1" type="boolean_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_RelationalOperator_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="RelationalOperator_M" type="extern RT_MODEL_RelationalOperator_T * const"/>
+  <object kind="rtm-object" name="RelationalOperator_M_" type="RT_MODEL_RelationalOperator_T"/>
+  <object kind="rtm-pointer" name="RelationalOperator_M" type="RT_MODEL_RelationalOperator_T * const" value="&amp;RelationalOperator_M_"/>
+  <includes file="&lt;stddef.h>" from="RelationalOperator_ert_rtw/RelationalOperator.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="RelationalOperator_ert_rtw/RelationalOperator.h" index="1"/>
+  <includes file="&quot;RelationalOperator_types.h&quot;" from="RelationalOperator_ert_rtw/RelationalOperator.h" index="2"/>
+  <includes file="&quot;RelationalOperator_private.h&quot;" from="RelationalOperator_ert_rtw/RelationalOperator.c" index="3"/>
+</sm:blocks>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Transfer_Fcn_Lead_or_Lag" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Transfer_Fcn_Lead_or_Lag_In1" rate="-1">
+      <output line="Transfer_Fcn_Lead_or_Lag_In1_1" port="Transfer_Fcn_Lead_or_Lag_In1_1" usename="true">
+         <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag">
+      <input line="Transfer_Fcn_Lead_or_Lag_In1_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u">
+         <connect block="Transfer_Fcn_Lead_or_Lag_In1" port="Transfer_Fcn_Lead_or_Lag_In1_1"/>
+      </input>
+      <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_y" usename="false">
+         <connect block="Transfer_Fcn_Lead_or_Lag_Out1" port="Transfer_Fcn_Lead_or_Lag_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u" rate="-1">
+            <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1" usename="false">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp_1"/>
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp_2"/>
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput_1"/>
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_1"/>
+            </output>
+         </block>
+         <block blocktype="S-Function" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp">
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp_1">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1"/>
+            </input>
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp_2">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1"/>
+            </input>
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp_3">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1"/>
+            </input>
+         </block>
+         <block blocktype="UnitDelay" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput" rate="-1">
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput_1">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1"/>
+            </input>
+            <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput_Uk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput_1" usename="true">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero_1"/>
+            </output>
+         </block>
+         <block blocktype="UnitDelay" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput" rate="-1">
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput_1">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1"/>
+            </input>
+            <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput_Yk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput_1" usename="true">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole_1"/>
+            </output>
+         </block>
+         <block blocktype="DataTypeConversion" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast" rate="-1">
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_PoleYk_1Uk_ZeroUk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_1"/>
+            </input>
+            <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1" usename="true">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DataTypeProp_3"/>
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput_1"/>
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_y" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_y_1"/>
+            </output>
+         </block>
+         <block blocktype="Gain" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole" rate="-1">
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput_Yk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole_1">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayOutput_1"/>
+            </input>
+            <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole_PoleYk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole_1" usename="true">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_3"/>
+            </output>
+         </block>
+         <block blocktype="Gain" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero" rate="-1">
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput_Uk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero_1">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_DelayInput_1"/>
+            </input>
+            <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero_ZeroUk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero_1" usename="true">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_2"/>
+            </output>
+         </block>
+         <block blocktype="Sum" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum" rate="-1">
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_1">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_u_1"/>
+            </input>
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero_ZeroUk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_2">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainZero_1"/>
+            </input>
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole_PoleYk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_3">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_GainPole_1"/>
+            </input>
+            <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_PoleYk_1Uk_ZeroUk_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Sum_1" usename="true">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_y" rate="-1">
+            <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_y_1">
+               <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_Downcast_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Transfer_Fcn_Lead_or_Lag_Out1" rate="-1">
+      <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1" port="Transfer_Fcn_Lead_or_Lag_Out1_1">
+         <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_y"/>
+      </input>
+   </block>
+</sm:blocks>

@@ -1,0 +1,18 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"LookupTable1D5_In1_1",,
+"task100",,,,
+,"LookupTable1D5_1_DLookupTable_1",,,
+"task2",,,,
+,"LookupTable1D5_In1_1","LookupTable1D5_1_DLookupTable_1",,
+,,,,"{
+"
+,,,,"  /* Lookup_n-D: '<Root>/1_DLookupTable' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  LookupTable1D5_1_DLookupTable_1 = look1_linlxpw(LookupTable1D5_In1_1,
+    LookupTable1D5_P._DLookupTable_bp01Data,
+    LookupTable1D5_P._DLookupTable_tableData, 10U);
+"
+,,,,"}
+"

@@ -1,0 +1,17 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Bitwise_Operator_mask_In1_1",,
+"task100",,,,
+,"Bitwise_Operator_mask_BitwiseOperator_1",,,
+"task2",,,,
+,"Bitwise_Operator_mask_In1_1","Bitwise_Operator_mask_BitwiseOperator_1",,
+,,,,"{
+"
+,,,,"  /* S-Function (sfix_bitop): '<Root>/BitwiseOperator' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Bitwise_Operator_mask_BitwiseOperator_1 = (int8_T)(Bitwise_Operator_mask_In1_1
+    & Bitwise_Operator_mask_P.BitwiseOperator_BitMask);
+"
+,,,,"}
+"

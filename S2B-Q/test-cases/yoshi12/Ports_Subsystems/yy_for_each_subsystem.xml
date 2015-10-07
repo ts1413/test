@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="for_each_subsystem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="for_each_subsystem_ert_rtw/for_each_subsystem.h" size="2784" timestamp="2015-09-29T13:41:40+0900" type="c-header"/>
+  <file name="xx_for_each_subsystem.xml" size="2330" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="for_each_subsystem_ert_rtw/for_each_subsystem.c" size="2127" timestamp="2015-09-29T13:41:40+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="for_each_subsystem_In1" priority="0" rate="0.1">
+    <output line="for_each_subsystem_In1_1" port="for_each_subsystem_In1_1" usename="true">
+      <connect block="for_each_subsystem_ForEachSubsystem" port="for_each_subsystem_ForEachSubsystem_In1"/>
+    </output>
+    <var line="for_each_subsystem_In1_1" mode="extin" name="for_each_subsystem_In1_1" port="for_each_subsystem_In1_1" type="real_T"/>
+    <code file="for_each_subsystem_ert_rtw/for_each_subsystem.c" line="64" type="init">  for_each_subsystem_In1_1 = 0.0;
+
+</code>
+    <forward block="for_each_subsystem_Out1" type="port">
+      <var line="for_each_subsystem_ForEachSubsystem_1" mode="input" name="for_each_subsystem_In1_1" port="for_each_subsystem_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="2" name="for_each_subsystem_ForEachSubsystem" priority="1" rate="0.1">
+    <input line="for_each_subsystem_In1_1" port="for_each_subsystem_ForEachSubsystem_In1">
+      <connect block="for_each_subsystem_In1" port="for_each_subsystem_In1_1"/>
+    </input>
+    <output line="for_each_subsystem_ForEachSubsystem_1" port="for_each_subsystem_ForEachSubsystem_Out1" usename="false">
+      <connect block="for_each_subsystem_Out1" port="for_each_subsystem_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="3" name="for_each_subsystem_ForEachSubsystem_In1" priority="0" rate="0.1">
+        <output line="for_each_subsystem_ForEachSubsystem_In1_1" port="for_each_subsystem_ForEachSubsystem_In1_1" usename="false">
+          <connect block="for_each_subsystem_ForEachSubsystem_Out1" port="for_each_subsystem_ForEachSubsystem_Out1_1"/>
+        </output>
+        <merged_to block="for_each_subsystem_ForEachSubsystem"/>
+      </block>
+      <block blocktype="ForEach" id="4" name="for_each_subsystem_ForEachSubsystem_ForEach" priority="2" rate="0.1">
+        <merged_to block="for_each_subsystem_ForEachSubsystem"/>
+      </block>
+      <block blocktype="Outport" id="5" name="for_each_subsystem_ForEachSubsystem_Out1" priority="0" rate="0.1">
+        <input line="for_each_subsystem_ForEachSubsystem_In1_1" port="for_each_subsystem_ForEachSubsystem_Out1_1">
+          <connect block="for_each_subsystem_ForEachSubsystem_In1" port="for_each_subsystem_ForEachSubsystem_In1_1"/>
+        </input>
+        <merged_to block="for_each_subsystem_ForEachSubsystem"/>
+      </block>
+    </sm:blocks>
+    <code file="for_each_subsystem_ert_rtw/for_each_subsystem.c" line="37" type="task">  /* Outputs for Iterator SubSystem: '&lt;Root&gt;/ForEachSubsystem' incorporates:
+   *  ForEach: '&lt;S1&gt;/ForEach'
+   */
+  for (ForEach_itr = 0; ForEach_itr &lt; 1; ForEach_itr++) {
+    /* ForEachSliceSelector: '&lt;S1&gt;/ImpSel_InsertedFor_In1_at_outport_0' incorporates:
+     *  Inport: '&lt;Root&gt;/In1'
+     */
+    rtb_ImpSel_InsertedFor_In1_at_o = for_each_subsystem_In1_1;
+
+    /* Outport: '&lt;Root&gt;/Out1' incorporates:
+     *  ForEachSliceAssignment: '&lt;S1&gt;/ImpAsg_InsertedFor_Out1_at_inport_0'
+     */
+    for_each_subsystem_Y.Out1 = rtb_ImpSel_InsertedFor_In1_at_o;
+  }
+
+  /* End of Outputs for SubSystem: '&lt;Root&gt;/ForEachSubsystem' */
+</code>
+    <merge_block block="for_each_subsystem_ForEachSubsystem_ForEach"/>
+    <merge_block block="for_each_subsystem_ForEachSubsystem_In1"/>
+    <merge_block block="for_each_subsystem_ForEachSubsystem_Out1"/>
+  </block>
+  <block blocktype="Outport" id="6" name="for_each_subsystem_Out1" priority="2" rate="0.1">
+    <input line="for_each_subsystem_ForEachSubsystem_1" port="for_each_subsystem_Out1_1">
+      <connect block="for_each_subsystem_ForEachSubsystem" port="for_each_subsystem_ForEachSubsystem_Out1"/>
+    </input>
+    <var line="for_each_subsystem_ForEachSubsystem_1" mode="input" name="for_each_subsystem_In1_1" port="for_each_subsystem_Out1_1" type="real_T"/>
+    <var line="" mode="extout" name="Out1" port="" storage="for_each_subsystem_Y" type="real_T"/>
+    <code file="for_each_subsystem_ert_rtw/for_each_subsystem.c" line="67" type="init">  for_each_subsystem_Y.Out1 = 0.0;
+</code>
+    <backword block="for_each_subsystem_In1" type="port">
+      <var line="for_each_subsystem_In1_1" mode="extin" name="for_each_subsystem_In1_1" port="for_each_subsystem_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_for_each_subsystem_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  /* local scratch DWork variables */
+  int32_T ForEach_itr;
+  real_T rtb_ImpSel_InsertedFor_In1_at_o;
+
+</code>
+  <object kind="rtm-extern" name="for_each_subsystem_M" type="extern RT_MODEL_for_each_subsystem_T * const"/>
+  <object kind="rtm-object" name="for_each_subsystem_M_" type="RT_MODEL_for_each_subsystem_T"/>
+  <object kind="rtm-pointer" name="for_each_subsystem_M" type="RT_MODEL_for_each_subsystem_T * const" value="&amp;for_each_subsystem_M_"/>
+  <includes file="&lt;stddef.h>" from="for_each_subsystem_ert_rtw/for_each_subsystem.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="for_each_subsystem_ert_rtw/for_each_subsystem.h" index="1"/>
+  <includes file="&quot;for_each_subsystem_types.h&quot;" from="for_each_subsystem_ert_rtw/for_each_subsystem.h" index="2"/>
+  <includes file="&quot;for_each_subsystem_private.h&quot;" from="for_each_subsystem_ert_rtw/for_each_subsystem.c" index="3"/>
+</sm:blocks>

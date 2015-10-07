@@ -1,0 +1,22 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "triggered_subsystem" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "triggered_subsystem/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "triggered_subsystem/In2" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "triggered_subsystem/TriggeredSubsystem" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InEdgeEnablePort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "triggered_subsystem/TriggeredSubsystem/In1" samplePeriod=-1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "triggered_subsystem/TriggeredSubsystem/Trigger" samplePeriod=-1 min=[] max=[]
+Block "triggered_subsystem/TriggeredSubsystem/Out1" samplePeriod=-1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "triggered_subsystem/Out1" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

@@ -1,0 +1,18 @@
+digraph csp {
+	graph [rankdir=LR];
+	if_and_if_action_subsys_If	 [fillcolor=red,
+		label="t4\nif_and_if_action_subsys_If",
+		style=filled];
+	t0 -> if_and_if_action_subsys_If	 [color=green,
+		label="ch_0_4(if_and_if_action_subsys_In1_1)"];
+	if_and_if_action_subsys_Merge	 [label="t13\nif_and_if_action_subsys_Merge"];
+	t0 -> if_and_if_action_subsys_Merge	 [color=red,
+		label="ch_0_13([EVENT])"];
+	extout	 [label=extout];
+	if_and_if_action_subsys_In1	 [label="t1\nif_and_if_action_subsys_In1",
+		shape=box];
+	if_and_if_action_subsys_In1 -> t0	 [color=green,
+		label="in port if_and_if_action_subsys_In1(if_and_if_action_subsys_In1_1)"];
+	if_and_if_action_subsys_Merge -> extout	 [color=green,
+		label="ch_13_100(if_and_if_action_subsys_Merge_1)"];
+}

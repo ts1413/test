@@ -1,0 +1,38 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Gain4_In1_1",,
+"task100",,,,
+,"Gain4_Gain_1",,,
+"task2",,,,
+,"Gain4_VectorConcatenate_1","Gain4_Gain_1",,
+,,,,"{
+"
+,,,,"  /* Gain: '<Root>/Gain' */
+  tmp = Gain4_P.Gain_Gain[0] * Gain4_VectorConcatenate_1[0];
+  tmp += Gain4_P.Gain_Gain[1] * Gain4_VectorConcatenate_1[1];
+  Gain4_Gain_1 = tmp;
+"
+,,,,"}
+"
+"task3",,,,
+,"Gain4_In1_1","Gain4_VectorConcatenate_1",,
+,,,,"{
+"
+,,,,"  /* SignalConversion: '<Root>/ConcatBufferAtVectorConcatenateIn1' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Gain4_VectorConcatenate_1[0] = Gain4_In1_1;
+
+"
+,,,,"}
+"
+,,,,"{
+"
+,,,,"  /* SignalConversion: '<Root>/ConcatBufferAtVectorConcatenateIn2' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Gain4_VectorConcatenate_1[1] = Gain4_In1_1;
+
+"
+,,,,"}
+"

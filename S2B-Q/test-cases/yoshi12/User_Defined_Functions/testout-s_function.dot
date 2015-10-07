@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	s_function_S_Function	 [label="t2\ns_function_S_Function"];
+	t0 -> s_function_S_Function	 [color=green,
+		label="ch_0_2(s_function_In1_1)"];
+	extout	 [label=extout];
+	s_function_In1	 [label="t1\ns_function_In1",
+		shape=box];
+	s_function_In1 -> t0	 [color=green,
+		label="in port s_function_In1(s_function_In1_1)"];
+	s_function_S_Function -> extout	 [color=green,
+		label="ch_2_100(s_function_S_Function_1)"];
+}

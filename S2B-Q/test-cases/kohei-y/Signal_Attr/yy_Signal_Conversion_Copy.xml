@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Signal_Conversion_Copy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.h" size="2580" timestamp="2015-09-29T13:06:19+0900" type="c-header"/>
+  <file name="xx_Signal_Conversion_Copy.xml" size="1481" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.c" size="1630" timestamp="2015-09-29T13:06:19+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Signal_Conversion_Copy_In1" priority="0" rate="0.1">
+    <output line="Signal_Conversion_Copy_In1_1" port="Signal_Conversion_Copy_In1_1" usename="true">
+      <connect block="Signal_Conversion_Copy_SignalConversion" port="Signal_Conversion_Copy_SignalConversion_1"/>
+    </output>
+    <var line="Signal_Conversion_Copy_In1_1" mode="extin" name="Signal_Conversion_Copy_In1_1" port="Signal_Conversion_Copy_In1_1" type="real_T"/>
+    <code file="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.c" line="51" type="init">  Signal_Conversion_Copy_In1_1 = 0.0;
+</code>
+    <forward block="Signal_Conversion_Copy_SignalConversion" type="data">
+      <var line="Signal_Conversion_Copy_In1_1" mode="input" name="Signal_Conversion_Copy_In1_1" port="Signal_Conversion_Copy_SignalConversion_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="SignalConversion" id="2" name="Signal_Conversion_Copy_SignalConversion" priority="1" rate="0.1">
+    <input line="Signal_Conversion_Copy_In1_1" port="Signal_Conversion_Copy_SignalConversion_1">
+      <connect block="Signal_Conversion_Copy_In1" port="Signal_Conversion_Copy_In1_1"/>
+    </input>
+    <output line="Signal_Conversion_Copy_SignalConversion_1" port="Signal_Conversion_Copy_SignalConversion_1" usename="true">
+      <connect block="Signal_Conversion_Copy_Out1" port="Signal_Conversion_Copy_Out1_1"/>
+    </output>
+    <var line="Signal_Conversion_Copy_In1_1" mode="input" name="Signal_Conversion_Copy_In1_1" port="Signal_Conversion_Copy_SignalConversion_1" type="real_T"/>
+    <var line="Signal_Conversion_Copy_SignalConversion_1" mode="extout" name="Signal_Conversion_Copy_SignalConversion_1" port="Signal_Conversion_Copy_SignalConversion_1" type="real_T"/>
+    <code file="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.c" line="31" type="task">  /* SignalConversion: '&lt;Root&gt;/SignalConversion' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Signal_Conversion_Copy_SignalConversion_1 = Signal_Conversion_Copy_In1_1;
+</code>
+    <code file="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.c" line="48" type="init">  Signal_Conversion_Copy_SignalConversion_1 = 0.0;
+
+</code>
+    <forward block="Signal_Conversion_Copy_Out1" type="data">
+      <var line="Signal_Conversion_Copy_SignalConversion_1" mode="input" name="Signal_Conversion_Copy_SignalConversion_1" port="Signal_Conversion_Copy_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Signal_Conversion_Copy_In1" type="data">
+      <var line="Signal_Conversion_Copy_In1_1" mode="extin" name="Signal_Conversion_Copy_In1_1" port="Signal_Conversion_Copy_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Signal_Conversion_Copy_Out1" priority="2" rate="0.1">
+    <input line="Signal_Conversion_Copy_SignalConversion_1" port="Signal_Conversion_Copy_Out1_1">
+      <connect block="Signal_Conversion_Copy_SignalConversion" port="Signal_Conversion_Copy_SignalConversion_1"/>
+    </input>
+    <var line="Signal_Conversion_Copy_SignalConversion_1" mode="input" name="Signal_Conversion_Copy_SignalConversion_1" port="Signal_Conversion_Copy_Out1_1" type="real_T"/>
+    <backword block="Signal_Conversion_Copy_SignalConversion" type="data">
+      <var line="Signal_Conversion_Copy_SignalConversion_1" mode="extout" name="Signal_Conversion_Copy_SignalConversion_1" port="Signal_Conversion_Copy_SignalConversion_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Signal_Conversion_Cop_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Signal_Conversion_Copy_M" type="extern RT_MODEL_Signal_Conversion_Co_T * const"/>
+  <object kind="rtm-object" name="Signal_Conversion_Copy_M_" type="RT_MODEL_Signal_Conversion_Co_T"/>
+  <object kind="rtm-pointer" name="Signal_Conversion_Copy_M" type="RT_MODEL_Signal_Conversion_Co_T * const" value="&amp;Signal_Conversion_Copy_M_"/>
+  <includes file="&lt;stddef.h>" from="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.h" index="1"/>
+  <includes file="&quot;Signal_Conversion_Copy_types.h&quot;" from="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.h" index="2"/>
+  <includes file="&quot;Signal_Conversion_Copy_private.h&quot;" from="Signal_Conversion_Copy_ert_rtw/Signal_Conversion_Copy.c" index="3"/>
+</sm:blocks>

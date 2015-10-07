@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Bitwise_Operator_mask" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Bitwise_Operator_mask_In1" priority="0" rate="0.1">
+    <output line="Bitwise_Operator_mask_In1_1" port="Bitwise_Operator_mask_In1_1" usename="true">
+      <connect block="Bitwise_Operator_mask_BitwiseOperator" port="Bitwise_Operator_mask_BitwiseOperator_1"/>
+    </output>
+  </block>
+  <block blocktype="Simulink_BitwiseOperator" name="Bitwise_Operator_mask_BitwiseOperator" priority="1" rate="0.1">
+    <input line="Bitwise_Operator_mask_In1_1" port="Bitwise_Operator_mask_BitwiseOperator_1">
+      <connect block="Bitwise_Operator_mask_In1" port="Bitwise_Operator_mask_In1_1"/>
+    </input>
+    <output line="Bitwise_Operator_mask_BitwiseOperator_1" port="Bitwise_Operator_mask_BitwiseOperator_1" usename="true">
+      <connect block="Bitwise_Operator_mask_Out1" port="Bitwise_Operator_mask_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Bitwise_Operator_mask_Out1" priority="2" rate="0.1">
+    <input line="Bitwise_Operator_mask_BitwiseOperator_1" port="Bitwise_Operator_mask_Out1_1">
+      <connect block="Bitwise_Operator_mask_BitwiseOperator" port="Bitwise_Operator_mask_BitwiseOperator_1"/>
+    </input>
+  </block>
+</sm:blocks>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<geneauto.emf.models.gasystemmodel:GASystemModel xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:geneauto.emf.models.common="http:///geneauto/emf/models/common.ecore" xmlns:geneauto.emf.models.gadatatypes="http:///geneauto/emf/models/gadatatypes.ecore" xmlns:geneauto.emf.models.genericmodel="http:///geneauto/emf/models/genericmodel.ecore" xmlns:geneauto.emf.models.gacodemodel="http:///geneauto/emf/models/gacodemodel.ecore" xmlns:geneauto.emf.models.gacodemodel.expression="http:///geneauto/emf/models/gacodemodel/expression.ecore" xmlns:geneauto.emf.models.gacodemodel.expression.statemodel="http:///geneauto/emf/models/gacodemodel/expression/statemodel.ecore" xmlns:geneauto.emf.models.gacodemodel.statement="http:///geneauto/emf/models/gacodemodel/statement.ecore" xmlns:geneauto.emf.models.gacodemodel.statement.statemodel="http:///geneauto/emf/models/gacodemodel/statement/statemodel.ecore" xmlns:geneauto.emf.models.gacodemodel.gaenumtypes="http:///geneauto/emf/models/gacodemodel/gaenumtypes.ecore" xmlns:geneauto.emf.models.gacodemodel.operator="http:///geneauto/emf/models/gacodemodel/operator.ecore" xmlns:geneauto.emf.models.gasystemmodel="http:///geneauto/emf/models/gasystemmodel.ecore" xmlns:geneauto.emf.models.gasystemmodel.common="http:///geneauto/emf/models/gasystemmodel/common.ecore" xmlns:geneauto.emf.models.gasystemmodel.gastatemodel="http:///geneauto/emf/models/gasystemmodel/gastatemodel.ecore" xmlns:geneauto.emf.models.gasystemmodel.gafunctionalmodel="http:///geneauto/emf/models/gasystemmodel/gafunctionalmodel.ecore" xmlns:geneauto.emf.models.gasystemmodel.gafunctionalmodel.blocks="http:///geneauto/emf/models/gasystemmodel/gafunctionalmodel/blocks.ecore" xmlns:geneauto.emf.models.gasystemmodel.gafunctionalmodel.ports="http:///geneauto/emf/models/gasystemmodel/gafunctionalmodel/ports.ecore" xmlns:geneauto.emf.models.gablocklibrary="http:///geneauto/emf/models/gablocklibrary.ecore" xmi:id="3" fixedStep="1.00000000000000E-01" lastId="0" lastSavedBy="" lastSavedOn="" modelName="s_function" modelVersion="" noNewId="false" taskingType="NONE">
+<elements xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.blocks:SystemBlock" xmi:id="4" assignedPriority="0" assignedPrioritySource="" executionOrder="0" externalID="" fcnName="" isFixedName="false" isFullyTyped="true" isReferenceModel="false" maskType="" name="s_function" offset="0.00000000000000E+00" originalFullName="s_function" originalName="" referencedFullName="" samplePeriod="1.00000000000000E-01" sourceBlockName="" sourceElementId="0" style="FUNCTION" type="SubSystem" userDefinedPriority="0">
+<blocks xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.blocks:InterfaceBlock" xmi:id="9" assignedPriority="0" assignedPrioritySource="" executionOrder="0" externalID="" isFixedName="false" isFullyTyped="true" maskType="" name="In1" offset="0.00000000000000E+00" originalFullName="s_function/In1" originalName="" portReference="27" referencedFullName="" samplePeriod="1.00000000000000E-01" sourceBlockName="" sourceElementId="0" type="Inport" userDefinedPriority="0">
+<outDataPorts xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.ports:OutDataPort" xmi:id="10" externalID="" isFixedName="false" isVirtual="false" name="out1" originalFullName="s_function/In1/OutDataPort1" originalName="" outgoingSignals="49 " portNumber="1" referencedFullName="" resetWhenDisabled="false" sourceElementId="0">
+<dataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="63" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</dataType>
+</outDataPorts>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="11" externalID="" index="-1" isFixedName="false" isMask="false" name="BusOutputAsStruct" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="12" externalID="" isFixedName="false" litValue="off" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="11" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="13" externalID="" index="-1" isFixedName="false" isMask="false" name="LatchByDelayingOutsideSignal" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="14" externalID="" isFixedName="false" litValue="off" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="13" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="15" externalID="" index="-1" isFixedName="false" isMask="false" name="LatchInputForFunctionCall" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="16" externalID="" isFixedName="false" litValue="off" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="15" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="17" externalID="" index="-1" isFixedName="false" isMask="false" name="DataType" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="18" externalID="" isFixedName="false" litValue="Inherit: auto" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="17" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="19" externalID="" index="-1" isFixedName="false" isMask="false" name="Port" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="20" externalID="" isFixedName="false" litValue="1" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="19" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="21" externalID="" index="-1" isFixedName="false" isMask="false" name="PortDimensions" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:UnaryExpression" xmi:id="22" externalID="" isFixedName="false" name="" operator="UNARY_MINUS_OPERATOR" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="21" sourceElementId="0">
+<argument xmi:type="geneauto.emf.models.gacodemodel.expression:DoubleExpression" xmi:id="23" externalID="" isFixedName="false" litValue="1.0" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElementId="0">
+<valueDataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="24" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</valueDataType>
+</argument>
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="25" externalID="" index="-1" isFixedName="false" isMask="false" name="SignalType" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="26" externalID="" isFixedName="false" litValue="auto" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="25" sourceElementId="0">
+</value>
+</parameters>
+</blocks>
+<blocks xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.blocks:FunctionBlock" xmi:id="28" assignedPriority="1" assignedPrioritySource="" executionOrder="0" externalID="" functionSignature="" headerFile="" isFixedName="false" isFullyTyped="true" maskType="" name="S_Function" offset="0.00000000000000E+00" originalFullName="s_function/S_Function" originalName="" referencedFullName="" samplePeriod="1.00000000000000E-01" source="" sourceBlockName="" sourceElementId="0" sourceLang="External" type="S-Function" userDefinedPriority="0">
+<inDataPorts xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.ports:InDataPort" xmi:id="29" externalID="" incomingSignal="49" isFixedName="false" isRequiredBySuccessors="true" isVirtual="false" name="in1" originalFullName="s_function/S_Function/InDataPort1" originalName="" portNumber="1" referencedFullName="" sourceElementId="0">
+<dataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="68" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</dataType>
+</inDataPorts>
+<outDataPorts xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.ports:OutDataPort" xmi:id="30" externalID="" isFixedName="false" isVirtual="false" name="out1" originalFullName="s_function/S_Function/OutDataPort1" originalName="" outgoingSignals="50 " portNumber="1" referencedFullName="" resetWhenDisabled="false" sourceElementId="0">
+<dataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="69" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</dataType>
+</outDataPorts>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="31" externalID="" index="-1" isFixedName="false" isMask="false" name="FunctionName" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="32" externalID="" isFixedName="false" litValue="testest" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="31" sourceElementId="0">
+</value>
+</parameters>
+</blocks>
+<blocks xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.blocks:InterfaceBlock" xmi:id="33" assignedPriority="2" assignedPrioritySource="" executionOrder="0" externalID="" isFixedName="false" isFullyTyped="true" maskType="" name="Out1" offset="0.00000000000000E+00" originalFullName="s_function/Out1" originalName="" portReference="48" referencedFullName="" samplePeriod="1.00000000000000E-01" sourceBlockName="" sourceElementId="0" type="Outport" userDefinedPriority="0">
+<inDataPorts xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.ports:InDataPort" xmi:id="34" externalID="" incomingSignal="50" isFixedName="false" isRequiredBySuccessors="true" isVirtual="false" name="in1" originalFullName="s_function/Out1/InDataPort1" originalName="" portNumber="1" referencedFullName="" sourceElementId="0">
+<dataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="74" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</dataType>
+</inDataPorts>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="35" externalID="" index="-1" isFixedName="false" isMask="false" name="BusOutputAsStruct" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="36" externalID="" isFixedName="false" litValue="off" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="35" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="37" externalID="" index="-1" isFixedName="false" isMask="false" name="InitialOutput" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="38" externalID="" index="-1" isFixedName="false" isMask="false" name="DataType" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="39" externalID="" isFixedName="false" litValue="Inherit: auto" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="38" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="40" externalID="" index="-1" isFixedName="false" isMask="false" name="OutputWhenDisabled" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="41" externalID="" isFixedName="false" litValue="held" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="40" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="42" externalID="" index="-1" isFixedName="false" isMask="false" name="Port" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:StringExpression" xmi:id="43" externalID="" isFixedName="false" litValue="1" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="42" sourceElementId="0">
+</value>
+</parameters>
+<parameters xmi:type="geneauto.emf.models.gasystemmodel.common:BlockParameter" xmi:id="44" externalID="" index="-1" isFixedName="false" isMask="false" name="PortDimensions" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0" storageClass="">
+<value xmi:type="geneauto.emf.models.gacodemodel.expression:UnaryExpression" xmi:id="45" externalID="" isFixedName="false" name="" operator="UNARY_MINUS_OPERATOR" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElement="44" sourceElementId="0">
+<argument xmi:type="geneauto.emf.models.gacodemodel.expression:DoubleExpression" xmi:id="46" externalID="" isFixedName="false" litValue="1.0" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElementId="0">
+<valueDataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="47" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</valueDataType>
+</argument>
+</value>
+</parameters>
+</blocks>
+<customTypes xmi:type="geneauto.emf.models.gacodemodel:StructureType" xmi:id="0" alias="" externalID="" isFixedName="false" isUnion="false" name="BusObject" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+<members xmi:type="geneauto.emf.models.gacodemodel:StructureMember" xmi:id="1" externalID="" isFixedName="false" name="a" originalFullName="" originalName="" referencedFullName="" sourceElementId="0">
+<dataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="2" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</dataType>
+</members>
+</customTypes>
+<inDataPorts xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.ports:InDataPort" xmi:id="27" externalID="" isFixedName="false" isRequiredBySuccessors="true" isVirtual="false" name="In1" originalFullName="s_function/InDataPort1" originalName="" portNumber="1" referencedFullName="" sourceBlock="9" sourceElementId="0">
+<dataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="57" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</dataType>
+</inDataPorts>
+<outDataPorts xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel.ports:OutDataPort" xmi:id="48" externalID="" isFixedName="false" isVirtual="false" name="Out1" originalFullName="s_function/OutDataPort1" originalName="" portNumber="1" referencedFullName="" resetWhenDisabled="false" sourceBlock="33" sourceElementId="0">
+<dataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="58" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</dataType>
+</outDataPorts>
+<signals xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel:Signal" xmi:id="49" dstPort="29" externalID="" isFixedName="false" name="s_function_In1_1" originalFullName="s_function/In1 -&gt; s_function/S_Function" originalName="" referencedFullName="" sampleTime="0" sourceElementId="0" srcPort="10" storageClass="ExportedGlobal">
+</signals>
+<signals xmi:type="geneauto.emf.models.gasystemmodel.gafunctionalmodel:Signal" xmi:id="50" dstPort="34" externalID="" isFixedName="false" name="s_function_S_Function_1" originalFullName="s_function/S_Function -&gt; s_function/Out1" originalName="" referencedFullName="" sampleTime="0" sourceElementId="0" srcPort="30" storageClass="ExportedGlobal">
+</signals>
+<variables xmi:type="geneauto.emf.models.common:Variable" xmi:id="5" autoInit="true" externalID="" isConst="true" isFixedName="false" isIterator="false" isMacro="false" isOptimizable="true" isSignalObject="false" isStatic="false" isUnreferenced="false" isVolatile="false" name="fid" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+<dataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="8" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</dataType>
+<initialValue xmi:type="geneauto.emf.models.gacodemodel.expression:DoubleExpression" xmi:id="6" externalID="" isFixedName="false" litValue="3.0" name="" originalFullName="" originalName="" referencedFullName="" sourceAction="" sourceElementId="0">
+<valueDataType xmi:type="geneauto.emf.models.gadatatypes:TRealDouble" xmi:id="7" alias="" externalID="" isFixedName="false" name="" originalFullName="" originalName="" referencedFullName="" scope="EXPORTED" sourceAction="" sourceElementId="0">
+</valueDataType>
+</initialValue>
+</variables>
+</elements>
+</geneauto.emf.models.gasystemmodel:GASystemModel>

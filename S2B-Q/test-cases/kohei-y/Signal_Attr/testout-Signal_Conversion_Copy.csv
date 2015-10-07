@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Signal_Conversion_Copy_In1_1",,
+"task100",,,,
+,"Signal_Conversion_Copy_SignalConversion_1",,,
+"task2",,,,
+,"Signal_Conversion_Copy_In1_1","Signal_Conversion_Copy_SignalConversion_1",,
+,,,,"{
+"
+,,,,"  /* SignalConversion: '<Root>/SignalConversion' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Signal_Conversion_Copy_SignalConversion_1 = Signal_Conversion_Copy_In1_1;
+"
+,,,,"}
+"

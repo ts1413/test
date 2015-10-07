@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Abs" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Abs_In1" rate="-1">
+      <output line="Abs_In1_1" port="Abs_In1_1" usename="true">
+         <connect block="Abs_Abs" port="Abs_Abs_1"/>
+      </output>
+   </block>
+   <block blocktype="Abs" name="Abs_Abs" rate="-1">
+      <input line="Abs_In1_1" port="Abs_Abs_1">
+         <connect block="Abs_In1" port="Abs_In1_1"/>
+      </input>
+      <output line="Abs_Abs_1" port="Abs_Abs_1" usename="true">
+         <connect block="Abs_Out1" port="Abs_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Abs_Out1" rate="-1">
+      <input line="Abs_Abs_1" port="Abs_Out1_1">
+         <connect block="Abs_Abs" port="Abs_Abs_1"/>
+      </input>
+   </block>
+</sm:blocks>

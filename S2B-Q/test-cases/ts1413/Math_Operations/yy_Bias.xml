@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Bias" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Bias_ert_rtw/Bias.h" size="2262" timestamp="2015-09-29T13:39:56+0900" type="c-header"/>
+  <file name="xx_Bias.xml" size="1064" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Bias_ert_rtw/Bias.c" size="1263" timestamp="2015-09-29T13:39:56+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Bias_In1" priority="0" rate="0.1">
+    <output line="Bias_In1_1" port="Bias_In1_1" usename="true">
+      <connect block="Bias_Bias" port="Bias_Bias_1"/>
+    </output>
+    <var line="Bias_In1_1" mode="extin" name="Bias_In1_1" port="Bias_In1_1" type="real_T"/>
+    <code file="Bias_ert_rtw/Bias.c" line="50" type="init">  Bias_In1_1 = 0.0;
+</code>
+    <forward block="Bias_Bias" type="port">
+      <var line="Bias_In1_1" mode="input" name="Bias_In1_1" port="Bias_Bias_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Bias" id="2" name="Bias_Bias" priority="1" rate="0.1">
+    <input line="Bias_In1_1" port="Bias_Bias_1">
+      <connect block="Bias_In1" port="Bias_In1_1"/>
+    </input>
+    <output line="Bias_Bias_1" port="Bias_Bias_1" usename="true">
+      <connect block="Bias_Out1" port="Bias_Out1_1"/>
+    </output>
+    <var line="Bias_In1_1" mode="input" name="Bias_In1_1" port="Bias_Bias_1" type="real_T"/>
+    <var line="Bias_Bias_1" mode="extout" name="Bias_Bias_1" port="Bias_Bias_1" type="real_T"/>
+    <param name="Bias" storage="" type="double" value="10.0"/>
+    <code file="Bias_ert_rtw/Bias.c" line="30" type="task">  /* Bias: '&lt;Root&gt;/Bias' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Bias_Bias_1 = Bias_In1_1 + 10.0;
+</code>
+    <code file="Bias_ert_rtw/Bias.c" line="47" type="init">  Bias_Bias_1 = 0.0;
+
+</code>
+    <forward block="Bias_Out1" type="port">
+      <var line="Bias_Bias_1" mode="input" name="Bias_Bias_1" port="Bias_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Bias_In1" type="port">
+      <var line="Bias_In1_1" mode="extin" name="Bias_In1_1" port="Bias_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Bias_Out1" priority="2" rate="0.1">
+    <input line="Bias_Bias_1" port="Bias_Out1_1">
+      <connect block="Bias_Bias" port="Bias_Bias_1"/>
+    </input>
+    <var line="Bias_Bias_1" mode="input" name="Bias_Bias_1" port="Bias_Out1_1" type="real_T"/>
+    <backword block="Bias_Bias" type="port">
+      <var line="Bias_Bias_1" mode="extout" name="Bias_Bias_1" port="Bias_Bias_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Bias {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Bias_M" type="extern RT_MODEL_Bias * const"/>
+  <object kind="rtm-object" name="Bias_M_" type="RT_MODEL_Bias"/>
+  <object kind="rtm-pointer" name="Bias_M" type="RT_MODEL_Bias * const" value="&amp;Bias_M_"/>
+  <includes file="&lt;stddef.h>" from="Bias_ert_rtw/Bias.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Bias_ert_rtw/Bias.h" index="1"/>
+  <includes file="&quot;Bias_types.h&quot;" from="Bias_ert_rtw/Bias.h" index="2"/>
+  <includes file="&quot;Bias_private.h&quot;" from="Bias_ert_rtw/Bias.c" index="3"/>
+</sm:blocks>

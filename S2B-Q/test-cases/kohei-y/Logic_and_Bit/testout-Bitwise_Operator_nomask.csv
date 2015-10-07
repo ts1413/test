@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Bitwise_Operator_nomask_In1_1",,
+"task100",,,,
+,"Bitwise_Operator_nomask_BitwiseOperator_1",,,
+"task2",,,,
+,"Bitwise_Operator_nomask_In1_1","Bitwise_Operator_nomask_BitwiseOperator_1",,
+,,,,"{
+"
+,,,,"  /* S-Function (sfix_bitop): '<Root>/BitwiseOperator' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Bitwise_Operator_nomask_BitwiseOperator_1 = Bitwise_Operator_nomask_In1_1;
+"
+,,,,"}
+"

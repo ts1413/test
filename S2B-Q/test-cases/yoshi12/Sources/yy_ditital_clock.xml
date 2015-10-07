@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="ditital_clock" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="ditital_clock_ert_rtw/ditital_clock.h" size="2538" timestamp="2015-10-03T23:53:25+0900" type="c-header"/>
+  <file name="xx_ditital_clock.xml" size="906" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="ditital_clock_ert_rtw/ditital_clock.c" size="1735" timestamp="2015-10-03T23:53:25+0900" type="c-source"/>
+  <block blocktype="DigitalClock" id="1" name="ditital_clock_DigitalClock" priority="1" rate="1">
+    <output line="ditital_clock_DigitalClock_1" port="ditital_clock_DigitalClock_1" usename="true">
+      <connect block="ditital_clock_Display" port="ditital_clock_Display_1"/>
+    </output>
+    <var line="ditital_clock_DigitalClock_1" mode="output" name="ditital_clock_DigitalClock_1" port="ditital_clock_DigitalClock_1" type="real_T"/>
+    <param name="SampleTime" storage="" type="double" value="1.0"/>
+    <code file="ditital_clock_ert_rtw/ditital_clock.c" line="29" type="task">  /* DigitalClock: '&lt;Root&gt;/DigitalClock' */
+  ditital_clock_DigitalClock_1 = ((ditital_clock_M-&gt;Timing.clockTick0) );
+
+</code>
+    <code file="ditital_clock_ert_rtw/ditital_clock.c" line="53" type="init">  ditital_clock_DigitalClock_1 = 0.0;
+</code>
+    <forward block="ditital_clock_Display" type="data">
+      <var line="ditital_clock_DigitalClock_1" mode="input" name="ditital_clock_DigitalClock_1" port="ditital_clock_Display_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Display" id="2" name="ditital_clock_Display" priority="2" rate="1">
+    <input line="ditital_clock_DigitalClock_1" port="ditital_clock_Display_1">
+      <connect block="ditital_clock_DigitalClock" port="ditital_clock_DigitalClock_1"/>
+    </input>
+    <var line="ditital_clock_DigitalClock_1" mode="input" name="ditital_clock_DigitalClock_1" port="ditital_clock_Display_1" type="real_T"/>
+    <backword block="ditital_clock_DigitalClock" type="data">
+      <var line="ditital_clock_DigitalClock_1" mode="output" name="ditital_clock_DigitalClock_1" port="ditital_clock_DigitalClock_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_ditital_clock_T {
+  const char_T * volatile errorStatus;
+
+  /*
+   * Timing:
+   * The following substructure contains information regarding
+   * the timing information for the model.
+   */
+  struct {
+    uint32_T clockTick0;
+  } Timing;
+};
+</code>
+  <code type="rt-code">  /* Update absolute time for base rate */
+  /* The "clockTick0" counts the number of times the code of this task has
+   * been executed. The resolution of this integer timer is 1.0, which is the step size
+   * of the task. Size of "clockTick0" ensures timer will not overflow during the
+   * application lifespan selected.
+   */
+  ditital_clock_M-&gt;Timing.clockTick0++;
+</code>
+  <code type="rt-init">  /* initialize real-time model */
+  (void) memset((void *)ditital_clock_M, 0,
+                sizeof(RT_MODEL_ditital_clock_T));
+</code>
+  <object kind="rtm-extern" name="ditital_clock_M" type="extern RT_MODEL_ditital_clock_T * const"/>
+  <object kind="rtm-object" name="ditital_clock_M_" type="RT_MODEL_ditital_clock_T"/>
+  <object kind="rtm-pointer" name="ditital_clock_M" type="RT_MODEL_ditital_clock_T * const" value="&amp;ditital_clock_M_"/>
+  <includes file="&lt;string.h>" from="ditital_clock_ert_rtw/ditital_clock.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="ditital_clock_ert_rtw/ditital_clock.h" index="1"/>
+  <includes file="&quot;ditital_clock_types.h&quot;" from="ditital_clock_ert_rtw/ditital_clock.h" index="2"/>
+  <includes file="&quot;ditital_clock_private.h&quot;" from="ditital_clock_ert_rtw/ditital_clock.c" index="3"/>
+</sm:blocks>

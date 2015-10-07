@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="fcn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="fcn_ert_rtw/fcn.h" size="2244" timestamp="2015-09-29T13:41:22+0900" type="c-header"/>
+  <file name="xx_fcn.xml" size="971" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="fcn_ert_rtw/fcn.c" size="1239" timestamp="2015-09-29T13:41:22+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="fcn_In1" priority="0" rate="0.1">
+    <output line="fcn_In1_1" port="fcn_In1_1" usename="true">
+      <connect block="fcn_Fcn" port="fcn_Fcn_1"/>
+    </output>
+    <var line="fcn_In1_1" mode="extin" name="fcn_In1_1" port="fcn_In1_1" type="real_T"/>
+    <code file="fcn_ert_rtw/fcn.c" line="50" type="init">  fcn_In1_1 = 0.0;
+</code>
+    <forward block="fcn_Fcn" type="port">
+      <var line="fcn_In1_1" mode="input" name="fcn_In1_1" port="fcn_Fcn_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Fcn" id="2" name="fcn_Fcn" priority="1" rate="0.1">
+    <input line="fcn_In1_1" port="fcn_Fcn_1">
+      <connect block="fcn_In1" port="fcn_In1_1"/>
+    </input>
+    <output line="fcn_Fcn_1" port="fcn_Fcn_1" usename="true">
+      <connect block="fcn_Out1" port="fcn_Out1_1"/>
+    </output>
+    <var line="fcn_In1_1" mode="input" name="fcn_In1_1" port="fcn_Fcn_1" type="real_T"/>
+    <var line="fcn_Fcn_1" mode="extout" name="fcn_Fcn_1" port="fcn_Fcn_1" type="real_T"/>
+    <code file="fcn_ert_rtw/fcn.c" line="30" type="task">  /* Fcn: '&lt;Root&gt;/Fcn' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  fcn_Fcn_1 = fcn_In1_1 * 5.0;
+</code>
+    <code file="fcn_ert_rtw/fcn.c" line="47" type="init">  fcn_Fcn_1 = 0.0;
+
+</code>
+    <forward block="fcn_Out1" type="port">
+      <var line="fcn_Fcn_1" mode="input" name="fcn_Fcn_1" port="fcn_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="fcn_In1" type="port">
+      <var line="fcn_In1_1" mode="extin" name="fcn_In1_1" port="fcn_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="fcn_Out1" priority="2" rate="0.1">
+    <input line="fcn_Fcn_1" port="fcn_Out1_1">
+      <connect block="fcn_Fcn" port="fcn_Fcn_1"/>
+    </input>
+    <var line="fcn_Fcn_1" mode="input" name="fcn_Fcn_1" port="fcn_Out1_1" type="real_T"/>
+    <backword block="fcn_Fcn" type="port">
+      <var line="fcn_Fcn_1" mode="extout" name="fcn_Fcn_1" port="fcn_Fcn_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_fcn_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="fcn_M" type="extern RT_MODEL_fcn_T * const"/>
+  <object kind="rtm-object" name="fcn_M_" type="RT_MODEL_fcn_T"/>
+  <object kind="rtm-pointer" name="fcn_M" type="RT_MODEL_fcn_T * const" value="&amp;fcn_M_"/>
+  <includes file="&lt;stddef.h>" from="fcn_ert_rtw/fcn.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="fcn_ert_rtw/fcn.h" index="1"/>
+  <includes file="&quot;fcn_types.h&quot;" from="fcn_ert_rtw/fcn.h" index="2"/>
+  <includes file="&quot;fcn_private.h&quot;" from="fcn_ert_rtw/fcn.c" index="3"/>
+</sm:blocks>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Multiport_Switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Multiport_Switch_ert_rtw/Multiport_Switch.h" size="2649" timestamp="2015-09-29T13:36:04+0900" type="c-header"/>
+  <file name="xx_Multiport_Switch.xml" size="2752" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Multiport_Switch_ert_rtw/Multiport_Switch.c" size="2177" timestamp="2015-09-29T13:36:04+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Multiport_Switch_In1" priority="0" rate="0.1">
+    <output line="Multiport_Switch_In1_1" port="Multiport_Switch_In1_1" usename="true">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_1"/>
+    </output>
+    <var line="Multiport_Switch_In1_1" mode="extin" name="Multiport_Switch_In1_1" port="Multiport_Switch_In1_1" type="real_T"/>
+    <code file="Multiport_Switch_ert_rtw/Multiport_Switch.c" line="70" type="init">  Multiport_Switch_In1_1 = 0.0;
+</code>
+    <forward block="Multiport_Switch_MultiportSwitch" type="data">
+      <var line="Multiport_Switch_In1_1" mode="input" name="Multiport_Switch_In1_1" port="Multiport_Switch_MultiportSwitch_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Multiport_Switch_In2" priority="0" rate="0.1">
+    <output line="Multiport_Switch_In2_1" port="Multiport_Switch_In2_1" usename="true">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_2"/>
+    </output>
+    <var line="Multiport_Switch_In2_1" mode="extin" name="Multiport_Switch_In2_1" port="Multiport_Switch_In2_1" type="real_T"/>
+    <code file="Multiport_Switch_ert_rtw/Multiport_Switch.c" line="71" type="init">  Multiport_Switch_In2_1 = 0.0;
+</code>
+    <forward block="Multiport_Switch_MultiportSwitch" type="data">
+      <var line="Multiport_Switch_In2_1" mode="input" name="Multiport_Switch_In2_1" port="Multiport_Switch_MultiportSwitch_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="3" name="Multiport_Switch_In3" priority="0" rate="0.1">
+    <output line="Multiport_Switch_In3_1" port="Multiport_Switch_In3_1" usename="true">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_3"/>
+    </output>
+    <var line="Multiport_Switch_In3_1" mode="extin" name="Multiport_Switch_In3_1" port="Multiport_Switch_In3_1" type="real_T"/>
+    <code file="Multiport_Switch_ert_rtw/Multiport_Switch.c" line="72" type="init">  Multiport_Switch_In3_1 = 0.0;
+</code>
+    <forward block="Multiport_Switch_MultiportSwitch" type="data">
+      <var line="Multiport_Switch_In3_1" mode="input" name="Multiport_Switch_In3_1" port="Multiport_Switch_MultiportSwitch_3" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="4" name="Multiport_Switch_In4" priority="0" rate="0.1">
+    <output line="Multiport_Switch_In4_1" port="Multiport_Switch_In4_1" usename="true">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_4"/>
+    </output>
+    <var line="Multiport_Switch_In4_1" mode="extin" name="Multiport_Switch_In4_1" port="Multiport_Switch_In4_1" type="real_T"/>
+    <code file="Multiport_Switch_ert_rtw/Multiport_Switch.c" line="73" type="init">  Multiport_Switch_In4_1 = 0.0;
+</code>
+    <forward block="Multiport_Switch_MultiportSwitch" type="data">
+      <var line="Multiport_Switch_In4_1" mode="input" name="Multiport_Switch_In4_1" port="Multiport_Switch_MultiportSwitch_4" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="MultiPortSwitch" id="5" name="Multiport_Switch_MultiportSwitch" priority="1" rate="0.1">
+    <input line="Multiport_Switch_In1_1" port="Multiport_Switch_MultiportSwitch_1">
+      <connect block="Multiport_Switch_In1" port="Multiport_Switch_In1_1"/>
+    </input>
+    <input line="Multiport_Switch_In2_1" port="Multiport_Switch_MultiportSwitch_2">
+      <connect block="Multiport_Switch_In2" port="Multiport_Switch_In2_1"/>
+    </input>
+    <input line="Multiport_Switch_In3_1" port="Multiport_Switch_MultiportSwitch_3">
+      <connect block="Multiport_Switch_In3" port="Multiport_Switch_In3_1"/>
+    </input>
+    <input line="Multiport_Switch_In4_1" port="Multiport_Switch_MultiportSwitch_4">
+      <connect block="Multiport_Switch_In4" port="Multiport_Switch_In4_1"/>
+    </input>
+    <output line="Multiport_Switch_MultiportSwitch_1" port="Multiport_Switch_MultiportSwitch_1" usename="true">
+      <connect block="Multiport_Switch_Out2" port="Multiport_Switch_Out2_1"/>
+    </output>
+    <var line="Multiport_Switch_In1_1" mode="input" name="Multiport_Switch_In1_1" port="Multiport_Switch_MultiportSwitch_1" type="real_T"/>
+    <var line="Multiport_Switch_In2_1" mode="input" name="Multiport_Switch_In2_1" port="Multiport_Switch_MultiportSwitch_2" type="real_T"/>
+    <var line="Multiport_Switch_In3_1" mode="input" name="Multiport_Switch_In3_1" port="Multiport_Switch_MultiportSwitch_3" type="real_T"/>
+    <var line="Multiport_Switch_In4_1" mode="input" name="Multiport_Switch_In4_1" port="Multiport_Switch_MultiportSwitch_4" type="real_T"/>
+    <var line="Multiport_Switch_MultiportSwitch_1" mode="extout" name="Multiport_Switch_MultiportSwitch_1" port="Multiport_Switch_MultiportSwitch_1" type="real_T"/>
+    <code file="Multiport_Switch_ert_rtw/Multiport_Switch.c" line="33" type="task">  /* MultiPortSwitch: '&lt;Root&gt;/MultiportSwitch' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   *  Inport: '&lt;Root&gt;/In3'
+   *  Inport: '&lt;Root&gt;/In4'
+   */
+  switch ((int32_T)Multiport_Switch_In1_1) {
+   case 1:
+    Multiport_Switch_MultiportSwitch_1 = Multiport_Switch_In2_1;
+    break;
+
+   case 2:
+    Multiport_Switch_MultiportSwitch_1 = Multiport_Switch_In3_1;
+    break;
+
+   default:
+    Multiport_Switch_MultiportSwitch_1 = Multiport_Switch_In4_1;
+    break;
+  }
+
+  /* End of MultiPortSwitch: '&lt;Root&gt;/MultiportSwitch' */
+</code>
+    <code file="Multiport_Switch_ert_rtw/Multiport_Switch.c" line="67" type="init">  Multiport_Switch_MultiportSwitch_1 = 0.0;
+
+</code>
+    <forward block="Multiport_Switch_Out2" type="port">
+      <var line="Multiport_Switch_MultiportSwitch_1" mode="input" name="Multiport_Switch_MultiportSwitch_1" port="Multiport_Switch_Out2_1" type="real_T"/>
+    </forward>
+    <backword block="Multiport_Switch_In1" type="data">
+      <var line="Multiport_Switch_In1_1" mode="extin" name="Multiport_Switch_In1_1" port="Multiport_Switch_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Multiport_Switch_In2" type="data">
+      <var line="Multiport_Switch_In2_1" mode="extin" name="Multiport_Switch_In2_1" port="Multiport_Switch_In2_1" type="real_T"/>
+    </backword>
+    <backword block="Multiport_Switch_In3" type="data">
+      <var line="Multiport_Switch_In3_1" mode="extin" name="Multiport_Switch_In3_1" port="Multiport_Switch_In3_1" type="real_T"/>
+    </backword>
+    <backword block="Multiport_Switch_In4" type="data">
+      <var line="Multiport_Switch_In4_1" mode="extin" name="Multiport_Switch_In4_1" port="Multiport_Switch_In4_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="6" name="Multiport_Switch_Out2" priority="2" rate="0.1">
+    <input line="Multiport_Switch_MultiportSwitch_1" port="Multiport_Switch_Out2_1">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_1"/>
+    </input>
+    <var line="Multiport_Switch_MultiportSwitch_1" mode="input" name="Multiport_Switch_MultiportSwitch_1" port="Multiport_Switch_Out2_1" type="real_T"/>
+    <backword block="Multiport_Switch_MultiportSwitch" type="port">
+      <var line="Multiport_Switch_MultiportSwitch_1" mode="extout" name="Multiport_Switch_MultiportSwitch_1" port="Multiport_Switch_MultiportSwitch_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Multiport_Switch_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Multiport_Switch_M" type="extern RT_MODEL_Multiport_Switch_T * const"/>
+  <object kind="rtm-object" name="Multiport_Switch_M_" type="RT_MODEL_Multiport_Switch_T"/>
+  <object kind="rtm-pointer" name="Multiport_Switch_M" type="RT_MODEL_Multiport_Switch_T * const" value="&amp;Multiport_Switch_M_"/>
+  <includes file="&lt;stddef.h>" from="Multiport_Switch_ert_rtw/Multiport_Switch.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Multiport_Switch_ert_rtw/Multiport_Switch.h" index="1"/>
+  <includes file="&quot;Multiport_Switch_types.h&quot;" from="Multiport_Switch_ert_rtw/Multiport_Switch.h" index="2"/>
+  <includes file="&quot;Multiport_Switch_private.h&quot;" from="Multiport_Switch_ert_rtw/Multiport_Switch.c" index="3"/>
+</sm:blocks>

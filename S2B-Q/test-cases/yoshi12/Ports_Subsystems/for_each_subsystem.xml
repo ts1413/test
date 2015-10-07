@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="for_each_subsystem" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="for_each_subsystem_In1" rate="-1">
+      <output line="for_each_subsystem_In1_1" port="for_each_subsystem_In1_1" usename="true">
+         <connect block="for_each_subsystem_ForEachSubsystem" port="for_each_subsystem_ForEachSubsystem_In1"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="for_each_subsystem_ForEachSubsystem">
+      <input line="for_each_subsystem_In1_1" port="for_each_subsystem_ForEachSubsystem_In1">
+         <connect block="for_each_subsystem_In1" port="for_each_subsystem_In1_1"/>
+      </input>
+      <output line="for_each_subsystem_ForEachSubsystem_1" port="for_each_subsystem_ForEachSubsystem_Out1" usename="false">
+         <connect block="for_each_subsystem_Out1" port="for_each_subsystem_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="for_each_subsystem_ForEachSubsystem_In1" rate="-1">
+            <output line="for_each_subsystem_ForEachSubsystem_In1_1" port="for_each_subsystem_ForEachSubsystem_In1_1" usename="false">
+               <connect block="for_each_subsystem_ForEachSubsystem_Out1" port="for_each_subsystem_ForEachSubsystem_Out1_1"/>
+            </output>
+         </block>
+         <block blocktype="ForEach" name="for_each_subsystem_ForEachSubsystem_ForEach"/>
+         <block blocktype="Outport" name="for_each_subsystem_ForEachSubsystem_Out1" rate="-1">
+            <input line="for_each_subsystem_ForEachSubsystem_In1_1" port="for_each_subsystem_ForEachSubsystem_Out1_1">
+               <connect block="for_each_subsystem_ForEachSubsystem_In1" port="for_each_subsystem_ForEachSubsystem_In1_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="for_each_subsystem_Out1" rate="-1">
+      <input line="for_each_subsystem_ForEachSubsystem_1" port="for_each_subsystem_Out1_1">
+         <connect block="for_each_subsystem_ForEachSubsystem" port="for_each_subsystem_ForEachSubsystem_Out1"/>
+      </input>
+   </block>
+</sm:blocks>

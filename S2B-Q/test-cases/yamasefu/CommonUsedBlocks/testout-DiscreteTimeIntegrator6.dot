@@ -1,0 +1,22 @@
+digraph csp {
+	graph [rankdir=LR];
+	DiscreteTimeIntegrator6_Discrete_TimeIntegrator	 [fontcolor=red,
+		label="t4\nDiscreteTimeIntegrator6_Discrete_TimeIntegrator"];
+	t0 -> DiscreteTimeIntegrator6_Discrete_TimeIntegrator	 [color=green,
+		label="ch_0_4(DiscreteTimeIntegrator6_In1_1,DiscreteTimeIntegrator6_In2_1,DiscreteTimeIntegrator6_In3_1)"];
+	extout	 [label=extout];
+	DiscreteTimeIntegrator6_In1	 [label="t1\nDiscreteTimeIntegrator6_In1",
+		shape=box];
+	DiscreteTimeIntegrator6_In1 -> t0	 [color=green,
+		label="in port DiscreteTimeIntegrator6_In1(DiscreteTimeIntegrator6_In1_1)"];
+	DiscreteTimeIntegrator6_In2	 [label="t2\nDiscreteTimeIntegrator6_In2",
+		shape=box];
+	DiscreteTimeIntegrator6_In2 -> t0	 [color=green,
+		label="in port DiscreteTimeIntegrator6_In2(DiscreteTimeIntegrator6_In2_1)"];
+	DiscreteTimeIntegrator6_In3	 [label="t3\nDiscreteTimeIntegrator6_In3",
+		shape=box];
+	DiscreteTimeIntegrator6_In3 -> t0	 [color=green,
+		label="in port DiscreteTimeIntegrator6_In3(DiscreteTimeIntegrator6_In3_1)"];
+	DiscreteTimeIntegrator6_Discrete_TimeIntegrator -> extout	 [color=green,
+		label="ch_4_100(DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1,DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2)"];
+}

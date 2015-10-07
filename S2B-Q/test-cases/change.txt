@@ -1,0 +1,94 @@
+Bitwise_Operator_mask.slx（シミュレーションエラー）
+	in1のデータ型をint8に変更
+
+Bitwise_Operator_nomask.slx（シミュレーションエラー）
+	in1のデータ型をint8に変更
+
+Rate_Transition_DbBuf.slx (QGenエラー)
+	ブロックのサンプル時間が基本サンプル時間と異なるため、モデルコンフィギュレーションパラメータの周期的なサンプル時間のタスクモードを「マルチレート」に変更
+
+Signal_Conversion_Bus.slx（シミュレーションエラー、QGenエラー）
+	double型の要素aを持つバスオブジェクトBusObjectをdata_Signal_Conversion_Bus.mで定義
+	BusObjectのバーチャルバスを出力するBusCreatorを追加
+	Outportの出力データ型として「Bus」を指定するとQGenでエラーとなるため、SignalConversionの非バーチャルバスの出力からデータを取り出すBusSelectorを追加
+	山田さんツールにより、「ExportedGlobal」がセットされたため、「Auto」に変更
+
+Signal_Conversion_VBus.slx（シミュレーションエラー）
+	double型の要素aを持つバスオブジェクトBusObjectをdata_Signal_Conversion_VBus.mで定義
+	BusObjectの非バーチャルバスを出力するBusCreatorを追加
+	「コンフィギュレーション パラメータ」、「データのインポート/エクスポート」、「ワークスペースへ保存」の出力のログを無効に
+	out1のデータ型をBusObjectに変更
+	山田さんツールにより、「ExportedGlobal」がセットされたため、「Auto」に変更
+
+Bus_Assignment.slx（SimulinkCoderエラー）
+	山田さんツールにより、信号線名が変更され、Bus Assignmentの出力信号名が一致していなかったため、一致するように変更
+	山田さんツールにより、「ExportedGlobal」がセットされたため、「Auto」に変更
+
+Bus_Cleator.slx (SimulinkCoderエラー)
+	山田さんツールにより、「ExportedGlobal」がセットされたため、「Auto」に変更
+
+Bus_Selector.slx (SimulinkCoderエラー)
+	山田さんツールにより、信号線名が変更され、Bus Selectorの出力信号名が一致していなかったため、一致するように変更	山田さんツールにより、「ExportedGlobal」がセットされたため、「Auto」に変更
+
+Merge.slx (QGenエラー)
+	Mergeブロックのパラメータ[初期出力]を設定していないとエラーになるため、0に設定
+
+Selector.slx (SimulinkCoderエラー)
+	山田さんツールにより、「ExportedGlobal」がセットされたため、「Auto」に変更
+
+dsm_sample.slx (QGenエラー)
+	DataStore, DataStoreWrite, DataStoreReadのみのモデルに変更
+	名前をdsm.slxとした
+
+Multiport_Switch.slx（デコレーションファイル生成エラー）
+	パラメータ「defaultケースの診断」を「エラー」から「なし」に変更
+
+for_iterator_subsystem.slx (QGenエラー)
+	int32型同士の積はsfix64型になるのだが、sfix64型は扱えないため、入力をint32型ではなくint8型にすることで、積をint16型になるように変更
+
+if_and_if_action_subsys.slx (QGenエラー)
+	Mergeブロックのパラメータ[初期出力]を設定していないとエラーになるため、0に設定
+
+display.slx (シミュレーション警告、デコレーションファイル生成エラー)
+	matlab関数displayとかぶるので、モデル名を「Display.slx」に変更
+
+ditital_clock.slx (QGenエラー)
+	DigitalClockのサンプル時間は1でモデルコンフィギュレーションパラメータの固定ステップ時間は0.1だったので、固定ステップ時間を1に変更
+	固定ステップ時間とブロックのサンプル時間が合ってないものがあるとエラーがでることがあるもよう
+	モデル名がの綴りが間違っているが、放置
+
+
+BuscreaterBusselector.slx
+	山田さんツールにより、信号線名が変更され、Bus Selectorの出力信号名が一致していなかったため、一致するように変更	山田さんツールにより、「ExportedGlobal」がセットされたため、「Auto」に変更
+
+Delay5in.slx（モデルが開けない（コアダンプ））
+	モデルのバージョンを「R2015a」から「R2014a」に落とした
+	バージョン変更により、Delayブロックが中身がTerminator,Groundから成るSubsystemに置き換わってしまったので、UnitDelayに変更
+	旧バージョンにはないパラメータを用いていたので、デフォルトの設定に
+	それに伴い、入力数が5から1に減少したため、その分のinportを削除
+	モデル名をUnit_Delay.slxに変更
+
+DiscreteTimeIntegrator1.slx (QGenエラー)
+	DiscreteTimeIntegratorブロックパラメータはそれぞれ以下の設定でなければならなかったので、そのように変更
+	「外部リセット」：「なし」
+	「出力を制限する」：「off」
+	「飽和端子の表示」：「off」
+
+DiscreteTimeIntegrator2~6.slx (QGenエラー)
+	DiscreteTimeIntegratorブロックパラメータ「積分手法」は「積分：前進型オイラー」しか扱えないようであるため削除
+
+LookupTable1D3.slx (QGenエラー)
+	LookupTableブロックパラメータ「内挿法」の「最も近い整数への丸め」は非対応のため削除
+
+LookupTable1D4.slx (QGenエラー)
+	LookupTableブロックパラメータ「内挿法」の「3次スプライン」は非対応のため削除
+
+LookupTableDynamic2.slx（SimulinkCoderエラー）
+	「ルックアップ手法」が「内挿 - 外挿」の場合、SimulinkCoderが非対応のため削除
+
+LookupTablenD.slx (QGenエラー)
+	LookupTablenDブロックパラメータ「テーブル次元数」は2以下でなければならないので、次元を3から2に変更し、その他パラメータもLookupTable2Dと同じに設定
+	2次元以下でしか使えないので、LookupTablenDは意味なし?
+
+Prelookup.slx (QGenエラー)
+	Prelookupブロックパラメータ「ブレークポイントデータ」で[10:10:110]というような記述方法は認識できず、Vector型しか認識できないので、[10:10:110]を同じ意味を表すVector型に変更

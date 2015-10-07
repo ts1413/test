@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Combinatorial_Logic" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Combinatorial_Logic_In1" rate="-1">
+      <output line="Combinatorial_Logic_In1_1" port="Combinatorial_Logic_In1_1" usename="true">
+         <connect block="Combinatorial_Logic_CombinatorialLogic" port="Combinatorial_Logic_CombinatorialLogic_1"/>
+      </output>
+   </block>
+   <block blocktype="CombinatorialLogic" name="Combinatorial_Logic_CombinatorialLogic" rate="-1">
+      <input line="Combinatorial_Logic_In1_1" port="Combinatorial_Logic_CombinatorialLogic_1">
+         <connect block="Combinatorial_Logic_In1" port="Combinatorial_Logic_In1_1"/>
+      </input>
+      <output line="Combinatorial_Logic_CombinatorialLogic_1" port="Combinatorial_Logic_CombinatorialLogic_1" usename="true">
+         <connect block="Combinatorial_Logic_Out1" port="Combinatorial_Logic_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Combinatorial_Logic_Out1" rate="-1">
+      <input line="Combinatorial_Logic_CombinatorialLogic_1" port="Combinatorial_Logic_Out1_1">
+         <connect block="Combinatorial_Logic_CombinatorialLogic" port="Combinatorial_Logic_CombinatorialLogic_1"/>
+      </input>
+   </block>
+</sm:blocks>

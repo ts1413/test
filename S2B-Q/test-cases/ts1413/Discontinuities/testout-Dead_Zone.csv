@@ -1,0 +1,24 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Dead_Zone_In1_1",,
+"task100",,,,
+,"Dead_Zone_DeadZone_1",,,
+"task2",,,,
+,"Dead_Zone_In1_1","Dead_Zone_DeadZone_1",,
+,,,,"{
+"
+,,,,"  /* DeadZone: '<Root>/DeadZone' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  if (Dead_Zone_In1_1 > 0.5) {
+    Dead_Zone_DeadZone_1 = Dead_Zone_In1_1 - 0.5;
+  } else if (Dead_Zone_In1_1 >= (-0.5)) {
+    Dead_Zone_DeadZone_1 = 0.0;
+  } else {
+    Dead_Zone_DeadZone_1 = Dead_Zone_In1_1 - (-0.5);
+  }
+
+  /* End of DeadZone: '<Root>/DeadZone' */
+"
+,,,,"}
+"

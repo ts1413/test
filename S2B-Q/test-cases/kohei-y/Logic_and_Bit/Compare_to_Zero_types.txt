@@ -1,0 +1,21 @@
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Compare_to_Zero" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="boolean"
+Block "Compare_to_Zero/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Compare_to_Zero/CompareToZero" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="boolean"
+Block "Compare_to_Zero/CompareToZero/u" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Compare_to_Zero/CompareToZero/Compare" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="boolean"
+Block "Compare_to_Zero/CompareToZero/Constant" samplePeriod=Inf assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Compare_to_Zero/CompareToZero/y" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="boolean"
+Block "Compare_to_Zero/Out1" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="boolean"

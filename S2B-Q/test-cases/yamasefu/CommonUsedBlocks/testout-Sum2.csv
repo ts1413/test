@@ -1,0 +1,25 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Sum2_In1_1",,
+,,"Sum2_In2_1",,
+,,"Sum2_In3_1",,
+,,"Sum2_In4_1",,
+"task100",,,,
+,"Sum2_Sum_1",,,
+"task5",,,,
+,"Sum2_In1_1","Sum2_Sum_1",,
+,"Sum2_In2_1",,,
+,"Sum2_In3_1",,,
+,"Sum2_In4_1",,,
+,,,,"{
+"
+,,,,"  /* Sum: '<Root>/Sum' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   *  Inport: '<Root>/In3'
+   *  Inport: '<Root>/In4'
+   */
+  Sum2_Sum_1 = ((Sum2_In1_1 + Sum2_In2_1) - Sum2_In3_1) - Sum2_In4_1;
+"
+,,,,"}
+"

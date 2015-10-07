@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Switch_ert_rtw/Switch.h" size="2791" timestamp="2015-10-05T16:56:29+0900" type="c-header"/>
+  <file name="xx_Switch.xml" size="1828" timestamp="2015-10-07T15:40:44+0900" type="xml"/>
+  <file name="Switch_ert_rtw/Switch.c" size="1741" timestamp="2015-10-05T16:56:29+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Switch_In1" priority="0" rate="0.1">
+    <output line="Switch_In1_1" port="Switch_In1_1" usename="true">
+      <connect block="Switch_Switch" port="Switch_Switch_1"/>
+    </output>
+    <var line="Switch_In1_1" mode="extin" name="Switch_In1_1" port="Switch_In1_1" type="real_T"/>
+    <code file="Switch_ert_rtw/Switch.c" line="62" type="init">  Switch_In1_1 = 0.0;
+</code>
+    <forward block="Switch_Switch" type="data">
+      <var line="Switch_In1_1" mode="input" name="Switch_In1_1" port="Switch_Switch_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Switch_In2" priority="0" rate="0.1">
+    <output line="Switch_In2_1" port="Switch_In2_1" usename="true">
+      <connect block="Switch_Switch" port="Switch_Switch_2"/>
+    </output>
+    <var line="Switch_In2_1" mode="extin" name="Switch_In2_1" port="Switch_In2_1" type="real_T"/>
+    <code file="Switch_ert_rtw/Switch.c" line="63" type="init">  Switch_In2_1 = 0.0;
+</code>
+    <forward block="Switch_Switch" type="data">
+      <var line="Switch_In2_1" mode="input" name="Switch_In2_1" port="Switch_Switch_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="3" name="Switch_In3" priority="0" rate="0.1">
+    <output line="Switch_In3_1" port="Switch_In3_1" usename="true">
+      <connect block="Switch_Switch" port="Switch_Switch_3"/>
+    </output>
+    <var line="Switch_In3_1" mode="extin" name="Switch_In3_1" port="Switch_In3_1" type="real_T"/>
+    <code file="Switch_ert_rtw/Switch.c" line="64" type="init">  Switch_In3_1 = 0.0;
+</code>
+    <forward block="Switch_Switch" type="data">
+      <var line="Switch_In3_1" mode="input" name="Switch_In3_1" port="Switch_Switch_3" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Switch" id="4" name="Switch_Switch" priority="1" rate="0.1">
+    <input line="Switch_In1_1" port="Switch_Switch_1">
+      <connect block="Switch_In1" port="Switch_In1_1"/>
+    </input>
+    <input line="Switch_In2_1" port="Switch_Switch_2">
+      <connect block="Switch_In2" port="Switch_In2_1"/>
+    </input>
+    <input line="Switch_In3_1" port="Switch_Switch_3">
+      <connect block="Switch_In3" port="Switch_In3_1"/>
+    </input>
+    <output line="Switch_Switch_1" port="Switch_Switch_1" usename="true">
+      <connect block="Switch_Out1" port="Switch_Out1_1"/>
+    </output>
+    <var line="Switch_In1_1" mode="input" name="Switch_In1_1" port="Switch_Switch_1" type="real_T"/>
+    <var line="Switch_In2_1" mode="input" name="Switch_In2_1" port="Switch_Switch_2" type="real_T"/>
+    <var line="Switch_In3_1" mode="input" name="Switch_In3_1" port="Switch_Switch_3" type="real_T"/>
+    <var line="Switch_Switch_1" mode="extout" name="Switch_Switch_1" port="Switch_Switch_1" type="real_T"/>
+    <param name="Threshold" storage="" type="double" value="0.0"/>
+    <param name="Switch_Threshold" storage="Switch_P" type="real_T"/>
+    <code file="Switch_ert_rtw/Switch.c" line="34" type="task">  /* Switch: '&lt;Root&gt;/Switch' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   *  Inport: '&lt;Root&gt;/In3'
+   */
+  if (Switch_In2_1 &gt;= Switch_P.Switch_Threshold) {
+    Switch_Switch_1 = Switch_In1_1;
+  } else {
+    Switch_Switch_1 = Switch_In3_1;
+  }
+
+  /* End of Switch: '&lt;Root&gt;/Switch' */
+</code>
+    <code file="Switch_ert_rtw/Switch.c" line="59" type="init">  Switch_Switch_1 = 0.0;
+
+</code>
+    <forward block="Switch_Out1" type="data">
+      <var line="Switch_Switch_1" mode="input" name="Switch_Switch_1" port="Switch_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Switch_In1" type="data">
+      <var line="Switch_In1_1" mode="extin" name="Switch_In1_1" port="Switch_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Switch_In2" type="data">
+      <var line="Switch_In2_1" mode="extin" name="Switch_In2_1" port="Switch_In2_1" type="real_T"/>
+    </backword>
+    <backword block="Switch_In3" type="data">
+      <var line="Switch_In3_1" mode="extin" name="Switch_In3_1" port="Switch_In3_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="5" name="Switch_Out1" priority="2" rate="0.1">
+    <input line="Switch_Switch_1" port="Switch_Out1_1">
+      <connect block="Switch_Switch" port="Switch_Switch_1"/>
+    </input>
+    <var line="Switch_Switch_1" mode="input" name="Switch_Switch_1" port="Switch_Out1_1" type="real_T"/>
+    <backword block="Switch_Switch" type="data">
+      <var line="Switch_Switch_1" mode="extout" name="Switch_Switch_1" port="Switch_Switch_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Switch_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Switch_M" type="extern RT_MODEL_Switch_T * const"/>
+  <object kind="rtm-object" name="Switch_M_" type="RT_MODEL_Switch_T"/>
+  <object kind="rtm-pointer" name="Switch_M" type="RT_MODEL_Switch_T * const" value="&amp;Switch_M_"/>
+  <includes file="&lt;stddef.h>" from="Switch_ert_rtw/Switch.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Switch_ert_rtw/Switch.h" index="1"/>
+  <includes file="&quot;Switch_types.h&quot;" from="Switch_ert_rtw/Switch.h" index="2"/>
+  <includes file="&quot;Switch_private.h&quot;" from="Switch_ert_rtw/Switch.c" index="3"/>
+</sm:blocks>

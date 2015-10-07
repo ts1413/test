@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Abs_In1_1",,
+"task100",,,,
+,"Abs_Abs_1",,,
+"task2",,,,
+,"Abs_In1_1","Abs_Abs_1",,
+,,,,"{
+"
+,,,,"  /* Abs: '<Root>/Abs' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Abs_Abs_1 = fabs(Abs_In1_1);
+"
+,,,,"}
+"

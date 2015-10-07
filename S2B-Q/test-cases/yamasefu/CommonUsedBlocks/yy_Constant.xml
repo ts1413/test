@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Constant" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Constant_ert_rtw/Constant.h" size="2660" timestamp="2015-10-04T17:55:32+0900" type="c-header"/>
+  <file name="xx_Constant.xml" size="810" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="Constant_ert_rtw/Constant.c" size="1288" timestamp="2015-10-04T17:55:32+0900" type="c-source"/>
+  <block blocktype="Constant" id="1" name="Constant_Constant" priority="1" rate="0.1">
+    <output line="Constant_Constant_1" port="Constant_Constant_1" usename="true">
+      <connect block="Constant_Out1" port="Constant_Out1_1"/>
+    </output>
+    <var line="Constant_Constant_1" mode="extout" name="Constant_Constant_1" port="Constant_Constant_1" type="real_T"/>
+    <param name="Value" storage="" type="double" value="1.0"/>
+    <param name="Constant_Value" storage="Constant_P" type="real_T"/>
+    <code file="Constant_ert_rtw/Constant.c" line="31" type="task">  /* Constant: '&lt;Root&gt;/Constant' */
+  Constant_Constant_1 = Constant_P.Constant_Value;
+</code>
+    <code file="Constant_ert_rtw/Constant.c" line="46" type="init">  Constant_Constant_1 = 0.0;
+</code>
+    <forward block="Constant_Out1" type="port">
+      <var line="Constant_Constant_1" mode="input" name="Constant_Constant_1" port="Constant_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Outport" id="2" name="Constant_Out1" priority="2" rate="0.1">
+    <input line="Constant_Constant_1" port="Constant_Out1_1">
+      <connect block="Constant_Constant" port="Constant_Constant_1"/>
+    </input>
+    <var line="Constant_Constant_1" mode="input" name="Constant_Constant_1" port="Constant_Out1_1" type="real_T"/>
+    <backword block="Constant_Constant" type="port">
+      <var line="Constant_Constant_1" mode="extout" name="Constant_Constant_1" port="Constant_Constant_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Constant_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Constant_M" type="extern RT_MODEL_Constant_T * const"/>
+  <object kind="rtm-object" name="Constant_M_" type="RT_MODEL_Constant_T"/>
+  <object kind="rtm-pointer" name="Constant_M" type="RT_MODEL_Constant_T * const" value="&amp;Constant_M_"/>
+  <includes file="&lt;stddef.h>" from="Constant_ert_rtw/Constant.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Constant_ert_rtw/Constant.h" index="1"/>
+  <includes file="&quot;Constant_types.h&quot;" from="Constant_ert_rtw/Constant.h" index="2"/>
+  <includes file="&quot;Constant_private.h&quot;" from="Constant_ert_rtw/Constant.c" index="3"/>
+</sm:blocks>

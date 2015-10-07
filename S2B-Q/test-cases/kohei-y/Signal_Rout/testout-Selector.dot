@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Selector_Selector	 [label="t2\nSelector_Selector"];
+	t0 -> Selector_Selector	 [color=green,
+		label="ch_0_2(Selector_In1_1)"];
+	extout	 [label=extout];
+	Selector_In1	 [label="t1\nSelector_In1",
+		shape=box];
+	Selector_In1 -> t0	 [color=green,
+		label="in port Selector_In1(Selector_In1_1)"];
+	Selector_Selector -> extout	 [color=green,
+		label="ch_2_100()"];
+}

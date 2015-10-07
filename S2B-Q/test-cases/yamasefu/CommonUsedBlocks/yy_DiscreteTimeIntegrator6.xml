@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="DiscreteTimeIntegrator6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.h" size="4426" timestamp="2015-10-03T23:54:20+0900" type="c-header"/>
+  <file name="xx_DiscreteTimeIntegrator6.xml" size="3261" timestamp="2015-10-04T00:11:20+0900" type="xml"/>
+  <file name="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" size="7861" timestamp="2015-10-03T23:54:20+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="DiscreteTimeIntegrator6_In1" priority="0" rate="1">
+    <output line="DiscreteTimeIntegrator6_In1_1" port="DiscreteTimeIntegrator6_In1_1" usename="true">
+      <connect block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1"/>
+    </output>
+    <var line="DiscreteTimeIntegrator6_In1_1" mode="extin" name="DiscreteTimeIntegrator6_In1_1" port="DiscreteTimeIntegrator6_In1_1" type="real_T"/>
+    <code file="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" line="180" type="init">  DiscreteTimeIntegrator6_In1_1 = 0.0;
+</code>
+    <forward block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" type="port">
+      <var line="DiscreteTimeIntegrator6_In1_1" mode="input" name="DiscreteTimeIntegrator6_In1_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="DiscreteTimeIntegrator6_In2" priority="0" rate="1">
+    <output line="DiscreteTimeIntegrator6_In2_1" port="DiscreteTimeIntegrator6_In2_1" usename="true">
+      <connect block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2"/>
+    </output>
+    <var line="DiscreteTimeIntegrator6_In2_1" mode="extin" name="DiscreteTimeIntegrator6_In2_1" port="DiscreteTimeIntegrator6_In2_1" type="real_T"/>
+    <code file="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" line="181" type="init">  DiscreteTimeIntegrator6_In2_1 = 0.0;
+</code>
+    <forward block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" type="port">
+      <var line="DiscreteTimeIntegrator6_In2_1" mode="input" name="DiscreteTimeIntegrator6_In2_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="3" name="DiscreteTimeIntegrator6_In3" priority="0" rate="1">
+    <output line="DiscreteTimeIntegrator6_In3_1" port="DiscreteTimeIntegrator6_In3_1" usename="true">
+      <connect block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_3"/>
+    </output>
+    <var line="DiscreteTimeIntegrator6_In3_1" mode="extin" name="DiscreteTimeIntegrator6_In3_1" port="DiscreteTimeIntegrator6_In3_1" type="real_T"/>
+    <code file="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" line="182" type="init">  DiscreteTimeIntegrator6_In3_1 = 0.0;
+
+</code>
+    <forward block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" type="port">
+      <var line="DiscreteTimeIntegrator6_In3_1" mode="input" name="DiscreteTimeIntegrator6_In3_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_3" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="DiscreteIntegrator" id="4" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" priority="1" rate="1">
+    <input line="DiscreteTimeIntegrator6_In1_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1">
+      <connect block="DiscreteTimeIntegrator6_In1" port="DiscreteTimeIntegrator6_In1_1"/>
+    </input>
+    <input line="DiscreteTimeIntegrator6_In2_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2">
+      <connect block="DiscreteTimeIntegrator6_In2" port="DiscreteTimeIntegrator6_In2_1"/>
+    </input>
+    <input line="DiscreteTimeIntegrator6_In3_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_3">
+      <connect block="DiscreteTimeIntegrator6_In3" port="DiscreteTimeIntegrator6_In3_1"/>
+    </input>
+    <output line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" usename="true">
+      <connect block="DiscreteTimeIntegrator6_Out1" port="DiscreteTimeIntegrator6_Out1_1"/>
+    </output>
+    <output line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" usename="true">
+      <connect block="DiscreteTimeIntegrator6_Out2" port="DiscreteTimeIntegrator6_Out2_1"/>
+    </output>
+    <var line="DiscreteTimeIntegrator6_In1_1" mode="input" name="DiscreteTimeIntegrator6_In1_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" type="real_T"/>
+    <var line="DiscreteTimeIntegrator6_In2_1" mode="input" name="DiscreteTimeIntegrator6_In2_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" type="real_T"/>
+    <var line="DiscreteTimeIntegrator6_In3_1" mode="input" name="DiscreteTimeIntegrator6_In3_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_3" type="real_T"/>
+    <var line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" mode="extout" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" type="real_T"/>
+    <var line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" mode="extout" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" type="real_T"/>
+    <state name="Discrete_TimeIntegrator_DSTATE" storage="DiscreteTimeIntegrator6_DW" type="real_T"/>
+    <state name="Discrete_TimeIntegrator_PrevRes" storage="DiscreteTimeIntegrator6_DW" type="int8_T"/>
+    <state name="Discrete_TimeIntegrator_IC_LOAD" storage="DiscreteTimeIntegrator6_DW" type="uint8_T"/>
+    <param name="Discrete_TimeIntegrator_gainval" storage="DiscreteTimeIntegrator6_P" type="real_T"/>
+    <param name="Discrete_TimeIntegrator_UpperSa" storage="DiscreteTimeIntegrator6_P" type="real_T"/>
+    <param name="Discrete_TimeIntegrator_LowerSa" storage="DiscreteTimeIntegrator6_P" type="real_T"/>
+    <code file="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" line="58" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (DiscreteTimeIntegrator6_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* DiscreteIntegrator: '&lt;Root&gt;/Discrete_TimeIntegrator' incorporates:
+     *  Inport: '&lt;Root&gt;/In1'
+     *  Inport: '&lt;Root&gt;/In2'
+     *  Inport: '&lt;Root&gt;/In3'
+     */
+    if (DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_IC_LOAD != 0) {
+      DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+        DiscreteTimeIntegrator6_In3_1;
+      if (DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE &gt;=
+          DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa) {
+        DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+          DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa;
+      } else {
+        if (DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE &lt;=
+            DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa) {
+          DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+            DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa;
+        }
+      }
+    }
+
+    if ((DiscreteTimeIntegrator6_In2_1 &gt; 0.0) &amp;&amp;
+        (DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_PrevRes &lt;= 0)) {
+      DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+        DiscreteTimeIntegrator6_In3_1;
+      if (DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE &gt;=
+          DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa) {
+        DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+          DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa;
+      } else {
+        if (DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE &lt;=
+            DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa) {
+          DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+            DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa;
+        }
+      }
+    }
+
+    DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1 =
+      DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_gainval *
+      DiscreteTimeIntegrator6_In1_1 +
+      DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE;
+    if (DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1 &gt;=
+        DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa) {
+      DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1 =
+        DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa;
+      DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2 = 1.0;
+    } else if (DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1 &lt;=
+               DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa) {
+      DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1 =
+        DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa;
+      DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2 = -1.0;
+    } else {
+      DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2 = 0.0;
+    }
+
+    /* End of DiscreteIntegrator: '&lt;Root&gt;/Discrete_TimeIntegrator' */
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+    <code file="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" line="116" type="update">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (DiscreteTimeIntegrator6_M-&gt;Timing.TaskCounters.TID[1] == 0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Update for DiscreteIntegrator: '&lt;Root&gt;/Discrete_TimeIntegrator' incorporates:
+     *  Inport: '&lt;Root&gt;/In1'
+     *  Inport: '&lt;Root&gt;/In2'
+     */
+    DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_IC_LOAD = 0U;
+    DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+      DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_gainval *
+      DiscreteTimeIntegrator6_In1_1 +
+      DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1;
+    if (DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE &gt;=
+        DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa) {
+      DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+        DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa;
+    } else {
+      if (DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE &lt;=
+          DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa) {
+        DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_DSTATE =
+          DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa;
+      }
+    }
+
+    if (DiscreteTimeIntegrator6_In2_1 &gt; 0.0) {
+      DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_PrevRes = 1;
+    } else if (DiscreteTimeIntegrator6_In2_1 &lt; 0.0) {
+      DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_PrevRes = -1;
+    } else if (DiscreteTimeIntegrator6_In2_1 == 0.0) {
+      DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_PrevRes = 0;
+    } else {
+      DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_PrevRes = 2;
+    }
+
+    /* End of Update for DiscreteIntegrator: '&lt;Root&gt;/Discrete_TimeIntegrator' */
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+    <code file="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" line="162" type="init">  DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_UpperSa = rtInf;
+  DiscreteTimeIntegrator6_P.Discrete_TimeIntegrator_LowerSa = rtMinusInf;
+
+  DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1 = 0.0;
+  DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2 = 0.0;
+
+</code>
+    <code file="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" line="184" type="state">  /* InitializeConditions for DiscreteIntegrator: '&lt;Root&gt;/Discrete_TimeIntegrator' */
+  DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_IC_LOAD = 1U;
+  DiscreteTimeIntegrator6_DW.Discrete_TimeIntegrator_PrevRes = 2;
+</code>
+    <forward block="DiscreteTimeIntegrator6_Out1" type="port">
+      <var line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" mode="input" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" port="DiscreteTimeIntegrator6_Out1_1" type="real_T"/>
+    </forward>
+    <forward block="DiscreteTimeIntegrator6_Out2" type="port">
+      <var line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" mode="input" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" port="DiscreteTimeIntegrator6_Out2_1" type="real_T"/>
+    </forward>
+    <backword block="DiscreteTimeIntegrator6_In1" type="port">
+      <var line="DiscreteTimeIntegrator6_In1_1" mode="extin" name="DiscreteTimeIntegrator6_In1_1" port="DiscreteTimeIntegrator6_In1_1" type="real_T"/>
+    </backword>
+    <backword block="DiscreteTimeIntegrator6_In2" type="port">
+      <var line="DiscreteTimeIntegrator6_In2_1" mode="extin" name="DiscreteTimeIntegrator6_In2_1" port="DiscreteTimeIntegrator6_In2_1" type="real_T"/>
+    </backword>
+    <backword block="DiscreteTimeIntegrator6_In3" type="port">
+      <var line="DiscreteTimeIntegrator6_In3_1" mode="extin" name="DiscreteTimeIntegrator6_In3_1" port="DiscreteTimeIntegrator6_In3_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="5" name="DiscreteTimeIntegrator6_Out1" priority="2" rate="1">
+    <input line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" port="DiscreteTimeIntegrator6_Out1_1">
+      <connect block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1"/>
+    </input>
+    <var line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" mode="input" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" port="DiscreteTimeIntegrator6_Out1_1" type="real_T"/>
+    <backword block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" type="port">
+      <var line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" mode="extout" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="6" name="DiscreteTimeIntegrator6_Out2" priority="3" rate="1">
+    <input line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" port="DiscreteTimeIntegrator6_Out2_1">
+      <connect block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2"/>
+    </input>
+    <var line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" mode="input" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" port="DiscreteTimeIntegrator6_Out2_1" type="real_T"/>
+    <backword block="DiscreteTimeIntegrator6_Discrete_TimeIntegrator" type="port">
+      <var line="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" mode="extout" name="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" port="DiscreteTimeIntegrator6_Discrete_TimeIntegrator_2" type="real_T"/>
+    </backword>
+  </block>
+  <code type="common-init">  rt_InitInfAndNaN(sizeof(real_T));
+</code>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_DiscreteTimeIntegrato_T {
+  const char_T * volatile errorStatus;
+
+  /*
+   * Timing:
+   * The following substructure contains information regarding
+   * the timing information for the model.
+   */
+  struct {
+    struct {
+      uint8_T TID[2];
+    } TaskCounters;
+  } Timing;
+};
+</code>
+  <code type="rt-init">  /* initialize real-time model */
+  (void) memset((void *)DiscreteTimeIntegrator6_M, 0,
+                sizeof(RT_MODEL_DiscreteTimeIntegrat_T));
+</code>
+  <object kind="rtm-extern" name="DiscreteTimeIntegrator6_M" type="extern RT_MODEL_DiscreteTimeIntegrat_T * const"/>
+  <object kind="rtm-object" name="DiscreteTimeIntegrator6_M_" type="RT_MODEL_DiscreteTimeIntegrat_T"/>
+  <object kind="rtm-pointer" name="DiscreteTimeIntegrator6_M" type="RT_MODEL_DiscreteTimeIntegrat_T * const" value="&amp;DiscreteTimeIntegrator6_M_"/>
+  <includes file="&lt;string.h>" from="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.h" index="1"/>
+  <includes file="&quot;DiscreteTimeIntegrator6_types.h&quot;" from="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.h" index="2"/>
+  <includes file="&quot;rtGetInf.h&quot;" from="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.h" index="3"/>
+  <includes file="&quot;rt_nonfinite.h&quot;" from="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.h" index="4"/>
+  <includes file="&quot;DiscreteTimeIntegrator6_private.h&quot;" from="DiscreteTimeIntegrator6_ert_rtw/DiscreteTimeIntegrator6.c" index="5"/>
+  <function name="rate_scheduler" type="decl">
+    <code line="35" type="func">static void rate_scheduler(void);
+</code>
+  </function>
+  <function name="rate_scheduler" type="defn">
+    <code line="37" type="func">/*
+ *   This function updates active task flag for each subrate.
+ * The function is called at model base rate, hence the
+ * generated code self-manages all its subrates.
+ */
+static void rate_scheduler(void)
+{
+  /* Compute which subrates run during the next base time step.  Subrates
+   * are an integer multiple of the base rate counter.  Therefore, the subtask
+   * counter is reset when it reaches its limit (zero means run).
+   */
+  (DiscreteTimeIntegrator6_M-&gt;Timing.TaskCounters.TID[1])++;
+  if ((DiscreteTimeIntegrator6_M-&gt;Timing.TaskCounters.TID[1]) &gt; 9) {/* Sample time: [1.0s, 0.0s] */
+    DiscreteTimeIntegrator6_M-&gt;Timing.TaskCounters.TID[1] = 0;
+  }
+}
+</code>
+  </function>
+</sm:blocks>

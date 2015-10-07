@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="fcn" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="fcn_In1" rate="-1">
+      <output line="fcn_In1_1" port="fcn_In1_1" usename="true">
+         <connect block="fcn_Fcn" port="fcn_Fcn_1"/>
+      </output>
+   </block>
+   <block blocktype="Fcn" name="fcn_Fcn" rate="-1">
+      <input line="fcn_In1_1" port="fcn_Fcn_1">
+         <connect block="fcn_In1" port="fcn_In1_1"/>
+      </input>
+      <output line="fcn_Fcn_1" port="fcn_Fcn_1" usename="true">
+         <connect block="fcn_Out1" port="fcn_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="fcn_Out1" rate="-1">
+      <input line="fcn_Fcn_1" port="fcn_Out1_1">
+         <connect block="fcn_Fcn" port="fcn_Fcn_1"/>
+      </input>
+   </block>
+</sm:blocks>

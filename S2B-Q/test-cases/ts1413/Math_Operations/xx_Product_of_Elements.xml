@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Product_of_Elements" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Product_of_Elements_In1" priority="0" rate="0.1">
+    <output line="Product_of_Elements_In1_1" port="Product_of_Elements_In1_1" usename="true">
+      <connect block="Product_of_Elements_ProductofElements" port="Product_of_Elements_ProductofElements_1"/>
+    </output>
+  </block>
+  <block blocktype="Product" name="Product_of_Elements_ProductofElements" priority="1" rate="0.1">
+    <input line="Product_of_Elements_In1_1" port="Product_of_Elements_ProductofElements_1">
+      <connect block="Product_of_Elements_In1" port="Product_of_Elements_In1_1"/>
+    </input>
+    <output line="Product_of_Elements_ProductofElements_1" port="Product_of_Elements_ProductofElements_1" usename="true">
+      <connect block="Product_of_Elements_Out1" port="Product_of_Elements_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Product_of_Elements_Out1" priority="2" rate="0.1">
+    <input line="Product_of_Elements_ProductofElements_1" port="Product_of_Elements_Out1_1">
+      <connect block="Product_of_Elements_ProductofElements" port="Product_of_Elements_ProductofElements_1"/>
+    </input>
+  </block>
+</sm:blocks>

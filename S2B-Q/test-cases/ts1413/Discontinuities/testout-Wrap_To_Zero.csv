@@ -1,0 +1,24 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Wrap_To_Zero_In1_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  if (Wrap_To_Zero_In1_1 > 255.0) {
+"
+,,,,"    /* Outport: '<Root>/Out1' incorporates:
+     *  Constant: '<S1>/Constant'
+     */
+    Wrap_To_Zero_Y.Out1 = 0.0;
+"
+,,,,"  } else {
+"
+,,,,"    /* Outport: '<Root>/Out1' */
+    Wrap_To_Zero_Y.Out1 = Wrap_To_Zero_In1_1;
+"
+,,,,"  }
+"
+,,,,"}
+"
+"task2",,,,
+,"Wrap_To_Zero_In1_1",,,

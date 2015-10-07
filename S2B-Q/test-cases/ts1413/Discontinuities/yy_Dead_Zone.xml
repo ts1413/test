@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Dead_Zone" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Dead_Zone_ert_rtw/Dead_Zone.h" size="2346" timestamp="2015-09-29T13:38:13+0900" type="c-header"/>
+  <file name="xx_Dead_Zone.xml" size="1209" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Dead_Zone_ert_rtw/Dead_Zone.c" size="1586" timestamp="2015-09-29T13:38:13+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Dead_Zone_In1" priority="0" rate="0.1">
+    <output line="Dead_Zone_In1_1" port="Dead_Zone_In1_1" usename="true">
+      <connect block="Dead_Zone_DeadZone" port="Dead_Zone_DeadZone_1"/>
+    </output>
+    <var line="Dead_Zone_In1_1" mode="extin" name="Dead_Zone_In1_1" port="Dead_Zone_In1_1" type="real_T"/>
+    <code file="Dead_Zone_ert_rtw/Dead_Zone.c" line="58" type="init">  Dead_Zone_In1_1 = 0.0;
+</code>
+    <forward block="Dead_Zone_DeadZone" type="port">
+      <var line="Dead_Zone_In1_1" mode="input" name="Dead_Zone_In1_1" port="Dead_Zone_DeadZone_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="DeadZone" id="2" name="Dead_Zone_DeadZone" priority="1" rate="0.1">
+    <input line="Dead_Zone_In1_1" port="Dead_Zone_DeadZone_1">
+      <connect block="Dead_Zone_In1" port="Dead_Zone_In1_1"/>
+    </input>
+    <output line="Dead_Zone_DeadZone_1" port="Dead_Zone_DeadZone_1" usename="true">
+      <connect block="Dead_Zone_Out1" port="Dead_Zone_Out1_1"/>
+    </output>
+    <var line="Dead_Zone_In1_1" mode="input" name="Dead_Zone_In1_1" port="Dead_Zone_DeadZone_1" type="real_T"/>
+    <var line="Dead_Zone_DeadZone_1" mode="extout" name="Dead_Zone_DeadZone_1" port="Dead_Zone_DeadZone_1" type="real_T"/>
+    <param name="UpperValue" storage="" type="double" value="0.5"/>
+    <code file="Dead_Zone_ert_rtw/Dead_Zone.c" line="30" type="task">  /* DeadZone: '&lt;Root&gt;/DeadZone' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  if (Dead_Zone_In1_1 &gt; 0.5) {
+    Dead_Zone_DeadZone_1 = Dead_Zone_In1_1 - 0.5;
+  } else if (Dead_Zone_In1_1 &gt;= (-0.5)) {
+    Dead_Zone_DeadZone_1 = 0.0;
+  } else {
+    Dead_Zone_DeadZone_1 = Dead_Zone_In1_1 - (-0.5);
+  }
+
+  /* End of DeadZone: '&lt;Root&gt;/DeadZone' */
+</code>
+    <code file="Dead_Zone_ert_rtw/Dead_Zone.c" line="55" type="init">  Dead_Zone_DeadZone_1 = 0.0;
+
+</code>
+    <forward block="Dead_Zone_Out1" type="port">
+      <var line="Dead_Zone_DeadZone_1" mode="input" name="Dead_Zone_DeadZone_1" port="Dead_Zone_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Dead_Zone_In1" type="port">
+      <var line="Dead_Zone_In1_1" mode="extin" name="Dead_Zone_In1_1" port="Dead_Zone_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Dead_Zone_Out1" priority="2" rate="0.1">
+    <input line="Dead_Zone_DeadZone_1" port="Dead_Zone_Out1_1">
+      <connect block="Dead_Zone_DeadZone" port="Dead_Zone_DeadZone_1"/>
+    </input>
+    <var line="Dead_Zone_DeadZone_1" mode="input" name="Dead_Zone_DeadZone_1" port="Dead_Zone_Out1_1" type="real_T"/>
+    <backword block="Dead_Zone_DeadZone" type="port">
+      <var line="Dead_Zone_DeadZone_1" mode="extout" name="Dead_Zone_DeadZone_1" port="Dead_Zone_DeadZone_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Dead_Zone {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Dead_Zone_M" type="extern RT_MODEL_Dead_Zone * const"/>
+  <object kind="rtm-object" name="Dead_Zone_M_" type="RT_MODEL_Dead_Zone"/>
+  <object kind="rtm-pointer" name="Dead_Zone_M" type="RT_MODEL_Dead_Zone * const" value="&amp;Dead_Zone_M_"/>
+  <includes file="&lt;stddef.h>" from="Dead_Zone_ert_rtw/Dead_Zone.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Dead_Zone_ert_rtw/Dead_Zone.h" index="1"/>
+  <includes file="&quot;Dead_Zone_types.h&quot;" from="Dead_Zone_ert_rtw/Dead_Zone.h" index="2"/>
+  <includes file="&quot;Dead_Zone_private.h&quot;" from="Dead_Zone_ert_rtw/Dead_Zone.c" index="3"/>
+</sm:blocks>

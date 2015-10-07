@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="switch_case" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="switch_case_In1" priority="0" rate="0.1">
+    <output line="switch_case_In1_1" port="switch_case_In1_1" usename="true">
+      <connect block="switch_case_SwitchCase" port="switch_case_SwitchCase_1"/>
+    </output>
+  </block>
+  <block blocktype="Constant" name="switch_case_Constant" priority="2" rate="0.1">
+    <output line="switch_case_Constant_1" port="switch_case_Constant_1" usename="true">
+      <connect block="switch_case_SwitchCaseActionSubsystem" port="switch_case_SwitchCaseActionSubsystem_In1"/>
+    </output>
+    <param name="Value" storage="" type="double" value="5.0"/>
+  </block>
+  <block blocktype="Constant" name="switch_case_Constant1" priority="1" rate="0.1">
+    <output line="switch_case_Constant1_1" port="switch_case_Constant1_1" usename="true">
+      <connect block="switch_case_SwitchCaseActionSubsystem1" port="switch_case_SwitchCaseActionSubsystem1_In1"/>
+    </output>
+  </block>
+  <block blocktype="SwitchCase" name="switch_case_SwitchCase" priority="3" rate="0.1">
+    <input line="switch_case_In1_1" port="switch_case_SwitchCase_1">
+      <connect block="switch_case_In1" port="switch_case_In1_1"/>
+    </input>
+    <output line="switch_case_SwitchCase_0" port="switch_case_SwitchCase_0" usename="false">
+      <connect block="switch_case_SwitchCaseActionSubsystem" port="switch_case_SwitchCaseActionSubsystem_ActionPort"/>
+    </output>
+    <output line="switch_case_SwitchCase_0" port="switch_case_SwitchCase_0" usename="false">
+      <connect block="switch_case_SwitchCaseActionSubsystem1" port="switch_case_SwitchCaseActionSubsystem1_ActionPort"/>
+    </output>
+    <param name="CaseConditions" storage="" type="double" value="1.0"/>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" name="switch_case_SwitchCaseActionSubsystem" priority="4" rate="0.1">
+    <input line="switch_case_Constant_1" port="switch_case_SwitchCaseActionSubsystem_In1">
+      <connect block="switch_case_Constant" port="switch_case_Constant_1"/>
+    </input>
+    <input line="switch_case_SwitchCase_0" port="switch_case_SwitchCaseActionSubsystem_ActionPort">
+      <connect block="switch_case_SwitchCase" port="switch_case_SwitchCase_0"/>
+    </input>
+    <output line="switch_case_SwitchCaseActionSubsystem_1" port="switch_case_SwitchCaseActionSubsystem_Out1" usename="false">
+      <connect block="switch_case_Out1" port="switch_case_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" name="switch_case_SwitchCaseActionSubsystem_In1" priority="1" rate="0.1">
+        <output line="switch_case_SwitchCaseActionSubsystem_In1_1" port="switch_case_SwitchCaseActionSubsystem_In1_1" usename="false">
+          <connect block="switch_case_SwitchCaseActionSubsystem_Out1" port="switch_case_SwitchCaseActionSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="ActionPort" name="switch_case_SwitchCaseActionSubsystem_ActionPort" priority="0" rate="0.1"/>
+      <block blocktype="Outport" name="switch_case_SwitchCaseActionSubsystem_Out1" priority="0" rate="0.1">
+        <input line="switch_case_SwitchCaseActionSubsystem_In1_1" port="switch_case_SwitchCaseActionSubsystem_Out1_1">
+          <connect block="switch_case_SwitchCaseActionSubsystem_In1" port="switch_case_SwitchCaseActionSubsystem_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" name="switch_case_SwitchCaseActionSubsystem1" priority="5" rate="0.1">
+    <input line="switch_case_Constant1_1" port="switch_case_SwitchCaseActionSubsystem1_In1">
+      <connect block="switch_case_Constant1" port="switch_case_Constant1_1"/>
+    </input>
+    <input line="switch_case_SwitchCase_0" port="switch_case_SwitchCaseActionSubsystem1_ActionPort">
+      <connect block="switch_case_SwitchCase" port="switch_case_SwitchCase_0"/>
+    </input>
+    <output line="switch_case_SwitchCaseActionSubsystem1_1" port="switch_case_SwitchCaseActionSubsystem1_Out1" usename="false">
+      <connect block="switch_case_Out2" port="switch_case_Out2_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" name="switch_case_SwitchCaseActionSubsystem1_In1" priority="1" rate="0.1">
+        <output line="switch_case_SwitchCaseActionSubsystem1_In1_1" port="switch_case_SwitchCaseActionSubsystem1_In1_1" usename="false">
+          <connect block="switch_case_SwitchCaseActionSubsystem1_Out1" port="switch_case_SwitchCaseActionSubsystem1_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="ActionPort" name="switch_case_SwitchCaseActionSubsystem1_ActionPort" priority="0" rate="0.1"/>
+      <block blocktype="Outport" name="switch_case_SwitchCaseActionSubsystem1_Out1" priority="0" rate="0.1">
+        <input line="switch_case_SwitchCaseActionSubsystem1_In1_1" port="switch_case_SwitchCaseActionSubsystem1_Out1_1">
+          <connect block="switch_case_SwitchCaseActionSubsystem1_In1" port="switch_case_SwitchCaseActionSubsystem1_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Outport" name="switch_case_Out1" priority="6" rate="0.1">
+    <input line="switch_case_SwitchCaseActionSubsystem_1" port="switch_case_Out1_1">
+      <connect block="switch_case_SwitchCaseActionSubsystem" port="switch_case_SwitchCaseActionSubsystem_Out1"/>
+    </input>
+  </block>
+  <block blocktype="Outport" name="switch_case_Out2" priority="7" rate="0.1">
+    <input line="switch_case_SwitchCaseActionSubsystem1_1" port="switch_case_Out2_1">
+      <connect block="switch_case_SwitchCaseActionSubsystem1" port="switch_case_SwitchCaseActionSubsystem1_Out1"/>
+    </input>
+  </block>
+</sm:blocks>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Relay" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Relay_ert_rtw/Relay.h" size="2515" timestamp="2015-09-29T13:38:30+0900" type="c-header"/>
+  <file name="xx_Relay.xml" size="1174" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Relay_ert_rtw/Relay.c" size="1738" timestamp="2015-09-29T13:38:30+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Relay_In1" priority="0" rate="0.1">
+    <output line="Relay_In1_1" port="Relay_In1_1" usename="true">
+      <connect block="Relay_Relay" port="Relay_Relay_1"/>
+    </output>
+    <var line="Relay_In1_1" mode="extin" name="Relay_In1_1" port="Relay_In1_1" type="real_T"/>
+    <code file="Relay_ert_rtw/Relay.c" line="71" type="init">  Relay_In1_1 = 0.0;
+</code>
+    <forward block="Relay_Relay" type="data">
+      <var line="Relay_In1_1" mode="input" name="Relay_In1_1" port="Relay_Relay_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Relay" id="2" name="Relay_Relay" priority="1" rate="0.1">
+    <input line="Relay_In1_1" port="Relay_Relay_1">
+      <connect block="Relay_In1" port="Relay_In1_1"/>
+    </input>
+    <output line="Relay_Relay_1" port="Relay_Relay_1" usename="true">
+      <connect block="Relay_Out1" port="Relay_Out1_1"/>
+    </output>
+    <var line="Relay_In1_1" mode="input" name="Relay_In1_1" port="Relay_Relay_1" type="real_T"/>
+    <var line="Relay_Relay_1" mode="extout" name="Relay_Relay_1" port="Relay_Relay_1" type="real_T"/>
+    <state name="Relay_Mode" storage="Relay_DWork" type="boolean_T"/>
+    <param name="OffOutputValue" storage="" type="double" value="0.0"/>
+    <param name="OnOutputValue" storage="" type="double" value="1.0"/>
+    <code file="Relay_ert_rtw/Relay.c" line="33" type="task">  /* Relay: '&lt;Root&gt;/Relay' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  if (Relay_In1_1 &gt;= 2.2204460492503131E-16) {
+    Relay_DWork.Relay_Mode = true;
+  } else {
+    if (Relay_In1_1 &lt;= 2.2204460492503131E-16) {
+      Relay_DWork.Relay_Mode = false;
+    }
+  }
+
+  if (Relay_DWork.Relay_Mode) {
+    Relay_Relay_1 = 1.0;
+  } else {
+    Relay_Relay_1 = 0.0;
+  }
+
+  /* End of Relay: '&lt;Root&gt;/Relay' */
+</code>
+    <code file="Relay_ert_rtw/Relay.c" line="64" type="init">  Relay_Relay_1 = 0.0;
+
+</code>
+    <forward block="Relay_Out1" type="data">
+      <var line="Relay_Relay_1" mode="input" name="Relay_Relay_1" port="Relay_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Relay_In1" type="data">
+      <var line="Relay_In1_1" mode="extin" name="Relay_In1_1" port="Relay_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Relay_Out1" priority="2" rate="0.1">
+    <input line="Relay_Relay_1" port="Relay_Out1_1">
+      <connect block="Relay_Relay" port="Relay_Relay_1"/>
+    </input>
+    <var line="Relay_Relay_1" mode="input" name="Relay_Relay_1" port="Relay_Out1_1" type="real_T"/>
+    <backword block="Relay_Relay" type="data">
+      <var line="Relay_Relay_1" mode="extout" name="Relay_Relay_1" port="Relay_Relay_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Relay {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Relay_M" type="extern RT_MODEL_Relay * const"/>
+  <object kind="rtm-object" name="Relay_M_" type="RT_MODEL_Relay"/>
+  <object kind="rtm-pointer" name="Relay_M" type="RT_MODEL_Relay * const" value="&amp;Relay_M_"/>
+  <includes file="&lt;stddef.h>" from="Relay_ert_rtw/Relay.h" index="0"/>
+  <includes file="&lt;string.h>" from="Relay_ert_rtw/Relay.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Relay_ert_rtw/Relay.h" index="2"/>
+  <includes file="&quot;Relay_types.h&quot;" from="Relay_ert_rtw/Relay.h" index="3"/>
+  <includes file="&quot;Relay_private.h&quot;" from="Relay_ert_rtw/Relay.c" index="4"/>
+</sm:blocks>

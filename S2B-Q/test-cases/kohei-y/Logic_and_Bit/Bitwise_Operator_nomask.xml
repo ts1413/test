@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Bitwise_Operator_nomask" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Bitwise_Operator_nomask_In1" rate="-1">
+      <output line="Bitwise_Operator_nomask_In1_1" port="Bitwise_Operator_nomask_In1_1" usename="true">
+         <connect block="Bitwise_Operator_nomask_BitwiseOperator" port="Bitwise_Operator_nomask_BitwiseOperator_1"/>
+      </output>
+   </block>
+   <block blocktype="S-Function" name="Bitwise_Operator_nomask_BitwiseOperator">
+      <input line="Bitwise_Operator_nomask_In1_1" port="Bitwise_Operator_nomask_BitwiseOperator_1">
+         <connect block="Bitwise_Operator_nomask_In1" port="Bitwise_Operator_nomask_In1_1"/>
+      </input>
+      <output line="Bitwise_Operator_nomask_BitwiseOperator_1" port="Bitwise_Operator_nomask_BitwiseOperator_1" usename="true">
+         <connect block="Bitwise_Operator_nomask_Out1" port="Bitwise_Operator_nomask_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Bitwise_Operator_nomask_Out1" rate="-1">
+      <input line="Bitwise_Operator_nomask_BitwiseOperator_1" port="Bitwise_Operator_nomask_Out1_1">
+         <connect block="Bitwise_Operator_nomask_BitwiseOperator" port="Bitwise_Operator_nomask_BitwiseOperator_1"/>
+      </input>
+   </block>
+</sm:blocks>

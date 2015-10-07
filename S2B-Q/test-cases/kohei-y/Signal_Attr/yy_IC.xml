@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="IC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="IC_ert_rtw/IC.h" size="2727" timestamp="2015-09-29T10:41:03+0900" type="c-header"/>
+  <file name="xx_IC.xml" size="1020" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="IC_ert_rtw/IC.c" size="1617" timestamp="2015-09-29T10:41:03+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="IC_In1" priority="0" rate="0.1">
+    <output line="IC_In1_1" port="IC_In1_1" usename="true">
+      <connect block="IC_IC" port="IC_IC_1"/>
+    </output>
+    <var line="IC_In1_1" mode="extin" name="IC_In1_1" port="IC_In1_1" type="real_T"/>
+    <code file="IC_ert_rtw/IC.c" line="64" type="init">  IC_In1_1 = 0.0;
+
+</code>
+    <forward block="IC_IC" type="port">
+      <var line="IC_In1_1" mode="input" name="IC_In1_1" port="IC_IC_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="InitialCondition" id="2" name="IC_IC" priority="1" rate="0.1">
+    <input line="IC_In1_1" port="IC_IC_1">
+      <connect block="IC_In1" port="IC_In1_1"/>
+    </input>
+    <output line="IC_IC_1" port="IC_IC_1" usename="true">
+      <connect block="IC_Out1" port="IC_Out1_1"/>
+    </output>
+    <var line="IC_In1_1" mode="input" name="IC_In1_1" port="IC_IC_1" type="real_T"/>
+    <var line="IC_IC_1" mode="extout" name="IC_IC_1" port="IC_IC_1" type="real_T"/>
+    <state name="IC_FirstOutputTime" storage="IC_DW" type="boolean_T"/>
+    <param name="Value" storage="" type="double" value="100.0"/>
+    <param name="IC_Value" storage="IC_P" type="real_T"/>
+    <code file="IC_ert_rtw/IC.c" line="33" type="task">  /* InitialCondition: '&lt;Root&gt;/IC' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  if (IC_DW.IC_FirstOutputTime) {
+    IC_DW.IC_FirstOutputTime = false;
+    IC_IC_1 = IC_P.IC_Value;
+  } else {
+    IC_IC_1 = IC_In1_1;
+  }
+
+  /* End of InitialCondition: '&lt;Root&gt;/IC' */
+</code>
+    <code file="IC_ert_rtw/IC.c" line="57" type="init">  IC_IC_1 = 0.0;
+
+  /* Start for InitialCondition: '&lt;Root&gt;/IC' */
+  IC_DW.IC_FirstOutputTime = true;
+</code>
+    <forward block="IC_Out1" type="port">
+      <var line="IC_IC_1" mode="input" name="IC_IC_1" port="IC_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="IC_In1" type="port">
+      <var line="IC_In1_1" mode="extin" name="IC_In1_1" port="IC_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="IC_Out1" priority="2" rate="0.1">
+    <input line="IC_IC_1" port="IC_Out1_1">
+      <connect block="IC_IC" port="IC_IC_1"/>
+    </input>
+    <var line="IC_IC_1" mode="input" name="IC_IC_1" port="IC_Out1_1" type="real_T"/>
+    <backword block="IC_IC" type="port">
+      <var line="IC_IC_1" mode="extout" name="IC_IC_1" port="IC_IC_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_IC_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="IC_M" type="extern RT_MODEL_IC_T * const"/>
+  <object kind="rtm-object" name="IC_M_" type="RT_MODEL_IC_T"/>
+  <object kind="rtm-pointer" name="IC_M" type="RT_MODEL_IC_T * const" value="&amp;IC_M_"/>
+  <includes file="&lt;stddef.h>" from="IC_ert_rtw/IC.h" index="0"/>
+  <includes file="&lt;string.h>" from="IC_ert_rtw/IC.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="IC_ert_rtw/IC.h" index="2"/>
+  <includes file="&quot;IC_types.h&quot;" from="IC_ert_rtw/IC.h" index="3"/>
+  <includes file="&quot;IC_private.h&quot;" from="IC_ert_rtw/IC.c" index="4"/>
+</sm:blocks>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Gain3" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Gain3_In1" rate="-1">
+      <output line="Gain3_In1_1" port="Gain3_In1_1" usename="true">
+         <connect block="Gain3_VectorConcatenate" port="Gain3_VectorConcatenate_1"/>
+         <connect block="Gain3_VectorConcatenate" port="Gain3_VectorConcatenate_2"/>
+      </output>
+   </block>
+   <block blocktype="Gain" name="Gain3_Gain" rate="-1">
+      <input line="Gain3_VectorConcatenate_1" port="Gain3_Gain_1">
+         <connect block="Gain3_VectorConcatenate" port="Gain3_VectorConcatenate_1"/>
+      </input>
+      <output line="Gain3_Gain_1" port="Gain3_Gain_1" usename="true">
+         <connect block="Gain3_Out1" port="Gain3_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Concatenate" name="Gain3_VectorConcatenate">
+      <input line="Gain3_In1_1" port="Gain3_VectorConcatenate_1">
+         <connect block="Gain3_In1" port="Gain3_In1_1"/>
+      </input>
+      <input line="Gain3_In1_1" port="Gain3_VectorConcatenate_2">
+         <connect block="Gain3_In1" port="Gain3_In1_1"/>
+      </input>
+      <output line="Gain3_VectorConcatenate_1" port="Gain3_VectorConcatenate_1" usename="true">
+         <connect block="Gain3_Gain" port="Gain3_Gain_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Gain3_Out1" rate="-1">
+      <input line="Gain3_Gain_1" port="Gain3_Out1_1">
+         <connect block="Gain3_Gain" port="Gain3_Gain_1"/>
+      </input>
+   </block>
+</sm:blocks>

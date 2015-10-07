@@ -1,0 +1,19 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Signal_Conversion_Bus" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Signal_Conversion_Bus/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Signal_Conversion_Bus/BusCreator" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Signal_Conversion_Bus/BusSelector" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="BusObject"
+OutDataPort portNumber=1 dataType="double"
+Block "Signal_Conversion_Bus/SignalConversion" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="BusObject"
+Block "Signal_Conversion_Bus/Out1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

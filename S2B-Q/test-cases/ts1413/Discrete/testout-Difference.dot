@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Difference_Difference	 [label="t2\nDifference_Difference"];
+	t0 -> Difference_Difference	 [color=green,
+		label="ch_0_2(Difference_In1_1)"];
+	extout	 [label=extout];
+	Difference_In1	 [label="t1\nDifference_In1",
+		shape=box];
+	Difference_In1 -> t0	 [color=green,
+		label="in port Difference_In1(Difference_In1_1)"];
+	Difference_Difference -> extout	 [color=green,
+		label="ch_2_100()"];
+}

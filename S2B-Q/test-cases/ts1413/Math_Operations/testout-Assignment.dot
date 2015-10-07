@@ -1,0 +1,15 @@
+digraph csp {
+	graph [rankdir=LR];
+	Assignment_Assignment	 [fillcolor=yellow,
+		label="t2\nAssignment_Assignment",
+		style=filled];
+	t0 -> Assignment_Assignment	 [color=green,
+		label="ch_0_2(Assignment_In1_1)"];
+	extout	 [label=extout];
+	Assignment_In1	 [label="t1\nAssignment_In1",
+		shape=box];
+	Assignment_In1 -> t0	 [color=green,
+		label="in port Assignment_In1(Assignment_In1_1)"];
+	Assignment_Assignment -> extout	 [color=green,
+		label="ch_2_100(Assignment_Assignment_1)"];
+}

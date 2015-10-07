@@ -1,0 +1,39 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "switch_case" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=2 dataType="double"
+Block "switch_case/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "switch_case/Constant" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "switch_case/Constant1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "switch_case/SwitchCase" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="action"
+OutDataPort portNumber=2 dataType="action"
+Block "switch_case/SwitchCaseActionSubsystem" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InControlPort portNumber=2 dataType="action"
+OutDataPort portNumber=1 dataType="double"
+Block "switch_case/SwitchCaseActionSubsystem/In1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "switch_case/SwitchCaseActionSubsystem/ActionPort" samplePeriod=0.1 min=[] max=[]
+Block "switch_case/SwitchCaseActionSubsystem/Out1" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "switch_case/SwitchCaseActionSubsystem1" samplePeriod=0.1 assignedPriority=4 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InControlPort portNumber=2 dataType="action"
+OutDataPort portNumber=1 dataType="double"
+Block "switch_case/SwitchCaseActionSubsystem1/In1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "switch_case/SwitchCaseActionSubsystem1/ActionPort" samplePeriod=0.1 min=[] max=[]
+Block "switch_case/SwitchCaseActionSubsystem1/Out1" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "switch_case/Out1" samplePeriod=0.1 assignedPriority=5 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "switch_case/Out2" samplePeriod=0.1 assignedPriority=6 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

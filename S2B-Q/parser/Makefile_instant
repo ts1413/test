@@ -1,0 +1,5 @@
+qgen-xmi_parser: qgen-xmi_parser.o qgen-xmi.a
+				g++ -g -L/usr/local/lib  qgen-xmi_parser.o qgen-xmi.a -lxerces-c  -lboost_regex -o qgen-xmi_parser
+
+qgen-xmi_parser.o: qgen-xmi_parser.cxx qgen-xmi.hxx xmi-id.hxx SimulinkModel.hxx
+				g++ -Wall -g -ffunction-sections -fdata-sections -I/usr/local/include -DSHIM_XSD_VERSION=20150212  -c -o qgen-xmi_parser.o qgen-xmi_parser.cxx

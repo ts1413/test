@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="LogicalOperator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="LogicalOperator_ert_rtw/LogicalOperator.h" size="2602" timestamp="2015-10-05T16:55:21+0900" type="c-header"/>
+  <file name="xx_LogicalOperator.xml" size="1779" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="LogicalOperator_ert_rtw/LogicalOperator.c" size="1729" timestamp="2015-10-05T16:55:21+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="LogicalOperator_In1" priority="0" rate="0.1">
+    <output line="LogicalOperator_In1_1" port="LogicalOperator_In1_1" usename="true">
+      <connect block="LogicalOperator_LogicalOperator" port="LogicalOperator_LogicalOperator_1"/>
+    </output>
+    <var line="LogicalOperator_In1_1" mode="extin" name="LogicalOperator_In1_1" port="LogicalOperator_In1_1" type="boolean_T"/>
+    <code file="LogicalOperator_ert_rtw/LogicalOperator.c" line="55" type="init">  LogicalOperator_In1_1 = false;
+</code>
+    <forward block="LogicalOperator_LogicalOperator" type="data">
+      <var line="LogicalOperator_In1_1" mode="input" name="LogicalOperator_In1_1" port="LogicalOperator_LogicalOperator_1" type="boolean_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="LogicalOperator_In2" priority="0" rate="0.1">
+    <output line="LogicalOperator_In2_1" port="LogicalOperator_In2_1" usename="true">
+      <connect block="LogicalOperator_LogicalOperator" port="LogicalOperator_LogicalOperator_2"/>
+    </output>
+    <var line="LogicalOperator_In2_1" mode="extin" name="LogicalOperator_In2_1" port="LogicalOperator_In2_1" type="boolean_T"/>
+    <code file="LogicalOperator_ert_rtw/LogicalOperator.c" line="56" type="init">  LogicalOperator_In2_1 = false;
+</code>
+    <forward block="LogicalOperator_LogicalOperator" type="data">
+      <var line="LogicalOperator_In2_1" mode="input" name="LogicalOperator_In2_1" port="LogicalOperator_LogicalOperator_2" type="boolean_T"/>
+    </forward>
+  </block>
+  <block blocktype="Logic" id="3" name="LogicalOperator_LogicalOperator" priority="1" rate="0.1">
+    <input line="LogicalOperator_In1_1" port="LogicalOperator_LogicalOperator_1">
+      <connect block="LogicalOperator_In1" port="LogicalOperator_In1_1"/>
+    </input>
+    <input line="LogicalOperator_In2_1" port="LogicalOperator_LogicalOperator_2">
+      <connect block="LogicalOperator_In2" port="LogicalOperator_In2_1"/>
+    </input>
+    <output line="LogicalOperator_LogicalOperator_1" port="LogicalOperator_LogicalOperator_1" usename="true">
+      <connect block="LogicalOperator_Out1" port="LogicalOperator_Out1_1"/>
+    </output>
+    <var line="LogicalOperator_In1_1" mode="input" name="LogicalOperator_In1_1" port="LogicalOperator_LogicalOperator_1" type="boolean_T"/>
+    <var line="LogicalOperator_In2_1" mode="input" name="LogicalOperator_In2_1" port="LogicalOperator_LogicalOperator_2" type="boolean_T"/>
+    <var line="LogicalOperator_LogicalOperator_1" mode="extout" name="LogicalOperator_LogicalOperator_1" port="LogicalOperator_LogicalOperator_1" type="boolean_T"/>
+    <code file="LogicalOperator_ert_rtw/LogicalOperator.c" line="33" type="task">  /* Logic: '&lt;Root&gt;/LogicalOperator' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   */
+  LogicalOperator_LogicalOperator_1 = (LogicalOperator_In1_1 &amp;&amp;
+    LogicalOperator_In2_1);
+</code>
+    <code file="LogicalOperator_ert_rtw/LogicalOperator.c" line="52" type="init">  LogicalOperator_LogicalOperator_1 = false;
+
+</code>
+    <forward block="LogicalOperator_Out1" type="port">
+      <var line="LogicalOperator_LogicalOperator_1" mode="input" name="LogicalOperator_LogicalOperator_1" port="LogicalOperator_Out1_1" type="boolean_T"/>
+    </forward>
+    <backword block="LogicalOperator_In1" type="data">
+      <var line="LogicalOperator_In1_1" mode="extin" name="LogicalOperator_In1_1" port="LogicalOperator_In1_1" type="boolean_T"/>
+    </backword>
+    <backword block="LogicalOperator_In2" type="data">
+      <var line="LogicalOperator_In2_1" mode="extin" name="LogicalOperator_In2_1" port="LogicalOperator_In2_1" type="boolean_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="LogicalOperator_Out1" priority="2" rate="0.1">
+    <input line="LogicalOperator_LogicalOperator_1" port="LogicalOperator_Out1_1">
+      <connect block="LogicalOperator_LogicalOperator" port="LogicalOperator_LogicalOperator_1"/>
+    </input>
+    <var line="LogicalOperator_LogicalOperator_1" mode="input" name="LogicalOperator_LogicalOperator_1" port="LogicalOperator_Out1_1" type="boolean_T"/>
+    <backword block="LogicalOperator_LogicalOperator" type="port">
+      <var line="LogicalOperator_LogicalOperator_1" mode="extout" name="LogicalOperator_LogicalOperator_1" port="LogicalOperator_LogicalOperator_1" type="boolean_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_LogicalOperator_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="LogicalOperator_M" type="extern RT_MODEL_LogicalOperator_T * const"/>
+  <object kind="rtm-object" name="LogicalOperator_M_" type="RT_MODEL_LogicalOperator_T"/>
+  <object kind="rtm-pointer" name="LogicalOperator_M" type="RT_MODEL_LogicalOperator_T * const" value="&amp;LogicalOperator_M_"/>
+  <includes file="&lt;stddef.h>" from="LogicalOperator_ert_rtw/LogicalOperator.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="LogicalOperator_ert_rtw/LogicalOperator.h" index="1"/>
+  <includes file="&quot;LogicalOperator_types.h&quot;" from="LogicalOperator_ert_rtw/LogicalOperator.h" index="2"/>
+  <includes file="&quot;LogicalOperator_private.h&quot;" from="LogicalOperator_ert_rtw/LogicalOperator.c" index="3"/>
+</sm:blocks>

@@ -1,0 +1,17 @@
+digraph csp {
+	graph [rankdir=LR];
+	Add_Add	 [label="t3\nAdd_Add"];
+	t0 -> Add_Add	 [color=green,
+		label="ch_0_3(Add_In1_1,Add_In2_1)"];
+	extout	 [label=extout];
+	Add_In1	 [label="t1\nAdd_In1",
+		shape=box];
+	Add_In1 -> t0	 [color=green,
+		label="in port Add_In1(Add_In1_1)"];
+	Add_In2	 [label="t2\nAdd_In2",
+		shape=box];
+	Add_In2 -> t0	 [color=green,
+		label="in port Add_In2(Add_In2_1)"];
+	Add_Add -> extout	 [color=green,
+		label="ch_3_100(Add_Add_1)"];
+}

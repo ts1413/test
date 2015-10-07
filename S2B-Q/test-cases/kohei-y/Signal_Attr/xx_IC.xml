@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="IC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="IC_In1" priority="0" rate="0.1">
+    <output line="IC_In1_1" port="IC_In1_1" usename="true">
+      <connect block="IC_IC" port="IC_IC_1"/>
+    </output>
+  </block>
+  <block blocktype="InitialCondition" name="IC_IC" priority="1" rate="0.1">
+    <input line="IC_In1_1" port="IC_IC_1">
+      <connect block="IC_In1" port="IC_In1_1"/>
+    </input>
+    <output line="IC_IC_1" port="IC_IC_1" usename="true">
+      <connect block="IC_Out1" port="IC_Out1_1"/>
+    </output>
+    <param name="Value" storage="" type="double" value="100.0"/>
+  </block>
+  <block blocktype="Outport" name="IC_Out1" priority="2" rate="0.1">
+    <input line="IC_IC_1" port="IC_Out1_1">
+      <connect block="IC_IC" port="IC_IC_1"/>
+    </input>
+  </block>
+</sm:blocks>

@@ -1,0 +1,26 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Chart" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Chart/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Chart/Chart" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Chart/Chart/in" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Chart/Chart/Demux" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="fcn_call"
+OutDataPort portNumber=1 dataType="fcn_call"
+Block "Chart/Chart/SFunction" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="fcn_call"
+OutDataPort portNumber=2 dataType="double"
+Block "Chart/Chart/Terminator" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="fcn_call"
+Block "Chart/Chart/out" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "Chart/Out1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

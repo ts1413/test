@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Assignment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Assignment_ert_rtw/Assignment.h" size="2429" timestamp="2015-09-29T13:39:50+0900" type="c-header"/>
+  <file name="xx_Assignment.xml" size="1611" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Assignment_ert_rtw/Assignment.c" size="2116" timestamp="2015-09-29T13:39:50+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Assignment_In1" priority="0" rate="0.1">
+    <output line="Assignment_In1_1" port="Assignment_In1_1" usename="true">
+      <connect block="Assignment_Assignment" port="Assignment_Assignment_2"/>
+    </output>
+    <var line="Assignment_In1_1" mode="extin" name="Assignment_In1_1" port="Assignment_In1_1" type="real_T"/>
+    <code file="Assignment_ert_rtw/Assignment.c" line="62" type="init">  Assignment_In1_1 = 0.0;
+
+</code>
+    <forward block="Assignment_Assignment" type="port">
+      <var line="Assignment_In1_1" mode="input" name="Assignment_In1_1" port="Assignment_Assignment_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Assignment" id="2" name="Assignment_Assignment" priority="2" rate="0.1">
+    <input line="Assignment_Constant_1" port="Assignment_Assignment_1">
+      <connect block="Assignment_Constant" port="Assignment_Constant_1"/>
+    </input>
+    <input line="Assignment_In1_1" port="Assignment_Assignment_2">
+      <connect block="Assignment_In1" port="Assignment_In1_1"/>
+    </input>
+    <output line="Assignment_Assignment_1" port="Assignment_Assignment_1" usename="true">
+      <connect block="Assignment_Out1" port="Assignment_Out1_1"/>
+    </output>
+    <var line="Assignment_Constant_1" mode="input" name="Assignment_Constant_1" port="Assignment_Assignment_1" size="4" type="real_T"/>
+    <var line="Assignment_In1_1" mode="input" name="Assignment_In1_1" port="Assignment_Assignment_2" type="real_T"/>
+    <var line="Assignment_Assignment_1" mode="extout" name="Assignment_Assignment_1" port="Assignment_Assignment_1" size="4" type="real_T"/>
+    <code file="Assignment_ert_rtw/Assignment.c" line="31" type="task">  /* Assignment: '&lt;Root&gt;/Assignment' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Assignment_Assignment_1[0] = Assignment_Constant_1[0];
+  Assignment_Assignment_1[1] = Assignment_Constant_1[1];
+  Assignment_Assignment_1[2] = Assignment_Constant_1[2];
+  Assignment_Assignment_1[3] = Assignment_Constant_1[3];
+  Assignment_Assignment_1[2] = Assignment_In1_1;
+</code>
+    <code file="Assignment_ert_rtw/Assignment.c" line="56" type="init">  Assignment_Assignment_1[0] = 0.0;
+  Assignment_Assignment_1[1] = 0.0;
+  Assignment_Assignment_1[2] = 0.0;
+  Assignment_Assignment_1[3] = 0.0;
+
+</code>
+    <forward block="Assignment_Out1" type="port">
+      <var line="Assignment_Assignment_1" mode="input" name="Assignment_Assignment_1" port="Assignment_Out1_1" size="4" type="real_T"/>
+    </forward>
+    <backword block="Assignment_Constant" type="data">
+      <var line="Assignment_Constant_1" mode="output" name="Assignment_Constant_1" port="Assignment_Constant_1" size="4" type="real_T"/>
+    </backword>
+    <backword block="Assignment_In1" type="port">
+      <var line="Assignment_In1_1" mode="extin" name="Assignment_In1_1" port="Assignment_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Constant" id="3" name="Assignment_Constant" priority="1" rate="0.1">
+    <output line="Assignment_Constant_1" port="Assignment_Constant_1" usename="true">
+      <connect block="Assignment_Assignment" port="Assignment_Assignment_1"/>
+    </output>
+    <var line="Assignment_Constant_1" mode="output" name="Assignment_Constant_1" port="Assignment_Constant_1" size="4" type="real_T"/>
+    <code file="Assignment_ert_rtw/Assignment.c" line="52" type="init">  Assignment_Constant_1[0] = 0.0;
+  Assignment_Constant_1[1] = 0.0;
+  Assignment_Constant_1[2] = 0.0;
+  Assignment_Constant_1[3] = 0.0;
+  /* ConstCode for Constant: '&lt;Root&gt;/Constant' */
+  Assignment_Constant_1[0] = 0.0;
+  Assignment_Constant_1[1] = 0.0;
+  Assignment_Constant_1[2] = 0.0;
+  Assignment_Constant_1[3] = 0.0;
+</code>
+    <forward block="Assignment_Assignment" type="data">
+      <var line="Assignment_Constant_1" mode="input" name="Assignment_Constant_1" port="Assignment_Assignment_1" size="4" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Outport" id="4" name="Assignment_Out1" priority="3" rate="0.1">
+    <input line="Assignment_Assignment_1" port="Assignment_Out1_1">
+      <connect block="Assignment_Assignment" port="Assignment_Assignment_1"/>
+    </input>
+    <var line="Assignment_Assignment_1" mode="input" name="Assignment_Assignment_1" port="Assignment_Out1_1" size="4" type="real_T"/>
+    <backword block="Assignment_Assignment" type="port">
+      <var line="Assignment_Assignment_1" mode="extout" name="Assignment_Assignment_1" port="Assignment_Assignment_1" size="4" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Assignment {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Assignment_M" type="extern RT_MODEL_Assignment * const"/>
+  <object kind="rtm-object" name="Assignment_M_" type="RT_MODEL_Assignment"/>
+  <object kind="rtm-pointer" name="Assignment_M" type="RT_MODEL_Assignment * const" value="&amp;Assignment_M_"/>
+  <includes file="&lt;stddef.h>" from="Assignment_ert_rtw/Assignment.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Assignment_ert_rtw/Assignment.h" index="1"/>
+  <includes file="&quot;Assignment_types.h&quot;" from="Assignment_ert_rtw/Assignment.h" index="2"/>
+  <includes file="&quot;Assignment_private.h&quot;" from="Assignment_ert_rtw/Assignment.c" index="3"/>
+</sm:blocks>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Add" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Add_In1" priority="0" rate="0.1">
+    <output line="Add_In1_1" port="Add_In1_1" usename="true">
+      <connect block="Add_Add" port="Add_Add_1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="Add_In2" priority="0" rate="0.1">
+    <output line="Add_In2_1" port="Add_In2_1" usename="true">
+      <connect block="Add_Add" port="Add_Add_2"/>
+    </output>
+  </block>
+  <block blocktype="Sum" name="Add_Add" priority="1" rate="0.1">
+    <input line="Add_In1_1" port="Add_Add_1">
+      <connect block="Add_In1" port="Add_In1_1"/>
+    </input>
+    <input line="Add_In2_1" port="Add_Add_2">
+      <connect block="Add_In2" port="Add_In2_1"/>
+    </input>
+    <output line="Add_Add_1" port="Add_Add_1" usename="true">
+      <connect block="Add_Out1" port="Add_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Add_Out1" priority="2" rate="0.1">
+    <input line="Add_Add_1" port="Add_Out1_1">
+      <connect block="Add_Add" port="Add_Add_1"/>
+    </input>
+  </block>
+</sm:blocks>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Backlash" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Backlash_ert_rtw/Backlash.h" size="2558" timestamp="2015-09-29T13:38:07+0900" type="c-header"/>
+  <file name="xx_Backlash.xml" size="1263" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Backlash_ert_rtw/Backlash.c" size="2016" timestamp="2015-09-29T13:38:07+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Backlash_In1" priority="0" rate="0.1">
+    <output line="Backlash_In1_1" port="Backlash_In1_1" usename="true">
+      <connect block="Backlash_Backlash" port="Backlash_Backlash_1"/>
+    </output>
+    <var line="Backlash_In1_1" mode="extin" name="Backlash_In1_1" port="Backlash_In1_1" type="real_T"/>
+    <code file="Backlash_ert_rtw/Backlash.c" line="70" type="init">  Backlash_In1_1 = 0.0;
+
+</code>
+    <forward block="Backlash_Backlash" type="port">
+      <var line="Backlash_In1_1" mode="input" name="Backlash_In1_1" port="Backlash_Backlash_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Backlash" id="2" name="Backlash_Backlash" priority="1" rate="0.1">
+    <input line="Backlash_In1_1" port="Backlash_Backlash_1">
+      <connect block="Backlash_In1" port="Backlash_In1_1"/>
+    </input>
+    <output line="Backlash_Backlash_1" port="Backlash_Backlash_1" usename="true">
+      <connect block="Backlash_Out1" port="Backlash_Out1_1"/>
+    </output>
+    <var line="Backlash_In1_1" mode="input" name="Backlash_In1_1" port="Backlash_Backlash_1" type="real_T"/>
+    <var line="Backlash_Backlash_1" mode="extout" name="Backlash_Backlash_1" port="Backlash_Backlash_1" type="real_T"/>
+    <state name="PrevY" storage="Backlash_DWork" type="real_T"/>
+    <param name="BacklashWidth" storage="" type="double" value="1.0"/>
+    <param name="InitialOutput" storage="" type="double" value="0.0"/>
+    <code file="Backlash_ert_rtw/Backlash.c" line="35" type="task">  /* Backlash: '&lt;Root&gt;/Backlash' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  halfDeadBand = 1.0 / 2.0;
+  if (Backlash_In1_1 &lt; Backlash_DWork.PrevY - halfDeadBand) {
+    Backlash_Backlash_1 = Backlash_In1_1 + halfDeadBand;
+  } else if (Backlash_In1_1 &lt;= Backlash_DWork.PrevY + halfDeadBand) {
+    Backlash_Backlash_1 = Backlash_DWork.PrevY;
+  } else {
+    Backlash_Backlash_1 = Backlash_In1_1 - halfDeadBand;
+  }
+
+  /* End of Backlash: '&lt;Root&gt;/Backlash' */
+</code>
+    <code file="Backlash_ert_rtw/Backlash.c" line="49" type="update">  /* Update for Backlash: '&lt;Root&gt;/Backlash' */
+  Backlash_DWork.PrevY = Backlash_Backlash_1;
+</code>
+    <code file="Backlash_ert_rtw/Backlash.c" line="64" type="init">  Backlash_Backlash_1 = 0.0;
+
+  /* InitializeConditions for Backlash: '&lt;Root&gt;/Backlash' */
+  Backlash_DWork.PrevY = 0.0;
+</code>
+    <code file="Backlash_ert_rtw/Backlash.c" line="67" type="state">  Backlash_DWork.PrevY = 0.0;
+
+</code>
+    <forward block="Backlash_Out1" type="port">
+      <var line="Backlash_Backlash_1" mode="input" name="Backlash_Backlash_1" port="Backlash_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Backlash_In1" type="port">
+      <var line="Backlash_In1_1" mode="extin" name="Backlash_In1_1" port="Backlash_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Backlash_Out1" priority="2" rate="0.1">
+    <input line="Backlash_Backlash_1" port="Backlash_Out1_1">
+      <connect block="Backlash_Backlash" port="Backlash_Backlash_1"/>
+    </input>
+    <var line="Backlash_Backlash_1" mode="input" name="Backlash_Backlash_1" port="Backlash_Out1_1" type="real_T"/>
+    <backword block="Backlash_Backlash" type="port">
+      <var line="Backlash_Backlash_1" mode="extout" name="Backlash_Backlash_1" port="Backlash_Backlash_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Backlash {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T halfDeadBand;
+
+</code>
+  <object kind="rtm-extern" name="Backlash_M" type="extern RT_MODEL_Backlash * const"/>
+  <object kind="rtm-object" name="Backlash_M_" type="RT_MODEL_Backlash"/>
+  <object kind="rtm-pointer" name="Backlash_M" type="RT_MODEL_Backlash * const" value="&amp;Backlash_M_"/>
+  <includes file="&lt;stddef.h>" from="Backlash_ert_rtw/Backlash.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Backlash_ert_rtw/Backlash.h" index="1"/>
+  <includes file="&quot;Backlash_types.h&quot;" from="Backlash_ert_rtw/Backlash.h" index="2"/>
+  <includes file="&quot;Backlash_private.h&quot;" from="Backlash_ert_rtw/Backlash.c" index="3"/>
+</sm:blocks>

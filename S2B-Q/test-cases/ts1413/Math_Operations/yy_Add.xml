@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Add" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Add_ert_rtw/Add.h" size="2303" timestamp="2015-09-29T13:39:44+0900" type="c-header"/>
+  <file name="xx_Add.xml" size="1285" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Add_ert_rtw/Add.c" size="1350" timestamp="2015-09-29T13:39:44+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Add_In1" priority="0" rate="0.1">
+    <output line="Add_In1_1" port="Add_In1_1" usename="true">
+      <connect block="Add_Add" port="Add_Add_1"/>
+    </output>
+    <var line="Add_In1_1" mode="extin" name="Add_In1_1" port="Add_In1_1" type="real_T"/>
+    <code file="Add_ert_rtw/Add.c" line="52" type="init">  Add_In1_1 = 0.0;
+</code>
+    <forward block="Add_Add" type="port">
+      <var line="Add_In1_1" mode="input" name="Add_In1_1" port="Add_Add_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Add_In2" priority="0" rate="0.1">
+    <output line="Add_In2_1" port="Add_In2_1" usename="true">
+      <connect block="Add_Add" port="Add_Add_2"/>
+    </output>
+    <var line="Add_In2_1" mode="extin" name="Add_In2_1" port="Add_In2_1" type="real_T"/>
+    <code file="Add_ert_rtw/Add.c" line="53" type="init">  Add_In2_1 = 0.0;
+</code>
+    <forward block="Add_Add" type="port">
+      <var line="Add_In2_1" mode="input" name="Add_In2_1" port="Add_Add_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Sum" id="3" name="Add_Add" priority="1" rate="0.1">
+    <input line="Add_In1_1" port="Add_Add_1">
+      <connect block="Add_In1" port="Add_In1_1"/>
+    </input>
+    <input line="Add_In2_1" port="Add_Add_2">
+      <connect block="Add_In2" port="Add_In2_1"/>
+    </input>
+    <output line="Add_Add_1" port="Add_Add_1" usename="true">
+      <connect block="Add_Out1" port="Add_Out1_1"/>
+    </output>
+    <var line="Add_In1_1" mode="input" name="Add_In1_1" port="Add_Add_1" type="real_T"/>
+    <var line="Add_In2_1" mode="input" name="Add_In2_1" port="Add_Add_2" type="real_T"/>
+    <var line="Add_Add_1" mode="extout" name="Add_Add_1" port="Add_Add_1" type="real_T"/>
+    <code file="Add_ert_rtw/Add.c" line="31" type="task">  /* Sum: '&lt;Root&gt;/Add' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   */
+  Add_Add_1 = Add_In1_1 + Add_In2_1;
+</code>
+    <code file="Add_ert_rtw/Add.c" line="49" type="init">  Add_Add_1 = 0.0;
+
+</code>
+    <forward block="Add_Out1" type="port">
+      <var line="Add_Add_1" mode="input" name="Add_Add_1" port="Add_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Add_In1" type="port">
+      <var line="Add_In1_1" mode="extin" name="Add_In1_1" port="Add_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Add_In2" type="port">
+      <var line="Add_In2_1" mode="extin" name="Add_In2_1" port="Add_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Add_Out1" priority="2" rate="0.1">
+    <input line="Add_Add_1" port="Add_Out1_1">
+      <connect block="Add_Add" port="Add_Add_1"/>
+    </input>
+    <var line="Add_Add_1" mode="input" name="Add_Add_1" port="Add_Out1_1" type="real_T"/>
+    <backword block="Add_Add" type="port">
+      <var line="Add_Add_1" mode="extout" name="Add_Add_1" port="Add_Add_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Add {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Add_M" type="extern RT_MODEL_Add * const"/>
+  <object kind="rtm-object" name="Add_M_" type="RT_MODEL_Add"/>
+  <object kind="rtm-pointer" name="Add_M" type="RT_MODEL_Add * const" value="&amp;Add_M_"/>
+  <includes file="&lt;stddef.h>" from="Add_ert_rtw/Add.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Add_ert_rtw/Add.h" index="1"/>
+  <includes file="&quot;Add_types.h&quot;" from="Add_ert_rtw/Add.h" index="2"/>
+  <includes file="&quot;Add_private.h&quot;" from="Add_ert_rtw/Add.c" index="3"/>
+</sm:blocks>

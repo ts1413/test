@@ -1,0 +1,23 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Backlash_In1_1",,
+"task100",,,,
+,"Backlash_In1_1",,,
+,,,,"{
+"
+,,,,"  /* Backlash: '<Root>/Backlash' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  halfDeadBand = 1.0 / 2.0;
+  if (Backlash_In1_1 < Backlash_DWork.PrevY - halfDeadBand) {
+    Backlash_Backlash_1 = Backlash_In1_1 + halfDeadBand;
+  } else if (Backlash_In1_1 <= Backlash_DWork.PrevY + halfDeadBand) {
+    Backlash_Backlash_1 = Backlash_DWork.PrevY;
+  } else {
+    Backlash_Backlash_1 = Backlash_In1_1 - halfDeadBand;
+  }
+
+  /* End of Backlash: '<Root>/Backlash' */
+"
+,,,,"}
+"

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="enable_subsystem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="enable_subsystem_ert_rtw/enable_subsystem.h" size="3138" timestamp="2015-09-29T13:41:34+0900" type="c-header"/>
+  <file name="xx_enable_subsystem.xml" size="2750" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="enable_subsystem_ert_rtw/enable_subsystem.c" size="2211" timestamp="2015-09-29T13:41:34+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="enable_subsystem_In1" priority="0" rate="0.1">
+    <output line="enable_subsystem_In1_1" port="enable_subsystem_In1_1" usename="true">
+      <connect block="enable_subsystem_EnabledSubsystem" port="enable_subsystem_EnabledSubsystem_In1"/>
+    </output>
+    <var line="enable_subsystem_In1_1" mode="extin" name="enable_subsystem_In1_1" port="enable_subsystem_In1_1" type="real_T"/>
+    <code file="enable_subsystem_ert_rtw/enable_subsystem.c" line="58" type="init">  enable_subsystem_In1_1 = 0.0;
+</code>
+    <forward block="enable_subsystem_Out1" type="port">
+      <var line="enable_subsystem_EnabledSubsystem_1" mode="input" name="enable_subsystem_In1_1" port="enable_subsystem_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="enable_subsystem_In2" priority="0" rate="0.1">
+    <output line="enable_subsystem_In2_1" port="enable_subsystem_In2_1" usename="true">
+      <connect block="enable_subsystem_EnabledSubsystem" port="enable_subsystem_EnabledSubsystem_Enable"/>
+    </output>
+    <var line="enable_subsystem_In2_1" mode="output" name="enable_subsystem_In2_1" port="enable_subsystem_In2_1" type="real_T"/>
+    <code file="enable_subsystem_ert_rtw/enable_subsystem.c" line="36" type="task">  /* Inport: '&lt;Root&gt;/In2' */
+/*&lt;&lt;&lt; S 1 enable_subsystem_In2 '&lt;Root&gt;/In2' &lt;&lt;&lt;*/
+  if (enable_subsystem_In2_1 &gt; 0.0) {
+/*&gt;&gt;&gt; S 1 enable_subsystem_In2 '&lt;Root&gt;/In2' &gt;&gt;&gt;*/
+/*&lt;&lt;&lt; E 1 enable_subsystem_In2 '&lt;Root&gt;/In2' &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 enable_subsystem_In2 '&lt;Root&gt;/In2' &gt;&gt;&gt;*/
+  /* End of Inport: '&lt;Root&gt;/In2' */
+</code>
+    <code file="enable_subsystem_ert_rtw/enable_subsystem.c" line="59" type="init">  enable_subsystem_In2_1 = 0.0;
+
+</code>
+    <forward block="enable_subsystem_EnabledSubsystem" type="data">
+      <var line="enable_subsystem_In2_1" mode="input" name="enable_subsystem_In2_1" port="enable_subsystem_EnabledSubsystem_Enable" type="real_T"/>
+    </forward>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" id="3" name="enable_subsystem_EnabledSubsystem" priority="2" rate="0.1" type="enabled">
+    <input line="enable_subsystem_In1_1" port="enable_subsystem_EnabledSubsystem_In1">
+      <connect block="enable_subsystem_In1" port="enable_subsystem_In1_1"/>
+    </input>
+    <input line="enable_subsystem_In2_1" port="enable_subsystem_EnabledSubsystem_Enable">
+      <connect block="enable_subsystem_In2" port="enable_subsystem_In2_1"/>
+    </input>
+    <output line="enable_subsystem_EnabledSubsystem_1" port="enable_subsystem_EnabledSubsystem_Out1" usename="false">
+      <connect block="enable_subsystem_Out1" port="enable_subsystem_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="4" name="enable_subsystem_EnabledSubsystem_In1" priority="1" rate="0.1">
+        <output line="enable_subsystem_EnabledSubsystem_In1_1" port="enable_subsystem_EnabledSubsystem_In1_1" usename="false">
+          <connect block="enable_subsystem_EnabledSubsystem_Out1" port="enable_subsystem_EnabledSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="EnablePort" id="5" name="enable_subsystem_EnabledSubsystem_Enable" priority="0" rate="0.1"/>
+      <block blocktype="Outport" id="6" name="enable_subsystem_EnabledSubsystem_Out1" priority="0" rate="0.1">
+        <input line="enable_subsystem_EnabledSubsystem_In1_1" port="enable_subsystem_EnabledSubsystem_Out1_1">
+          <connect block="enable_subsystem_EnabledSubsystem_In1" port="enable_subsystem_EnabledSubsystem_In1_1"/>
+        </input>
+        <param name="Out1_Y0" storage="enable_subsystem_P" type="real_T"/>
+      </block>
+    </sm:blocks>
+    <var line="enable_subsystem_In2_1" mode="input" name="enable_subsystem_In2_1" port="enable_subsystem_EnabledSubsystem_Enable" type="real_T"/>
+    <code file="enable_subsystem_ert_rtw/enable_subsystem.c" line="33" type="task">  /* Outputs for Enabled SubSystem: '&lt;Root&gt;/EnabledSubsystem' incorporates:
+   *  EnablePort: '&lt;S1&gt;/Enable'
+   */
+  /* End of Outputs for SubSystem: '&lt;Root&gt;/EnabledSubsystem' */
+</code>
+    <code file="enable_subsystem_ert_rtw/enable_subsystem.c" line="64" type="init">  /* Start for Enabled SubSystem: '&lt;Root&gt;/EnabledSubsystem' */
+  enable_subsystem_Y.Out1 = enable_subsystem_P.Out1_Y0;
+
+  /* End of Start for SubSystem: '&lt;Root&gt;/EnabledSubsystem' */
+</code>
+    <backword block="enable_subsystem_In2" type="data">
+      <var line="enable_subsystem_In2_1" mode="output" name="enable_subsystem_In2_1" port="enable_subsystem_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="7" name="enable_subsystem_Out1" priority="3" rate="0.1">
+    <input line="enable_subsystem_EnabledSubsystem_1" port="enable_subsystem_Out1_1">
+      <connect block="enable_subsystem_EnabledSubsystem" port="enable_subsystem_EnabledSubsystem_Out1"/>
+    </input>
+    <var line="enable_subsystem_EnabledSubsystem_1" mode="input" name="enable_subsystem_In1_1" port="enable_subsystem_Out1_1" type="real_T"/>
+    <var line="" mode="extout" name="Out1" port="" storage="enable_subsystem_Y" type="real_T"/>
+    <code file="enable_subsystem_ert_rtw/enable_subsystem.c" line="38" type="task">/*&lt;&lt;&lt; S 1 enable_subsystem_In2 '&lt;Root&gt;/In2' &lt;&lt;&lt;*/
+  if (enable_subsystem_In2_1 &gt; 0.0) {
+/*&gt;&gt;&gt; S 1 enable_subsystem_In2 '&lt;Root&gt;/In2' &gt;&gt;&gt;*/
+    /* Outport: '&lt;Root&gt;/Out1' incorporates:
+     *  Inport: '&lt;Root&gt;/In1'
+     *  Inport: '&lt;S1&gt;/In1'
+     */
+    enable_subsystem_Y.Out1 = enable_subsystem_In1_1;
+/*&lt;&lt;&lt; E 1 enable_subsystem_In2 '&lt;Root&gt;/In2' &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 enable_subsystem_In2 '&lt;Root&gt;/In2' &gt;&gt;&gt;*/
+</code>
+    <code file="enable_subsystem_ert_rtw/enable_subsystem.c" line="62" type="init">  enable_subsystem_Y.Out1 = 0.0;
+
+</code>
+    <backword block="enable_subsystem_In1" type="port">
+      <var line="enable_subsystem_In1_1" mode="extin" name="enable_subsystem_In1_1" port="enable_subsystem_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_enable_subsystem_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="enable_subsystem_M" type="extern RT_MODEL_enable_subsystem_T * const"/>
+  <object kind="rtm-object" name="enable_subsystem_M_" type="RT_MODEL_enable_subsystem_T"/>
+  <object kind="rtm-pointer" name="enable_subsystem_M" type="RT_MODEL_enable_subsystem_T * const" value="&amp;enable_subsystem_M_"/>
+  <includes file="&lt;stddef.h>" from="enable_subsystem_ert_rtw/enable_subsystem.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="enable_subsystem_ert_rtw/enable_subsystem.h" index="1"/>
+  <includes file="&quot;enable_subsystem_types.h&quot;" from="enable_subsystem_ert_rtw/enable_subsystem.h" index="2"/>
+  <includes file="&quot;enable_subsystem_private.h&quot;" from="enable_subsystem_ert_rtw/enable_subsystem.c" index="3"/>
+</sm:blocks>

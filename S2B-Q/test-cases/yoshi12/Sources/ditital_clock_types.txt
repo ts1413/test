@@ -1,0 +1,8 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=1
+Block "ditital_clock" samplePeriod=1
+Block "ditital_clock/DigitalClock" samplePeriod=1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "ditital_clock/Display" samplePeriod=1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

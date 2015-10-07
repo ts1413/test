@@ -1,0 +1,40 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Hit_Crossing_In1_1",,
+"task100",,,,
+,"Hit_Crossing_HitCrossing_1",,,
+"task2",,,,
+,"Hit_Crossing_In1_1","Hit_Crossing_HitCrossing_1",,
+,,,,"{
+"
+,,,,"  /* HitCross: '<Root>/HitCrossing' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  zcEvent = rt_ZCFcn(ANY_ZERO_CROSSING,
+                     &Hit_Crossing_PrevZCSigState.HitCrossing_Input_ZCE,
+                     (Hit_Crossing_In1_1 - 0.0));
+  if (Hit_Crossing_DWork.HitCrossing_MODE == 0) {
+    if (zcEvent != NO_ZCEVENT) {
+      Hit_Crossing_HitCrossing_1 = !Hit_Crossing_HitCrossing_1;
+      Hit_Crossing_DWork.HitCrossing_MODE = 1;
+    } else if (Hit_Crossing_HitCrossing_1) {
+      if (Hit_Crossing_In1_1 != 0.0) {
+        Hit_Crossing_HitCrossing_1 = false;
+      }
+    } else {
+      if (Hit_Crossing_In1_1 == 0.0) {
+        Hit_Crossing_HitCrossing_1 = true;
+      }
+    }
+  } else {
+    if (Hit_Crossing_In1_1 != 0.0) {
+      Hit_Crossing_HitCrossing_1 = false;
+    }
+
+    Hit_Crossing_DWork.HitCrossing_MODE = 0;
+  }
+
+  /* End of HitCross: '<Root>/HitCrossing' */
+"
+,,,,"}
+"

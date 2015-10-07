@@ -1,0 +1,20 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"RelationalOperator_In1_1",,
+,,"RelationalOperator_In2_1",,
+"task100",,,,
+,"RelationalOperator_RelationalOperator_1",,,
+"task3",,,,
+,"RelationalOperator_In1_1","RelationalOperator_RelationalOperator_1",,
+,"RelationalOperator_In2_1",,,
+,,,,"{
+"
+,,,,"  /* RelationalOperator: '<Root>/RelationalOperator' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   */
+  RelationalOperator_RelationalOperator_1 = (RelationalOperator_In1_1 <=
+    RelationalOperator_In2_1);
+"
+,,,,"}
+"

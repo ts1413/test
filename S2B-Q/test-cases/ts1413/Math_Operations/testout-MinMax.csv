@@ -1,0 +1,27 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"MinMax_In1_1",,
+,,"MinMax_In2_1",,
+"task100",,,,
+,"MinMax_MinMax_1",,,
+"task3",,,,
+,"MinMax_In1_1","MinMax_MinMax_1",,
+,"MinMax_In2_1",,,
+,,,,"{
+"
+,,,,"  /* MinMax: '<Root>/MinMax' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Inport: '<Root>/In2'
+   */
+  u0 = MinMax_In1_1;
+  u1 = MinMax_In2_1;
+  if ((u0 <= u1) || rtIsNaN(u1)) {
+    u1 = u0;
+  }
+
+  MinMax_MinMax_1 = u1;
+
+  /* End of MinMax: '<Root>/MinMax' */
+"
+,,,,"}
+"

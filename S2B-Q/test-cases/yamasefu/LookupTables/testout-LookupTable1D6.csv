@@ -1,0 +1,21 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"LookupTable1D6_In1_1",,
+"task100",,,,
+,"LookupTable1D6_1_DLookupTable_1",,,
+"task2",,,,
+,"LookupTable1D6_In1_1","LookupTable1D6_1_DLookupTable_1",,
+,,,,"{
+"
+,,,,"  /* Lookup_n-D: '<Root>/1_DLookupTable' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  bpIdx = plook_evenx(LookupTable1D6_In1_1,
+                      LookupTable1D6_P._DLookupTable_bp01Data[0],
+                      LookupTable1D6_P._DLookupTable_bp01Data[1] -
+                      LookupTable1D6_P._DLookupTable_bp01Data[0], 10U, &frac);
+  LookupTable1D6_1_DLookupTable_1 = intrp1d_l_pw(bpIdx, frac,
+    LookupTable1D6_P._DLookupTable_tableData);
+"
+,,,,"}
+"

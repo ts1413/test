@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="LookupTable1D5" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="LookupTable1D5_In1" rate="-1">
+      <output line="LookupTable1D5_In1_1" port="LookupTable1D5_In1_1" usename="true">
+         <connect block="LookupTable1D5_1_DLookupTable" port="LookupTable1D5_1_DLookupTable_1"/>
+      </output>
+   </block>
+   <block blocktype="Lookup_n-D" name="LookupTable1D5_1_DLookupTable" rate="-1">
+      <input line="LookupTable1D5_In1_1" port="LookupTable1D5_1_DLookupTable_1">
+         <connect block="LookupTable1D5_In1" port="LookupTable1D5_In1_1"/>
+      </input>
+      <output line="LookupTable1D5_1_DLookupTable_1" port="LookupTable1D5_1_DLookupTable_1" usename="true">
+         <connect block="LookupTable1D5_Out1" port="LookupTable1D5_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="LookupTable1D5_Out1" rate="-1">
+      <input line="LookupTable1D5_1_DLookupTable_1" port="LookupTable1D5_Out1_1">
+         <connect block="LookupTable1D5_1_DLookupTable" port="LookupTable1D5_1_DLookupTable_1"/>
+      </input>
+   </block>
+</sm:blocks>

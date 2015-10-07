@@ -1,0 +1,40 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Merge" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/Constant" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/Constant1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/If" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="action"
+OutDataPort portNumber=2 dataType="action"
+Block "Merge/IfActionSubsystem" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InControlPort portNumber=2 dataType="action"
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/IfActionSubsystem/In1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/IfActionSubsystem/ActionPort" samplePeriod=0.1 min=[] max=[]
+Block "Merge/IfActionSubsystem/Out1" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "Merge/IfActionSubsystem1" samplePeriod=0.1 assignedPriority=4 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InControlPort portNumber=2 dataType="action"
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/IfActionSubsystem1/In1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/IfActionSubsystem1/ActionPort" samplePeriod=0.1 min=[] max=[]
+Block "Merge/IfActionSubsystem1/Out1" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "Merge/Merge" samplePeriod=0.1 assignedPriority=5 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Merge/Out1" samplePeriod=0.1 assignedPriority=6 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

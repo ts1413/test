@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Goto_Tag_Visibility" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Goto_Tag_Visibility_In1" priority="0" rate="0.1">
+    <output line="Goto_Tag_Visibility_In1_1" port="Goto_Tag_Visibility_In1_1" usename="true">
+      <connect block="Goto_Tag_Visibility_Subsystem" port="Goto_Tag_Visibility_Subsystem_In1"/>
+    </output>
+  </block>
+  <block blocktype="GotoTagVisibility" name="Goto_Tag_Visibility_GotoTagVisibility" priority="0" rate="0.1"/>
+  <block TreatAsAtomicUnit="off" blocktype="SubSystem" name="Goto_Tag_Visibility_Subsystem" priority="0" rate="0.1">
+    <input line="Goto_Tag_Visibility_In1_1" port="Goto_Tag_Visibility_Subsystem_In1">
+      <connect block="Goto_Tag_Visibility_In1" port="Goto_Tag_Visibility_In1_1"/>
+    </input>
+    <sm:blocks>
+      <block blocktype="Inport" name="Goto_Tag_Visibility_Subsystem_In1" priority="0" rate="0.1">
+        <output line="Goto_Tag_Visibility_Subsystem_In1_1" port="Goto_Tag_Visibility_Subsystem_In1_1" usename="false">
+          <connect block="Goto_Tag_Visibility_Subsystem_Goto" port="Goto_Tag_Visibility_Subsystem_Goto_1"/>
+        </output>
+      </block>
+      <block blocktype="Goto" name="Goto_Tag_Visibility_Subsystem_Goto" priority="0" rate="0.1">
+        <input line="Goto_Tag_Visibility_Subsystem_In1_1" port="Goto_Tag_Visibility_Subsystem_Goto_1">
+          <connect block="Goto_Tag_Visibility_Subsystem_In1" port="Goto_Tag_Visibility_Subsystem_In1_1"/>
+        </input>
+        <output line="Goto_Tag_Visibility_Subsystem_Goto_1" port="Goto_Tag_Visibility_Subsystem_Goto_1" usename="false">
+          <connect block="Goto_Tag_Visibility_Subsystem1_From" port="Goto_Tag_Visibility_Subsystem1_From_1"/>
+        </output>
+      </block>
+    </sm:blocks>
+  </block>
+  <block TreatAsAtomicUnit="off" blocktype="SubSystem" name="Goto_Tag_Visibility_Subsystem1" priority="0" rate="0.1">
+    <output line="Goto_Tag_Visibility_Subsystem1_1" port="Goto_Tag_Visibility_Subsystem1_Out1" usename="false">
+      <connect block="Goto_Tag_Visibility_Out2" port="Goto_Tag_Visibility_Out2_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="From" name="Goto_Tag_Visibility_Subsystem1_From" priority="0" rate="0.1">
+        <input line="Goto_Tag_Visibility_Subsystem_Goto_1" port="Goto_Tag_Visibility_Subsystem1_From_1">
+          <connect block="Goto_Tag_Visibility_Subsystem_Goto" port="Goto_Tag_Visibility_Subsystem_Goto_1"/>
+        </input>
+        <output line="Goto_Tag_Visibility_Subsystem1_From_1" port="Goto_Tag_Visibility_Subsystem1_From_1" usename="true">
+          <connect block="Goto_Tag_Visibility_Subsystem1_Out1" port="Goto_Tag_Visibility_Subsystem1_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="Outport" name="Goto_Tag_Visibility_Subsystem1_Out1" priority="0" rate="0.1">
+        <input line="Goto_Tag_Visibility_Subsystem1_From_1" port="Goto_Tag_Visibility_Subsystem1_Out1_1">
+          <connect block="Goto_Tag_Visibility_Subsystem1_From" port="Goto_Tag_Visibility_Subsystem1_From_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Outport" name="Goto_Tag_Visibility_Out2" priority="1" rate="0.1">
+    <input line="Goto_Tag_Visibility_Subsystem1_1" port="Goto_Tag_Visibility_Out2_1">
+      <connect block="Goto_Tag_Visibility_Subsystem1" port="Goto_Tag_Visibility_Subsystem1_Out1"/>
+    </input>
+  </block>
+</sm:blocks>

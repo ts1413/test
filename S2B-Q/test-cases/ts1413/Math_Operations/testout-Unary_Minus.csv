@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Unary_Minus_In1_1",,
+"task100",,,,
+,"Unary_Minus_UnaryMinus_1",,,
+"task2",,,,
+,"Unary_Minus_In1_1","Unary_Minus_UnaryMinus_1",,
+,,,,"{
+"
+,,,,"  /* UnaryMinus: '<Root>/UnaryMinus' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Unary_Minus_UnaryMinus_1 = -Unary_Minus_In1_1;
+"
+,,,,"}
+"

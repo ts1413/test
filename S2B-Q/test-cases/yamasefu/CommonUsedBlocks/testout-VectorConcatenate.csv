@@ -1,0 +1,26 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"VectorConcatenate_In1_1",,
+"task100",,,,
+,"VectorConcatenate_VectorConcatenate_1",,,
+"task2",,,,
+,"VectorConcatenate_In1_1","VectorConcatenate_VectorConcatenate_1",,
+,,,,"{
+"
+,,,,"  /* SignalConversion: '<Root>/ConcatBufferAtVectorConcatenateIn1' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  VectorConcatenate_VectorConcatenate_1[0] = VectorConcatenate_In1_1;
+
+"
+,,,,"}
+"
+,,,,"{
+"
+,,,,"  /* SignalConversion: '<Root>/ConcatBufferAtVectorConcatenateIn2' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  VectorConcatenate_VectorConcatenate_1[1] = VectorConcatenate_In1_1;
+"
+,,,,"}
+"

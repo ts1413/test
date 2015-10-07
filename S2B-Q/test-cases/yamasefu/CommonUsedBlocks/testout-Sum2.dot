@@ -1,0 +1,25 @@
+digraph csp {
+	graph [rankdir=LR];
+	Sum2_Sum	 [label="t5\nSum2_Sum"];
+	t0 -> Sum2_Sum	 [color=green,
+		label="ch_0_5(Sum2_In1_1,Sum2_In2_1,Sum2_In3_1,Sum2_In4_1)"];
+	extout	 [label=extout];
+	Sum2_In1	 [label="t1\nSum2_In1",
+		shape=box];
+	Sum2_In1 -> t0	 [color=green,
+		label="in port Sum2_In1(Sum2_In1_1)"];
+	Sum2_In2	 [label="t2\nSum2_In2",
+		shape=box];
+	Sum2_In2 -> t0	 [color=green,
+		label="in port Sum2_In2(Sum2_In2_1)"];
+	Sum2_In3	 [label="t3\nSum2_In3",
+		shape=box];
+	Sum2_In3 -> t0	 [color=green,
+		label="in port Sum2_In3(Sum2_In3_1)"];
+	Sum2_In4	 [label="t4\nSum2_In4",
+		shape=box];
+	Sum2_In4 -> t0	 [color=green,
+		label="in port Sum2_In4(Sum2_In4_1)"];
+	Sum2_Sum -> extout	 [color=green,
+		label="ch_5_100(Sum2_Sum_1)"];
+}

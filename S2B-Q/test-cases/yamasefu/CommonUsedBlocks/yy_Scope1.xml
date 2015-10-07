@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Scope1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Scope1_ert_rtw/Scope1.h" size="2540" timestamp="2015-10-05T16:55:55+0900" type="c-header"/>
+  <file name="xx_Scope1.xml" size="695" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="Scope1_ert_rtw/Scope1.c" size="1334" timestamp="2015-10-05T16:55:55+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Scope1_In1" priority="0" rate="0.1">
+    <output line="Scope1_In1_1" port="Scope1_In1_1" usename="true">
+      <connect block="Scope1_Scope" port="Scope1_Scope_1"/>
+    </output>
+    <code file="Scope1_ert_rtw/Scope1.c" line="50" type="init">  Scope1_U.In1 = 0.0;
+</code>
+  </block>
+  <block blocktype="Scope" id="2" name="Scope1_Scope" priority="1" rate="0.1">
+    <input line="Scope1_In1_1" port="Scope1_Scope_1">
+      <connect block="Scope1_In1" port="Scope1_In1_1"/>
+    </input>
+    <state name="Scope_PWORK" storage="Scope1_DW" type="  struct {&#xA;    void *LoggedData;&#xA;  }"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Scope1_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Scope1_M" type="extern RT_MODEL_Scope1_T * const"/>
+  <object kind="rtm-object" name="Scope1_M_" type="RT_MODEL_Scope1_T"/>
+  <object kind="rtm-pointer" name="Scope1_M" type="RT_MODEL_Scope1_T * const" value="&amp;Scope1_M_"/>
+  <includes file="&lt;stddef.h>" from="Scope1_ert_rtw/Scope1.h" index="0"/>
+  <includes file="&lt;string.h>" from="Scope1_ert_rtw/Scope1.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Scope1_ert_rtw/Scope1.h" index="2"/>
+  <includes file="&quot;Scope1_types.h&quot;" from="Scope1_ert_rtw/Scope1.h" index="3"/>
+  <includes file="&quot;Scope1_private.h&quot;" from="Scope1_ert_rtw/Scope1.c" index="4"/>
+</sm:blocks>

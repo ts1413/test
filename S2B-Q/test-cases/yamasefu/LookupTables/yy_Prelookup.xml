@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Prelookup" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Prelookup_ert_rtw/Prelookup.h" size="3517" timestamp="2015-10-05T16:57:40+0900" type="c-header"/>
+  <file name="xx_Prelookup.xml" size="2131" timestamp="2015-10-07T15:40:45+0900" type="xml"/>
+  <file name="Prelookup_ert_rtw/Prelookup.c" size="3737" timestamp="2015-10-05T16:57:40+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Prelookup_In1" priority="0" rate="0.1">
+    <output line="Prelookup_In1_1" port="Prelookup_In1_1" usename="true">
+      <connect block="Prelookup_Prelookup" port="Prelookup_Prelookup_1"/>
+    </output>
+    <var line="Prelookup_In1_1" mode="extin" name="Prelookup_In1_1" port="Prelookup_In1_1" storage="Prelookup_U" type="real_T"/>
+    <code file="Prelookup_ert_rtw/Prelookup.c" line="131" type="init">  Prelookup_U.Prelookup_In1_1 = 0.0;
+</code>
+    <forward block="Prelookup_Prelookup" type="data">
+      <var line="Prelookup_In1_1" mode="input" name="Prelookup_In1_1" port="Prelookup_Prelookup_1" storage="Prelookup_U" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Interpolation_n-D" id="2" name="Prelookup_InterpolationUsingPrelookup" priority="2" rate="0.1">
+    <input line="Prelookup_Prelookup_1" port="Prelookup_InterpolationUsingPrelookup_1">
+      <connect block="Prelookup_Prelookup" port="Prelookup_Prelookup_1"/>
+    </input>
+    <input line="Prelookup_Prelookup_2" port="Prelookup_InterpolationUsingPrelookup_2">
+      <connect block="Prelookup_Prelookup" port="Prelookup_Prelookup_2"/>
+    </input>
+    <output line="Prelookup_InterpolationUsingPrelookup_1" port="Prelookup_InterpolationUsingPrelookup_1" usename="true">
+      <connect block="Prelookup_Out1" port="Prelookup_Out1_1"/>
+    </output>
+    <var line="Prelookup_Prelookup_1" mode="input" name="Prelookup_Prelookup_1" port="Prelookup_InterpolationUsingPrelookup_1" type="uint32_T"/>
+    <var line="Prelookup_Prelookup_2" mode="input" name="Prelookup_Prelookup_2" port="Prelookup_InterpolationUsingPrelookup_2" type="real_T"/>
+    <var line="Prelookup_InterpolationUsingPrelookup_1" mode="extout" name="Prelookup_InterpolationUsingPrelookup_1" port="Prelookup_InterpolationUsingPrelookup_1" type="real_T"/>
+    <param name="InterpolationUsingPrelookup_Tab" size="11" storage="Prelookup_P" type="real_T"/>
+    <code file="Prelookup_ert_rtw/Prelookup.c" line="107" type="task">  /* Interpolation_n-D: '&lt;Root&gt;/InterpolationUsingPrelookup' */
+  frac = Prelookup_B.Prelookup_Prelookup_2;
+  bpIndex = Prelookup_Prelookup_1;
+  Prelookup_InterpolationUsingPrelookup_1 = intrp1d_l_pw(bpIndex, frac,
+    Prelookup_P.InterpolationUsingPrelookup_Tab);
+</code>
+    <code file="Prelookup_ert_rtw/Prelookup.c" line="127" type="init">  Prelookup_InterpolationUsingPrelookup_1 = 0.0;
+</code>
+    <forward block="Prelookup_Out1" type="port">
+      <var line="Prelookup_InterpolationUsingPrelookup_1" mode="input" name="Prelookup_InterpolationUsingPrelookup_1" port="Prelookup_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Prelookup_Prelookup" type="data">
+      <var line="Prelookup_Prelookup_1" mode="output" name="Prelookup_Prelookup_1" port="Prelookup_Prelookup_1" type="uint32_T"/>
+      <var line="Prelookup_Prelookup_2" mode="output" name="Prelookup_Prelookup_2" port="Prelookup_Prelookup_2" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="PreLookup" id="3" name="Prelookup_Prelookup" priority="1" rate="0.1">
+    <input line="Prelookup_In1_1" port="Prelookup_Prelookup_1">
+      <connect block="Prelookup_In1" port="Prelookup_In1_1"/>
+    </input>
+    <output line="Prelookup_Prelookup_1" port="Prelookup_Prelookup_1" usename="true">
+      <connect block="Prelookup_InterpolationUsingPrelookup" port="Prelookup_InterpolationUsingPrelookup_1"/>
+    </output>
+    <output line="Prelookup_Prelookup_2" port="Prelookup_Prelookup_2" usename="true">
+      <connect block="Prelookup_InterpolationUsingPrelookup" port="Prelookup_InterpolationUsingPrelookup_2"/>
+    </output>
+    <var line="Prelookup_In1_1" mode="input" name="Prelookup_In1_1" port="Prelookup_Prelookup_1" storage="Prelookup_U" type="real_T"/>
+    <var line="Prelookup_Prelookup_1" mode="output" name="Prelookup_Prelookup_1" port="Prelookup_Prelookup_1" type="uint32_T"/>
+    <var line="Prelookup_Prelookup_2" mode="output" name="Prelookup_Prelookup_2" port="Prelookup_Prelookup_2" type="real_T"/>
+    <signal name="Prelookup_Prelookup_2" storage="Prelookup_B" type="real_T"/>
+    <param name="Prelookup_BreakpointsData" size="11" storage="Prelookup_P" type="real_T"/>
+    <code file="Prelookup_ert_rtw/Prelookup.c" line="100" type="task">  /* PreLookup: '&lt;Root&gt;/Prelookup' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Prelookup_Prelookup_1 = plook_binx(Prelookup_U.Prelookup_In1_1,
+    Prelookup_P.Prelookup_BreakpointsData, 10U,
+    &amp;Prelookup_B.Prelookup_Prelookup_2);
+
+</code>
+    <code file="Prelookup_ert_rtw/Prelookup.c" line="128" type="init">  Prelookup_Prelookup_1 = 0U;
+
+</code>
+    <forward block="Prelookup_InterpolationUsingPrelookup" type="data">
+      <var line="Prelookup_Prelookup_1" mode="input" name="Prelookup_Prelookup_1" port="Prelookup_InterpolationUsingPrelookup_1" type="uint32_T"/>
+      <var line="Prelookup_Prelookup_2" mode="input" name="Prelookup_Prelookup_2" port="Prelookup_InterpolationUsingPrelookup_2" type="real_T"/>
+    </forward>
+    <backword block="Prelookup_In1" type="data">
+      <var line="Prelookup_In1_1" mode="extin" name="Prelookup_In1_1" port="Prelookup_In1_1" storage="Prelookup_U" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Prelookup_Out1" priority="3" rate="0.1">
+    <input line="Prelookup_InterpolationUsingPrelookup_1" port="Prelookup_Out1_1">
+      <connect block="Prelookup_InterpolationUsingPrelookup" port="Prelookup_InterpolationUsingPrelookup_1"/>
+    </input>
+    <var line="Prelookup_InterpolationUsingPrelookup_1" mode="input" name="Prelookup_InterpolationUsingPrelookup_1" port="Prelookup_Out1_1" type="real_T"/>
+    <backword block="Prelookup_InterpolationUsingPrelookup" type="port">
+      <var line="Prelookup_InterpolationUsingPrelookup_1" mode="extout" name="Prelookup_InterpolationUsingPrelookup_1" port="Prelookup_InterpolationUsingPrelookup_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Prelookup_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T frac;
+  uint32_T bpIndex;
+
+</code>
+  <object kind="rtm-extern" name="Prelookup_M" type="extern RT_MODEL_Prelookup_T * const"/>
+  <object kind="rtm-object" name="Prelookup_M_" type="RT_MODEL_Prelookup_T"/>
+  <object kind="rtm-pointer" name="Prelookup_M" type="RT_MODEL_Prelookup_T * const" value="&amp;Prelookup_M_"/>
+  <includes file="&lt;stddef.h>" from="Prelookup_ert_rtw/Prelookup.h" index="0"/>
+  <includes file="&lt;string.h>" from="Prelookup_ert_rtw/Prelookup.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Prelookup_ert_rtw/Prelookup.h" index="2"/>
+  <includes file="&quot;Prelookup_types.h&quot;" from="Prelookup_ert_rtw/Prelookup.h" index="3"/>
+  <includes file="&quot;Prelookup_private.h&quot;" from="Prelookup_ert_rtw/Prelookup.c" index="4"/>
+  <function name="binsearch_u32d" type="defn">
+    <code line="70" type="func">uint32_T binsearch_u32d(real_T u, const real_T bp[], uint32_T startIndex,
+  uint32_T maxIndex)
+{
+  uint32_T iRght;
+  uint32_T iLeft;
+  uint32_T bpIdx;
+
+  /* Binary Search */
+  bpIdx = startIndex;
+  iLeft = 0U;
+  iRght = maxIndex;
+  while (iRght - iLeft &gt; 1U) {
+    if (u &lt; bp[bpIdx]) {
+      iRght = bpIdx;
+    } else {
+      iLeft = bpIdx;
+    }
+
+    bpIdx = (iRght + iLeft) &gt;&gt; 1U;
+  }
+
+  return iLeft;
+}
+</code>
+  </function>
+  <function name="intrp1d_l_pw" type="defn">
+    <code line="60" type="func">real_T intrp1d_l_pw(uint32_T bpIndex, real_T frac, const real_T table[])
+{
+  /* Interpolation 1-D
+     Interpolation method: 'Linear'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Overflow mode: 'portable wrapping'
+   */
+  return (table[bpIndex + 1U] - table[bpIndex]) * frac + table[bpIndex];
+}
+</code>
+  </function>
+  <function name="plook_binx" type="defn">
+    <code line="34" type="func">uint32_T plook_binx(real_T u, const real_T bp[], uint32_T maxIndex, real_T
+                    *fraction)
+{
+  uint32_T bpIndex;
+
+  /* Prelookup - Index and Fraction
+     Index Search method: 'binary'
+     Extrapolation method: 'Linear'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'off'
+   */
+  if (u &lt;= bp[0U]) {
+    bpIndex = 0U;
+    *fraction = (u - bp[0U]) / (bp[1U] - bp[0U]);
+  } else if (u &lt; bp[maxIndex]) {
+    bpIndex = binsearch_u32d(u, bp, maxIndex &gt;&gt; 1U, maxIndex);
+    *fraction = (u - bp[bpIndex]) / (bp[bpIndex + 1U] - bp[bpIndex]);
+  } else {
+    bpIndex = maxIndex - 1U;
+    *fraction = (u - bp[maxIndex - 1U]) / (bp[maxIndex] - bp[maxIndex - 1U]);
+  }
+
+  return bpIndex;
+}
+</code>
+    <function name="binsearch_u32d" type="defn"/>
+  </function>
+</sm:blocks>

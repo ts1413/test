@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Bus_Creator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Bus_Creator_ert_rtw/Bus_Creator.h" size="2373" timestamp="2015-09-29T13:33:01+0900" type="c-header"/>
+  <file name="xx_Bus_Creator.xml" size="1608" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="Bus_Creator_ert_rtw/Bus_Creator.c" size="1248" timestamp="2015-09-29T13:33:01+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Bus_Creator_In1" priority="0" rate="0.1">
+    <output line="Bus_Creator_In1_x" port="Bus_Creator_In1_1" usename="true">
+      <connect block="Bus_Creator_BusCreator" port="Bus_Creator_BusCreator_1"/>
+    </output>
+    <var line="Bus_Creator_In1_x" mode="extin" name="Bus_Creator_In1_x" port="Bus_Creator_In1_1" type="real_T"/>
+    <code file="Bus_Creator_ert_rtw/Bus_Creator.c" line="42" type="init">  Bus_Creator_In1_x = 0.0;
+</code>
+    <forward block="Bus_Creator_BusCreator" type="port">
+      <var line="Bus_Creator_In1_x" mode="input" name="Bus_Creator_In1_x" port="Bus_Creator_BusCreator_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Bus_Creator_In2" priority="0" rate="0.1">
+    <output line="Bus_Creator_In2_y" port="Bus_Creator_In2_1" usename="true">
+      <connect block="Bus_Creator_BusCreator" port="Bus_Creator_BusCreator_2"/>
+    </output>
+    <var line="Bus_Creator_In2_y" mode="extin" name="Bus_Creator_In2_y" port="Bus_Creator_In2_1" type="real_T"/>
+    <code file="Bus_Creator_ert_rtw/Bus_Creator.c" line="43" type="init">  Bus_Creator_In2_y = 0.0;
+</code>
+    <forward block="Bus_Creator_BusCreator" type="port">
+      <var line="Bus_Creator_In2_y" mode="input" name="Bus_Creator_In2_y" port="Bus_Creator_BusCreator_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="BusCreator" id="3" name="Bus_Creator_BusCreator" priority="0" rate="0.1">
+    <input line="Bus_Creator_In1_x" port="Bus_Creator_BusCreator_1">
+      <connect block="Bus_Creator_In1" port="Bus_Creator_In1_1"/>
+    </input>
+    <input line="Bus_Creator_In2_y" port="Bus_Creator_BusCreator_2">
+      <connect block="Bus_Creator_In2" port="Bus_Creator_In2_1"/>
+    </input>
+    <output line="Bus_Creator_BusCreator_1" port="Bus_Creator_BusCreator_1" usename="true">
+      <connect block="Bus_Creator_Out1" port="Bus_Creator_Out1_1"/>
+    </output>
+    <var line="Bus_Creator_In1_x" mode="input" name="Bus_Creator_In1_x" port="Bus_Creator_BusCreator_1" type="real_T"/>
+    <var line="Bus_Creator_In2_y" mode="input" name="Bus_Creator_In2_y" port="Bus_Creator_BusCreator_2" type="real_T"/>
+    <forward block="Bus_Creator_Out1" type="port"/>
+    <backword block="Bus_Creator_In1" type="port">
+      <var line="Bus_Creator_In1_x" mode="extin" name="Bus_Creator_In1_x" port="Bus_Creator_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Bus_Creator_In2" type="port">
+      <var line="Bus_Creator_In2_y" mode="extin" name="Bus_Creator_In2_y" port="Bus_Creator_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Bus_Creator_Out1" priority="1" rate="0.1">
+    <input line="Bus_Creator_BusCreator_1" port="Bus_Creator_Out1_1">
+      <connect block="Bus_Creator_BusCreator" port="Bus_Creator_BusCreator_1"/>
+    </input>
+    <backword block="Bus_Creator_BusCreator" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Bus_Creator_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Bus_Creator_M" type="extern RT_MODEL_Bus_Creator_T * const"/>
+  <object kind="rtm-object" name="Bus_Creator_M_" type="RT_MODEL_Bus_Creator_T"/>
+  <object kind="rtm-pointer" name="Bus_Creator_M" type="RT_MODEL_Bus_Creator_T * const" value="&amp;Bus_Creator_M_"/>
+  <includes file="&lt;stddef.h>" from="Bus_Creator_ert_rtw/Bus_Creator.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Bus_Creator_ert_rtw/Bus_Creator.h" index="1"/>
+  <includes file="&quot;Bus_Creator_types.h&quot;" from="Bus_Creator_ert_rtw/Bus_Creator.h" index="2"/>
+  <includes file="&quot;Bus_Creator_private.h&quot;" from="Bus_Creator_ert_rtw/Bus_Creator.c" index="3"/>
+</sm:blocks>

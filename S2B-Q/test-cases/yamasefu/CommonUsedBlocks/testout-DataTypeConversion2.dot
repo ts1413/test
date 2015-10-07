@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	DataTypeConversion2_DataTypeConversion	 [label="t2\nDataTypeConversion2_DataTypeConversion"];
+	t0 -> DataTypeConversion2_DataTypeConversion	 [color=green,
+		label="ch_0_2(DataTypeConversion2_In1_1)"];
+	extout	 [label=extout];
+	DataTypeConversion2_In1	 [label="t1\nDataTypeConversion2_In1",
+		shape=box];
+	DataTypeConversion2_In1 -> t0	 [color=green,
+		label="in port DataTypeConversion2_In1(DataTypeConversion2_In1_1)"];
+	DataTypeConversion2_DataTypeConversion -> extout	 [color=green,
+		label="ch_2_100(DataTypeConversion2_DataTypeConversion_1)"];
+}

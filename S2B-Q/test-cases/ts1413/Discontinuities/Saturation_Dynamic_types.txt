@@ -1,0 +1,54 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Saturation_Dynamic" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/In2" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/In3" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic/up" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic/u" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic/lo" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic/Data Type\nDuplicate" samplePeriod=0.1 assignedPriority=5 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic/Data Type\nPropagation" samplePeriod=0.1 assignedPriority=6 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic/LowerRelop1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="boolean"
+Block "Saturation_Dynamic/SaturationDynamic/Switch" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="boolean"
+InDataPort portNumber=3 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic/Switch2" samplePeriod=0.1 assignedPriority=3 min=OutMin max=OutMax
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="boolean"
+InDataPort portNumber=3 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/SaturationDynamic/UpperRelop" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="boolean"
+Block "Saturation_Dynamic/SaturationDynamic/y" samplePeriod=0.1 min=OutMin max=OutMax
+InDataPort portNumber=1 dataType="double"
+Block "Saturation_Dynamic/Out1" samplePeriod=0.1 assignedPriority=4 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

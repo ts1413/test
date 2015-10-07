@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="LookupTable2D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="LookupTable2D_ert_rtw/LookupTable2D.h" size="3489" timestamp="2015-10-05T16:57:07+0900" type="c-header"/>
+  <file name="xx_LookupTable2D.xml" size="1714" timestamp="2015-10-07T15:40:44+0900" type="xml"/>
+  <file name="LookupTable2D_ert_rtw/LookupTable2D.c" size="4747" timestamp="2015-10-05T16:57:07+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="LookupTable2D_In1" priority="0" rate="0.1">
+    <output line="LookupTable2D_In1_1" port="LookupTable2D_In1_1" usename="true">
+      <connect block="LookupTable2D_2_DLookupTable" port="LookupTable2D_2_DLookupTable_1"/>
+    </output>
+    <var line="LookupTable2D_In1_1" mode="extin" name="LookupTable2D_In1_1" port="LookupTable2D_In1_1" type="real_T"/>
+    <code file="LookupTable2D_ert_rtw/LookupTable2D.c" line="156" type="init">  LookupTable2D_In1_1 = 0.0;
+</code>
+    <forward block="LookupTable2D_2_DLookupTable" type="port">
+      <var line="LookupTable2D_In1_1" mode="input" name="LookupTable2D_In1_1" port="LookupTable2D_2_DLookupTable_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="LookupTable2D_In2" priority="0" rate="0.1">
+    <output line="LookupTable2D_In2_1" port="LookupTable2D_In2_1" usename="true">
+      <connect block="LookupTable2D_2_DLookupTable" port="LookupTable2D_2_DLookupTable_2"/>
+    </output>
+    <var line="LookupTable2D_In2_1" mode="extin" name="LookupTable2D_In2_1" port="LookupTable2D_In2_1" type="real_T"/>
+    <code file="LookupTable2D_ert_rtw/LookupTable2D.c" line="157" type="init">  LookupTable2D_In2_1 = 0.0;
+</code>
+    <forward block="LookupTable2D_2_DLookupTable" type="port">
+      <var line="LookupTable2D_In2_1" mode="input" name="LookupTable2D_In2_1" port="LookupTable2D_2_DLookupTable_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Lookup_n-D" id="3" name="LookupTable2D_2_DLookupTable" priority="1" rate="0.1">
+    <input line="LookupTable2D_In1_1" port="LookupTable2D_2_DLookupTable_1">
+      <connect block="LookupTable2D_In1" port="LookupTable2D_In1_1"/>
+    </input>
+    <input line="LookupTable2D_In2_1" port="LookupTable2D_2_DLookupTable_2">
+      <connect block="LookupTable2D_In2" port="LookupTable2D_In2_1"/>
+    </input>
+    <output line="LookupTable2D_2_DLookupTable_1" port="LookupTable2D_2_DLookupTable_1" usename="true">
+      <connect block="LookupTable2D_Out1" port="LookupTable2D_Out1_1"/>
+    </output>
+    <var line="LookupTable2D_In1_1" mode="input" name="LookupTable2D_In1_1" port="LookupTable2D_2_DLookupTable_1" type="real_T"/>
+    <var line="LookupTable2D_In2_1" mode="input" name="LookupTable2D_In2_1" port="LookupTable2D_2_DLookupTable_2" type="real_T"/>
+    <var line="LookupTable2D_2_DLookupTable_1" mode="extout" name="LookupTable2D_2_DLookupTable_1" port="LookupTable2D_2_DLookupTable_1" type="real_T"/>
+    <param name="_DLookupTable_tableData" size="9" storage="LookupTable2D_P" type="real_T"/>
+    <param name="_DLookupTable_bp01Data" size="3" storage="LookupTable2D_P" type="real_T"/>
+    <param name="_DLookupTable_bp02Data" size="3" storage="LookupTable2D_P" type="real_T"/>
+    <param name="_DLookupTable_maxIndex" size="2" storage="LookupTable2D_P" type="uint32_T"/>
+    <code file="LookupTable2D_ert_rtw/LookupTable2D.c" line="131" type="task">  /* Lookup_n-D: '&lt;Root&gt;/2_DLookupTable' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   */
+  LookupTable2D_2_DLookupTable_1 = look2_binlxpw(LookupTable2D_In1_1,
+    LookupTable2D_In2_1, LookupTable2D_P._DLookupTable_bp01Data,
+    LookupTable2D_P._DLookupTable_bp02Data,
+    LookupTable2D_P._DLookupTable_tableData,
+    LookupTable2D_P._DLookupTable_maxIndex, 3U);
+</code>
+    <code file="LookupTable2D_ert_rtw/LookupTable2D.c" line="153" type="init">  LookupTable2D_2_DLookupTable_1 = 0.0;
+
+</code>
+    <forward block="LookupTable2D_Out1" type="port">
+      <var line="LookupTable2D_2_DLookupTable_1" mode="input" name="LookupTable2D_2_DLookupTable_1" port="LookupTable2D_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="LookupTable2D_In1" type="port">
+      <var line="LookupTable2D_In1_1" mode="extin" name="LookupTable2D_In1_1" port="LookupTable2D_In1_1" type="real_T"/>
+    </backword>
+    <backword block="LookupTable2D_In2" type="port">
+      <var line="LookupTable2D_In2_1" mode="extin" name="LookupTable2D_In2_1" port="LookupTable2D_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="LookupTable2D_Out1" priority="2" rate="0.1">
+    <input line="LookupTable2D_2_DLookupTable_1" port="LookupTable2D_Out1_1">
+      <connect block="LookupTable2D_2_DLookupTable" port="LookupTable2D_2_DLookupTable_1"/>
+    </input>
+    <var line="LookupTable2D_2_DLookupTable_1" mode="input" name="LookupTable2D_2_DLookupTable_1" port="LookupTable2D_Out1_1" type="real_T"/>
+    <backword block="LookupTable2D_2_DLookupTable" type="port">
+      <var line="LookupTable2D_2_DLookupTable_1" mode="extout" name="LookupTable2D_2_DLookupTable_1" port="LookupTable2D_2_DLookupTable_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_LookupTable2D_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="LookupTable2D_M" type="extern RT_MODEL_LookupTable2D_T * const"/>
+  <object kind="rtm-object" name="LookupTable2D_M_" type="RT_MODEL_LookupTable2D_T"/>
+  <object kind="rtm-pointer" name="LookupTable2D_M" type="RT_MODEL_LookupTable2D_T * const" value="&amp;LookupTable2D_M_"/>
+  <includes file="&lt;stddef.h>" from="LookupTable2D_ert_rtw/LookupTable2D.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="LookupTable2D_ert_rtw/LookupTable2D.h" index="1"/>
+  <includes file="&quot;LookupTable2D_types.h&quot;" from="LookupTable2D_ert_rtw/LookupTable2D.h" index="2"/>
+  <includes file="&quot;LookupTable2D_private.h&quot;" from="LookupTable2D_ert_rtw/LookupTable2D.c" index="3"/>
+  <function name="look2_binlxpw" type="defn">
+    <code line="29" type="func">real_T look2_binlxpw(real_T u0, real_T u1, const real_T bp0[], const real_T bp1[],
+                     const real_T table[], const uint32_T maxIndex[], uint32_T
+                     stride)
+{
+  real_T frac;
+  uint32_T bpIndices[2];
+  real_T fractions[2];
+  real_T yL_1d;
+  uint32_T iRght;
+  uint32_T bpIdx;
+  uint32_T iLeft;
+
+  /* Lookup 2-D
+     Search method: 'binary'
+     Use previous index: 'off'
+     Interpolation method: 'Linear'
+     Extrapolation method: 'Linear'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'off'
+   */
+  /* Prelookup - Index and Fraction
+     Index Search method: 'binary'
+     Extrapolation method: 'Linear'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'off'
+   */
+  if (u0 &lt;= bp0[0U]) {
+    iLeft = 0U;
+    frac = (u0 - bp0[0U]) / (bp0[1U] - bp0[0U]);
+  } else if (u0 &lt; bp0[maxIndex[0U]]) {
+    /* Binary Search */
+    bpIdx = maxIndex[0U] &gt;&gt; 1U;
+    iLeft = 0U;
+    iRght = maxIndex[0U];
+    while (iRght - iLeft &gt; 1U) {
+      if (u0 &lt; bp0[bpIdx]) {
+        iRght = bpIdx;
+      } else {
+        iLeft = bpIdx;
+      }
+
+      bpIdx = (iRght + iLeft) &gt;&gt; 1U;
+    }
+
+    frac = (u0 - bp0[iLeft]) / (bp0[iLeft + 1U] - bp0[iLeft]);
+  } else {
+    iLeft = maxIndex[0U] - 1U;
+    frac = (u0 - bp0[maxIndex[0U] - 1U]) / (bp0[maxIndex[0U]] - bp0[maxIndex[0U]
+      - 1U]);
+  }
+
+  fractions[0U] = frac;
+  bpIndices[0U] = iLeft;
+
+  /* Prelookup - Index and Fraction
+     Index Search method: 'binary'
+     Extrapolation method: 'Linear'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'off'
+   */
+  if (u1 &lt;= bp1[0U]) {
+    iLeft = 0U;
+    frac = (u1 - bp1[0U]) / (bp1[1U] - bp1[0U]);
+  } else if (u1 &lt; bp1[maxIndex[1U]]) {
+    /* Binary Search */
+    bpIdx = maxIndex[1U] &gt;&gt; 1U;
+    iLeft = 0U;
+    iRght = maxIndex[1U];
+    while (iRght - iLeft &gt; 1U) {
+      if (u1 &lt; bp1[bpIdx]) {
+        iRght = bpIdx;
+      } else {
+        iLeft = bpIdx;
+      }
+
+      bpIdx = (iRght + iLeft) &gt;&gt; 1U;
+    }
+
+    frac = (u1 - bp1[iLeft]) / (bp1[iLeft + 1U] - bp1[iLeft]);
+  } else {
+    iLeft = maxIndex[1U] - 1U;
+    frac = (u1 - bp1[maxIndex[1U] - 1U]) / (bp1[maxIndex[1U]] - bp1[maxIndex[1U]
+      - 1U]);
+  }
+
+  /* Interpolation 2-D
+     Interpolation method: 'Linear'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Overflow mode: 'portable wrapping'
+   */
+  bpIdx = iLeft * stride + bpIndices[0U];
+  yL_1d = (table[bpIdx + 1U] - table[bpIdx]) * fractions[0U] + table[bpIdx];
+  bpIdx += stride;
+  return (((table[bpIdx + 1U] - table[bpIdx]) * fractions[0U] + table[bpIdx]) -
+          yL_1d) * frac + yL_1d;
+}
+</code>
+  </function>
+</sm:blocks>

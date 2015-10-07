@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Ground" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Ground" name="Ground_Ground" priority="0" rate="0.1">
+    <output line="Ground_Ground_1" port="Ground_Ground_1" usename="true">
+      <connect block="Ground_Out1" port="Ground_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Ground_Out1" priority="1" rate="0.1">
+    <input line="Ground_Ground_1" port="Ground_Out1_1">
+      <connect block="Ground_Ground" port="Ground_Ground_1"/>
+    </input>
+  </block>
+</sm:blocks>

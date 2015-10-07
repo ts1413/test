@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Sign" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Sign_ert_rtw/Sign.h" size="2262" timestamp="2015-09-29T13:40:42+0900" type="c-header"/>
+  <file name="xx_Sign.xml" size="1003" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="Sign_ert_rtw/Sign.c" size="1471" timestamp="2015-09-29T13:40:42+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Sign_In1" priority="0" rate="0.1">
+    <output line="Sign_In1_1" port="Sign_In1_1" usename="true">
+      <connect block="Sign_Sign" port="Sign_Sign_1"/>
+    </output>
+    <var line="Sign_In1_1" mode="extin" name="Sign_In1_1" port="Sign_In1_1" type="real_T"/>
+    <code file="Sign_ert_rtw/Sign.c" line="63" type="init">  Sign_In1_1 = 0.0;
+</code>
+    <forward block="Sign_Sign" type="data">
+      <var line="Sign_In1_1" mode="input" name="Sign_In1_1" port="Sign_Sign_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Signum" id="2" name="Sign_Sign" priority="1" rate="0.1">
+    <input line="Sign_In1_1" port="Sign_Sign_1">
+      <connect block="Sign_In1" port="Sign_In1_1"/>
+    </input>
+    <output line="Sign_Sign_1" port="Sign_Sign_1" usename="true">
+      <connect block="Sign_Out1" port="Sign_Out1_1"/>
+    </output>
+    <var line="Sign_In1_1" mode="input" name="Sign_In1_1" port="Sign_Sign_1" type="real_T"/>
+    <var line="Sign_Sign_1" mode="extout" name="Sign_Sign_1" port="Sign_Sign_1" type="real_T"/>
+    <code file="Sign_ert_rtw/Sign.c" line="32" type="task">  /* Signum: '&lt;Root&gt;/Sign' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  u = Sign_In1_1;
+  if (u &lt; 0.0) {
+    Sign_Sign_1 = -1.0;
+  } else if (u &gt; 0.0) {
+    Sign_Sign_1 = 1.0;
+  } else if (u == 0.0) {
+    Sign_Sign_1 = 0.0;
+  } else {
+    Sign_Sign_1 = u;
+  }
+
+  /* End of Signum: '&lt;Root&gt;/Sign' */
+</code>
+    <code file="Sign_ert_rtw/Sign.c" line="60" type="init">  Sign_Sign_1 = 0.0;
+
+</code>
+    <forward block="Sign_Out1" type="data">
+      <var line="Sign_Sign_1" mode="input" name="Sign_Sign_1" port="Sign_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Sign_In1" type="data">
+      <var line="Sign_In1_1" mode="extin" name="Sign_In1_1" port="Sign_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Sign_Out1" priority="2" rate="0.1">
+    <input line="Sign_Sign_1" port="Sign_Out1_1">
+      <connect block="Sign_Sign" port="Sign_Sign_1"/>
+    </input>
+    <var line="Sign_Sign_1" mode="input" name="Sign_Sign_1" port="Sign_Out1_1" type="real_T"/>
+    <backword block="Sign_Sign" type="data">
+      <var line="Sign_Sign_1" mode="extout" name="Sign_Sign_1" port="Sign_Sign_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Sign {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  real_T u;
+
+</code>
+  <object kind="rtm-extern" name="Sign_M" type="extern RT_MODEL_Sign * const"/>
+  <object kind="rtm-object" name="Sign_M_" type="RT_MODEL_Sign"/>
+  <object kind="rtm-pointer" name="Sign_M" type="RT_MODEL_Sign * const" value="&amp;Sign_M_"/>
+  <includes file="&lt;stddef.h>" from="Sign_ert_rtw/Sign.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Sign_ert_rtw/Sign.h" index="1"/>
+  <includes file="&quot;Sign_types.h&quot;" from="Sign_ert_rtw/Sign.h" index="2"/>
+  <includes file="&quot;Sign_private.h&quot;" from="Sign_ert_rtw/Sign.c" index="3"/>
+</sm:blocks>

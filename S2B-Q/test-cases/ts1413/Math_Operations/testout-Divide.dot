@@ -1,0 +1,15 @@
+digraph csp {
+	graph [rankdir=LR];
+	Divide_Divide	 [fillcolor=yellow,
+		label="t3\nDivide_Divide",
+		style=filled];
+	t0 -> Divide_Divide	 [color=green,
+		label="ch_0_3(Divide_In1_1)"];
+	extout	 [label=extout];
+	Divide_In1	 [label="t1\nDivide_In1",
+		shape=box];
+	Divide_In1 -> t0	 [color=green,
+		label="in port Divide_In1(Divide_In1_1)"];
+	Divide_Divide -> extout	 [color=green,
+		label="ch_3_100(Divide_Divide_1)"];
+}

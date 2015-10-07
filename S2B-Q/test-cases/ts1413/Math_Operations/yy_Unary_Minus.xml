@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Unary_Minus" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Unary_Minus_ert_rtw/Unary_Minus.h" size="2380" timestamp="2015-09-29T13:41:05+0900" type="c-header"/>
+  <file name="xx_Unary_Minus.xml" size="1201" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="Unary_Minus_ert_rtw/Unary_Minus.c" size="1406" timestamp="2015-09-29T13:41:05+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Unary_Minus_In1" priority="0" rate="0.1">
+    <output line="Unary_Minus_In1_1" port="Unary_Minus_In1_1" usename="true">
+      <connect block="Unary_Minus_UnaryMinus" port="Unary_Minus_UnaryMinus_1"/>
+    </output>
+    <var line="Unary_Minus_In1_1" mode="extin" name="Unary_Minus_In1_1" port="Unary_Minus_In1_1" type="real_T"/>
+    <code file="Unary_Minus_ert_rtw/Unary_Minus.c" line="50" type="init">  Unary_Minus_In1_1 = 0.0;
+</code>
+    <forward block="Unary_Minus_UnaryMinus" type="data">
+      <var line="Unary_Minus_In1_1" mode="input" name="Unary_Minus_In1_1" port="Unary_Minus_UnaryMinus_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="UnaryMinus" id="2" name="Unary_Minus_UnaryMinus" priority="1" rate="0.1">
+    <input line="Unary_Minus_In1_1" port="Unary_Minus_UnaryMinus_1">
+      <connect block="Unary_Minus_In1" port="Unary_Minus_In1_1"/>
+    </input>
+    <output line="Unary_Minus_UnaryMinus_1" port="Unary_Minus_UnaryMinus_1" usename="true">
+      <connect block="Unary_Minus_Out1" port="Unary_Minus_Out1_1"/>
+    </output>
+    <var line="Unary_Minus_In1_1" mode="input" name="Unary_Minus_In1_1" port="Unary_Minus_UnaryMinus_1" type="real_T"/>
+    <var line="Unary_Minus_UnaryMinus_1" mode="extout" name="Unary_Minus_UnaryMinus_1" port="Unary_Minus_UnaryMinus_1" type="real_T"/>
+    <code file="Unary_Minus_ert_rtw/Unary_Minus.c" line="30" type="task">  /* UnaryMinus: '&lt;Root&gt;/UnaryMinus' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Unary_Minus_UnaryMinus_1 = -Unary_Minus_In1_1;
+</code>
+    <code file="Unary_Minus_ert_rtw/Unary_Minus.c" line="47" type="init">  Unary_Minus_UnaryMinus_1 = 0.0;
+
+</code>
+    <forward block="Unary_Minus_Out1" type="data">
+      <var line="Unary_Minus_UnaryMinus_1" mode="input" name="Unary_Minus_UnaryMinus_1" port="Unary_Minus_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Unary_Minus_In1" type="data">
+      <var line="Unary_Minus_In1_1" mode="extin" name="Unary_Minus_In1_1" port="Unary_Minus_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Unary_Minus_Out1" priority="2" rate="0.1">
+    <input line="Unary_Minus_UnaryMinus_1" port="Unary_Minus_Out1_1">
+      <connect block="Unary_Minus_UnaryMinus" port="Unary_Minus_UnaryMinus_1"/>
+    </input>
+    <var line="Unary_Minus_UnaryMinus_1" mode="input" name="Unary_Minus_UnaryMinus_1" port="Unary_Minus_Out1_1" type="real_T"/>
+    <backword block="Unary_Minus_UnaryMinus" type="data">
+      <var line="Unary_Minus_UnaryMinus_1" mode="extout" name="Unary_Minus_UnaryMinus_1" port="Unary_Minus_UnaryMinus_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Unary_Minus {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Unary_Minus_M" type="extern RT_MODEL_Unary_Minus * const"/>
+  <object kind="rtm-object" name="Unary_Minus_M_" type="RT_MODEL_Unary_Minus"/>
+  <object kind="rtm-pointer" name="Unary_Minus_M" type="RT_MODEL_Unary_Minus * const" value="&amp;Unary_Minus_M_"/>
+  <includes file="&lt;stddef.h>" from="Unary_Minus_ert_rtw/Unary_Minus.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Unary_Minus_ert_rtw/Unary_Minus.h" index="1"/>
+  <includes file="&quot;Unary_Minus_types.h&quot;" from="Unary_Minus_ert_rtw/Unary_Minus.h" index="2"/>
+  <includes file="&quot;Unary_Minus_private.h&quot;" from="Unary_Minus_ert_rtw/Unary_Minus.c" index="3"/>
+</sm:blocks>

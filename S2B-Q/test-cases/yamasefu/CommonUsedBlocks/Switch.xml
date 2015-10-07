@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Switch" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Switch_In1" rate="-1">
+      <output line="Switch_In1_1" port="Switch_In1_1" usename="true">
+         <connect block="Switch_Switch" port="Switch_Switch_1"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="Switch_In2" rate="-1">
+      <output line="Switch_In2_1" port="Switch_In2_1" usename="true">
+         <connect block="Switch_Switch" port="Switch_Switch_2"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="Switch_In3" rate="-1">
+      <output line="Switch_In3_1" port="Switch_In3_1" usename="true">
+         <connect block="Switch_Switch" port="Switch_Switch_3"/>
+      </output>
+   </block>
+   <block blocktype="Switch" name="Switch_Switch" rate="-1">
+      <input line="Switch_In1_1" port="Switch_Switch_1">
+         <connect block="Switch_In1" port="Switch_In1_1"/>
+      </input>
+      <input line="Switch_In2_1" port="Switch_Switch_2">
+         <connect block="Switch_In2" port="Switch_In2_1"/>
+      </input>
+      <input line="Switch_In3_1" port="Switch_Switch_3">
+         <connect block="Switch_In3" port="Switch_In3_1"/>
+      </input>
+      <output line="Switch_Switch_1" port="Switch_Switch_1" usename="true">
+         <connect block="Switch_Out1" port="Switch_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Switch_Out1" rate="-1">
+      <input line="Switch_Switch_1" port="Switch_Out1_1">
+         <connect block="Switch_Switch" port="Switch_Switch_1"/>
+      </input>
+   </block>
+</sm:blocks>

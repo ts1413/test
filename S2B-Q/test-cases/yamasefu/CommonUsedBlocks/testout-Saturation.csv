@@ -1,0 +1,27 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Saturation_In1_1",,
+"task100",,,,
+,"Saturation_Saturation_1",,,
+"task2",,,,
+,"Saturation_In1_1","Saturation_Saturation_1",,
+,,,,"{
+"
+,,,,"  /* Saturate: '<Root>/Saturation' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  u0 = Saturation_In1_1;
+  u1 = Saturation_P.Saturation_LowerSat;
+  u2 = Saturation_P.Saturation_UpperSat;
+  if (u0 > u2) {
+    Saturation_Saturation_1 = u2;
+  } else if (u0 < u1) {
+    Saturation_Saturation_1 = u1;
+  } else {
+    Saturation_Saturation_1 = u0;
+  }
+
+  /* End of Saturate: '<Root>/Saturation' */
+"
+,,,,"}
+"

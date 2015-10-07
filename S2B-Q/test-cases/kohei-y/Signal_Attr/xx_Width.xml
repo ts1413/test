@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Width" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Width_In1" priority="0" rate="0.1">
+    <output line="Width_In1_1" port="Width_In1_1" usename="true">
+      <connect block="Width_Width" port="Width_Width_1"/>
+    </output>
+  </block>
+  <block blocktype="Width" name="Width_Width" priority="1" rate="0.1">
+    <input line="Width_In1_1" port="Width_Width_1">
+      <connect block="Width_In1" port="Width_In1_1"/>
+    </input>
+    <output line="Width_Width_1" port="Width_Width_1" usename="true">
+      <connect block="Width_Out1" port="Width_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Width_Out1" priority="2" rate="0.1">
+    <input line="Width_Width_1" port="Width_Out1_1">
+      <connect block="Width_Width" port="Width_Width_1"/>
+    </input>
+  </block>
+</sm:blocks>

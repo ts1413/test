@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="MinMax" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="MinMax_In1" rate="-1">
+      <output line="MinMax_In1_1" port="MinMax_In1_1" usename="true">
+         <connect block="MinMax_MinMax" port="MinMax_MinMax_1"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="MinMax_In2" rate="-1">
+      <output line="MinMax_In2_1" port="MinMax_In2_1" usename="true">
+         <connect block="MinMax_MinMax" port="MinMax_MinMax_2"/>
+      </output>
+   </block>
+   <block blocktype="MinMax" name="MinMax_MinMax" rate="-1">
+      <input line="MinMax_In1_1" port="MinMax_MinMax_1">
+         <connect block="MinMax_In1" port="MinMax_In1_1"/>
+      </input>
+      <input line="MinMax_In2_1" port="MinMax_MinMax_2">
+         <connect block="MinMax_In2" port="MinMax_In2_1"/>
+      </input>
+      <output line="MinMax_MinMax_1" port="MinMax_MinMax_1" usename="true">
+         <connect block="MinMax_Out1" port="MinMax_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="MinMax_Out1" rate="-1">
+      <input line="MinMax_MinMax_1" port="MinMax_Out1_1">
+         <connect block="MinMax_MinMax" port="MinMax_MinMax_1"/>
+      </input>
+   </block>
+</sm:blocks>

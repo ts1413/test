@@ -1,0 +1,18 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Compare_to_Constant_In1_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out1' incorporates:
+   *  Constant: '<S1>/Constant'
+   *  Inport: '<Root>/In1'
+   *  RelationalOperator: '<S1>/Compare'
+   */
+  Compare_to_Constant_Y.Out1 = (Compare_to_Constant_In1_1 <=
+    Compare_to_Constant_P.CompareToConstant_const);
+"
+,,,,"}
+"
+"task2",,,,
+,"Compare_to_Constant_In1_1",,,

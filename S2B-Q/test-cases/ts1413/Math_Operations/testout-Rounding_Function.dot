@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Rounding_Function_RoundingFunction	 [label="t2\nRounding_Function_RoundingFunction"];
+	t0 -> Rounding_Function_RoundingFunction	 [color=green,
+		label="ch_0_2(Rounding_Function_In1_1)"];
+	extout	 [label=extout];
+	Rounding_Function_In1	 [label="t1\nRounding_Function_In1",
+		shape=box];
+	Rounding_Function_In1 -> t0	 [color=green,
+		label="in port Rounding_Function_In1(Rounding_Function_In1_1)"];
+	Rounding_Function_RoundingFunction -> extout	 [color=green,
+		label="ch_2_100(Rounding_Function_RoundingFunction_1)"];
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="func_call_genesub" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="func_call_genesub_In1" priority="0" rate="0.1">
+    <output line="func_call_genesub_In1_1" port="func_call_genesub_In1_1" usename="true">
+      <connect block="func_call_genesub_Function_CallSubsystem" port="func_call_genesub_Function_CallSubsystem_In1"/>
+    </output>
+  </block>
+  <block blocktype="Simulink_FunctionCallGenerator" name="func_call_genesub_Function_CallGenerator" priority="1" rate="0.1">
+    <output line="func_call_genesub_Function_CallGenerator_0" port="func_call_genesub_Function_CallGenerator_0" usename="false">
+      <connect block="func_call_genesub_Function_CallSubsystem" port="func_call_genesub_Function_CallSubsystem_function"/>
+    </output>
+    <param name="numberOfIterations" storage="" type="double" value="1.0"/>
+    <param name="sample_time" storage="" type="double" value="0.1"/>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" name="func_call_genesub_Function_CallSubsystem" priority="2" rate="0.1">
+    <input line="func_call_genesub_In1_1" port="func_call_genesub_Function_CallSubsystem_In1">
+      <connect block="func_call_genesub_In1" port="func_call_genesub_In1_1"/>
+    </input>
+    <input line="func_call_genesub_Function_CallGenerator_0" port="func_call_genesub_Function_CallSubsystem_function">
+      <connect block="func_call_genesub_Function_CallGenerator" port="func_call_genesub_Function_CallGenerator_0"/>
+    </input>
+    <output line="func_call_genesub_Function_CallSubsystem_1" port="func_call_genesub_Function_CallSubsystem_Out1" usename="false">
+      <connect block="func_call_genesub_Out1" port="func_call_genesub_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" name="func_call_genesub_Function_CallSubsystem_In1" priority="1" rate="-1">
+        <output line="func_call_genesub_Function_CallSubsystem_In1_1" port="func_call_genesub_Function_CallSubsystem_In1_1" usename="false">
+          <connect block="func_call_genesub_Function_CallSubsystem_Out1" port="func_call_genesub_Function_CallSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="TriggerPort" name="func_call_genesub_Function_CallSubsystem_function" priority="0" rate="-1"/>
+      <block blocktype="Outport" name="func_call_genesub_Function_CallSubsystem_Out1" priority="0" rate="-1">
+        <input line="func_call_genesub_Function_CallSubsystem_In1_1" port="func_call_genesub_Function_CallSubsystem_Out1_1">
+          <connect block="func_call_genesub_Function_CallSubsystem_In1" port="func_call_genesub_Function_CallSubsystem_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Outport" name="func_call_genesub_Out1" priority="3" rate="0.1">
+    <input line="func_call_genesub_Function_CallSubsystem_1" port="func_call_genesub_Out1_1">
+      <connect block="func_call_genesub_Function_CallSubsystem" port="func_call_genesub_Function_CallSubsystem_Out1"/>
+    </input>
+  </block>
+</sm:blocks>

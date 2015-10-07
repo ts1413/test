@@ -1,0 +1,15 @@
+digraph csp {
+	graph [rankdir=LR];
+	Signal_Conversion_Bus_BusCreator	 [label="t2\nSignal_Conversion_Bus_BusCreator"];
+	t0 -> Signal_Conversion_Bus_BusCreator	 [color=green,
+		label="ch_0_2(Signal_Conversion_Bus_In1_1)"];
+	extout	 [label=extout];
+	Signal_Conversion_Bus_In1	 [label="t1\nSignal_Conversion_Bus_In1",
+		shape=box];
+	Signal_Conversion_Bus_In1 -> t0	 [color=green,
+		label="in port Signal_Conversion_Bus_In1(Signal_Conversion_Bus_In1_1)"];
+	Signal_Conversion_Bus_SignalConversion	 [label="t3\nSignal_Conversion_Bus_SignalConversion"];
+	Signal_Conversion_Bus_BusCreator -> Signal_Conversion_Bus_SignalConversion	 [label="ch_2_3()"];
+	Signal_Conversion_Bus_SignalConversion -> extout	 [color=green,
+		label="ch_3_100()"];
+}

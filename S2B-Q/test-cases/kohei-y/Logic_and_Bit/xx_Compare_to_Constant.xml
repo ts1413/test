@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Compare_to_Constant" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Compare_to_Constant_In1" priority="0" rate="0.1">
+    <output line="Compare_to_Constant_In1_1" port="Compare_to_Constant_In1_1" usename="true">
+      <connect block="Compare_to_Constant_CompareToConstant" port="Compare_to_Constant_CompareToConstant_1"/>
+    </output>
+  </block>
+  <block blocktype="Simulink_CompareToConstant" name="Compare_to_Constant_CompareToConstant" priority="0" rate="0.1">
+    <input line="Compare_to_Constant_In1_1" port="Compare_to_Constant_CompareToConstant_1">
+      <connect block="Compare_to_Constant_In1" port="Compare_to_Constant_In1_1"/>
+    </input>
+    <output line="Compare_to_Constant_CompareToConstant_1" port="Compare_to_Constant_CompareToConstant_1" usename="true">
+      <connect block="Compare_to_Constant_Out1" port="Compare_to_Constant_Out1_1"/>
+    </output>
+    <param name="const" storage="" type="double" value="3.0"/>
+  </block>
+  <block blocktype="Outport" name="Compare_to_Constant_Out1" priority="3" rate="0.1">
+    <input line="Compare_to_Constant_CompareToConstant_1" port="Compare_to_Constant_Out1_1">
+      <connect block="Compare_to_Constant_CompareToConstant" port="Compare_to_Constant_CompareToConstant_1"/>
+    </input>
+  </block>
+</sm:blocks>

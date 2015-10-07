@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Backlash" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Backlash_In1" rate="-1">
+      <output line="Backlash_In1_1" port="Backlash_In1_1" usename="true">
+         <connect block="Backlash_Backlash" port="Backlash_Backlash_1"/>
+      </output>
+   </block>
+   <block blocktype="Backlash" name="Backlash_Backlash" rate="-1">
+      <input line="Backlash_In1_1" port="Backlash_Backlash_1">
+         <connect block="Backlash_In1" port="Backlash_In1_1"/>
+      </input>
+      <output line="Backlash_Backlash_1" port="Backlash_Backlash_1" usename="true">
+         <connect block="Backlash_Out1" port="Backlash_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Backlash_Out1" rate="-1">
+      <input line="Backlash_Backlash_1" port="Backlash_Out1_1">
+         <connect block="Backlash_Backlash" port="Backlash_Backlash_1"/>
+      </input>
+   </block>
+</sm:blocks>

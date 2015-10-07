@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Saturation_Dynamic" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Saturation_Dynamic_In1" rate="-1">
+      <output line="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_In1_1" usename="true">
+         <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_u"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="Saturation_Dynamic_In2" rate="-1">
+      <output line="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_In2_1" usename="true">
+         <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_up"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="Saturation_Dynamic_In3" rate="-1">
+      <output line="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_In3_1" usename="true">
+         <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_lo"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Saturation_Dynamic_SaturationDynamic">
+      <input line="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_SaturationDynamic_up">
+         <connect block="Saturation_Dynamic_In2" port="Saturation_Dynamic_In2_1"/>
+      </input>
+      <input line="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_SaturationDynamic_u">
+         <connect block="Saturation_Dynamic_In1" port="Saturation_Dynamic_In1_1"/>
+      </input>
+      <input line="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_SaturationDynamic_lo">
+         <connect block="Saturation_Dynamic_In3" port="Saturation_Dynamic_In3_1"/>
+      </input>
+      <output line="Saturation_Dynamic_SaturationDynamic_1" port="Saturation_Dynamic_SaturationDynamic_y" usename="false">
+         <connect block="Saturation_Dynamic_Out1" port="Saturation_Dynamic_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Saturation_Dynamic_SaturationDynamic_up" rate="-1">
+            <output line="Saturation_Dynamic_SaturationDynamic_up_1" port="Saturation_Dynamic_SaturationDynamic_up_1" usename="false">
+               <connect block="Saturation_Dynamic_SaturationDynamic_LowerRelop1" port="Saturation_Dynamic_SaturationDynamic_LowerRelop1_2"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch2" port="Saturation_Dynamic_SaturationDynamic_Switch2_1"/>
+            </output>
+         </block>
+         <block blocktype="Inport" name="Saturation_Dynamic_SaturationDynamic_u" rate="-1">
+            <output line="Saturation_Dynamic_SaturationDynamic_u_1" port="Saturation_Dynamic_SaturationDynamic_u_1" usename="false">
+               <connect block="Saturation_Dynamic_SaturationDynamic_DataTypePropagation" port="Saturation_Dynamic_SaturationDynamic_DataTypePropagation_1"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_DataTypePropagation" port="Saturation_Dynamic_SaturationDynamic_DataTypePropagation_2"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_LowerRelop1" port="Saturation_Dynamic_SaturationDynamic_LowerRelop1_1"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch" port="Saturation_Dynamic_SaturationDynamic_Switch_3"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_UpperRelop" port="Saturation_Dynamic_SaturationDynamic_UpperRelop_1"/>
+            </output>
+         </block>
+         <block blocktype="Inport" name="Saturation_Dynamic_SaturationDynamic_lo" rate="-1">
+            <output line="Saturation_Dynamic_SaturationDynamic_lo_1" port="Saturation_Dynamic_SaturationDynamic_lo_1" usename="false">
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch" port="Saturation_Dynamic_SaturationDynamic_Switch_1"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_UpperRelop" port="Saturation_Dynamic_SaturationDynamic_UpperRelop_2"/>
+            </output>
+         </block>
+         <block blocktype="DataTypeDuplicate" name="Saturation_Dynamic_SaturationDynamic_DataTypeDuplicate">
+            <input line="Saturation_Dynamic_SaturationDynamic_Switch2_1" port="Saturation_Dynamic_SaturationDynamic_DataTypeDuplicate_1">
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch2" port="Saturation_Dynamic_SaturationDynamic_Switch2_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_Switch_1" port="Saturation_Dynamic_SaturationDynamic_DataTypeDuplicate_2">
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch" port="Saturation_Dynamic_SaturationDynamic_Switch_1"/>
+            </input>
+         </block>
+         <block blocktype="S-Function" name="Saturation_Dynamic_SaturationDynamic_DataTypePropagation">
+            <input line="Saturation_Dynamic_SaturationDynamic_u_1" port="Saturation_Dynamic_SaturationDynamic_DataTypePropagation_1">
+               <connect block="Saturation_Dynamic_SaturationDynamic_u" port="Saturation_Dynamic_SaturationDynamic_u_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_u_1" port="Saturation_Dynamic_SaturationDynamic_DataTypePropagation_2">
+               <connect block="Saturation_Dynamic_SaturationDynamic_u" port="Saturation_Dynamic_SaturationDynamic_u_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_Switch_1" port="Saturation_Dynamic_SaturationDynamic_DataTypePropagation_3">
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch" port="Saturation_Dynamic_SaturationDynamic_Switch_1"/>
+            </input>
+         </block>
+         <block blocktype="RelationalOperator" name="Saturation_Dynamic_SaturationDynamic_LowerRelop1" rate="-1">
+            <input line="Saturation_Dynamic_SaturationDynamic_u_1" port="Saturation_Dynamic_SaturationDynamic_LowerRelop1_1">
+               <connect block="Saturation_Dynamic_SaturationDynamic_u" port="Saturation_Dynamic_SaturationDynamic_u_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_up_1" port="Saturation_Dynamic_SaturationDynamic_LowerRelop1_2">
+               <connect block="Saturation_Dynamic_SaturationDynamic_up" port="Saturation_Dynamic_SaturationDynamic_up_1"/>
+            </input>
+            <output line="Saturation_Dynamic_SaturationDynamic_LowerRelop1_1" port="Saturation_Dynamic_SaturationDynamic_LowerRelop1_1" usename="true">
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch2" port="Saturation_Dynamic_SaturationDynamic_Switch2_2"/>
+            </output>
+         </block>
+         <block blocktype="Switch" name="Saturation_Dynamic_SaturationDynamic_Switch" rate="-1">
+            <input line="Saturation_Dynamic_SaturationDynamic_lo_1" port="Saturation_Dynamic_SaturationDynamic_Switch_1">
+               <connect block="Saturation_Dynamic_SaturationDynamic_lo" port="Saturation_Dynamic_SaturationDynamic_lo_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_UpperRelop_1" port="Saturation_Dynamic_SaturationDynamic_Switch_2">
+               <connect block="Saturation_Dynamic_SaturationDynamic_UpperRelop" port="Saturation_Dynamic_SaturationDynamic_UpperRelop_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_u_1" port="Saturation_Dynamic_SaturationDynamic_Switch_3">
+               <connect block="Saturation_Dynamic_SaturationDynamic_u" port="Saturation_Dynamic_SaturationDynamic_u_1"/>
+            </input>
+            <output line="Saturation_Dynamic_SaturationDynamic_Switch_1" port="Saturation_Dynamic_SaturationDynamic_Switch_1" usename="true">
+               <connect block="Saturation_Dynamic_SaturationDynamic_DataTypeDuplicate" port="Saturation_Dynamic_SaturationDynamic_DataTypeDuplicate_2"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_DataTypePropagation" port="Saturation_Dynamic_SaturationDynamic_DataTypePropagation_3"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch2" port="Saturation_Dynamic_SaturationDynamic_Switch2_3"/>
+            </output>
+         </block>
+         <block blocktype="Switch" name="Saturation_Dynamic_SaturationDynamic_Switch2" rate="-1">
+            <input line="Saturation_Dynamic_SaturationDynamic_up_1" port="Saturation_Dynamic_SaturationDynamic_Switch2_1">
+               <connect block="Saturation_Dynamic_SaturationDynamic_up" port="Saturation_Dynamic_SaturationDynamic_up_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_LowerRelop1_1" port="Saturation_Dynamic_SaturationDynamic_Switch2_2">
+               <connect block="Saturation_Dynamic_SaturationDynamic_LowerRelop1" port="Saturation_Dynamic_SaturationDynamic_LowerRelop1_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_Switch_1" port="Saturation_Dynamic_SaturationDynamic_Switch2_3">
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch" port="Saturation_Dynamic_SaturationDynamic_Switch_1"/>
+            </input>
+            <output line="Saturation_Dynamic_SaturationDynamic_Switch2_1" port="Saturation_Dynamic_SaturationDynamic_Switch2_1" usename="true">
+               <connect block="Saturation_Dynamic_SaturationDynamic_DataTypeDuplicate" port="Saturation_Dynamic_SaturationDynamic_DataTypeDuplicate_1"/>
+               <connect block="Saturation_Dynamic_SaturationDynamic_y" port="Saturation_Dynamic_SaturationDynamic_y_1"/>
+            </output>
+         </block>
+         <block blocktype="RelationalOperator" name="Saturation_Dynamic_SaturationDynamic_UpperRelop" rate="-1">
+            <input line="Saturation_Dynamic_SaturationDynamic_u_1" port="Saturation_Dynamic_SaturationDynamic_UpperRelop_1">
+               <connect block="Saturation_Dynamic_SaturationDynamic_u" port="Saturation_Dynamic_SaturationDynamic_u_1"/>
+            </input>
+            <input line="Saturation_Dynamic_SaturationDynamic_lo_1" port="Saturation_Dynamic_SaturationDynamic_UpperRelop_2">
+               <connect block="Saturation_Dynamic_SaturationDynamic_lo" port="Saturation_Dynamic_SaturationDynamic_lo_1"/>
+            </input>
+            <output line="Saturation_Dynamic_SaturationDynamic_UpperRelop_1" port="Saturation_Dynamic_SaturationDynamic_UpperRelop_1" usename="true">
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch" port="Saturation_Dynamic_SaturationDynamic_Switch_2"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="Saturation_Dynamic_SaturationDynamic_y" rate="-1">
+            <input line="Saturation_Dynamic_SaturationDynamic_Switch2_1" port="Saturation_Dynamic_SaturationDynamic_y_1">
+               <connect block="Saturation_Dynamic_SaturationDynamic_Switch2" port="Saturation_Dynamic_SaturationDynamic_Switch2_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Saturation_Dynamic_Out1" rate="-1">
+      <input line="Saturation_Dynamic_SaturationDynamic_1" port="Saturation_Dynamic_Out1_1">
+         <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_y"/>
+      </input>
+   </block>
+</sm:blocks>

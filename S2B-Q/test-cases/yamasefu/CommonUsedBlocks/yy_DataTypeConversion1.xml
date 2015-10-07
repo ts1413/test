@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="DataTypeConversion1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="DataTypeConversion1_ert_rtw/DataTypeConversion1.h" size="2616" timestamp="2015-10-05T16:54:31+0900" type="c-header"/>
+  <file name="xx_DataTypeConversion1.xml" size="1441" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="DataTypeConversion1_ert_rtw/DataTypeConversion1.c" size="1675" timestamp="2015-10-05T16:54:31+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="DataTypeConversion1_In1" priority="0" rate="0.1">
+    <output line="DataTypeConversion1_In1_1" port="DataTypeConversion1_In1_1" usename="true">
+      <connect block="DataTypeConversion1_DataTypeConversion" port="DataTypeConversion1_DataTypeConversion_1"/>
+    </output>
+    <var line="DataTypeConversion1_In1_1" mode="extin" name="DataTypeConversion1_In1_1" port="DataTypeConversion1_In1_1" type="real_T"/>
+    <code file="DataTypeConversion1_ert_rtw/DataTypeConversion1.c" line="53" type="init">  DataTypeConversion1_In1_1 = 0.0;
+</code>
+    <forward block="DataTypeConversion1_DataTypeConversion" type="port">
+      <var line="DataTypeConversion1_In1_1" mode="input" name="DataTypeConversion1_In1_1" port="DataTypeConversion1_DataTypeConversion_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="DataTypeConversion" id="2" name="DataTypeConversion1_DataTypeConversion" priority="1" rate="0.1">
+    <input line="DataTypeConversion1_In1_1" port="DataTypeConversion1_DataTypeConversion_1">
+      <connect block="DataTypeConversion1_In1" port="DataTypeConversion1_In1_1"/>
+    </input>
+    <output line="DataTypeConversion1_DataTypeConversion_1" port="DataTypeConversion1_DataTypeConversion_1" usename="true">
+      <connect block="DataTypeConversion1_Out1" port="DataTypeConversion1_Out1_1"/>
+    </output>
+    <var line="DataTypeConversion1_In1_1" mode="input" name="DataTypeConversion1_In1_1" port="DataTypeConversion1_DataTypeConversion_1" type="real_T"/>
+    <var line="DataTypeConversion1_DataTypeConversion_1" mode="extout" name="DataTypeConversion1_DataTypeConversion_1" port="DataTypeConversion1_DataTypeConversion_1" type="real_T"/>
+    <code file="DataTypeConversion1_ert_rtw/DataTypeConversion1.c" line="33" type="task">  /* DataTypeConversion: '&lt;Root&gt;/DataTypeConversion' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  DataTypeConversion1_DataTypeConversion_1 = DataTypeConversion1_In1_1;
+</code>
+    <code file="DataTypeConversion1_ert_rtw/DataTypeConversion1.c" line="50" type="init">  DataTypeConversion1_DataTypeConversion_1 = 0.0;
+
+</code>
+    <forward block="DataTypeConversion1_Out1" type="port">
+      <var line="DataTypeConversion1_DataTypeConversion_1" mode="input" name="DataTypeConversion1_DataTypeConversion_1" port="DataTypeConversion1_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="DataTypeConversion1_In1" type="port">
+      <var line="DataTypeConversion1_In1_1" mode="extin" name="DataTypeConversion1_In1_1" port="DataTypeConversion1_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="DataTypeConversion1_Out1" priority="2" rate="0.1">
+    <input line="DataTypeConversion1_DataTypeConversion_1" port="DataTypeConversion1_Out1_1">
+      <connect block="DataTypeConversion1_DataTypeConversion" port="DataTypeConversion1_DataTypeConversion_1"/>
+    </input>
+    <var line="DataTypeConversion1_DataTypeConversion_1" mode="input" name="DataTypeConversion1_DataTypeConversion_1" port="DataTypeConversion1_Out1_1" type="real_T"/>
+    <backword block="DataTypeConversion1_DataTypeConversion" type="port">
+      <var line="DataTypeConversion1_DataTypeConversion_1" mode="extout" name="DataTypeConversion1_DataTypeConversion_1" port="DataTypeConversion1_DataTypeConversion_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_DataTypeConversion1_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="DataTypeConversion1_M" type="extern RT_MODEL_DataTypeConversion1_T * const"/>
+  <object kind="rtm-object" name="DataTypeConversion1_M_" type="RT_MODEL_DataTypeConversion1_T"/>
+  <object kind="rtm-pointer" name="DataTypeConversion1_M" type="RT_MODEL_DataTypeConversion1_T * const" value="&amp;DataTypeConversion1_M_"/>
+  <includes file="&lt;stddef.h>" from="DataTypeConversion1_ert_rtw/DataTypeConversion1.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="DataTypeConversion1_ert_rtw/DataTypeConversion1.h" index="1"/>
+  <includes file="&quot;DataTypeConversion1_types.h&quot;" from="DataTypeConversion1_ert_rtw/DataTypeConversion1.h" index="2"/>
+  <includes file="&quot;DataTypeConversion1_private.h&quot;" from="DataTypeConversion1_ert_rtw/DataTypeConversion1.c" index="3"/>
+</sm:blocks>

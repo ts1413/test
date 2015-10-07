@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Subtract" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Subtract_ert_rtw/Subtract.h" size="2388" timestamp="2015-09-29T13:40:48+0900" type="c-header"/>
+  <file name="xx_Subtract.xml" size="1490" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="Subtract_ert_rtw/Subtract.c" size="1465" timestamp="2015-09-29T13:40:48+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Subtract_In1" priority="0" rate="0.1">
+    <output line="Subtract_In1_1" port="Subtract_In1_1" usename="true">
+      <connect block="Subtract_Subtract" port="Subtract_Subtract_1"/>
+    </output>
+    <var line="Subtract_In1_1" mode="extin" name="Subtract_In1_1" port="Subtract_In1_1" type="real_T"/>
+    <code file="Subtract_ert_rtw/Subtract.c" line="52" type="init">  Subtract_In1_1 = 0.0;
+</code>
+    <forward block="Subtract_Subtract" type="data">
+      <var line="Subtract_In1_1" mode="input" name="Subtract_In1_1" port="Subtract_Subtract_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Subtract_In2" priority="0" rate="0.1">
+    <output line="Subtract_In2_1" port="Subtract_In2_1" usename="true">
+      <connect block="Subtract_Subtract" port="Subtract_Subtract_2"/>
+    </output>
+    <var line="Subtract_In2_1" mode="extin" name="Subtract_In2_1" port="Subtract_In2_1" type="real_T"/>
+    <code file="Subtract_ert_rtw/Subtract.c" line="53" type="init">  Subtract_In2_1 = 0.0;
+</code>
+    <forward block="Subtract_Subtract" type="data">
+      <var line="Subtract_In2_1" mode="input" name="Subtract_In2_1" port="Subtract_Subtract_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Sum" id="3" name="Subtract_Subtract" priority="1" rate="0.1">
+    <input line="Subtract_In1_1" port="Subtract_Subtract_1">
+      <connect block="Subtract_In1" port="Subtract_In1_1"/>
+    </input>
+    <input line="Subtract_In2_1" port="Subtract_Subtract_2">
+      <connect block="Subtract_In2" port="Subtract_In2_1"/>
+    </input>
+    <output line="Subtract_Subtract_1" port="Subtract_Subtract_1" usename="true">
+      <connect block="Subtract_Out1" port="Subtract_Out1_1"/>
+    </output>
+    <var line="Subtract_In1_1" mode="input" name="Subtract_In1_1" port="Subtract_Subtract_1" type="real_T"/>
+    <var line="Subtract_In2_1" mode="input" name="Subtract_In2_1" port="Subtract_Subtract_2" type="real_T"/>
+    <var line="Subtract_Subtract_1" mode="extout" name="Subtract_Subtract_1" port="Subtract_Subtract_1" type="real_T"/>
+    <code file="Subtract_ert_rtw/Subtract.c" line="31" type="task">  /* Sum: '&lt;Root&gt;/Subtract' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   */
+  Subtract_Subtract_1 = Subtract_In1_1 - Subtract_In2_1;
+</code>
+    <code file="Subtract_ert_rtw/Subtract.c" line="49" type="init">  Subtract_Subtract_1 = 0.0;
+
+</code>
+    <forward block="Subtract_Out1" type="data">
+      <var line="Subtract_Subtract_1" mode="input" name="Subtract_Subtract_1" port="Subtract_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Subtract_In1" type="data">
+      <var line="Subtract_In1_1" mode="extin" name="Subtract_In1_1" port="Subtract_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Subtract_In2" type="data">
+      <var line="Subtract_In2_1" mode="extin" name="Subtract_In2_1" port="Subtract_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Subtract_Out1" priority="2" rate="0.1">
+    <input line="Subtract_Subtract_1" port="Subtract_Out1_1">
+      <connect block="Subtract_Subtract" port="Subtract_Subtract_1"/>
+    </input>
+    <var line="Subtract_Subtract_1" mode="input" name="Subtract_Subtract_1" port="Subtract_Out1_1" type="real_T"/>
+    <backword block="Subtract_Subtract" type="data">
+      <var line="Subtract_Subtract_1" mode="extout" name="Subtract_Subtract_1" port="Subtract_Subtract_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Subtract {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Subtract_M" type="extern RT_MODEL_Subtract * const"/>
+  <object kind="rtm-object" name="Subtract_M_" type="RT_MODEL_Subtract"/>
+  <object kind="rtm-pointer" name="Subtract_M" type="RT_MODEL_Subtract * const" value="&amp;Subtract_M_"/>
+  <includes file="&lt;stddef.h>" from="Subtract_ert_rtw/Subtract.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Subtract_ert_rtw/Subtract.h" index="1"/>
+  <includes file="&quot;Subtract_types.h&quot;" from="Subtract_ert_rtw/Subtract.h" index="2"/>
+  <includes file="&quot;Subtract_private.h&quot;" from="Subtract_ert_rtw/Subtract.c" index="3"/>
+</sm:blocks>

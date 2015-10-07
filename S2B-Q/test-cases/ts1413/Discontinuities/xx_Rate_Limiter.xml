@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Rate_Limiter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Rate_Limiter_In1" priority="0" rate="0.1">
+    <output line="Rate_Limiter_In1_1" port="Rate_Limiter_In1_1" usename="true">
+      <connect block="Rate_Limiter_RateLimiter" port="Rate_Limiter_RateLimiter_1"/>
+    </output>
+  </block>
+  <block blocktype="RateLimiter" name="Rate_Limiter_RateLimiter" priority="1" rate="0.1">
+    <input line="Rate_Limiter_In1_1" port="Rate_Limiter_RateLimiter_1">
+      <connect block="Rate_Limiter_In1" port="Rate_Limiter_In1_1"/>
+    </input>
+    <output line="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_RateLimiter_1" usename="true">
+      <connect block="Rate_Limiter_Out1" port="Rate_Limiter_Out1_1"/>
+    </output>
+    <param name="InitialCondition" storage="" type="double" value="0.0"/>
+    <param name="RisingSlewLimit" storage="" type="double" value="1.0"/>
+  </block>
+  <block blocktype="Outport" name="Rate_Limiter_Out1" priority="2" rate="0.1">
+    <input line="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_Out1_1">
+      <connect block="Rate_Limiter_RateLimiter" port="Rate_Limiter_RateLimiter_1"/>
+    </input>
+  </block>
+</sm:blocks>

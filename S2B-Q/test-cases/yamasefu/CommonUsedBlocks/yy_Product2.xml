@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Product2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Product2_ert_rtw/Product2.h" size="2528" timestamp="2015-10-05T16:55:38+0900" type="c-header"/>
+  <file name="xx_Product2.xml" size="1853" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="Product2_ert_rtw/Product2.c" size="1674" timestamp="2015-10-05T16:55:38+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Product2_In1" priority="0" rate="0.1">
+    <output line="Product2_In1_1" port="Product2_In1_1" usename="true">
+      <connect block="Product2_Product" port="Product2_Product_1"/>
+    </output>
+    <var line="Product2_In1_1" mode="extin" name="Product2_In1_1" port="Product2_In1_1" type="real_T"/>
+    <code file="Product2_ert_rtw/Product2.c" line="56" type="init">  Product2_In1_1 = 0.0;
+</code>
+    <forward block="Product2_Product" type="data">
+      <var line="Product2_In1_1" mode="input" name="Product2_In1_1" port="Product2_Product_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Product2_In2" priority="0" rate="0.1">
+    <output line="Product2_In2_1" port="Product2_In2_1" usename="true">
+      <connect block="Product2_Product" port="Product2_Product_2"/>
+    </output>
+    <var line="Product2_In2_1" mode="extin" name="Product2_In2_1" port="Product2_In2_1" type="real_T"/>
+    <code file="Product2_ert_rtw/Product2.c" line="57" type="init">  Product2_In2_1 = 0.0;
+</code>
+    <forward block="Product2_Product" type="data">
+      <var line="Product2_In2_1" mode="input" name="Product2_In2_1" port="Product2_Product_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="3" name="Product2_In3" priority="0" rate="0.1">
+    <output line="Product2_In3_1" port="Product2_In3_1" usename="true">
+      <connect block="Product2_Product" port="Product2_Product_3"/>
+    </output>
+    <var line="Product2_In3_1" mode="extin" name="Product2_In3_1" port="Product2_In3_1" type="real_T"/>
+    <code file="Product2_ert_rtw/Product2.c" line="58" type="init">  Product2_In3_1 = 0.0;
+</code>
+    <forward block="Product2_Product" type="data">
+      <var line="Product2_In3_1" mode="input" name="Product2_In3_1" port="Product2_Product_3" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Product" id="4" name="Product2_Product" priority="1" rate="0.1">
+    <input line="Product2_In1_1" port="Product2_Product_1">
+      <connect block="Product2_In1" port="Product2_In1_1"/>
+    </input>
+    <input line="Product2_In2_1" port="Product2_Product_2">
+      <connect block="Product2_In2" port="Product2_In2_1"/>
+    </input>
+    <input line="Product2_In3_1" port="Product2_Product_3">
+      <connect block="Product2_In3" port="Product2_In3_1"/>
+    </input>
+    <output line="Product2_Product_1" port="Product2_Product_1" usename="true">
+      <connect block="Product2_Out1" port="Product2_Out1_1"/>
+    </output>
+    <var line="Product2_In1_1" mode="input" name="Product2_In1_1" port="Product2_Product_1" type="real_T"/>
+    <var line="Product2_In2_1" mode="input" name="Product2_In2_1" port="Product2_Product_2" type="real_T"/>
+    <var line="Product2_In3_1" mode="input" name="Product2_In3_1" port="Product2_Product_3" type="real_T"/>
+    <var line="Product2_Product_1" mode="extout" name="Product2_Product_1" port="Product2_Product_1" type="real_T"/>
+    <code file="Product2_ert_rtw/Product2.c" line="34" type="task">  /* Product: '&lt;Root&gt;/Product' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   *  Inport: '&lt;Root&gt;/In3'
+   */
+  Product2_Product_1 = Product2_In1_1 / Product2_In2_1 * Product2_In3_1;
+</code>
+    <code file="Product2_ert_rtw/Product2.c" line="53" type="init">  Product2_Product_1 = 0.0;
+
+</code>
+    <forward block="Product2_Out1" type="data">
+      <var line="Product2_Product_1" mode="input" name="Product2_Product_1" port="Product2_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Product2_In1" type="data">
+      <var line="Product2_In1_1" mode="extin" name="Product2_In1_1" port="Product2_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Product2_In2" type="data">
+      <var line="Product2_In2_1" mode="extin" name="Product2_In2_1" port="Product2_In2_1" type="real_T"/>
+    </backword>
+    <backword block="Product2_In3" type="data">
+      <var line="Product2_In3_1" mode="extin" name="Product2_In3_1" port="Product2_In3_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="5" name="Product2_Out1" priority="2" rate="0.1">
+    <input line="Product2_Product_1" port="Product2_Out1_1">
+      <connect block="Product2_Product" port="Product2_Product_1"/>
+    </input>
+    <var line="Product2_Product_1" mode="input" name="Product2_Product_1" port="Product2_Out1_1" type="real_T"/>
+    <backword block="Product2_Product" type="data">
+      <var line="Product2_Product_1" mode="extout" name="Product2_Product_1" port="Product2_Product_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Product2_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Product2_M" type="extern RT_MODEL_Product2_T * const"/>
+  <object kind="rtm-object" name="Product2_M_" type="RT_MODEL_Product2_T"/>
+  <object kind="rtm-pointer" name="Product2_M" type="RT_MODEL_Product2_T * const" value="&amp;Product2_M_"/>
+  <includes file="&lt;stddef.h>" from="Product2_ert_rtw/Product2.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Product2_ert_rtw/Product2.h" index="1"/>
+  <includes file="&quot;Product2_types.h&quot;" from="Product2_ert_rtw/Product2.h" index="2"/>
+  <includes file="&quot;Product2_private.h&quot;" from="Product2_ert_rtw/Product2.c" index="3"/>
+</sm:blocks>

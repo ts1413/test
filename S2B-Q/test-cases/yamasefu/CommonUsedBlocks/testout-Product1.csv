@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Product1_In1_1",,
+"task100",,,,
+,"Product1_Product_1",,,
+"task2",,,,
+,"Product1_In1_1","Product1_Product_1",,
+,,,,"{
+"
+,,,,"  /* Product: '<Root>/Product' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Product1_Product_1 = Product1_In1_1 * Product1_In1_1;
+"
+,,,,"}
+"

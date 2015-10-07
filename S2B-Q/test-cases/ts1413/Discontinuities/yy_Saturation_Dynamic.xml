@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Saturation_Dynamic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.h" size="3295" timestamp="2015-09-29T13:38:37+0900" type="c-header"/>
+  <file name="xx_Saturation_Dynamic.xml" size="2402" timestamp="2015-10-07T15:40:39+0900" type="xml"/>
+  <file name="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.c" size="2954" timestamp="2015-09-29T13:38:37+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Saturation_Dynamic_In1" priority="0" rate="0.1">
+    <output line="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_In1_1" usename="true">
+      <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_2"/>
+    </output>
+    <var line="Saturation_Dynamic_In1_1" mode="extin" name="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_In1_1" type="real_T"/>
+    <code file="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.c" line="94" type="init">  Saturation_Dynamic_In1_1 = 0.0;
+</code>
+    <forward block="Saturation_Dynamic_SaturationDynamic" type="data">
+      <var line="Saturation_Dynamic_In1_1" mode="input" name="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_SaturationDynamic_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Saturation_Dynamic_In2" priority="0" rate="0.1">
+    <output line="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_In2_1" usename="true">
+      <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_1"/>
+    </output>
+    <var line="Saturation_Dynamic_In2_1" mode="extin" name="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_In2_1" type="real_T"/>
+    <code file="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.c" line="95" type="init">  Saturation_Dynamic_In2_1 = 0.0;
+</code>
+    <forward block="Saturation_Dynamic_SaturationDynamic" type="data">
+      <var line="Saturation_Dynamic_In2_1" mode="input" name="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_SaturationDynamic_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="3" name="Saturation_Dynamic_In3" priority="0" rate="0.1">
+    <output line="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_In3_1" usename="true">
+      <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_3"/>
+    </output>
+    <var line="Saturation_Dynamic_In3_1" mode="extin" name="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_In3_1" type="real_T"/>
+    <code file="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.c" line="96" type="init">  Saturation_Dynamic_In3_1 = 0.0;
+
+</code>
+    <forward block="Saturation_Dynamic_SaturationDynamic" type="data">
+      <var line="Saturation_Dynamic_In3_1" mode="input" name="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_SaturationDynamic_3" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_SaturationDynamic" id="4" name="Saturation_Dynamic_SaturationDynamic" priority="0" rate="0.1">
+    <input line="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_SaturationDynamic_1">
+      <connect block="Saturation_Dynamic_In2" port="Saturation_Dynamic_In2_1"/>
+    </input>
+    <input line="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_SaturationDynamic_2">
+      <connect block="Saturation_Dynamic_In1" port="Saturation_Dynamic_In1_1"/>
+    </input>
+    <input line="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_SaturationDynamic_3">
+      <connect block="Saturation_Dynamic_In3" port="Saturation_Dynamic_In3_1"/>
+    </input>
+    <output line="Saturation_Dynamic_SaturationDynamic_1" port="Saturation_Dynamic_SaturationDynamic_1" usename="true">
+      <connect block="Saturation_Dynamic_Out1" port="Saturation_Dynamic_Out1_1"/>
+    </output>
+    <var line="Saturation_Dynamic_In2_1" mode="input" name="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_SaturationDynamic_1" type="real_T"/>
+    <var line="Saturation_Dynamic_In1_1" mode="input" name="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_SaturationDynamic_2" type="real_T"/>
+    <var line="Saturation_Dynamic_In3_1" mode="input" name="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_SaturationDynamic_3" type="real_T"/>
+    <forward block="Saturation_Dynamic_Out1" type="data"/>
+    <backword block="Saturation_Dynamic_In1" type="data">
+      <var line="Saturation_Dynamic_In1_1" mode="extin" name="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Saturation_Dynamic_In2" type="data">
+      <var line="Saturation_Dynamic_In2_1" mode="extin" name="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_In2_1" type="real_T"/>
+    </backword>
+    <backword block="Saturation_Dynamic_In3" type="data">
+      <var line="Saturation_Dynamic_In3_1" mode="extin" name="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_In3_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="5" name="Saturation_Dynamic_Out1" priority="5" rate="0.1">
+    <input line="Saturation_Dynamic_SaturationDynamic_1" port="Saturation_Dynamic_Out1_1">
+      <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_1"/>
+    </input>
+    <var line="" mode="extout" name="Out1" port="" storage="Saturation_Dynamic_Y" type="real_T"/>
+    <code file="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.c" line="70" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (Saturation_Dynamic_B.LowerRelop1) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Outport: '&lt;Root&gt;/Out1' incorporates:
+     *  Inport: '&lt;Root&gt;/In2'
+     */
+    Saturation_Dynamic_Y.Out1 = Saturation_Dynamic_In2_1;
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  } else {
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+    /* Outport: '&lt;Root&gt;/Out1' */
+    Saturation_Dynamic_Y.Out1 = Saturation_Dynamic_B.Switch;
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+    <code file="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.c" line="99" type="init">  Saturation_Dynamic_Y.Out1 = 0.0;
+</code>
+    <backword block="Saturation_Dynamic_SaturationDynamic" type="data"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Saturation_Dynamic {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Saturation_Dynamic_M" type="extern RT_MODEL_Saturation_Dynamic * const"/>
+  <object kind="rtm-object" name="Saturation_Dynamic_M_" type="RT_MODEL_Saturation_Dynamic"/>
+  <object kind="rtm-pointer" name="Saturation_Dynamic_M" type="RT_MODEL_Saturation_Dynamic * const" value="&amp;Saturation_Dynamic_M_"/>
+  <includes file="&lt;stddef.h>" from="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.h" index="0"/>
+  <includes file="&lt;string.h>" from="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.h" index="2"/>
+  <includes file="&quot;Saturation_Dynamic_types.h&quot;" from="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.h" index="3"/>
+  <includes file="&quot;Saturation_Dynamic_private.h&quot;" from="Saturation_Dynamic_ert_rtw/Saturation_Dynamic.c" index="4"/>
+</sm:blocks>

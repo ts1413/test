@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	fcn_Fcn	 [label="t2\nfcn_Fcn"];
+	t0 -> fcn_Fcn	 [color=green,
+		label="ch_0_2(fcn_In1_1)"];
+	extout	 [label=extout];
+	fcn_In1	 [label="t1\nfcn_In1",
+		shape=box];
+	fcn_In1 -> t0	 [color=green,
+		label="in port fcn_In1(fcn_In1_1)"];
+	fcn_Fcn -> extout	 [color=green,
+		label="ch_2_100(fcn_Fcn_1)"];
+}

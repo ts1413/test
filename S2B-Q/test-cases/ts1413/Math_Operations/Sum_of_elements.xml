@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Sum_of_elements" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Sum_of_elements_In1" rate="-1">
+      <output line="Sum_of_elements_In1_1" port="Sum_of_elements_In1_1" usename="true">
+         <connect block="Sum_of_elements_SumofElements" port="Sum_of_elements_SumofElements_1"/>
+      </output>
+   </block>
+   <block blocktype="Sum" name="Sum_of_elements_SumofElements" rate="-1">
+      <input line="Sum_of_elements_In1_1" port="Sum_of_elements_SumofElements_1">
+         <connect block="Sum_of_elements_In1" port="Sum_of_elements_In1_1"/>
+      </input>
+      <output line="Sum_of_elements_SumofElements_1" port="Sum_of_elements_SumofElements_1" usename="true">
+         <connect block="Sum_of_elements_Out1" port="Sum_of_elements_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Sum_of_elements_Out1" rate="-1">
+      <input line="Sum_of_elements_SumofElements_1" port="Sum_of_elements_Out1_1">
+         <connect block="Sum_of_elements_SumofElements" port="Sum_of_elements_SumofElements_1"/>
+      </input>
+   </block>
+</sm:blocks>

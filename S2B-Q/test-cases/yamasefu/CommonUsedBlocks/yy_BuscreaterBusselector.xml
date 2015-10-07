@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="BuscreaterBusselector" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="BuscreaterBusselector_ert_rtw/BuscreaterBusselector.h" size="2560" timestamp="2015-09-29T13:44:25+0900" type="c-header"/>
+  <file name="xx_BuscreaterBusselector.xml" size="2795" timestamp="2015-10-07T15:40:42+0900" type="xml"/>
+  <file name="BuscreaterBusselector_ert_rtw/BuscreaterBusselector.c" size="1386" timestamp="2015-09-29T13:44:25+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="BuscreaterBusselector_In1" priority="0" rate="0.1">
+    <output line="BuscreaterBusselector_In1_1" port="BuscreaterBusselector_In1_1" usename="true">
+      <connect block="BuscreaterBusselector_BusCreator" port="BuscreaterBusselector_BusCreator_1"/>
+      <connect block="BuscreaterBusselector_BusCreator" port="BuscreaterBusselector_BusCreator_2"/>
+    </output>
+    <var line="BuscreaterBusselector_In1_1" mode="extin" name="BuscreaterBusselector_In1_1" port="BuscreaterBusselector_In1_1" type="real_T"/>
+    <code file="BuscreaterBusselector_ert_rtw/BuscreaterBusselector.c" line="44" type="init">  BuscreaterBusselector_In1_1 = 0.0;
+</code>
+    <forward block="BuscreaterBusselector_BusCreator" type="port">
+      <var line="BuscreaterBusselector_In1_1" mode="input" name="BuscreaterBusselector_In1_1" port="BuscreaterBusselector_BusCreator_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="BusCreator" id="2" name="BuscreaterBusselector_BusCreator" priority="0" rate="0.1">
+    <input line="BuscreaterBusselector_In1_1" port="BuscreaterBusselector_BusCreator_1">
+      <connect block="BuscreaterBusselector_In1" port="BuscreaterBusselector_In1_1"/>
+    </input>
+    <input line="BuscreaterBusselector_In1_1" port="BuscreaterBusselector_BusCreator_2">
+      <connect block="BuscreaterBusselector_In1" port="BuscreaterBusselector_In1_1"/>
+    </input>
+    <output line="BuscreaterBusselector_BusCreator_1" port="BuscreaterBusselector_BusCreator_1" usename="true">
+      <connect block="BuscreaterBusselector_BusSelector" port="BuscreaterBusselector_BusSelector_1"/>
+    </output>
+    <var line="BuscreaterBusselector_In1_1" mode="input" name="BuscreaterBusselector_In1_1" port="BuscreaterBusselector_BusCreator_1" type="real_T"/>
+    <forward block="BuscreaterBusselector_BusSelector" type="data"/>
+    <backword block="BuscreaterBusselector_In1" type="port">
+      <var line="BuscreaterBusselector_In1_1" mode="extin" name="BuscreaterBusselector_In1_1" port="BuscreaterBusselector_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="BusSelector" id="3" name="BuscreaterBusselector_BusSelector" priority="0" rate="0.1">
+    <input line="BuscreaterBusselector_BusCreator_1" port="BuscreaterBusselector_BusSelector_1">
+      <connect block="BuscreaterBusselector_BusCreator" port="BuscreaterBusselector_BusCreator_1"/>
+    </input>
+    <output line="&lt;BuscreaterBusselector_In1_1 (signal 1)>" port="BuscreaterBusselector_BusSelector_1" usename="true">
+      <connect block="BuscreaterBusselector_Out1" port="BuscreaterBusselector_Out1_1"/>
+    </output>
+    <output line="&lt;BuscreaterBusselector_In1_1 (signal 2)>" port="BuscreaterBusselector_BusSelector_2" usename="true">
+      <connect block="BuscreaterBusselector_Out2" port="BuscreaterBusselector_Out2_1"/>
+    </output>
+    <forward block="BuscreaterBusselector_Out1" type="port"/>
+    <forward block="BuscreaterBusselector_Out2" type="port"/>
+    <backword block="BuscreaterBusselector_BusCreator" type="data"/>
+  </block>
+  <block blocktype="Outport" id="4" name="BuscreaterBusselector_Out1" priority="1" rate="0.1">
+    <input line="&lt;BuscreaterBusselector_In1_1 (signal 1)>" port="BuscreaterBusselector_Out1_1">
+      <connect block="BuscreaterBusselector_BusSelector" port="BuscreaterBusselector_BusSelector_1"/>
+    </input>
+    <backword block="BuscreaterBusselector_BusSelector" type="port"/>
+  </block>
+  <block blocktype="Outport" id="5" name="BuscreaterBusselector_Out2" priority="2" rate="0.1">
+    <input line="&lt;BuscreaterBusselector_In1_1 (signal 2)>" port="BuscreaterBusselector_Out2_1">
+      <connect block="BuscreaterBusselector_BusSelector" port="BuscreaterBusselector_BusSelector_2"/>
+    </input>
+    <backword block="BuscreaterBusselector_BusSelector" type="port"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_BuscreaterBusselector_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="BuscreaterBusselector_M" type="extern RT_MODEL_BuscreaterBusselecto_T * const"/>
+  <object kind="rtm-object" name="BuscreaterBusselector_M_" type="RT_MODEL_BuscreaterBusselecto_T"/>
+  <object kind="rtm-pointer" name="BuscreaterBusselector_M" type="RT_MODEL_BuscreaterBusselecto_T * const" value="&amp;BuscreaterBusselector_M_"/>
+  <includes file="&lt;stddef.h>" from="BuscreaterBusselector_ert_rtw/BuscreaterBusselector.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="BuscreaterBusselector_ert_rtw/BuscreaterBusselector.h" index="1"/>
+  <includes file="&quot;BuscreaterBusselector_types.h&quot;" from="BuscreaterBusselector_ert_rtw/BuscreaterBusselector.h" index="2"/>
+  <includes file="&quot;BuscreaterBusselector_private.h&quot;" from="BuscreaterBusselector_ert_rtw/BuscreaterBusselector.c" index="3"/>
+</sm:blocks>

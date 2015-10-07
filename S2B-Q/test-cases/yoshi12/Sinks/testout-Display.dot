@@ -1,0 +1,5 @@
+digraph csp {
+	graph [rankdir=LR];
+	t0;
+	extout	 [label=extout];
+}

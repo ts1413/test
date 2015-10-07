@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Wrap_To_Zero" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.h" size="2677" timestamp="2015-09-29T13:38:43+0900" type="c-header"/>
+  <file name="xx_Wrap_To_Zero.xml" size="1299" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.c" size="1680" timestamp="2015-09-29T13:38:43+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Wrap_To_Zero_In1" priority="0" rate="0.1">
+    <output line="Wrap_To_Zero_In1_1" port="Wrap_To_Zero_In1_1" usename="true">
+      <connect block="Wrap_To_Zero_WrapToZero" port="Wrap_To_Zero_WrapToZero_1"/>
+    </output>
+    <var line="Wrap_To_Zero_In1_1" mode="extin" name="Wrap_To_Zero_In1_1" port="Wrap_To_Zero_In1_1" type="real_T"/>
+    <code file="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.c" line="57" type="init">  Wrap_To_Zero_In1_1 = 0.0;
+
+</code>
+    <forward block="Wrap_To_Zero_WrapToZero" type="data">
+      <var line="Wrap_To_Zero_In1_1" mode="input" name="Wrap_To_Zero_In1_1" port="Wrap_To_Zero_WrapToZero_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_WrapToZero" id="2" name="Wrap_To_Zero_WrapToZero" priority="0" rate="0.1">
+    <input line="Wrap_To_Zero_In1_1" port="Wrap_To_Zero_WrapToZero_1">
+      <connect block="Wrap_To_Zero_In1" port="Wrap_To_Zero_In1_1"/>
+    </input>
+    <output line="Wrap_To_Zero_WrapToZero_1" port="Wrap_To_Zero_WrapToZero_1" usename="true">
+      <connect block="Wrap_To_Zero_Out1" port="Wrap_To_Zero_Out1_1"/>
+    </output>
+    <var line="Wrap_To_Zero_In1_1" mode="input" name="Wrap_To_Zero_In1_1" port="Wrap_To_Zero_WrapToZero_1" type="real_T"/>
+    <param name="Threshold" storage="" type="double" value="255.0"/>
+    <forward block="Wrap_To_Zero_Out1" type="data"/>
+    <backword block="Wrap_To_Zero_In1" type="data">
+      <var line="Wrap_To_Zero_In1_1" mode="extin" name="Wrap_To_Zero_In1_1" port="Wrap_To_Zero_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Wrap_To_Zero_Out1" priority="3" rate="0.1">
+    <input line="Wrap_To_Zero_WrapToZero_1" port="Wrap_To_Zero_Out1_1">
+      <connect block="Wrap_To_Zero_WrapToZero" port="Wrap_To_Zero_WrapToZero_1"/>
+    </input>
+    <var line="" mode="extout" name="Out1" port="" storage="Wrap_To_Zero_Y" type="real_T"/>
+    <code file="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.c" line="41" type="task">/*&lt;&lt;&lt; S 1 none &lt;&lt;&lt;*/
+  if (Wrap_To_Zero_In1_1 &gt; 255.0) {
+/*&gt;&gt;&gt; S 1 none &gt;&gt;&gt;*/
+    /* Outport: '&lt;Root&gt;/Out1' incorporates:
+     *  Constant: '&lt;S1&gt;/Constant'
+     */
+    Wrap_To_Zero_Y.Out1 = 0.0;
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  } else {
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+    /* Outport: '&lt;Root&gt;/Out1' */
+    Wrap_To_Zero_Y.Out1 = Wrap_To_Zero_In1_1;
+/*&lt;&lt;&lt; E 1 none &lt;&lt;&lt;*/
+  }
+/*&gt;&gt;&gt; E 1 none &gt;&gt;&gt;*/
+</code>
+    <code file="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.c" line="60" type="init">  Wrap_To_Zero_Y.Out1 = 0.0;
+</code>
+    <backword block="Wrap_To_Zero_WrapToZero" type="data"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Wrap_To_Zero {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Wrap_To_Zero_M" type="extern RT_MODEL_Wrap_To_Zero * const"/>
+  <object kind="rtm-object" name="Wrap_To_Zero_M_" type="RT_MODEL_Wrap_To_Zero"/>
+  <object kind="rtm-pointer" name="Wrap_To_Zero_M" type="RT_MODEL_Wrap_To_Zero * const" value="&amp;Wrap_To_Zero_M_"/>
+  <includes file="&lt;stddef.h>" from="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.h" index="1"/>
+  <includes file="&quot;Wrap_To_Zero_types.h&quot;" from="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.h" index="2"/>
+  <includes file="&quot;Wrap_To_Zero_private.h&quot;" from="Wrap_To_Zero_ert_rtw/Wrap_To_Zero.c" index="3"/>
+</sm:blocks>

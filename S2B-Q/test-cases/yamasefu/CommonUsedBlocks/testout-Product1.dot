@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Product1_Product	 [label="t2\nProduct1_Product"];
+	t0 -> Product1_Product	 [color=green,
+		label="ch_0_2(Product1_In1_1)"];
+	extout	 [label=extout];
+	Product1_In1	 [label="t1\nProduct1_In1",
+		shape=box];
+	Product1_In1 -> t0	 [color=green,
+		label="in port Product1_In1(Product1_In1_1)"];
+	Product1_Product -> extout	 [color=green,
+		label="ch_2_100(Product1_Product_1)"];
+}

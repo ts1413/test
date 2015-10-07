@@ -1,0 +1,11 @@
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Combinatorial_Logic" samplePeriod=0.1
+InDataPort portNumber=1 dataType="boolean[3]"
+OutDataPort portNumber=1 dataType="boolean[2]"
+Block "Combinatorial_Logic/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="boolean[3]"
+Block "Combinatorial_Logic/CombinatorialLogic" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="boolean[3]"
+OutDataPort portNumber=1 dataType="boolean[2]"
+Block "Combinatorial_Logic/Out1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="boolean[2]"

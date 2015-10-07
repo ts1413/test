@@ -1,0 +1,10 @@
+digraph csp {
+	graph [rankdir=LR];
+	extout	 [label=extout];
+	t0 -> extout	 [color=green,
+		label="ch_0_100()"];
+	MuxDemux_In1	 [label="t1\nMuxDemux_In1",
+		shape=box];
+	MuxDemux_In1 -> t0	 [color=green,
+		label="in port MuxDemux_In1()"];
+}

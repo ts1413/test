@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="LookupTablenD" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="LookupTablenD_In1" rate="-1">
+      <output line="LookupTablenD_In1_1" port="LookupTablenD_In1_1" usename="true">
+         <connect block="LookupTablenD_n_DLookupTable" port="LookupTablenD_n_DLookupTable_1"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="LookupTablenD_In2" rate="-1">
+      <output line="LookupTablenD_In2_1" port="LookupTablenD_In2_1" usename="true">
+         <connect block="LookupTablenD_n_DLookupTable" port="LookupTablenD_n_DLookupTable_2"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="LookupTablenD_In3" rate="-1">
+      <output line="LookupTablenD_In3_1" port="LookupTablenD_In3_1" usename="true">
+         <connect block="LookupTablenD_n_DLookupTable" port="LookupTablenD_n_DLookupTable_3"/>
+      </output>
+   </block>
+   <block blocktype="Lookup_n-D" name="LookupTablenD_n_DLookupTable" rate="-1">
+      <input line="LookupTablenD_In1_1" port="LookupTablenD_n_DLookupTable_1">
+         <connect block="LookupTablenD_In1" port="LookupTablenD_In1_1"/>
+      </input>
+      <input line="LookupTablenD_In2_1" port="LookupTablenD_n_DLookupTable_2">
+         <connect block="LookupTablenD_In2" port="LookupTablenD_In2_1"/>
+      </input>
+      <input line="LookupTablenD_In3_1" port="LookupTablenD_n_DLookupTable_3">
+         <connect block="LookupTablenD_In3" port="LookupTablenD_In3_1"/>
+      </input>
+      <output line="LookupTablenD_n_DLookupTable_1" port="LookupTablenD_n_DLookupTable_1" usename="true">
+         <connect block="LookupTablenD_Out1" port="LookupTablenD_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="LookupTablenD_Out1" rate="-1">
+      <input line="LookupTablenD_n_DLookupTable_1" port="LookupTablenD_Out1_1">
+         <connect block="LookupTablenD_n_DLookupTable" port="LookupTablenD_n_DLookupTable_1"/>
+      </input>
+   </block>
+</sm:blocks>

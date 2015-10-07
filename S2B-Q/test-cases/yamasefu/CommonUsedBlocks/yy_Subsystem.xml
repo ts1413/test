@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Subsystem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Subsystem_ert_rtw/Subsystem.h" size="2403" timestamp="2015-10-05T16:56:06+0900" type="c-header"/>
+  <file name="xx_Subsystem.xml" size="1818" timestamp="2015-10-07T15:40:43+0900" type="xml"/>
+  <file name="Subsystem_ert_rtw/Subsystem.c" size="1219" timestamp="2015-10-05T16:56:06+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Subsystem_In1" priority="0" rate="0.1">
+    <output line="Subsystem_In1_1" port="Subsystem_In1_1" usename="true">
+      <connect block="Subsystem_Subsystem" port="Subsystem_Subsystem_In1"/>
+    </output>
+    <var line="Subsystem_In1_1" mode="extin" name="Subsystem_In1_1" port="Subsystem_In1_1" type="real_T"/>
+    <code file="Subsystem_ert_rtw/Subsystem.c" line="43" type="init">  Subsystem_In1_1 = 0.0;
+</code>
+    <forward block="Subsystem_Out1" type="port">
+      <var line="Subsystem_Subsystem_1" mode="input" name="Subsystem_In1_1" port="Subsystem_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block TreatAsAtomicUnit="off" blocktype="SubSystem" id="2" name="Subsystem_Subsystem" priority="0" rate="0.1">
+    <input line="Subsystem_In1_1" port="Subsystem_Subsystem_In1">
+      <connect block="Subsystem_In1" port="Subsystem_In1_1"/>
+    </input>
+    <output line="Subsystem_Subsystem_1" port="Subsystem_Subsystem_Out1" usename="false">
+      <connect block="Subsystem_Out1" port="Subsystem_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="3" name="Subsystem_Subsystem_In1" priority="0" rate="0.1">
+        <output line="Subsystem_Subsystem_In1_1" port="Subsystem_Subsystem_In1_1" usename="false">
+          <connect block="Subsystem_Subsystem_Out1" port="Subsystem_Subsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="Outport" id="4" name="Subsystem_Subsystem_Out1" priority="0" rate="0.1">
+        <input line="Subsystem_Subsystem_In1_1" port="Subsystem_Subsystem_Out1_1">
+          <connect block="Subsystem_Subsystem_In1" port="Subsystem_Subsystem_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Outport" id="5" name="Subsystem_Out1" priority="1" rate="0.1">
+    <input line="Subsystem_Subsystem_1" port="Subsystem_Out1_1">
+      <connect block="Subsystem_Subsystem" port="Subsystem_Subsystem_Out1"/>
+    </input>
+    <var line="Subsystem_Subsystem_1" mode="input" name="Subsystem_In1_1" port="Subsystem_Out1_1" type="real_T"/>
+    <backword block="Subsystem_In1" type="port">
+      <var line="Subsystem_In1_1" mode="extin" name="Subsystem_In1_1" port="Subsystem_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Subsystem_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Subsystem_M" type="extern RT_MODEL_Subsystem_T * const"/>
+  <object kind="rtm-object" name="Subsystem_M_" type="RT_MODEL_Subsystem_T"/>
+  <object kind="rtm-pointer" name="Subsystem_M" type="RT_MODEL_Subsystem_T * const" value="&amp;Subsystem_M_"/>
+  <includes file="&lt;stddef.h>" from="Subsystem_ert_rtw/Subsystem.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Subsystem_ert_rtw/Subsystem.h" index="1"/>
+  <includes file="&quot;Subsystem_types.h&quot;" from="Subsystem_ert_rtw/Subsystem.h" index="2"/>
+  <includes file="&quot;Subsystem_private.h&quot;" from="Subsystem_ert_rtw/Subsystem.c" index="3"/>
+</sm:blocks>

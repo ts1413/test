@@ -1,0 +1,64 @@
+Warning: unknown variable Signal_Conversion_Bus_BusCreator_1@Signal_Conversion_Bus_BusCreator(output)
+Warning: unknown variable Signal_Conversion_Bus_SignalConversion_1@Signal_Conversion_Bus_BusSelector(input)
+Warning: unknown variable Signal_Conversion_Bus_BusSelector_signal1@Signal_Conversion_Bus_BusSelector(extout)
+Warning: unknown variable Signal_Conversion_Bus_BusSelector_signal1@Signal_Conversion_Bus_Out1(input)
+Warning: unknown variable Signal_Conversion_Bus_BusCreator_1@Signal_Conversion_Bus_SignalConversion(input)
+Warning: unknown variable Signal_Conversion_Bus_SignalConversion_1@Signal_Conversion_Bus_SignalConversion(output)
+-- all system --
+System=<Root>, Layer=Signal_Conversion_Bus, Symbol=Signal_Conversion_Bus
+-- dump all external variables --
+Type=real_T, Var=Signal_Conversion_Bus_In1_1, id=[2], Sys=<Root>/In1
+-- dump all --
+BusCreator::Signal_Conversion_Bus_BusCreator
+  -- input variables --
+  real_T Signal_Conversion_Bus_In1_1 @ [line=Signal_Conversion_Bus_In1_1,port=Signal_Conversion_Bus_BusCreator_1]
+  -- output variables --
+  Signal_Conversion_Bus_BusCreator_1: unknown
+  -- input channels --
+  var=Signal_Conversion_Bus_In1_1 <= [block=Signal_Conversion_Bus_In1,line=Signal_Conversion_Bus_In1_1,port=Signal_Conversion_Bus_In1_1]
+  -- output channels --
+  var=Signal_Conversion_Bus_BusCreator_1: unknown
+BusSelector::Signal_Conversion_Bus_BusSelector
+  -- input variables --
+  Signal_Conversion_Bus_SignalConversion_1: unknown
+  -- output variables --
+  Signal_Conversion_Bus_BusSelector_signal1: unknown
+  -- input channels --
+  var=Signal_Conversion_Bus_SignalConversion_1: unknown
+  -- output channels --
+  var=Signal_Conversion_Bus_BusSelector_signal1: unknown
+Inport::Signal_Conversion_Bus_In1
+  -- output variables --
+  real_T Signal_Conversion_Bus_In1_1 @ [line=Signal_Conversion_Bus_In1_1,port=Signal_Conversion_Bus_In1_1]
+  -- initialize code --
+  Signal_Conversion_Bus_In1_1 = 0.0;
+
+  -- output channels --
+  var=Signal_Conversion_Bus_In1_1 => [block=Signal_Conversion_Bus_BusCreator,line=Signal_Conversion_Bus_In1_1,port=Signal_Conversion_Bus_BusCreator_1]
+Outport::Signal_Conversion_Bus_Out1
+  -- input variables --
+  Signal_Conversion_Bus_BusSelector_signal1: unknown
+  -- code --
+  /* Outport: '<Root>/Out1' */
+  Signal_Conversion_Bus_Y.Out1 =
+    Signal_Conversion_Bus_B.SignalConversion_BusCreator_1.a;
+  -- initialize code --
+  Signal_Conversion_Bus_Y.Out1 = 0.0;
+  -- input channels --
+  var=Signal_Conversion_Bus_BusSelector_signal1: unknown
+SignalConversion::Signal_Conversion_Bus_SignalConversion
+  -- input variables --
+  Signal_Conversion_Bus_BusCreator_1: unknown
+  -- output variables --
+  Signal_Conversion_Bus_SignalConversion_1: unknown
+  -- code --
+  /* BusCreator: '<Root>/SignalConversion' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Signal_Conversion_Bus_B.SignalConversion_BusCreator_1.a =
+    Signal_Conversion_Bus_In1_1;
+
+  -- input channels --
+  var=Signal_Conversion_Bus_BusCreator_1: unknown
+  -- output channels --
+  var=Signal_Conversion_Bus_SignalConversion_1: unknown

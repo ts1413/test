@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Transfer_Fcn_Real_Zero" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Transfer_Fcn_Real_Zero_In1" rate="-1">
+      <output line="Transfer_Fcn_Real_Zero_In1_1" port="Transfer_Fcn_Real_Zero_In1_1" usename="true">
+         <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Transfer_Fcn_Real_Zero_TransferFcnRealZero">
+      <input line="Transfer_Fcn_Real_Zero_In1_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u">
+         <connect block="Transfer_Fcn_Real_Zero_In1" port="Transfer_Fcn_Real_Zero_In1_1"/>
+      </input>
+      <output line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_y" usename="false">
+         <connect block="Transfer_Fcn_Real_Zero_Out1" port="Transfer_Fcn_Real_Zero_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u" rate="-1">
+            <output line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1" usename="false">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp_1"/>
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp_2"/>
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput_1"/>
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_1"/>
+            </output>
+         </block>
+         <block blocktype="S-Function" name="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp">
+            <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp_1">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1"/>
+            </input>
+            <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp_2">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1"/>
+            </input>
+            <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp_3">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_1"/>
+            </input>
+         </block>
+         <block blocktype="UnitDelay" name="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput" rate="-1">
+            <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput_1">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1"/>
+            </input>
+            <output line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput_Uk_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput_1" usename="true">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero_1"/>
+            </output>
+         </block>
+         <block blocktype="Gain" name="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero" rate="-1">
+            <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput_Uk_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero_1">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DelayInput_1"/>
+            </input>
+            <output line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero_ZeroUk_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero_1" usename="true">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_2"/>
+            </output>
+         </block>
+         <block blocktype="Sum" name="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum" rate="-1">
+            <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_1">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_u_1"/>
+            </input>
+            <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero_ZeroUk_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_2">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_GainZero_1"/>
+            </input>
+            <output line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_1" usename="true">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_DataTypeProp_3"/>
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_y" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_y_1"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="Transfer_Fcn_Real_Zero_TransferFcnRealZero_y" rate="-1">
+            <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_1" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_y_1">
+               <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_Sum_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Transfer_Fcn_Real_Zero_Out1" rate="-1">
+      <input line="Transfer_Fcn_Real_Zero_TransferFcnRealZero_1" port="Transfer_Fcn_Real_Zero_Out1_1">
+         <connect block="Transfer_Fcn_Real_Zero_TransferFcnRealZero" port="Transfer_Fcn_Real_Zero_TransferFcnRealZero_y"/>
+      </input>
+   </block>
+</sm:blocks>

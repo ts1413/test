@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Sum2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Sum2_ert_rtw/Sum2.h" size="2518" timestamp="2015-10-05T16:56:23+0900" type="c-header"/>
+  <file name="xx_Sum2.xml" size="1960" timestamp="2015-10-07T15:40:44+0900" type="xml"/>
+  <file name="Sum2_ert_rtw/Sum2.c" size="1692" timestamp="2015-10-05T16:56:23+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Sum2_In1" priority="0" rate="0.1">
+    <output line="Sum2_In1_1" port="Sum2_In1_1" usename="true">
+      <connect block="Sum2_Sum" port="Sum2_Sum_1"/>
+    </output>
+    <var line="Sum2_In1_1" mode="extin" name="Sum2_In1_1" port="Sum2_In1_1" type="real_T"/>
+    <code file="Sum2_ert_rtw/Sum2.c" line="58" type="init">  Sum2_In1_1 = 0.0;
+</code>
+    <forward block="Sum2_Sum" type="data">
+      <var line="Sum2_In1_1" mode="input" name="Sum2_In1_1" port="Sum2_Sum_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Sum2_In2" priority="0" rate="0.1">
+    <output line="Sum2_In2_1" port="Sum2_In2_1" usename="true">
+      <connect block="Sum2_Sum" port="Sum2_Sum_2"/>
+    </output>
+    <var line="Sum2_In2_1" mode="extin" name="Sum2_In2_1" port="Sum2_In2_1" type="real_T"/>
+    <code file="Sum2_ert_rtw/Sum2.c" line="59" type="init">  Sum2_In2_1 = 0.0;
+</code>
+    <forward block="Sum2_Sum" type="data">
+      <var line="Sum2_In2_1" mode="input" name="Sum2_In2_1" port="Sum2_Sum_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="3" name="Sum2_In3" priority="0" rate="0.1">
+    <output line="Sum2_In3_1" port="Sum2_In3_1" usename="true">
+      <connect block="Sum2_Sum" port="Sum2_Sum_3"/>
+    </output>
+    <var line="Sum2_In3_1" mode="extin" name="Sum2_In3_1" port="Sum2_In3_1" type="real_T"/>
+    <code file="Sum2_ert_rtw/Sum2.c" line="60" type="init">  Sum2_In3_1 = 0.0;
+</code>
+    <forward block="Sum2_Sum" type="data">
+      <var line="Sum2_In3_1" mode="input" name="Sum2_In3_1" port="Sum2_Sum_3" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="4" name="Sum2_In4" priority="0" rate="0.1">
+    <output line="Sum2_In4_1" port="Sum2_In4_1" usename="true">
+      <connect block="Sum2_Sum" port="Sum2_Sum_4"/>
+    </output>
+    <var line="Sum2_In4_1" mode="extin" name="Sum2_In4_1" port="Sum2_In4_1" type="real_T"/>
+    <code file="Sum2_ert_rtw/Sum2.c" line="61" type="init">  Sum2_In4_1 = 0.0;
+</code>
+    <forward block="Sum2_Sum" type="data">
+      <var line="Sum2_In4_1" mode="input" name="Sum2_In4_1" port="Sum2_Sum_4" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Sum" id="5" name="Sum2_Sum" priority="1" rate="0.1">
+    <input line="Sum2_In1_1" port="Sum2_Sum_1">
+      <connect block="Sum2_In1" port="Sum2_In1_1"/>
+    </input>
+    <input line="Sum2_In2_1" port="Sum2_Sum_2">
+      <connect block="Sum2_In2" port="Sum2_In2_1"/>
+    </input>
+    <input line="Sum2_In3_1" port="Sum2_Sum_3">
+      <connect block="Sum2_In3" port="Sum2_In3_1"/>
+    </input>
+    <input line="Sum2_In4_1" port="Sum2_Sum_4">
+      <connect block="Sum2_In4" port="Sum2_In4_1"/>
+    </input>
+    <output line="Sum2_Sum_1" port="Sum2_Sum_1" usename="true">
+      <connect block="Sum2_Out1" port="Sum2_Out1_1"/>
+    </output>
+    <var line="Sum2_In1_1" mode="input" name="Sum2_In1_1" port="Sum2_Sum_1" type="real_T"/>
+    <var line="Sum2_In2_1" mode="input" name="Sum2_In2_1" port="Sum2_Sum_2" type="real_T"/>
+    <var line="Sum2_In3_1" mode="input" name="Sum2_In3_1" port="Sum2_Sum_3" type="real_T"/>
+    <var line="Sum2_In4_1" mode="input" name="Sum2_In4_1" port="Sum2_Sum_4" type="real_T"/>
+    <var line="Sum2_Sum_1" mode="extout" name="Sum2_Sum_1" port="Sum2_Sum_1" type="real_T"/>
+    <code file="Sum2_ert_rtw/Sum2.c" line="35" type="task">  /* Sum: '&lt;Root&gt;/Sum' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   *  Inport: '&lt;Root&gt;/In3'
+   *  Inport: '&lt;Root&gt;/In4'
+   */
+  Sum2_Sum_1 = ((Sum2_In1_1 + Sum2_In2_1) - Sum2_In3_1) - Sum2_In4_1;
+</code>
+    <code file="Sum2_ert_rtw/Sum2.c" line="55" type="init">  Sum2_Sum_1 = 0.0;
+
+</code>
+    <forward block="Sum2_Out1" type="data">
+      <var line="Sum2_Sum_1" mode="input" name="Sum2_Sum_1" port="Sum2_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Sum2_In1" type="data">
+      <var line="Sum2_In1_1" mode="extin" name="Sum2_In1_1" port="Sum2_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Sum2_In2" type="data">
+      <var line="Sum2_In2_1" mode="extin" name="Sum2_In2_1" port="Sum2_In2_1" type="real_T"/>
+    </backword>
+    <backword block="Sum2_In3" type="data">
+      <var line="Sum2_In3_1" mode="extin" name="Sum2_In3_1" port="Sum2_In3_1" type="real_T"/>
+    </backword>
+    <backword block="Sum2_In4" type="data">
+      <var line="Sum2_In4_1" mode="extin" name="Sum2_In4_1" port="Sum2_In4_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="6" name="Sum2_Out1" priority="2" rate="0.1">
+    <input line="Sum2_Sum_1" port="Sum2_Out1_1">
+      <connect block="Sum2_Sum" port="Sum2_Sum_1"/>
+    </input>
+    <var line="Sum2_Sum_1" mode="input" name="Sum2_Sum_1" port="Sum2_Out1_1" type="real_T"/>
+    <backword block="Sum2_Sum" type="data">
+      <var line="Sum2_Sum_1" mode="extout" name="Sum2_Sum_1" port="Sum2_Sum_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Sum2_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Sum2_M" type="extern RT_MODEL_Sum2_T * const"/>
+  <object kind="rtm-object" name="Sum2_M_" type="RT_MODEL_Sum2_T"/>
+  <object kind="rtm-pointer" name="Sum2_M" type="RT_MODEL_Sum2_T * const" value="&amp;Sum2_M_"/>
+  <includes file="&lt;stddef.h>" from="Sum2_ert_rtw/Sum2.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Sum2_ert_rtw/Sum2.h" index="1"/>
+  <includes file="&quot;Sum2_types.h&quot;" from="Sum2_ert_rtw/Sum2.h" index="2"/>
+  <includes file="&quot;Sum2_private.h&quot;" from="Sum2_ert_rtw/Sum2.c" index="3"/>
+</sm:blocks>

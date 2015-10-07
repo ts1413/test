@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Transfer_Fcn_First_Order" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Transfer_Fcn_First_Order_In1" rate="-1">
+      <output line="Transfer_Fcn_First_Order_In1_1" port="Transfer_Fcn_First_Order_In1_1" usename="true">
+         <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder">
+      <input line="Transfer_Fcn_First_Order_In1_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U">
+         <connect block="Transfer_Fcn_First_Order_In1" port="Transfer_Fcn_First_Order_In1_1"/>
+      </input>
+      <output line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Y" usename="false">
+         <connect block="Transfer_Fcn_First_Order_Out1" port="Transfer_Fcn_First_Order_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U" rate="-1">
+            <output line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U_1" usename="false">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate_2"/>
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff_2"/>
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_2"/>
+            </output>
+         </block>
+         <block blocktype="DataTypeDuplicate" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate">
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate_1">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1"/>
+            </input>
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate_2">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U_1"/>
+            </input>
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain_PoleYk_1_Uk" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate_3">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain_1"/>
+            </input>
+         </block>
+         <block blocktype="Sum" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff" rate="-1">
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD_Yk_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff_1">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD_1"/>
+            </input>
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff_2">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U_1"/>
+            </input>
+            <output line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff_Yk_1_Uk" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff_1" usename="true">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain_1"/>
+            </output>
+         </block>
+         <block blocktype="Gain" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain" rate="-1">
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff_Yk_1_Uk" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain_1">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff_1"/>
+            </input>
+            <output line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain_PoleYk_1_Uk" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain_1" usename="true">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate_3"/>
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1"/>
+            </output>
+         </block>
+         <block blocktype="Sum" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum" rate="-1">
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain_PoleYk_1_Uk" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Gain_1"/>
+            </input>
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_2">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_U_1"/>
+            </input>
+            <output line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1" usename="true">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_DataTypeDuplicate_1"/>
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD_1"/>
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Y" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Y_1"/>
+            </output>
+         </block>
+         <block blocktype="UnitDelay" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD" rate="-1">
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD_1">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1"/>
+            </input>
+            <output line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD_Yk_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_UD_1" usename="true">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Diff_1"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Y" rate="-1">
+            <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Y_1">
+               <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Sum_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Transfer_Fcn_First_Order_Out1" rate="-1">
+      <input line="Transfer_Fcn_First_Order_TransferFcnFirstOrder_1" port="Transfer_Fcn_First_Order_Out1_1">
+         <connect block="Transfer_Fcn_First_Order_TransferFcnFirstOrder" port="Transfer_Fcn_First_Order_TransferFcnFirstOrder_Y"/>
+      </input>
+   </block>
+</sm:blocks>

@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Reshape_Reshape	 [label="t2\nReshape_Reshape"];
+	t0 -> Reshape_Reshape	 [color=green,
+		label="ch_0_2(Reshape_In1_1)"];
+	extout	 [label=extout];
+	Reshape_In1	 [label="t1\nReshape_In1",
+		shape=box];
+	Reshape_In1 -> t0	 [color=green,
+		label="in port Reshape_In1(Reshape_In1_1)"];
+	Reshape_Reshape -> extout	 [color=green,
+		label="ch_2_100(Reshape_Reshape_1)"];
+}

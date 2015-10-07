@@ -1,0 +1,21 @@
+digraph csp {
+	graph [rankdir=LR];
+	Bus_Selector_BusCreator	 [label="t3\nBus_Selector_BusCreator"];
+	t0 -> Bus_Selector_BusCreator	 [color=green,
+		label="ch_0_3(Bus_Selector_In1_x,Bus_Selector_In2_y)"];
+	extout	 [label=extout];
+	Bus_Selector_In1	 [label="t1\nBus_Selector_In1",
+		shape=box];
+	Bus_Selector_In1 -> t0	 [color=green,
+		label="in port Bus_Selector_In1(Bus_Selector_In1_x)"];
+	Bus_Selector_In2	 [label="t2\nBus_Selector_In2",
+		shape=box];
+	Bus_Selector_In2 -> t0	 [color=green,
+		label="in port Bus_Selector_In2(Bus_Selector_In2_y)"];
+	Bus_Selector_BusSelector	 [label="t4\nBus_Selector_BusSelector"];
+	Bus_Selector_BusCreator -> Bus_Selector_BusSelector	 [label="ch_3_4()"];
+	Bus_Selector_BusCreator -> extout	 [color=green,
+		label="ch_3_100()"];
+	Bus_Selector_BusSelector -> extout	 [color=green,
+		label="ch_4_100(Bus_Selector_In1_x)"];
+}

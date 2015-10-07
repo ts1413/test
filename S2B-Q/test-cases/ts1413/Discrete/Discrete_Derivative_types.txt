@@ -1,0 +1,31 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Discrete_Derivative" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Discrete_Derivative/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Discrete_Derivative/DiscreteDerivative" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Discrete_Derivative/DiscreteDerivative/U" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Discrete_Derivative/DiscreteDerivative/Data Type\nDuplicate" samplePeriod=0.1 assignedPriority=4 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+InDataPort portNumber=3 dataType="double"
+Block "Discrete_Derivative/DiscreteDerivative/Diff" samplePeriod=0.1 assignedPriority=2 min=OutMin max=OutMax
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Discrete_Derivative/DiscreteDerivative/TSamp" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Discrete_Derivative/DiscreteDerivative/UD" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Discrete_Derivative/DiscreteDerivative/Y" samplePeriod=0.1 min=OutMin max=OutMax
+InDataPort portNumber=1 dataType="double"
+Block "Discrete_Derivative/Out1" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

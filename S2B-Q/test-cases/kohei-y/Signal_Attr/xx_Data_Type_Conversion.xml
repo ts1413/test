@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Data_Type_Conversion" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Data_Type_Conversion_In1" priority="0" rate="0.1">
+    <output line="Data_Type_Conversion_In1_1" port="Data_Type_Conversion_In1_1" usename="true">
+      <connect block="Data_Type_Conversion_DataTypeConversion" port="Data_Type_Conversion_DataTypeConversion_1"/>
+    </output>
+  </block>
+  <block blocktype="DataTypeConversion" name="Data_Type_Conversion_DataTypeConversion" priority="1" rate="0.1">
+    <input line="Data_Type_Conversion_In1_1" port="Data_Type_Conversion_DataTypeConversion_1">
+      <connect block="Data_Type_Conversion_In1" port="Data_Type_Conversion_In1_1"/>
+    </input>
+    <output line="Data_Type_Conversion_DataTypeConversion_1" port="Data_Type_Conversion_DataTypeConversion_1" usename="true">
+      <connect block="Data_Type_Conversion_Out1" port="Data_Type_Conversion_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Data_Type_Conversion_Out1" priority="2" rate="0.1">
+    <input line="Data_Type_Conversion_DataTypeConversion_1" port="Data_Type_Conversion_Out1_1">
+      <connect block="Data_Type_Conversion_DataTypeConversion" port="Data_Type_Conversion_DataTypeConversion_1"/>
+    </input>
+  </block>
+</sm:blocks>

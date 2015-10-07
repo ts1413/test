@@ -1,0 +1,15 @@
+digraph csp {
+	graph [rankdir=LR];
+	Gain4_VectorConcatenate	 [label="t3\nGain4_VectorConcatenate"];
+	t0 -> Gain4_VectorConcatenate	 [color=green,
+		label="ch_0_3(Gain4_In1_1)"];
+	extout	 [label=extout];
+	Gain4_In1	 [label="t1\nGain4_In1",
+		shape=box];
+	Gain4_In1 -> t0	 [color=green,
+		label="in port Gain4_In1(Gain4_In1_1)"];
+	Gain4_Gain	 [label="t2\nGain4_Gain"];
+	Gain4_Gain -> extout	 [color=green,
+		label="ch_2_100(Gain4_Gain_1)"];
+	Gain4_VectorConcatenate -> Gain4_Gain	 [label="ch_3_2(Gain4_VectorConcatenate_1)"];
+}

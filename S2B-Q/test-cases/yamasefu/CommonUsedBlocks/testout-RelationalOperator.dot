@@ -1,0 +1,17 @@
+digraph csp {
+	graph [rankdir=LR];
+	RelationalOperator_RelationalOperator	 [label="t3\nRelationalOperator_RelationalOperator"];
+	t0 -> RelationalOperator_RelationalOperator	 [color=green,
+		label="ch_0_3(RelationalOperator_In1_1,RelationalOperator_In2_1)"];
+	extout	 [label=extout];
+	RelationalOperator_In1	 [label="t1\nRelationalOperator_In1",
+		shape=box];
+	RelationalOperator_In1 -> t0	 [color=green,
+		label="in port RelationalOperator_In1(RelationalOperator_In1_1)"];
+	RelationalOperator_In2	 [label="t2\nRelationalOperator_In2",
+		shape=box];
+	RelationalOperator_In2 -> t0	 [color=green,
+		label="in port RelationalOperator_In2(RelationalOperator_In2_1)"];
+	RelationalOperator_RelationalOperator -> extout	 [color=green,
+		label="ch_3_100(RelationalOperator_RelationalOperator_1)"];
+}

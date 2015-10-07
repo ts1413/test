@@ -1,0 +1,17 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Discrete_Derivative_In1_1",,
+"task100",,,,
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out1' incorporates:
+   *  Sum: '<S1>/Diff'
+   */
+  Discrete_Derivative_Y.Out1 = Discrete_Derivative_B.TSamp -
+    Discrete_Derivative_B.Uk1;
+
+"
+,,,,"}
+"
+"task2",,,,
+,"Discrete_Derivative_In1_1",,,

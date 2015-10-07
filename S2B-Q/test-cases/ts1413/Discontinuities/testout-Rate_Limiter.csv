@@ -1,0 +1,27 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Rate_Limiter_In1_1",,
+"task100",,,,
+,"Rate_Limiter_RateLimiter_1",,,
+"task2",,,,
+,"Rate_Limiter_In1_1","Rate_Limiter_RateLimiter_1",,
+,,,,"{
+"
+,,,,"  /* RateLimiter: '<Root>/RateLimiter' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  rateLimiterRate = Rate_Limiter_In1_1 - Rate_Limiter_DWork.PrevY;
+  if (rateLimiterRate > 0.1) {
+    Rate_Limiter_RateLimiter_1 = Rate_Limiter_DWork.PrevY + 0.1;
+  } else if (rateLimiterRate < (-0.1)) {
+    Rate_Limiter_RateLimiter_1 = Rate_Limiter_DWork.PrevY + (-0.1);
+  } else {
+    Rate_Limiter_RateLimiter_1 = Rate_Limiter_In1_1;
+  }
+
+  Rate_Limiter_DWork.PrevY = Rate_Limiter_RateLimiter_1;
+
+  /* End of RateLimiter: '<Root>/RateLimiter' */
+"
+,,,,"}
+"

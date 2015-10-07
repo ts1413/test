@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="RelationalOperator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="RelationalOperator_In1" priority="0" rate="0.1">
+    <output line="RelationalOperator_In1_1" port="RelationalOperator_In1_1" usename="true">
+      <connect block="RelationalOperator_RelationalOperator" port="RelationalOperator_RelationalOperator_1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="RelationalOperator_In2" priority="0" rate="0.1">
+    <output line="RelationalOperator_In2_1" port="RelationalOperator_In2_1" usename="true">
+      <connect block="RelationalOperator_RelationalOperator" port="RelationalOperator_RelationalOperator_2"/>
+    </output>
+  </block>
+  <block blocktype="RelationalOperator" name="RelationalOperator_RelationalOperator" priority="1" rate="0.1">
+    <input line="RelationalOperator_In1_1" port="RelationalOperator_RelationalOperator_1">
+      <connect block="RelationalOperator_In1" port="RelationalOperator_In1_1"/>
+    </input>
+    <input line="RelationalOperator_In2_1" port="RelationalOperator_RelationalOperator_2">
+      <connect block="RelationalOperator_In2" port="RelationalOperator_In2_1"/>
+    </input>
+    <output line="RelationalOperator_RelationalOperator_1" port="RelationalOperator_RelationalOperator_1" usename="true">
+      <connect block="RelationalOperator_Out1" port="RelationalOperator_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="RelationalOperator_Out1" priority="2" rate="0.1">
+    <input line="RelationalOperator_RelationalOperator_1" port="RelationalOperator_Out1_1">
+      <connect block="RelationalOperator_RelationalOperator" port="RelationalOperator_RelationalOperator_1"/>
+    </input>
+  </block>
+</sm:blocks>

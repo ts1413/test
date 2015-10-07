@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Shift_Arithmetic_Input" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.h" size="2658" timestamp="2015-09-29T10:40:51+0900" type="c-header"/>
+  <file name="xx_Shift_Arithmetic_Input.xml" size="2133" timestamp="2015-10-07T15:40:38+0900" type="xml"/>
+  <file name="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.c" size="1805" timestamp="2015-09-29T10:40:51+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Shift_Arithmetic_Input_In1" priority="0" rate="0.1">
+    <output line="Shift_Arithmetic_Input_In1_1" port="Shift_Arithmetic_Input_In1_1" usename="true">
+      <connect block="Shift_Arithmetic_Input_ShiftArithmetic" port="Shift_Arithmetic_Input_ShiftArithmetic_1"/>
+    </output>
+    <var line="Shift_Arithmetic_Input_In1_1" mode="extin" name="Shift_Arithmetic_Input_In1_1" port="Shift_Arithmetic_Input_In1_1" type="real_T"/>
+    <code file="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.c" line="54" type="init">  Shift_Arithmetic_Input_In1_1 = 0.0;
+</code>
+    <forward block="Shift_Arithmetic_Input_ShiftArithmetic" type="data">
+      <var line="Shift_Arithmetic_Input_In1_1" mode="input" name="Shift_Arithmetic_Input_In1_1" port="Shift_Arithmetic_Input_ShiftArithmetic_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Inport" id="2" name="Shift_Arithmetic_Input_In2" priority="0" rate="0.1">
+    <output line="Shift_Arithmetic_Input_In2_1" port="Shift_Arithmetic_Input_In2_1" usename="true">
+      <connect block="Shift_Arithmetic_Input_ShiftArithmetic" port="Shift_Arithmetic_Input_ShiftArithmetic_2"/>
+    </output>
+    <var line="Shift_Arithmetic_Input_In2_1" mode="extin" name="Shift_Arithmetic_Input_In2_1" port="Shift_Arithmetic_Input_In2_1" type="real_T"/>
+    <code file="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.c" line="55" type="init">  Shift_Arithmetic_Input_In2_1 = 0.0;
+</code>
+    <forward block="Shift_Arithmetic_Input_ShiftArithmetic" type="data">
+      <var line="Shift_Arithmetic_Input_In2_1" mode="input" name="Shift_Arithmetic_Input_In2_1" port="Shift_Arithmetic_Input_ShiftArithmetic_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="ArithShift" id="3" name="Shift_Arithmetic_Input_ShiftArithmetic" priority="1" rate="0.1">
+    <input line="Shift_Arithmetic_Input_In1_1" port="Shift_Arithmetic_Input_ShiftArithmetic_1">
+      <connect block="Shift_Arithmetic_Input_In1" port="Shift_Arithmetic_Input_In1_1"/>
+    </input>
+    <input line="Shift_Arithmetic_Input_In2_1" port="Shift_Arithmetic_Input_ShiftArithmetic_2">
+      <connect block="Shift_Arithmetic_Input_In2" port="Shift_Arithmetic_Input_In2_1"/>
+    </input>
+    <output line="Shift_Arithmetic_Input_ShiftArithmetic_1" port="Shift_Arithmetic_Input_ShiftArithmetic_1" usename="true">
+      <connect block="Shift_Arithmetic_Input_Out1" port="Shift_Arithmetic_Input_Out1_1"/>
+    </output>
+    <var line="Shift_Arithmetic_Input_In1_1" mode="input" name="Shift_Arithmetic_Input_In1_1" port="Shift_Arithmetic_Input_ShiftArithmetic_1" type="real_T"/>
+    <var line="Shift_Arithmetic_Input_In2_1" mode="input" name="Shift_Arithmetic_Input_In2_1" port="Shift_Arithmetic_Input_ShiftArithmetic_2" type="real_T"/>
+    <var line="Shift_Arithmetic_Input_ShiftArithmetic_1" mode="extout" name="Shift_Arithmetic_Input_ShiftArithmetic_1" port="Shift_Arithmetic_Input_ShiftArithmetic_1" type="real_T"/>
+    <param name="BinPtShiftNumber" storage="" type="double" value="0.0"/>
+    <param name="BitShiftNumber" storage="" type="double" value="8.0"/>
+    <code file="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.c" line="32" type="task">  /* ArithShift: '&lt;Root&gt;/ShiftArithmetic' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   *  Inport: '&lt;Root&gt;/In2'
+   */
+  Shift_Arithmetic_Input_ShiftArithmetic_1 = ldexp(Shift_Arithmetic_Input_In1_1,
+    (int32_T)floor(0.0 - Shift_Arithmetic_Input_In2_1));
+</code>
+    <code file="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.c" line="51" type="init">  Shift_Arithmetic_Input_ShiftArithmetic_1 = 0.0;
+
+</code>
+    <forward block="Shift_Arithmetic_Input_Out1" type="data">
+      <var line="Shift_Arithmetic_Input_ShiftArithmetic_1" mode="input" name="Shift_Arithmetic_Input_ShiftArithmetic_1" port="Shift_Arithmetic_Input_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Shift_Arithmetic_Input_In1" type="data">
+      <var line="Shift_Arithmetic_Input_In1_1" mode="extin" name="Shift_Arithmetic_Input_In1_1" port="Shift_Arithmetic_Input_In1_1" type="real_T"/>
+    </backword>
+    <backword block="Shift_Arithmetic_Input_In2" type="data">
+      <var line="Shift_Arithmetic_Input_In2_1" mode="extin" name="Shift_Arithmetic_Input_In2_1" port="Shift_Arithmetic_Input_In2_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Shift_Arithmetic_Input_Out1" priority="2" rate="0.1">
+    <input line="Shift_Arithmetic_Input_ShiftArithmetic_1" port="Shift_Arithmetic_Input_Out1_1">
+      <connect block="Shift_Arithmetic_Input_ShiftArithmetic" port="Shift_Arithmetic_Input_ShiftArithmetic_1"/>
+    </input>
+    <var line="Shift_Arithmetic_Input_ShiftArithmetic_1" mode="input" name="Shift_Arithmetic_Input_ShiftArithmetic_1" port="Shift_Arithmetic_Input_Out1_1" type="real_T"/>
+    <backword block="Shift_Arithmetic_Input_ShiftArithmetic" type="data">
+      <var line="Shift_Arithmetic_Input_ShiftArithmetic_1" mode="extout" name="Shift_Arithmetic_Input_ShiftArithmetic_1" port="Shift_Arithmetic_Input_ShiftArithmetic_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Shift_Arithmetic_Inpu_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Shift_Arithmetic_Input_M" type="extern RT_MODEL_Shift_Arithmetic_Inp_T * const"/>
+  <object kind="rtm-object" name="Shift_Arithmetic_Input_M_" type="RT_MODEL_Shift_Arithmetic_Inp_T"/>
+  <object kind="rtm-pointer" name="Shift_Arithmetic_Input_M" type="RT_MODEL_Shift_Arithmetic_Inp_T * const" value="&amp;Shift_Arithmetic_Input_M_"/>
+  <includes file="&lt;math.h>" from="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.h" index="0"/>
+  <includes file="&lt;stddef.h>" from="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.h" index="2"/>
+  <includes file="&quot;Shift_Arithmetic_Input_types.h&quot;" from="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.h" index="3"/>
+  <includes file="&quot;Shift_Arithmetic_Input_private.h&quot;" from="Shift_Arithmetic_Input_ert_rtw/Shift_Arithmetic_Input.c" index="4"/>
+</sm:blocks>

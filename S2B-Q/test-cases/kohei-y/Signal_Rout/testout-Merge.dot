@@ -1,0 +1,18 @@
+digraph csp {
+	graph [rankdir=LR];
+	Merge_If	 [fillcolor=red,
+		label="t4\nMerge_If",
+		style=filled];
+	t0 -> Merge_If	 [color=green,
+		label="ch_0_4(Merge_In1_1)"];
+	Merge_Merge	 [label="t13\nMerge_Merge"];
+	t0 -> Merge_Merge	 [color=red,
+		label="ch_0_13([EVENT])"];
+	extout	 [label=extout];
+	Merge_In1	 [label="t1\nMerge_In1",
+		shape=box];
+	Merge_In1 -> t0	 [color=green,
+		label="in port Merge_In1(Merge_In1_1)"];
+	Merge_Merge -> extout	 [color=green,
+		label="ch_13_100(Merge_Merge_1)"];
+}

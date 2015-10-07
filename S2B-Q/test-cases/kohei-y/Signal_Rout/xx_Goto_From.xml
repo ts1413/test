@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Goto_From" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Goto_From_In1" priority="0" rate="0.1">
+    <output line="Goto_From_In1_1" port="Goto_From_In1_1" usename="true">
+      <connect block="Goto_From_Goto" port="Goto_From_Goto_1"/>
+    </output>
+  </block>
+  <block blocktype="From" name="Goto_From_From" priority="0" rate="0.1">
+    <input line="Goto_From_Goto_1" port="Goto_From_From_1">
+      <connect block="Goto_From_Goto" port="Goto_From_Goto_1"/>
+    </input>
+    <output line="Goto_From_From_1" port="Goto_From_From_1" usename="true">
+      <connect block="Goto_From_Out2" port="Goto_From_Out2_1"/>
+    </output>
+  </block>
+  <block blocktype="Goto" name="Goto_From_Goto" priority="0" rate="0.1">
+    <input line="Goto_From_In1_1" port="Goto_From_Goto_1">
+      <connect block="Goto_From_In1" port="Goto_From_In1_1"/>
+    </input>
+    <output line="Goto_From_Goto_1" port="Goto_From_Goto_1" usename="false">
+      <connect block="Goto_From_From" port="Goto_From_From_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Goto_From_Out2" priority="1" rate="0.1">
+    <input line="Goto_From_From_1" port="Goto_From_Out2_1">
+      <connect block="Goto_From_From" port="Goto_From_From_1"/>
+    </input>
+  </block>
+</sm:blocks>

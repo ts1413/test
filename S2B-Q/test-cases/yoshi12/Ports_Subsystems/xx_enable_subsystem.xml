@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="enable_subsystem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="enable_subsystem_In1" priority="0" rate="0.1">
+    <output line="enable_subsystem_In1_1" port="enable_subsystem_In1_1" usename="true">
+      <connect block="enable_subsystem_EnabledSubsystem" port="enable_subsystem_EnabledSubsystem_In1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="enable_subsystem_In2" priority="0" rate="0.1">
+    <output line="enable_subsystem_In2_1" port="enable_subsystem_In2_1" usename="true">
+      <connect block="enable_subsystem_EnabledSubsystem" port="enable_subsystem_EnabledSubsystem_Enable"/>
+    </output>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" name="enable_subsystem_EnabledSubsystem" priority="2" rate="0.1">
+    <input line="enable_subsystem_In1_1" port="enable_subsystem_EnabledSubsystem_In1">
+      <connect block="enable_subsystem_In1" port="enable_subsystem_In1_1"/>
+    </input>
+    <input line="enable_subsystem_In2_1" port="enable_subsystem_EnabledSubsystem_Enable">
+      <connect block="enable_subsystem_In2" port="enable_subsystem_In2_1"/>
+    </input>
+    <output line="enable_subsystem_EnabledSubsystem_1" port="enable_subsystem_EnabledSubsystem_Out1" usename="false">
+      <connect block="enable_subsystem_Out1" port="enable_subsystem_Out1_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" name="enable_subsystem_EnabledSubsystem_In1" priority="1" rate="0.1">
+        <output line="enable_subsystem_EnabledSubsystem_In1_1" port="enable_subsystem_EnabledSubsystem_In1_1" usename="false">
+          <connect block="enable_subsystem_EnabledSubsystem_Out1" port="enable_subsystem_EnabledSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="EnablePort" name="enable_subsystem_EnabledSubsystem_Enable" priority="0" rate="0.1"/>
+      <block blocktype="Outport" name="enable_subsystem_EnabledSubsystem_Out1" priority="0" rate="0.1">
+        <input line="enable_subsystem_EnabledSubsystem_In1_1" port="enable_subsystem_EnabledSubsystem_Out1_1">
+          <connect block="enable_subsystem_EnabledSubsystem_In1" port="enable_subsystem_EnabledSubsystem_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Outport" name="enable_subsystem_Out1" priority="3" rate="0.1">
+    <input line="enable_subsystem_EnabledSubsystem_1" port="enable_subsystem_Out1_1">
+      <connect block="enable_subsystem_EnabledSubsystem" port="enable_subsystem_EnabledSubsystem_Out1"/>
+    </input>
+  </block>
+</sm:blocks>

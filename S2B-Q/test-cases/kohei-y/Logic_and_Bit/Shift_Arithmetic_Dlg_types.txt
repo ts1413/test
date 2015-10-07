@@ -1,0 +1,11 @@
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "Shift_Arithmetic_Dlg" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Shift_Arithmetic_Dlg/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "Shift_Arithmetic_Dlg/ShiftArithmetic" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "Shift_Arithmetic_Dlg/Out1" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

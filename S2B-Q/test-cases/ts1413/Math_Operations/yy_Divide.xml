@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Divide" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Divide_ert_rtw/Divide.h" size="2359" timestamp="2015-09-29T13:40:01+0900" type="c-header"/>
+  <file name="xx_Divide.xml" size="1508" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Divide_ert_rtw/Divide.c" size="1491" timestamp="2015-09-29T13:40:01+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Divide_In1" priority="0" rate="0.1">
+    <output line="Divide_In1_1" port="Divide_In1_1" usename="true">
+      <connect block="Divide_Divide" port="Divide_Divide_1"/>
+    </output>
+    <var line="Divide_In1_1" mode="extin" name="Divide_In1_1" port="Divide_In1_1" type="real_T"/>
+    <code file="Divide_ert_rtw/Divide.c" line="52" type="init">  Divide_In1_1 = 0.0;
+
+</code>
+    <forward block="Divide_Divide" type="port">
+      <var line="Divide_In1_1" mode="input" name="Divide_In1_1" port="Divide_Divide_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Constant" id="2" name="Divide_Constant" priority="1" rate="0.1">
+    <output line="Divide_Constant_1" port="Divide_Constant_1" usename="true">
+      <connect block="Divide_Divide" port="Divide_Divide_2"/>
+    </output>
+    <var line="Divide_Constant_1" mode="output" name="Divide_Constant_1" port="Divide_Constant_1" type="real_T"/>
+    <param name="Value" storage="" type="double" value="10.0"/>
+    <code file="Divide_ert_rtw/Divide.c" line="48" type="init">  Divide_Constant_1 = 10.0;
+  /* ConstCode for Constant: '&lt;Root&gt;/Constant' */
+  Divide_Constant_1 = 10.0;
+</code>
+    <forward block="Divide_Divide" type="data">
+      <var line="Divide_Constant_1" mode="input" name="Divide_Constant_1" port="Divide_Divide_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Product" id="3" name="Divide_Divide" priority="2" rate="0.1">
+    <input line="Divide_In1_1" port="Divide_Divide_1">
+      <connect block="Divide_In1" port="Divide_In1_1"/>
+    </input>
+    <input line="Divide_Constant_1" port="Divide_Divide_2">
+      <connect block="Divide_Constant" port="Divide_Constant_1"/>
+    </input>
+    <output line="Divide_Divide_1" port="Divide_Divide_1" usename="true">
+      <connect block="Divide_Out1" port="Divide_Out1_1"/>
+    </output>
+    <var line="Divide_In1_1" mode="input" name="Divide_In1_1" port="Divide_Divide_1" type="real_T"/>
+    <var line="Divide_Constant_1" mode="input" name="Divide_Constant_1" port="Divide_Divide_2" type="real_T"/>
+    <var line="Divide_Divide_1" mode="extout" name="Divide_Divide_1" port="Divide_Divide_1" type="real_T"/>
+    <code file="Divide_ert_rtw/Divide.c" line="31" type="task">  /* Product: '&lt;Root&gt;/Divide' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Divide_Divide_1 = Divide_In1_1 / Divide_Constant_1;
+</code>
+    <code file="Divide_ert_rtw/Divide.c" line="49" type="init">  Divide_Divide_1 = 0.0;
+
+</code>
+    <forward block="Divide_Out1" type="port">
+      <var line="Divide_Divide_1" mode="input" name="Divide_Divide_1" port="Divide_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Divide_Constant" type="data">
+      <var line="Divide_Constant_1" mode="output" name="Divide_Constant_1" port="Divide_Constant_1" type="real_T"/>
+    </backword>
+    <backword block="Divide_In1" type="port">
+      <var line="Divide_In1_1" mode="extin" name="Divide_In1_1" port="Divide_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="4" name="Divide_Out1" priority="3" rate="0.1">
+    <input line="Divide_Divide_1" port="Divide_Out1_1">
+      <connect block="Divide_Divide" port="Divide_Divide_1"/>
+    </input>
+    <var line="Divide_Divide_1" mode="input" name="Divide_Divide_1" port="Divide_Out1_1" type="real_T"/>
+    <backword block="Divide_Divide" type="port">
+      <var line="Divide_Divide_1" mode="extout" name="Divide_Divide_1" port="Divide_Divide_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Divide {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Divide_M" type="extern RT_MODEL_Divide * const"/>
+  <object kind="rtm-object" name="Divide_M_" type="RT_MODEL_Divide"/>
+  <object kind="rtm-pointer" name="Divide_M" type="RT_MODEL_Divide * const" value="&amp;Divide_M_"/>
+  <includes file="&lt;stddef.h>" from="Divide_ert_rtw/Divide.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Divide_ert_rtw/Divide.h" index="1"/>
+  <includes file="&quot;Divide_types.h&quot;" from="Divide_ert_rtw/Divide.h" index="2"/>
+  <includes file="&quot;Divide_private.h&quot;" from="Divide_ert_rtw/Divide.c" index="3"/>
+</sm:blocks>

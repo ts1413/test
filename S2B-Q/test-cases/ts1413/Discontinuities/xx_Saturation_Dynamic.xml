@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Saturation_Dynamic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Saturation_Dynamic_In1" priority="0" rate="0.1">
+    <output line="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_In1_1" usename="true">
+      <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_2"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="Saturation_Dynamic_In2" priority="0" rate="0.1">
+    <output line="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_In2_1" usename="true">
+      <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="Saturation_Dynamic_In3" priority="0" rate="0.1">
+    <output line="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_In3_1" usename="true">
+      <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_3"/>
+    </output>
+  </block>
+  <block blocktype="Simulink_SaturationDynamic" name="Saturation_Dynamic_SaturationDynamic" priority="0" rate="0.1">
+    <input line="Saturation_Dynamic_In2_1" port="Saturation_Dynamic_SaturationDynamic_1">
+      <connect block="Saturation_Dynamic_In2" port="Saturation_Dynamic_In2_1"/>
+    </input>
+    <input line="Saturation_Dynamic_In1_1" port="Saturation_Dynamic_SaturationDynamic_2">
+      <connect block="Saturation_Dynamic_In1" port="Saturation_Dynamic_In1_1"/>
+    </input>
+    <input line="Saturation_Dynamic_In3_1" port="Saturation_Dynamic_SaturationDynamic_3">
+      <connect block="Saturation_Dynamic_In3" port="Saturation_Dynamic_In3_1"/>
+    </input>
+    <output line="Saturation_Dynamic_SaturationDynamic_1" port="Saturation_Dynamic_SaturationDynamic_1" usename="true">
+      <connect block="Saturation_Dynamic_Out1" port="Saturation_Dynamic_Out1_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Saturation_Dynamic_Out1" priority="5" rate="0.1">
+    <input line="Saturation_Dynamic_SaturationDynamic_1" port="Saturation_Dynamic_Out1_1">
+      <connect block="Saturation_Dynamic_SaturationDynamic" port="Saturation_Dynamic_SaturationDynamic_1"/>
+    </input>
+  </block>
+</sm:blocks>

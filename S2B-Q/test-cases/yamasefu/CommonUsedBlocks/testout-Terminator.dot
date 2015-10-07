@@ -1,0 +1,10 @@
+digraph csp {
+	graph [rankdir=LR];
+	extout	 [label=extout];
+	t0 -> extout	 [color=green,
+		label="ch_0_100(Terminator_In1_1)"];
+	Terminator_In1	 [label="t1\nTerminator_In1",
+		shape=box];
+	Terminator_In1 -> t0	 [color=green,
+		label="in port Terminator_In1(Terminator_In1_1)"];
+}

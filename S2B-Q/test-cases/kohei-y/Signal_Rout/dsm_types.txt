@@ -1,0 +1,15 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "dsm" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "dsm/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "dsm/DataStoreMemory" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+Block "dsm/DataStoreRead" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "dsm/DataStoreWrite" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "dsm/Out1" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

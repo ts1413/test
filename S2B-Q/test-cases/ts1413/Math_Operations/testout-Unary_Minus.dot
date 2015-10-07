@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Unary_Minus_UnaryMinus	 [label="t2\nUnary_Minus_UnaryMinus"];
+	t0 -> Unary_Minus_UnaryMinus	 [color=green,
+		label="ch_0_2(Unary_Minus_In1_1)"];
+	extout	 [label=extout];
+	Unary_Minus_In1	 [label="t1\nUnary_Minus_In1",
+		shape=box];
+	Unary_Minus_In1 -> t0	 [color=green,
+		label="in port Unary_Minus_In1(Unary_Minus_In1_1)"];
+	Unary_Minus_UnaryMinus -> extout	 [color=green,
+		label="ch_2_100(Unary_Minus_UnaryMinus_1)"];
+}

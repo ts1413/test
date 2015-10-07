@@ -1,0 +1,20 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Assignment_In1_1",,
+"task100",,,,
+,"Assignment_Assignment_1",,,
+"task2",,,,
+,"Assignment_In1_1","Assignment_Assignment_1",,
+,,,,"{
+"
+,,,,"  /* Assignment: '<Root>/Assignment' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Assignment_Assignment_1[0] = Assignment_Constant_1[0];
+  Assignment_Assignment_1[1] = Assignment_Constant_1[1];
+  Assignment_Assignment_1[2] = Assignment_Constant_1[2];
+  Assignment_Assignment_1[3] = Assignment_Constant_1[3];
+  Assignment_Assignment_1[2] = Assignment_In1_1;
+"
+,,,,"}
+"

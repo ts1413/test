@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Dead_Zone_DeadZone	 [label="t2\nDead_Zone_DeadZone"];
+	t0 -> Dead_Zone_DeadZone	 [color=green,
+		label="ch_0_2(Dead_Zone_In1_1)"];
+	extout	 [label=extout];
+	Dead_Zone_In1	 [label="t1\nDead_Zone_In1",
+		shape=box];
+	Dead_Zone_In1 -> t0	 [color=green,
+		label="in port Dead_Zone_In1(Dead_Zone_In1_1)"];
+	Dead_Zone_DeadZone -> extout	 [color=green,
+		label="ch_2_100(Dead_Zone_DeadZone_1)"];
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Scope1" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Scope1_In1" rate="-1">
+      <output line="" port="Scope1_In1_1" type="none"/>
+   </block>
+</sm:blocks>

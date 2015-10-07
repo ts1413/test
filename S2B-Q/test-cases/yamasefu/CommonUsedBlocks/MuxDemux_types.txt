@@ -1,0 +1,21 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=SingleTasking fixedStep=0.1
+Block "MuxDemux" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=2 dataType="double"
+Block "MuxDemux/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "MuxDemux/Demux" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double[2]"
+OutDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=2 dataType="double"
+Block "MuxDemux/Mux" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double[2]"
+Block "MuxDemux/Out1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "MuxDemux/Out2" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

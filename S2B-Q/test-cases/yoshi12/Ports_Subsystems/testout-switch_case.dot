@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	switch_case_SwitchCase	 [fillcolor=red,
+		label="t4\nswitch_case_SwitchCase",
+		style=filled];
+	t0 -> switch_case_SwitchCase	 [color=green,
+		label="ch_0_4(switch_case_In1_1)"];
+	extout	 [label=extout];
+	switch_case_In1	 [label="t1\nswitch_case_In1",
+		shape=box];
+	switch_case_In1 -> t0	 [color=green,
+		label="in port switch_case_In1(switch_case_In1_1)"];
+}

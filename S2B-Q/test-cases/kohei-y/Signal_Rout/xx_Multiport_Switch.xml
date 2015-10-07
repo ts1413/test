@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Multiport_Switch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Multiport_Switch_In1" priority="0" rate="0.1">
+    <output line="Multiport_Switch_In1_1" port="Multiport_Switch_In1_1" usename="true">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_1"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="Multiport_Switch_In2" priority="0" rate="0.1">
+    <output line="Multiport_Switch_In2_1" port="Multiport_Switch_In2_1" usename="true">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_2"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="Multiport_Switch_In3" priority="0" rate="0.1">
+    <output line="Multiport_Switch_In3_1" port="Multiport_Switch_In3_1" usename="true">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_3"/>
+    </output>
+  </block>
+  <block blocktype="Inport" name="Multiport_Switch_In4" priority="0" rate="0.1">
+    <output line="Multiport_Switch_In4_1" port="Multiport_Switch_In4_1" usename="true">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_4"/>
+    </output>
+  </block>
+  <block blocktype="MultiPortSwitch" name="Multiport_Switch_MultiportSwitch" priority="1" rate="0.1">
+    <input line="Multiport_Switch_In1_1" port="Multiport_Switch_MultiportSwitch_1">
+      <connect block="Multiport_Switch_In1" port="Multiport_Switch_In1_1"/>
+    </input>
+    <input line="Multiport_Switch_In2_1" port="Multiport_Switch_MultiportSwitch_2">
+      <connect block="Multiport_Switch_In2" port="Multiport_Switch_In2_1"/>
+    </input>
+    <input line="Multiport_Switch_In3_1" port="Multiport_Switch_MultiportSwitch_3">
+      <connect block="Multiport_Switch_In3" port="Multiport_Switch_In3_1"/>
+    </input>
+    <input line="Multiport_Switch_In4_1" port="Multiport_Switch_MultiportSwitch_4">
+      <connect block="Multiport_Switch_In4" port="Multiport_Switch_In4_1"/>
+    </input>
+    <output line="Multiport_Switch_MultiportSwitch_1" port="Multiport_Switch_MultiportSwitch_1" usename="true">
+      <connect block="Multiport_Switch_Out2" port="Multiport_Switch_Out2_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Multiport_Switch_Out2" priority="2" rate="0.1">
+    <input line="Multiport_Switch_MultiportSwitch_1" port="Multiport_Switch_Out2_1">
+      <connect block="Multiport_Switch_MultiportSwitch" port="Multiport_Switch_MultiportSwitch_1"/>
+    </input>
+  </block>
+</sm:blocks>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Terminator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Terminator_ert_rtw/Terminator.h" size="2382" timestamp="2015-10-05T16:56:34+0900" type="c-header"/>
+  <file name="xx_Terminator.xml" size="1056" timestamp="2015-10-07T15:40:44+0900" type="xml"/>
+  <file name="Terminator_ert_rtw/Terminator.c" size="1232" timestamp="2015-10-05T16:56:34+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Terminator_In1" priority="0" rate="0.1">
+    <output line="Terminator_In1_1" port="Terminator_In1_1" usename="true">
+      <connect block="Terminator_Terminator" port="Terminator_Terminator_1"/>
+      <connect block="Terminator_Out1" port="Terminator_Out1_1"/>
+    </output>
+    <var line="Terminator_In1_1" mode="extin" name="Terminator_In1_1" port="Terminator_In1_1" type="real_T"/>
+    <code file="Terminator_ert_rtw/Terminator.c" line="43" type="init">  Terminator_In1_1 = 0.0;
+</code>
+    <forward block="Terminator_Out1" type="port">
+      <var line="Terminator_In1_1" mode="input" name="Terminator_In1_1" port="Terminator_Out1_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Terminator" id="2" name="Terminator_Terminator" priority="0" rate="0.1">
+    <input line="Terminator_In1_1" port="Terminator_Terminator_1">
+      <connect block="Terminator_In1" port="Terminator_In1_1"/>
+    </input>
+  </block>
+  <block blocktype="Outport" id="3" name="Terminator_Out1" priority="1" rate="0.1">
+    <input line="Terminator_In1_1" port="Terminator_Out1_1">
+      <connect block="Terminator_In1" port="Terminator_In1_1"/>
+    </input>
+    <var line="Terminator_In1_1" mode="input" name="Terminator_In1_1" port="Terminator_Out1_1" type="real_T"/>
+    <backword block="Terminator_In1" type="port">
+      <var line="Terminator_In1_1" mode="extin" name="Terminator_In1_1" port="Terminator_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Terminator_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Terminator_M" type="extern RT_MODEL_Terminator_T * const"/>
+  <object kind="rtm-object" name="Terminator_M_" type="RT_MODEL_Terminator_T"/>
+  <object kind="rtm-pointer" name="Terminator_M" type="RT_MODEL_Terminator_T * const" value="&amp;Terminator_M_"/>
+  <includes file="&lt;stddef.h>" from="Terminator_ert_rtw/Terminator.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Terminator_ert_rtw/Terminator.h" index="1"/>
+  <includes file="&quot;Terminator_types.h&quot;" from="Terminator_ert_rtw/Terminator.h" index="2"/>
+  <includes file="&quot;Terminator_private.h&quot;" from="Terminator_ert_rtw/Terminator.c" index="3"/>
+</sm:blocks>

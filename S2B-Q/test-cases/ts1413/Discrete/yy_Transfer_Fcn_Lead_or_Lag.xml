@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Transfer_Fcn_Lead_or_Lag" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.h" size="3752" timestamp="2015-09-29T13:39:20+0900" type="c-header"/>
+  <file name="xx_Transfer_Fcn_Lead_or_Lag.xml" size="1837" timestamp="2015-10-07T15:40:40+0900" type="xml"/>
+  <file name="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.c" size="3297" timestamp="2015-09-29T13:39:20+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Transfer_Fcn_Lead_or_Lag_In1" priority="0" rate="0.1">
+    <output line="Transfer_Fcn_Lead_or_Lag_In1_1" port="Transfer_Fcn_Lead_or_Lag_In1_1" usename="true">
+      <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1"/>
+    </output>
+    <var line="Transfer_Fcn_Lead_or_Lag_In1_1" mode="extin" name="Transfer_Fcn_Lead_or_Lag_In1_1" port="Transfer_Fcn_Lead_or_Lag_In1_1" type="real_T"/>
+    <code file="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.c" line="97" type="init">  Transfer_Fcn_Lead_or_Lag_In1_1 = 0.0;
+
+</code>
+    <forward block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag" type="data">
+      <var line="Transfer_Fcn_Lead_or_Lag_In1_1" mode="input" name="Transfer_Fcn_Lead_or_Lag_In1_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Simulink_LeadorLagCompensator" id="2" name="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag" priority="0" rate="0.1">
+    <input line="Transfer_Fcn_Lead_or_Lag_In1_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1">
+      <connect block="Transfer_Fcn_Lead_or_Lag_In1" port="Transfer_Fcn_Lead_or_Lag_In1_1"/>
+    </input>
+    <output line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1" usename="true">
+      <connect block="Transfer_Fcn_Lead_or_Lag_Out1" port="Transfer_Fcn_Lead_or_Lag_Out1_1"/>
+    </output>
+    <var line="Transfer_Fcn_Lead_or_Lag_In1_1" mode="input" name="Transfer_Fcn_Lead_or_Lag_In1_1" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1" type="real_T"/>
+    <param name="ICPrevInput" storage="" type="double" value="0.0"/>
+    <param name="ICPrevOutput" storage="" type="double" value="0.0"/>
+    <param name="PoleZ" storage="" type="double" value="0.95"/>
+    <param name="ZeroZ" storage="" type="double" value="0.75"/>
+    <forward block="Transfer_Fcn_Lead_or_Lag_Out1" type="data"/>
+    <backword block="Transfer_Fcn_Lead_or_Lag_In1" type="data">
+      <var line="Transfer_Fcn_Lead_or_Lag_In1_1" mode="extin" name="Transfer_Fcn_Lead_or_Lag_In1_1" port="Transfer_Fcn_Lead_or_Lag_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Transfer_Fcn_Lead_or_Lag_Out1" priority="7" rate="0.1">
+    <input line="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1" port="Transfer_Fcn_Lead_or_Lag_Out1_1">
+      <connect block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag" port="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag_1"/>
+    </input>
+    <var line="" mode="extout" name="Out1" port="" storage="Transfer_Fcn_Lead_or_Lag_Y" type="real_T"/>
+    <code file="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.c" line="59" type="task">  /* Outport: '&lt;Root&gt;/Out1' incorporates:
+   *  DataTypeConversion: '&lt;S1&gt;/Downcast'
+   */
+  Transfer_Fcn_Lead_or_Lag_Y.Out1 = Transfer_Fcn_Lead_or_Lag_B.PoleYk1UkZeroUk1;
+
+</code>
+    <code file="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.c" line="100" type="init">  Transfer_Fcn_Lead_or_Lag_Y.Out1 = 0.0;
+</code>
+    <backword block="Transfer_Fcn_Lead_or_Lag_TransferFcnLeadorLag" type="data"/>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Transfer_Fcn_Lead_or_La {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Transfer_Fcn_Lead_or_Lag_M" type="extern RT_MODEL_Transfer_Fcn_Lead_or_L * const"/>
+  <object kind="rtm-object" name="Transfer_Fcn_Lead_or_Lag_M_" type="RT_MODEL_Transfer_Fcn_Lead_or_L"/>
+  <object kind="rtm-pointer" name="Transfer_Fcn_Lead_or_Lag_M" type="RT_MODEL_Transfer_Fcn_Lead_or_L * const" value="&amp;Transfer_Fcn_Lead_or_Lag_M_"/>
+  <includes file="&lt;stddef.h>" from="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.h" index="1"/>
+  <includes file="&quot;Transfer_Fcn_Lead_or_Lag_types.h&quot;" from="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.h" index="2"/>
+  <includes file="&quot;Transfer_Fcn_Lead_or_Lag_private.h&quot;" from="Transfer_Fcn_Lead_or_Lag_ert_rtw/Transfer_Fcn_Lead_or_Lag.c" index="3"/>
+</sm:blocks>

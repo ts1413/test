@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Scope1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Scope1_In1" priority="0" rate="0.1">
+    <output line="Scope1_In1_1" port="Scope1_In1_1" usename="true">
+      <connect block="Scope1_Scope" port="Scope1_Scope_1"/>
+    </output>
+  </block>
+  <block blocktype="Scope" name="Scope1_Scope" priority="1" rate="0.1">
+    <input line="Scope1_In1_1" port="Scope1_Scope_1">
+      <connect block="Scope1_In1" port="Scope1_In1_1"/>
+    </input>
+  </block>
+</sm:blocks>

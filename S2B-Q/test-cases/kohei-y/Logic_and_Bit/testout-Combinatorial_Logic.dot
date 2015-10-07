@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Combinatorial_Logic_CombinatorialLogic	 [label="t2\nCombinatorial_Logic_CombinatorialLogic"];
+	t0 -> Combinatorial_Logic_CombinatorialLogic	 [color=green,
+		label="ch_0_2(Combinatorial_Logic_In1_1)"];
+	extout	 [label=extout];
+	Combinatorial_Logic_In1	 [label="t1\nCombinatorial_Logic_In1",
+		shape=box];
+	Combinatorial_Logic_In1 -> t0	 [color=green,
+		label="in port Combinatorial_Logic_In1(Combinatorial_Logic_In1_1)"];
+	Combinatorial_Logic_CombinatorialLogic -> extout	 [color=green,
+		label="ch_2_100(Combinatorial_Logic_CombinatorialLogic_1)"];
+}

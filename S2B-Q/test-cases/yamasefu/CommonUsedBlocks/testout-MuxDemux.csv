@@ -1,0 +1,22 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+"task100",,,,
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out1' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  MuxDemux_Y.Out1 = MuxDemux_U.In1;
+
+"
+,,,,"}
+"
+,,,,"{
+"
+,,,,"  /* Outport: '<Root>/Out2' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  MuxDemux_Y.Out2 = MuxDemux_U.In1;
+"
+,,,,"}
+"

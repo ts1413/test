@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Saturation_Saturation	 [label="t2\nSaturation_Saturation"];
+	t0 -> Saturation_Saturation	 [color=green,
+		label="ch_0_2(Saturation_In1_1)"];
+	extout	 [label=extout];
+	Saturation_In1	 [label="t1\nSaturation_In1",
+		shape=box];
+	Saturation_In1 -> t0	 [color=green,
+		label="in port Saturation_In1(Saturation_In1_1)"];
+	Saturation_Saturation -> extout	 [color=green,
+		label="ch_2_100(Saturation_Saturation_1)"];
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Hit_Crossing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Hit_Crossing_ert_rtw/Hit_Crossing.h" size="2839" timestamp="2015-09-29T13:38:19+0900" type="c-header"/>
+  <file name="xx_Hit_Crossing.xml" size="1303" timestamp="2015-10-04T12:56:01+0900" type="xml"/>
+  <file name="Hit_Crossing_ert_rtw/Hit_Crossing.c" size="2568" timestamp="2015-09-29T13:38:19+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Hit_Crossing_In1" priority="0" rate="0.1">
+    <output line="Hit_Crossing_In1_1" port="Hit_Crossing_In1_1" usename="true">
+      <connect block="Hit_Crossing_HitCrossing" port="Hit_Crossing_HitCrossing_1"/>
+    </output>
+    <var line="Hit_Crossing_In1_1" mode="extin" name="Hit_Crossing_In1_1" port="Hit_Crossing_In1_1" type="real_T"/>
+    <code file="Hit_Crossing_ert_rtw/Hit_Crossing.c" line="86" type="init">  Hit_Crossing_In1_1 = 0.0;
+</code>
+    <forward block="Hit_Crossing_HitCrossing" type="port">
+      <var line="Hit_Crossing_In1_1" mode="input" name="Hit_Crossing_In1_1" port="Hit_Crossing_HitCrossing_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="HitCross" id="2" name="Hit_Crossing_HitCrossing" priority="1" rate="0.1">
+    <input line="Hit_Crossing_In1_1" port="Hit_Crossing_HitCrossing_1">
+      <connect block="Hit_Crossing_In1" port="Hit_Crossing_In1_1"/>
+    </input>
+    <output line="Hit_Crossing_HitCrossing_1" port="Hit_Crossing_HitCrossing_1" usename="true">
+      <connect block="Hit_Crossing_Out1" port="Hit_Crossing_Out1_1"/>
+    </output>
+    <var line="Hit_Crossing_In1_1" mode="input" name="Hit_Crossing_In1_1" port="Hit_Crossing_HitCrossing_1" type="real_T"/>
+    <var line="Hit_Crossing_HitCrossing_1" mode="extout" name="Hit_Crossing_HitCrossing_1" port="Hit_Crossing_HitCrossing_1" type="boolean_T"/>
+    <state name="HitCrossing_MODE" storage="Hit_Crossing_DWork" type="int_T"/>
+    <trigger_state name="HitCrossing_Input_ZCE" storage="Hit_Crossing_PrevZCSigState" type="ZCSigState"/>
+    <param name="HitCrossingOffset" storage="" type="double" value="0.0"/>
+    <code file="Hit_Crossing_ert_rtw/Hit_Crossing.c" line="38" type="task">  /* HitCross: '&lt;Root&gt;/HitCrossing' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  zcEvent = rt_ZCFcn(ANY_ZERO_CROSSING,
+                     &amp;Hit_Crossing_PrevZCSigState.HitCrossing_Input_ZCE,
+                     (Hit_Crossing_In1_1 - 0.0));
+  if (Hit_Crossing_DWork.HitCrossing_MODE == 0) {
+    if (zcEvent != NO_ZCEVENT) {
+      Hit_Crossing_HitCrossing_1 = !Hit_Crossing_HitCrossing_1;
+      Hit_Crossing_DWork.HitCrossing_MODE = 1;
+    } else if (Hit_Crossing_HitCrossing_1) {
+      if (Hit_Crossing_In1_1 != 0.0) {
+        Hit_Crossing_HitCrossing_1 = false;
+      }
+    } else {
+      if (Hit_Crossing_In1_1 == 0.0) {
+        Hit_Crossing_HitCrossing_1 = true;
+      }
+    }
+  } else {
+    if (Hit_Crossing_In1_1 != 0.0) {
+      Hit_Crossing_HitCrossing_1 = false;
+    }
+
+    Hit_Crossing_DWork.HitCrossing_MODE = 0;
+  }
+
+  /* End of HitCross: '&lt;Root&gt;/HitCrossing' */
+</code>
+    <code file="Hit_Crossing_ert_rtw/Hit_Crossing.c" line="79" type="init">  Hit_Crossing_HitCrossing_1 = false;
+
+</code>
+    <code file="Hit_Crossing_ert_rtw/Hit_Crossing.c" line="87" type="state">  Hit_Crossing_PrevZCSigState.HitCrossing_Input_ZCE = UNINITIALIZED_ZCSIG;
+</code>
+    <forward block="Hit_Crossing_Out1" type="port">
+      <var line="Hit_Crossing_HitCrossing_1" mode="input" name="Hit_Crossing_HitCrossing_1" port="Hit_Crossing_Out1_1" type="boolean_T"/>
+    </forward>
+    <backword block="Hit_Crossing_In1" type="port">
+      <var line="Hit_Crossing_In1_1" mode="extin" name="Hit_Crossing_In1_1" port="Hit_Crossing_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Hit_Crossing_Out1" priority="2" rate="0.1">
+    <input line="Hit_Crossing_HitCrossing_1" port="Hit_Crossing_Out1_1">
+      <connect block="Hit_Crossing_HitCrossing" port="Hit_Crossing_HitCrossing_1"/>
+    </input>
+    <var line="Hit_Crossing_HitCrossing_1" mode="input" name="Hit_Crossing_HitCrossing_1" port="Hit_Crossing_Out1_1" type="boolean_T"/>
+    <backword block="Hit_Crossing_HitCrossing" type="port">
+      <var line="Hit_Crossing_HitCrossing_1" mode="extout" name="Hit_Crossing_HitCrossing_1" port="Hit_Crossing_HitCrossing_1" type="boolean_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Hit_Crossing {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  ZCEventType zcEvent;
+
+</code>
+  <object kind="rtm-extern" name="Hit_Crossing_M" type="extern RT_MODEL_Hit_Crossing * const"/>
+  <object kind="rtm-object" name="Hit_Crossing_M_" type="RT_MODEL_Hit_Crossing"/>
+  <object kind="rtm-pointer" name="Hit_Crossing_M" type="RT_MODEL_Hit_Crossing * const" value="&amp;Hit_Crossing_M_"/>
+  <includes file="&lt;stddef.h>" from="Hit_Crossing_ert_rtw/Hit_Crossing.h" index="0"/>
+  <includes file="&lt;string.h>" from="Hit_Crossing_ert_rtw/Hit_Crossing.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Hit_Crossing_ert_rtw/Hit_Crossing.h" index="2"/>
+  <includes file="&quot;Hit_Crossing_types.h&quot;" from="Hit_Crossing_ert_rtw/Hit_Crossing.h" index="3"/>
+  <includes file="&quot;rt_zcfcn.h&quot;" from="Hit_Crossing_ert_rtw/Hit_Crossing.h" index="4"/>
+  <includes file="&quot;Hit_Crossing_private.h&quot;" from="Hit_Crossing_ert_rtw/Hit_Crossing.c" index="5"/>
+</sm:blocks>

@@ -1,0 +1,30 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Relay_In1_1",,
+"task100",,,,
+,"Relay_Relay_1",,,
+"task2",,,,
+,"Relay_In1_1","Relay_Relay_1",,
+,,,,"{
+"
+,,,,"  /* Relay: '<Root>/Relay' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  if (Relay_In1_1 >= 2.2204460492503131E-16) {
+    Relay_DWork.Relay_Mode = true;
+  } else {
+    if (Relay_In1_1 <= 2.2204460492503131E-16) {
+      Relay_DWork.Relay_Mode = false;
+    }
+  }
+
+  if (Relay_DWork.Relay_Mode) {
+    Relay_Relay_1 = 1.0;
+  } else {
+    Relay_Relay_1 = 0.0;
+  }
+
+  /* End of Relay: '<Root>/Relay' */
+"
+,,,,"}
+"

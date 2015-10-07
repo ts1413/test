@@ -1,0 +1,27 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Sign_In1_1",,
+"task100",,,,
+,"Sign_Sign_1",,,
+"task2",,,,
+,"Sign_In1_1","Sign_Sign_1",,
+,,,,"{
+"
+,,,,"  /* Signum: '<Root>/Sign' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  u = Sign_In1_1;
+  if (u < 0.0) {
+    Sign_Sign_1 = -1.0;
+  } else if (u > 0.0) {
+    Sign_Sign_1 = 1.0;
+  } else if (u == 0.0) {
+    Sign_Sign_1 = 0.0;
+  } else {
+    Sign_Sign_1 = u;
+  }
+
+  /* End of Signum: '<Root>/Sign' */
+"
+,,,,"}
+"

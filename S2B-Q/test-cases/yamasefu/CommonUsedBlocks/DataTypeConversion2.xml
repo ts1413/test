@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DataTypeConversion2" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="DataTypeConversion2_In1" rate="-1">
+      <output line="DataTypeConversion2_In1_1" port="DataTypeConversion2_In1_1" usename="true">
+         <connect block="DataTypeConversion2_DataTypeConversion" port="DataTypeConversion2_DataTypeConversion_1"/>
+      </output>
+   </block>
+   <block blocktype="DataTypeConversion" name="DataTypeConversion2_DataTypeConversion" rate="-1">
+      <input line="DataTypeConversion2_In1_1" port="DataTypeConversion2_DataTypeConversion_1">
+         <connect block="DataTypeConversion2_In1" port="DataTypeConversion2_In1_1"/>
+      </input>
+      <output line="DataTypeConversion2_DataTypeConversion_1" port="DataTypeConversion2_DataTypeConversion_1" usename="true">
+         <connect block="DataTypeConversion2_Out1" port="DataTypeConversion2_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="DataTypeConversion2_Out1" rate="-1">
+      <input line="DataTypeConversion2_DataTypeConversion_1" port="DataTypeConversion2_Out1_1">
+         <connect block="DataTypeConversion2_DataTypeConversion" port="DataTypeConversion2_DataTypeConversion_1"/>
+      </input>
+   </block>
+</sm:blocks>

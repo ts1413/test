@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Detect_Change_FrameBase" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Detect_Change_FrameBase_In1" rate="-1">
+      <output line="Detect_Change_FrameBase_In1_1" port="Detect_Change_FrameBase_In1_1" usename="true">
+         <connect block="Detect_Change_FrameBase_DetectChange" port="Detect_Change_FrameBase_DetectChange_U"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="Detect_Change_FrameBase_DetectChange">
+      <input line="Detect_Change_FrameBase_In1_1" port="Detect_Change_FrameBase_DetectChange_U">
+         <connect block="Detect_Change_FrameBase_In1" port="Detect_Change_FrameBase_In1_1"/>
+      </input>
+      <output line="Detect_Change_FrameBase_DetectChange_1" port="Detect_Change_FrameBase_DetectChange_Y" usename="false">
+         <connect block="Detect_Change_FrameBase_Out1" port="Detect_Change_FrameBase_Out1_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="Detect_Change_FrameBase_DetectChange_U" rate="-1">
+            <output line="Detect_Change_FrameBase_DetectChange_U_1" port="Detect_Change_FrameBase_DetectChange_U_1" usename="false">
+               <connect block="Detect_Change_FrameBase_DetectChange_DelayInput1" port="Detect_Change_FrameBase_DetectChange_DelayInput1_1"/>
+               <connect block="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator" port="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator_1"/>
+            </output>
+         </block>
+         <block blocktype="UnitDelay" name="Detect_Change_FrameBase_DetectChange_DelayInput1" rate="-1">
+            <input line="Detect_Change_FrameBase_DetectChange_U_1" port="Detect_Change_FrameBase_DetectChange_DelayInput1_1">
+               <connect block="Detect_Change_FrameBase_DetectChange_U" port="Detect_Change_FrameBase_DetectChange_U_1"/>
+            </input>
+            <output line="Detect_Change_FrameBase_DetectChange_DelayInput1_Uk_1" port="Detect_Change_FrameBase_DetectChange_DelayInput1_1" usename="true">
+               <connect block="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator" port="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator_2"/>
+            </output>
+         </block>
+         <block blocktype="RelationalOperator" name="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator" rate="-1">
+            <input line="Detect_Change_FrameBase_DetectChange_U_1" port="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator_1">
+               <connect block="Detect_Change_FrameBase_DetectChange_U" port="Detect_Change_FrameBase_DetectChange_U_1"/>
+            </input>
+            <input line="Detect_Change_FrameBase_DetectChange_DelayInput1_Uk_1" port="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator_2">
+               <connect block="Detect_Change_FrameBase_DetectChange_DelayInput1" port="Detect_Change_FrameBase_DetectChange_DelayInput1_1"/>
+            </input>
+            <output line="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator_1" port="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator_1" usename="true">
+               <connect block="Detect_Change_FrameBase_DetectChange_Y" port="Detect_Change_FrameBase_DetectChange_Y_1"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="Detect_Change_FrameBase_DetectChange_Y" rate="-1">
+            <input line="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator_1" port="Detect_Change_FrameBase_DetectChange_Y_1">
+               <connect block="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator" port="Detect_Change_FrameBase_DetectChange_FixPtRelationalOperator_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Outport" name="Detect_Change_FrameBase_Out1" rate="-1">
+      <input line="Detect_Change_FrameBase_DetectChange_1" port="Detect_Change_FrameBase_Out1_1">
+         <connect block="Detect_Change_FrameBase_DetectChange" port="Detect_Change_FrameBase_DetectChange_Y"/>
+      </input>
+   </block>
+</sm:blocks>

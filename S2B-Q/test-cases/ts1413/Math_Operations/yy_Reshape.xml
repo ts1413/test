@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Reshape" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="Reshape_ert_rtw/Reshape.h" size="2313" timestamp="2015-09-29T13:40:31+0900" type="c-header"/>
+  <file name="xx_Reshape.xml" size="1091" timestamp="2015-10-07T15:40:41+0900" type="xml"/>
+  <file name="Reshape_ert_rtw/Reshape.c" size="1322" timestamp="2015-09-29T13:40:31+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="Reshape_In1" priority="0" rate="0.1">
+    <output line="Reshape_In1_1" port="Reshape_In1_1" usename="true">
+      <connect block="Reshape_Reshape" port="Reshape_Reshape_1"/>
+    </output>
+    <var line="Reshape_In1_1" mode="extin" name="Reshape_In1_1" port="Reshape_In1_1" type="real_T"/>
+    <code file="Reshape_ert_rtw/Reshape.c" line="50" type="init">  Reshape_In1_1 = 0.0;
+</code>
+    <forward block="Reshape_Reshape" type="data">
+      <var line="Reshape_In1_1" mode="input" name="Reshape_In1_1" port="Reshape_Reshape_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Reshape" id="2" name="Reshape_Reshape" priority="1" rate="0.1">
+    <input line="Reshape_In1_1" port="Reshape_Reshape_1">
+      <connect block="Reshape_In1" port="Reshape_In1_1"/>
+    </input>
+    <output line="Reshape_Reshape_1" port="Reshape_Reshape_1" usename="true">
+      <connect block="Reshape_Out1" port="Reshape_Out1_1"/>
+    </output>
+    <var line="Reshape_In1_1" mode="input" name="Reshape_In1_1" port="Reshape_Reshape_1" type="real_T"/>
+    <var line="Reshape_Reshape_1" mode="extout" name="Reshape_Reshape_1" port="Reshape_Reshape_1" type="real_T"/>
+    <code file="Reshape_ert_rtw/Reshape.c" line="30" type="task">  /* Reshape: '&lt;Root&gt;/Reshape' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  Reshape_Reshape_1 = Reshape_In1_1;
+</code>
+    <code file="Reshape_ert_rtw/Reshape.c" line="47" type="init">  Reshape_Reshape_1 = 0.0;
+
+</code>
+    <forward block="Reshape_Out1" type="data">
+      <var line="Reshape_Reshape_1" mode="input" name="Reshape_Reshape_1" port="Reshape_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="Reshape_In1" type="data">
+      <var line="Reshape_In1_1" mode="extin" name="Reshape_In1_1" port="Reshape_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="Reshape_Out1" priority="2" rate="0.1">
+    <input line="Reshape_Reshape_1" port="Reshape_Out1_1">
+      <connect block="Reshape_Reshape" port="Reshape_Reshape_1"/>
+    </input>
+    <var line="Reshape_Reshape_1" mode="input" name="Reshape_Reshape_1" port="Reshape_Out1_1" type="real_T"/>
+    <backword block="Reshape_Reshape" type="data">
+      <var line="Reshape_Reshape_1" mode="extout" name="Reshape_Reshape_1" port="Reshape_Reshape_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_Reshape {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="Reshape_M" type="extern RT_MODEL_Reshape * const"/>
+  <object kind="rtm-object" name="Reshape_M_" type="RT_MODEL_Reshape"/>
+  <object kind="rtm-pointer" name="Reshape_M" type="RT_MODEL_Reshape * const" value="&amp;Reshape_M_"/>
+  <includes file="&lt;stddef.h>" from="Reshape_ert_rtw/Reshape.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="Reshape_ert_rtw/Reshape.h" index="1"/>
+  <includes file="&quot;Reshape_types.h&quot;" from="Reshape_ert_rtw/Reshape.h" index="2"/>
+  <includes file="&quot;Reshape_private.h&quot;" from="Reshape_ert_rtw/Reshape.c" index="3"/>
+</sm:blocks>

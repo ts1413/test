@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="LookupTableDynamic3" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="LookupTableDynamic3_In1" rate="-1">
+      <output line="LookupTableDynamic3_In1_1" port="LookupTableDynamic3_In1_1" usename="true">
+         <connect block="LookupTableDynamic3_LookupTableDynamic" port="LookupTableDynamic3_LookupTableDynamic_1"/>
+      </output>
+   </block>
+   <block blocktype="Constant" name="LookupTableDynamic3_Constant" rate="inf">
+      <output line="LookupTableDynamic3_Constant_1" port="LookupTableDynamic3_Constant_1" usename="true">
+         <connect block="LookupTableDynamic3_LookupTableDynamic" port="LookupTableDynamic3_LookupTableDynamic_2"/>
+      </output>
+   </block>
+   <block blocktype="Constant" name="LookupTableDynamic3_Constant1" rate="inf">
+      <output line="LookupTableDynamic3_Constant1_1" port="LookupTableDynamic3_Constant1_1" usename="true">
+         <connect block="LookupTableDynamic3_LookupTableDynamic" port="LookupTableDynamic3_LookupTableDynamic_3"/>
+      </output>
+   </block>
+   <block blocktype="S-Function" name="LookupTableDynamic3_LookupTableDynamic">
+      <input line="LookupTableDynamic3_In1_1" port="LookupTableDynamic3_LookupTableDynamic_1">
+         <connect block="LookupTableDynamic3_In1" port="LookupTableDynamic3_In1_1"/>
+      </input>
+      <input line="LookupTableDynamic3_Constant_1" port="LookupTableDynamic3_LookupTableDynamic_2">
+         <connect block="LookupTableDynamic3_Constant" port="LookupTableDynamic3_Constant_1"/>
+      </input>
+      <input line="LookupTableDynamic3_Constant1_1" port="LookupTableDynamic3_LookupTableDynamic_3">
+         <connect block="LookupTableDynamic3_Constant1" port="LookupTableDynamic3_Constant1_1"/>
+      </input>
+      <output line="LookupTableDynamic3_LookupTableDynamic_1" port="LookupTableDynamic3_LookupTableDynamic_1" usename="true">
+         <connect block="LookupTableDynamic3_Out1" port="LookupTableDynamic3_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="LookupTableDynamic3_Out1" rate="-1">
+      <input line="LookupTableDynamic3_LookupTableDynamic_1" port="LookupTableDynamic3_Out1_1">
+         <connect block="LookupTableDynamic3_LookupTableDynamic" port="LookupTableDynamic3_LookupTableDynamic_1"/>
+      </input>
+   </block>
+</sm:blocks>

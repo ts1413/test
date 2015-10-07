@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="LookupTable1D6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="LookupTable1D6_ert_rtw/LookupTable1D6.h" size="3046" timestamp="2015-10-05T16:57:01+0900" type="c-header"/>
+  <file name="xx_LookupTable1D6.xml" size="1297" timestamp="2015-10-07T15:40:44+0900" type="xml"/>
+  <file name="LookupTable1D6_ert_rtw/LookupTable1D6.c" size="3146" timestamp="2015-10-05T16:57:01+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="LookupTable1D6_In1" priority="0" rate="0.1">
+    <output line="LookupTable1D6_In1_1" port="LookupTable1D6_In1_1" usename="true">
+      <connect block="LookupTable1D6_1_DLookupTable" port="LookupTable1D6_1_DLookupTable_1"/>
+    </output>
+    <var line="LookupTable1D6_In1_1" mode="extin" name="LookupTable1D6_In1_1" port="LookupTable1D6_In1_1" type="real_T"/>
+    <code file="LookupTable1D6_ert_rtw/LookupTable1D6.c" line="103" type="init">  LookupTable1D6_In1_1 = 0.0;
+</code>
+    <forward block="LookupTable1D6_1_DLookupTable" type="port">
+      <var line="LookupTable1D6_In1_1" mode="input" name="LookupTable1D6_In1_1" port="LookupTable1D6_1_DLookupTable_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Lookup_n-D" id="2" name="LookupTable1D6_1_DLookupTable" priority="1" rate="0.1">
+    <input line="LookupTable1D6_In1_1" port="LookupTable1D6_1_DLookupTable_1">
+      <connect block="LookupTable1D6_In1" port="LookupTable1D6_In1_1"/>
+    </input>
+    <output line="LookupTable1D6_1_DLookupTable_1" port="LookupTable1D6_1_DLookupTable_1" usename="true">
+      <connect block="LookupTable1D6_Out1" port="LookupTable1D6_Out1_1"/>
+    </output>
+    <var line="LookupTable1D6_In1_1" mode="input" name="LookupTable1D6_In1_1" port="LookupTable1D6_1_DLookupTable_1" type="real_T"/>
+    <var line="LookupTable1D6_1_DLookupTable_1" mode="extout" name="LookupTable1D6_1_DLookupTable_1" port="LookupTable1D6_1_DLookupTable_1" type="real_T"/>
+    <param name="_DLookupTable_tableData" size="11" storage="LookupTable1D6_P" type="real_T"/>
+    <param name="_DLookupTable_bp01Data" size="11" storage="LookupTable1D6_P" type="real_T"/>
+    <code file="LookupTable1D6_ert_rtw/LookupTable1D6.c" line="78" type="task">  /* Lookup_n-D: '&lt;Root&gt;/1_DLookupTable' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  bpIdx = plook_evenx(LookupTable1D6_In1_1,
+                      LookupTable1D6_P._DLookupTable_bp01Data[0],
+                      LookupTable1D6_P._DLookupTable_bp01Data[1] -
+                      LookupTable1D6_P._DLookupTable_bp01Data[0], 10U, &amp;frac);
+  LookupTable1D6_1_DLookupTable_1 = intrp1d_l_pw(bpIdx, frac,
+    LookupTable1D6_P._DLookupTable_tableData);
+</code>
+    <code file="LookupTable1D6_ert_rtw/LookupTable1D6.c" line="100" type="init">  LookupTable1D6_1_DLookupTable_1 = 0.0;
+
+</code>
+    <forward block="LookupTable1D6_Out1" type="port">
+      <var line="LookupTable1D6_1_DLookupTable_1" mode="input" name="LookupTable1D6_1_DLookupTable_1" port="LookupTable1D6_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="LookupTable1D6_In1" type="port">
+      <var line="LookupTable1D6_In1_1" mode="extin" name="LookupTable1D6_In1_1" port="LookupTable1D6_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="LookupTable1D6_Out1" priority="2" rate="0.1">
+    <input line="LookupTable1D6_1_DLookupTable_1" port="LookupTable1D6_Out1_1">
+      <connect block="LookupTable1D6_1_DLookupTable" port="LookupTable1D6_1_DLookupTable_1"/>
+    </input>
+    <var line="LookupTable1D6_1_DLookupTable_1" mode="input" name="LookupTable1D6_1_DLookupTable_1" port="LookupTable1D6_Out1_1" type="real_T"/>
+    <backword block="LookupTable1D6_1_DLookupTable" type="port">
+      <var line="LookupTable1D6_1_DLookupTable_1" mode="extout" name="LookupTable1D6_1_DLookupTable_1" port="LookupTable1D6_1_DLookupTable_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_LookupTable1D6_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  uint32_T bpIdx;
+  real_T frac;
+
+</code>
+  <object kind="rtm-extern" name="LookupTable1D6_M" type="extern RT_MODEL_LookupTable1D6_T * const"/>
+  <object kind="rtm-object" name="LookupTable1D6_M_" type="RT_MODEL_LookupTable1D6_T"/>
+  <object kind="rtm-pointer" name="LookupTable1D6_M" type="RT_MODEL_LookupTable1D6_T * const" value="&amp;LookupTable1D6_M_"/>
+  <includes file="&lt;stddef.h>" from="LookupTable1D6_ert_rtw/LookupTable1D6.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="LookupTable1D6_ert_rtw/LookupTable1D6.h" index="1"/>
+  <includes file="&quot;LookupTable1D6_types.h&quot;" from="LookupTable1D6_ert_rtw/LookupTable1D6.h" index="2"/>
+  <includes file="&quot;LookupTable1D6_private.h&quot;" from="LookupTable1D6_ert_rtw/LookupTable1D6.c" index="3"/>
+  <function name="intrp1d_l_pw" type="defn">
+    <code line="62" type="func">real_T intrp1d_l_pw(uint32_T bpIndex, real_T frac, const real_T table[])
+{
+  /* Interpolation 1-D
+     Interpolation method: 'Linear'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Overflow mode: 'portable wrapping'
+   */
+  return (table[bpIndex + 1U] - table[bpIndex]) * frac + table[bpIndex];
+}
+</code>
+  </function>
+  <function name="plook_evenx" type="defn">
+    <code line="28" type="func">uint32_T plook_evenx(real_T u, real_T bp0, real_T bpSpace, uint32_T maxIndex,
+                     real_T *fraction)
+{
+  uint32_T bpIndex;
+  real_T uAdjust;
+  real_T invSpc;
+  real_T fbpIndex;
+
+  /* Prelookup - Index and Fraction
+     Index Search method: 'even'
+     Extrapolation method: 'Linear'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'off'
+   */
+  if (u &lt;= bp0) {
+    bpIndex = 0U;
+    *fraction = (u - bp0) / bpSpace;
+  } else {
+    uAdjust = u - bp0;
+    invSpc = 1.0 / bpSpace;
+    fbpIndex = uAdjust * invSpc;
+    if (fbpIndex &gt;= maxIndex) {
+      bpIndex = maxIndex - 1U;
+      *fraction = (uAdjust - (real_T)(maxIndex - 1U) * bpSpace) * invSpc;
+    } else {
+      bpIndex = (uint32_T)fbpIndex;
+      *fraction = (uAdjust - (real_T)bpIndex * bpSpace) * invSpc;
+    }
+  }
+
+  return bpIndex;
+}
+</code>
+  </function>
+</sm:blocks>

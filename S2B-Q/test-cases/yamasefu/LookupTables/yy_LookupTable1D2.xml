@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="LookupTable1D2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="LookupTable1D2_ert_rtw/LookupTable1D2.h" size="3047" timestamp="2015-10-05T16:56:50+0900" type="c-header"/>
+  <file name="xx_LookupTable1D2.xml" size="1297" timestamp="2015-10-07T15:40:44+0900" type="xml"/>
+  <file name="LookupTable1D2_ert_rtw/LookupTable1D2.c" size="2681" timestamp="2015-10-05T16:56:50+0900" type="c-source"/>
+  <block blocktype="Inport" id="1" name="LookupTable1D2_In1" priority="0" rate="0.1">
+    <output line="LookupTable1D2_In1_1" port="LookupTable1D2_In1_1" usename="true">
+      <connect block="LookupTable1D2_1_DLookupTable" port="LookupTable1D2_1_DLookupTable_1"/>
+    </output>
+    <var line="LookupTable1D2_In1_1" mode="extin" name="LookupTable1D2_In1_1" port="LookupTable1D2_In1_1" type="real_T"/>
+    <code file="LookupTable1D2_ert_rtw/LookupTable1D2.c" line="102" type="init">  LookupTable1D2_In1_1 = 0.0;
+</code>
+    <forward block="LookupTable1D2_1_DLookupTable" type="port">
+      <var line="LookupTable1D2_In1_1" mode="input" name="LookupTable1D2_In1_1" port="LookupTable1D2_1_DLookupTable_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Lookup_n-D" id="2" name="LookupTable1D2_1_DLookupTable" priority="1" rate="0.1">
+    <input line="LookupTable1D2_In1_1" port="LookupTable1D2_1_DLookupTable_1">
+      <connect block="LookupTable1D2_In1" port="LookupTable1D2_In1_1"/>
+    </input>
+    <output line="LookupTable1D2_1_DLookupTable_1" port="LookupTable1D2_1_DLookupTable_1" usename="true">
+      <connect block="LookupTable1D2_Out1" port="LookupTable1D2_Out1_1"/>
+    </output>
+    <var line="LookupTable1D2_In1_1" mode="input" name="LookupTable1D2_In1_1" port="LookupTable1D2_1_DLookupTable_1" type="real_T"/>
+    <var line="LookupTable1D2_1_DLookupTable_1" mode="extout" name="LookupTable1D2_1_DLookupTable_1" port="LookupTable1D2_1_DLookupTable_1" type="real_T"/>
+    <param name="_DLookupTable_tableData" size="11" storage="LookupTable1D2_P" type="real_T"/>
+    <param name="_DLookupTable_bp01Data" size="11" storage="LookupTable1D2_P" type="real_T"/>
+    <code file="LookupTable1D2_ert_rtw/LookupTable1D2.c" line="79" type="task">  /* Lookup_n-D: '&lt;Root&gt;/1_DLookupTable' incorporates:
+   *  Inport: '&lt;Root&gt;/In1'
+   */
+  bpIdx = plook_u32d_bincka(LookupTable1D2_In1_1,
+    LookupTable1D2_P._DLookupTable_bp01Data, 10U);
+  LookupTable1D2_1_DLookupTable_1 =
+    LookupTable1D2_P._DLookupTable_tableData[bpIdx];
+</code>
+    <code file="LookupTable1D2_ert_rtw/LookupTable1D2.c" line="99" type="init">  LookupTable1D2_1_DLookupTable_1 = 0.0;
+
+</code>
+    <forward block="LookupTable1D2_Out1" type="port">
+      <var line="LookupTable1D2_1_DLookupTable_1" mode="input" name="LookupTable1D2_1_DLookupTable_1" port="LookupTable1D2_Out1_1" type="real_T"/>
+    </forward>
+    <backword block="LookupTable1D2_In1" type="port">
+      <var line="LookupTable1D2_In1_1" mode="extin" name="LookupTable1D2_In1_1" port="LookupTable1D2_In1_1" type="real_T"/>
+    </backword>
+  </block>
+  <block blocktype="Outport" id="3" name="LookupTable1D2_Out1" priority="2" rate="0.1">
+    <input line="LookupTable1D2_1_DLookupTable_1" port="LookupTable1D2_Out1_1">
+      <connect block="LookupTable1D2_1_DLookupTable" port="LookupTable1D2_1_DLookupTable_1"/>
+    </input>
+    <var line="LookupTable1D2_1_DLookupTable_1" mode="input" name="LookupTable1D2_1_DLookupTable_1" port="LookupTable1D2_Out1_1" type="real_T"/>
+    <backword block="LookupTable1D2_1_DLookupTable" type="port">
+      <var line="LookupTable1D2_1_DLookupTable_1" mode="extout" name="LookupTable1D2_1_DLookupTable_1" port="LookupTable1D2_1_DLookupTable_1" type="real_T"/>
+    </backword>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct tag_RTM_LookupTable1D2_T {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <code type="autovars">  uint32_T bpIdx;
+
+</code>
+  <object kind="rtm-extern" name="LookupTable1D2_M" type="extern RT_MODEL_LookupTable1D2_T * const"/>
+  <object kind="rtm-object" name="LookupTable1D2_M_" type="RT_MODEL_LookupTable1D2_T"/>
+  <object kind="rtm-pointer" name="LookupTable1D2_M" type="RT_MODEL_LookupTable1D2_T * const" value="&amp;LookupTable1D2_M_"/>
+  <includes file="&lt;stddef.h>" from="LookupTable1D2_ert_rtw/LookupTable1D2.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="LookupTable1D2_ert_rtw/LookupTable1D2.h" index="1"/>
+  <includes file="&quot;LookupTable1D2_types.h&quot;" from="LookupTable1D2_ert_rtw/LookupTable1D2.h" index="2"/>
+  <includes file="&quot;LookupTable1D2_private.h&quot;" from="LookupTable1D2_ert_rtw/LookupTable1D2.c" index="3"/>
+  <function name="binsearch_u32d" type="defn">
+    <code line="50" type="func">uint32_T binsearch_u32d(real_T u, const real_T bp[], uint32_T startIndex,
+  uint32_T maxIndex)
+{
+  uint32_T iRght;
+  uint32_T iLeft;
+  uint32_T bpIdx;
+
+  /* Binary Search */
+  bpIdx = startIndex;
+  iLeft = 0U;
+  iRght = maxIndex;
+  while (iRght - iLeft &gt; 1U) {
+    if (u &lt; bp[bpIdx]) {
+      iRght = bpIdx;
+    } else {
+      iLeft = bpIdx;
+    }
+
+    bpIdx = (iRght + iLeft) &gt;&gt; 1U;
+  }
+
+  return iLeft;
+}
+</code>
+  </function>
+  <function name="plook_u32d_bincka" type="defn">
+    <code line="28" type="func">uint32_T plook_u32d_bincka(real_T u, const real_T bp[], uint32_T maxIndex)
+{
+  uint32_T bpIndex;
+
+  /* Prelookup - Index only
+     Index Search method: 'binary'
+     Extrapolation method: 'Clip'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'on'
+     Remove protection against out-of-range input in generated code: 'off'
+   */
+  if (u &lt;= bp[0U]) {
+    bpIndex = 0U;
+  } else if (u &lt; bp[maxIndex]) {
+    bpIndex = binsearch_u32d(u, bp, maxIndex &gt;&gt; 1U, maxIndex);
+  } else {
+    bpIndex = maxIndex;
+  }
+
+  return bpIndex;
+}
+</code>
+    <function name="binsearch_u32d" type="defn"/>
+  </function>
+</sm:blocks>

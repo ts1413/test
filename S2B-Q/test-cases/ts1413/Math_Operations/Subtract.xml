@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Subtract" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Subtract_In1" rate="-1">
+      <output line="Subtract_In1_1" port="Subtract_In1_1" usename="true">
+         <connect block="Subtract_Subtract" port="Subtract_Subtract_1"/>
+      </output>
+   </block>
+   <block blocktype="Inport" name="Subtract_In2" rate="-1">
+      <output line="Subtract_In2_1" port="Subtract_In2_1" usename="true">
+         <connect block="Subtract_Subtract" port="Subtract_Subtract_2"/>
+      </output>
+   </block>
+   <block blocktype="Sum" name="Subtract_Subtract" rate="-1">
+      <input line="Subtract_In1_1" port="Subtract_Subtract_1">
+         <connect block="Subtract_In1" port="Subtract_In1_1"/>
+      </input>
+      <input line="Subtract_In2_1" port="Subtract_Subtract_2">
+         <connect block="Subtract_In2" port="Subtract_In2_1"/>
+      </input>
+      <output line="Subtract_Subtract_1" port="Subtract_Subtract_1" usename="true">
+         <connect block="Subtract_Out1" port="Subtract_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Subtract_Out1" rate="-1">
+      <input line="Subtract_Subtract_1" port="Subtract_Out1_1">
+         <connect block="Subtract_Subtract" port="Subtract_Subtract_1"/>
+      </input>
+   </block>
+</sm:blocks>

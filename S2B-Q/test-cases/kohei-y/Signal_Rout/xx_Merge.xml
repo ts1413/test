@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Merge" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Merge_In1" priority="0" rate="0.1">
+    <output line="Merge_In1_1" port="Merge_In1_1" usename="true">
+      <connect block="Merge_If" port="Merge_If_1"/>
+    </output>
+  </block>
+  <block blocktype="Constant" name="Merge_Constant" priority="2" rate="0.1">
+    <output line="Merge_Constant_1" port="Merge_Constant_1" usename="true">
+      <connect block="Merge_IfActionSubsystem" port="Merge_IfActionSubsystem_In1"/>
+    </output>
+    <param name="Value" storage="" type="double" value="5.0"/>
+  </block>
+  <block blocktype="Constant" name="Merge_Constant1" priority="1" rate="0.1">
+    <output line="Merge_Constant1_1" port="Merge_Constant1_1" usename="true">
+      <connect block="Merge_IfActionSubsystem1" port="Merge_IfActionSubsystem1_In1"/>
+    </output>
+  </block>
+  <block blocktype="If" name="Merge_If" priority="3" rate="0.1">
+    <input line="Merge_In1_1" port="Merge_If_1">
+      <connect block="Merge_In1" port="Merge_In1_1"/>
+    </input>
+    <output line="Merge_If_0" port="Merge_If_0" usename="false">
+      <connect block="Merge_IfActionSubsystem" port="Merge_IfActionSubsystem_ActionPort"/>
+    </output>
+    <output line="Merge_If_0" port="Merge_If_0" usename="false">
+      <connect block="Merge_IfActionSubsystem1" port="Merge_IfActionSubsystem1_ActionPort"/>
+    </output>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" name="Merge_IfActionSubsystem" priority="4" rate="0.1">
+    <input line="Merge_Constant_1" port="Merge_IfActionSubsystem_In1">
+      <connect block="Merge_Constant" port="Merge_Constant_1"/>
+    </input>
+    <input line="Merge_If_0" port="Merge_IfActionSubsystem_ActionPort">
+      <connect block="Merge_If" port="Merge_If_0"/>
+    </input>
+    <output line="Merge_IfActionSubsystem_1" port="Merge_IfActionSubsystem_Out1" usename="false">
+      <connect block="Merge_Merge" port="Merge_Merge_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" name="Merge_IfActionSubsystem_In1" priority="1" rate="0.1">
+        <output line="Merge_IfActionSubsystem_In1_1" port="Merge_IfActionSubsystem_In1_1" usename="false">
+          <connect block="Merge_IfActionSubsystem_Out1" port="Merge_IfActionSubsystem_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="ActionPort" name="Merge_IfActionSubsystem_ActionPort" priority="0" rate="0.1"/>
+      <block blocktype="Outport" name="Merge_IfActionSubsystem_Out1" priority="0" rate="0.1">
+        <input line="Merge_IfActionSubsystem_In1_1" port="Merge_IfActionSubsystem_Out1_1">
+          <connect block="Merge_IfActionSubsystem_In1" port="Merge_IfActionSubsystem_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block TreatAsAtomicUnit="on" blocktype="SubSystem" name="Merge_IfActionSubsystem1" priority="5" rate="0.1">
+    <input line="Merge_Constant1_1" port="Merge_IfActionSubsystem1_In1">
+      <connect block="Merge_Constant1" port="Merge_Constant1_1"/>
+    </input>
+    <input line="Merge_If_0" port="Merge_IfActionSubsystem1_ActionPort">
+      <connect block="Merge_If" port="Merge_If_0"/>
+    </input>
+    <output line="Merge_IfActionSubsystem1_1" port="Merge_IfActionSubsystem1_Out1" usename="false">
+      <connect block="Merge_Merge" port="Merge_Merge_2"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" name="Merge_IfActionSubsystem1_In1" priority="1" rate="0.1">
+        <output line="Merge_IfActionSubsystem1_In1_1" port="Merge_IfActionSubsystem1_In1_1" usename="false">
+          <connect block="Merge_IfActionSubsystem1_Out1" port="Merge_IfActionSubsystem1_Out1_1"/>
+        </output>
+      </block>
+      <block blocktype="ActionPort" name="Merge_IfActionSubsystem1_ActionPort" priority="0" rate="0.1"/>
+      <block blocktype="Outport" name="Merge_IfActionSubsystem1_Out1" priority="0" rate="0.1">
+        <input line="Merge_IfActionSubsystem1_In1_1" port="Merge_IfActionSubsystem1_Out1_1">
+          <connect block="Merge_IfActionSubsystem1_In1" port="Merge_IfActionSubsystem1_In1_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Merge" name="Merge_Merge" priority="6" rate="0.1">
+    <input line="Merge_IfActionSubsystem_1" port="Merge_Merge_1">
+      <connect block="Merge_IfActionSubsystem" port="Merge_IfActionSubsystem_Out1"/>
+    </input>
+    <input line="Merge_IfActionSubsystem1_1" port="Merge_Merge_2">
+      <connect block="Merge_IfActionSubsystem1" port="Merge_IfActionSubsystem1_Out1"/>
+    </input>
+    <output line="Merge_Merge_1" port="Merge_Merge_1" usename="true">
+      <connect block="Merge_Out1" port="Merge_Out1_1"/>
+    </output>
+    <param name="InitialOutput" storage="" type="double" value="0.0"/>
+  </block>
+  <block blocktype="Outport" name="Merge_Out1" priority="7" rate="0.1">
+    <input line="Merge_Merge_1" port="Merge_Out1_1">
+      <connect block="Merge_Merge" port="Merge_Merge_1"/>
+    </input>
+  </block>
+</sm:blocks>

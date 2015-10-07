@@ -1,0 +1,17 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Trigonometric_Function_In1_1",,
+"task100",,,,
+,"Trigonometric_Function_TrigonometricFunction_1",,,
+"task2",,,,
+,"Trigonometric_Function_In1_1","Trigonometric_Function_TrigonometricFunction_1",,
+,,,,"{
+"
+,,,,"  /* Trigonometry: '<Root>/TrigonometricFunction' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  Trigonometric_Function_TrigonometricFunction_1 = sin
+    (Trigonometric_Function_In1_1);
+"
+,,,,"}
+"

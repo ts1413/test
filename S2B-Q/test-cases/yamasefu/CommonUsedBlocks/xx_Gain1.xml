@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Gain1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Gain1_In1" priority="0" rate="0.1">
+    <output line="Gain1_In1_1" port="Gain1_In1_1" usename="true">
+      <connect block="Gain1_Gain" port="Gain1_Gain_1"/>
+    </output>
+  </block>
+  <block blocktype="Gain" name="Gain1_Gain" priority="1" rate="0.1">
+    <input line="Gain1_In1_1" port="Gain1_Gain_1">
+      <connect block="Gain1_In1" port="Gain1_In1_1"/>
+    </input>
+    <output line="Gain1_Gain_1" port="Gain1_Gain_1" usename="true">
+      <connect block="Gain1_Out1" port="Gain1_Out1_1"/>
+    </output>
+    <param name="Gain" storage="" type="double" value="2.0"/>
+  </block>
+  <block blocktype="Outport" name="Gain1_Out1" priority="2" rate="0.1">
+    <input line="Gain1_Gain_1" port="Gain1_Out1_1">
+      <connect block="Gain1_Gain" port="Gain1_Gain_1"/>
+    </input>
+  </block>
+</sm:blocks>

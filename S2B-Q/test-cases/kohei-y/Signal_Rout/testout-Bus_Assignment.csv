@@ -1,0 +1,16 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"Bus_Assignment_In1_x",,
+,,"Bus_Assignment_In2_y",,
+"task100",,,,
+"task3",,,,
+,,,,"{
+"
+,,,,"  /* Constant: '<Root>/Constant' */
+  Bus_Assignment_Constant_1 = Bus_Assignment_P.Constant_Value;
+"
+,,,,"}
+"
+"task4",,,,
+,"Bus_Assignment_In1_x",,,
+,"Bus_Assignment_In2_y",,,

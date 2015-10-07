@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Rate_Limiter" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Rate_Limiter_In1" rate="-1">
+      <output line="Rate_Limiter_In1_1" port="Rate_Limiter_In1_1" usename="true">
+         <connect block="Rate_Limiter_RateLimiter" port="Rate_Limiter_RateLimiter_1"/>
+      </output>
+   </block>
+   <block blocktype="RateLimiter" name="Rate_Limiter_RateLimiter">
+      <input line="Rate_Limiter_In1_1" port="Rate_Limiter_RateLimiter_1">
+         <connect block="Rate_Limiter_In1" port="Rate_Limiter_In1_1"/>
+      </input>
+      <output line="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_RateLimiter_1" usename="true">
+         <connect block="Rate_Limiter_Out1" port="Rate_Limiter_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Rate_Limiter_Out1" rate="-1">
+      <input line="Rate_Limiter_RateLimiter_1" port="Rate_Limiter_Out1_1">
+         <connect block="Rate_Limiter_RateLimiter" port="Rate_Limiter_RateLimiter_1"/>
+      </input>
+   </block>
+</sm:blocks>

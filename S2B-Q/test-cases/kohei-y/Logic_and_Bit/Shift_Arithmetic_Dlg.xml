@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Shift_Arithmetic_Dlg" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="Shift_Arithmetic_Dlg_In1" rate="-1">
+      <output line="Shift_Arithmetic_Dlg_In1_1" port="Shift_Arithmetic_Dlg_In1_1" usename="true">
+         <connect block="Shift_Arithmetic_Dlg_ShiftArithmetic" port="Shift_Arithmetic_Dlg_ShiftArithmetic_1"/>
+      </output>
+   </block>
+   <block blocktype="ArithShift" name="Shift_Arithmetic_Dlg_ShiftArithmetic">
+      <input line="Shift_Arithmetic_Dlg_In1_1" port="Shift_Arithmetic_Dlg_ShiftArithmetic_1">
+         <connect block="Shift_Arithmetic_Dlg_In1" port="Shift_Arithmetic_Dlg_In1_1"/>
+      </input>
+      <output line="Shift_Arithmetic_Dlg_ShiftArithmetic_1" port="Shift_Arithmetic_Dlg_ShiftArithmetic_1" usename="true">
+         <connect block="Shift_Arithmetic_Dlg_Out1" port="Shift_Arithmetic_Dlg_Out1_1"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="Shift_Arithmetic_Dlg_Out1" rate="-1">
+      <input line="Shift_Arithmetic_Dlg_ShiftArithmetic_1" port="Shift_Arithmetic_Dlg_Out1_1">
+         <connect block="Shift_Arithmetic_Dlg_ShiftArithmetic" port="Shift_Arithmetic_Dlg_ShiftArithmetic_1"/>
+      </input>
+   </block>
+</sm:blocks>

@@ -1,0 +1,9 @@
+digraph csp {
+	graph [rankdir=LR];
+	Ground_Ground	 [label="t1\nGround_Ground"];
+	t0 -> Ground_Ground	 [color=red,
+		label="ch_0_1([EVENT])"];
+	extout	 [label=extout];
+	Ground_Ground -> extout	 [color=green,
+		label="ch_1_100()"];
+}

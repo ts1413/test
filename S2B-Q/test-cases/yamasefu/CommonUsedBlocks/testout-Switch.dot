@@ -1,0 +1,21 @@
+digraph csp {
+	graph [rankdir=LR];
+	Switch_Switch	 [label="t4\nSwitch_Switch"];
+	t0 -> Switch_Switch	 [color=green,
+		label="ch_0_4(Switch_In1_1,Switch_In2_1,Switch_In3_1)"];
+	extout	 [label=extout];
+	Switch_In1	 [label="t1\nSwitch_In1",
+		shape=box];
+	Switch_In1 -> t0	 [color=green,
+		label="in port Switch_In1(Switch_In1_1)"];
+	Switch_In2	 [label="t2\nSwitch_In2",
+		shape=box];
+	Switch_In2 -> t0	 [color=green,
+		label="in port Switch_In2(Switch_In2_1)"];
+	Switch_In3	 [label="t3\nSwitch_In3",
+		shape=box];
+	Switch_In3 -> t0	 [color=green,
+		label="in port Switch_In3(Switch_In3_1)"];
+	Switch_Switch -> extout	 [color=green,
+		label="ch_4_100(Switch_Switch_1)"];
+}

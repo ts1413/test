@@ -1,0 +1,25 @@
+digraph csp {
+	graph [rankdir=LR];
+	Multiport_Switch_MultiportSwitch	 [label="t5\nMultiport_Switch_MultiportSwitch"];
+	t0 -> Multiport_Switch_MultiportSwitch	 [color=green,
+		label="ch_0_5(Multiport_Switch_In1_1,Multiport_Switch_In2_1,Multiport_Switch_In3_1,Multiport_Switch_In4_1)"];
+	extout	 [label=extout];
+	Multiport_Switch_In1	 [label="t1\nMultiport_Switch_In1",
+		shape=box];
+	Multiport_Switch_In1 -> t0	 [color=green,
+		label="in port Multiport_Switch_In1(Multiport_Switch_In1_1)"];
+	Multiport_Switch_In2	 [label="t2\nMultiport_Switch_In2",
+		shape=box];
+	Multiport_Switch_In2 -> t0	 [color=green,
+		label="in port Multiport_Switch_In2(Multiport_Switch_In2_1)"];
+	Multiport_Switch_In3	 [label="t3\nMultiport_Switch_In3",
+		shape=box];
+	Multiport_Switch_In3 -> t0	 [color=green,
+		label="in port Multiport_Switch_In3(Multiport_Switch_In3_1)"];
+	Multiport_Switch_In4	 [label="t4\nMultiport_Switch_In4",
+		shape=box];
+	Multiport_Switch_In4 -> t0	 [color=green,
+		label="in port Multiport_Switch_In4(Multiport_Switch_In4_1)"];
+	Multiport_Switch_MultiportSwitch -> extout	 [color=green,
+		label="ch_5_100(Multiport_Switch_MultiportSwitch_1)"];
+}

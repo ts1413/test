@@ -1,0 +1,40 @@
+BusObject "BusObject"
+BusElement "a" dataType="double"
+Solver "FixedStepDiscrete" solverMode=Auto fixedStep=0.1
+Block "if_and_if_action_subsys" samplePeriod=0.1
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/In1" samplePeriod=0.1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/Constant" samplePeriod=0.1 assignedPriority=1 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/Constant1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/If" samplePeriod=0.1 assignedPriority=2 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+OutDataPort portNumber=1 dataType="action"
+OutDataPort portNumber=2 dataType="action"
+Block "if_and_if_action_subsys/IfActionSubsystem" samplePeriod=0.1 assignedPriority=3 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InControlPort portNumber=2 dataType="action"
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/IfActionSubsystem/In1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/IfActionSubsystem/ActionPort" samplePeriod=0.1 min=[] max=[]
+Block "if_and_if_action_subsys/IfActionSubsystem/Out1" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/IfActionSubsystem1" samplePeriod=0.1 assignedPriority=4 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InControlPort portNumber=2 dataType="action"
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/IfActionSubsystem1/In1" samplePeriod=0.1 assignedPriority=0 min=[] max=[]
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/IfActionSubsystem1/ActionPort" samplePeriod=0.1 min=[] max=[]
+Block "if_and_if_action_subsys/IfActionSubsystem1/Out1" samplePeriod=0.1 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/Merge" samplePeriod=0.1 assignedPriority=5 min=[] max=[]
+InDataPort portNumber=1 dataType="double"
+InDataPort portNumber=2 dataType="double"
+OutDataPort portNumber=1 dataType="double"
+Block "if_and_if_action_subsys/Out1" samplePeriod=0.1 assignedPriority=6 min=[] max=[]
+InDataPort portNumber=1 dataType="double"

@@ -1,0 +1,46 @@
+"TASK","INPUT","OUTPUT","POINTER","EXPRESSION"
+"task0",,,,
+,,"switch_case_In1_1",,
+"task100",,,,
+"task4",,,,
+,"switch_case_In1_1",,,
+,,,,"{
+"
+,,,,"  /* SwitchCase: '<Root>/SwitchCase' incorporates:
+   *  Inport: '<Root>/In1'
+   */
+  u = switch_case_In1_1;
+  if (u < 0.0) {
+    u = ceil(u);
+  } else {
+    u = floor(u);
+  }
+
+  if (rtIsNaN(u) || rtIsInf(u)) {
+    u = 0.0;
+  } else {
+    u = fmod(u, 4.294967296E+9);
+  }
+
+  if ((u < 0.0 ? -(int32_T)(uint32_T)-u : (int32_T)(uint32_T)u) == 1) {
+    /* Outputs for IfAction SubSystem: '<Root>/SwitchCaseActionSubsystem' incorporates:
+     *  ActionPort: '<S1>/ActionPort'
+     */
+    switc_SwitchCaseActionSubsystem(switch_case_Constant_1,
+      &switch_case_B.SwitchCaseActionSubsystem);
+
+    /* End of Outputs for SubSystem: '<Root>/SwitchCaseActionSubsystem' */
+  } else {
+    /* Outputs for IfAction SubSystem: '<Root>/SwitchCaseActionSubsystem1' incorporates:
+     *  ActionPort: '<S2>/ActionPort'
+     */
+    switc_SwitchCaseActionSubsystem(switch_case_Constant1_1,
+      &switch_case_B.SwitchCaseActionSubsystem1);
+
+    /* End of Outputs for SubSystem: '<Root>/SwitchCaseActionSubsystem1' */
+  }
+
+  /* End of SwitchCase: '<Root>/SwitchCase' */
+"
+,,,,"}
+"

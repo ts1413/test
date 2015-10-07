@@ -1,0 +1,13 @@
+digraph csp {
+	graph [rankdir=LR];
+	Width_Width	 [label="t2\nWidth_Width"];
+	t0 -> Width_Width	 [color=green,
+		label="ch_0_2(Width_In1_1)"];
+	extout	 [label=extout];
+	Width_In1	 [label="t1\nWidth_In1",
+		shape=box];
+	Width_In1 -> t0	 [color=green,
+		label="in port Width_In1(Width_In1_1)"];
+	Width_Width -> extout	 [color=green,
+		label="ch_2_100(Width_Width_1)"];
+}

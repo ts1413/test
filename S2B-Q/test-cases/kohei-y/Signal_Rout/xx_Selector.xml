@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" name="Selector" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <block blocktype="Inport" name="Selector_In1" priority="0" rate="0.1">
+    <output line="Selector_In1_1" port="Selector_In1_1" usename="true">
+      <connect block="Selector_Selector" port="Selector_Selector_1"/>
+    </output>
+  </block>
+  <block blocktype="Selector" name="Selector_Selector" priority="0" rate="0.1">
+    <input line="Selector_In1_1" port="Selector_Selector_1">
+      <connect block="Selector_In1" port="Selector_In1_1"/>
+    </input>
+    <output line="Selector_Selector_1" port="Selector_Selector_1" usename="true">
+      <connect block="Selector_Out2" port="Selector_Out2_1"/>
+    </output>
+  </block>
+  <block blocktype="Outport" name="Selector_Out2" priority="1" rate="0.1">
+    <input line="Selector_Selector_1" port="Selector_Out2_1">
+      <connect block="Selector_Selector" port="Selector_Selector_1"/>
+    </input>
+  </block>
+</sm:blocks>
